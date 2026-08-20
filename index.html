@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PHP Manual</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<header class="bar">
+  <div class="bar__nav">
+    <button id="back" class="icon" data-t-title="nav.back" data-t-aria="nav.back">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg>
+    </button>
+    <button id="fwd" class="icon" data-t-title="nav.forward" data-t-aria="nav.forward">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5"/></svg>
+    </button>
+    <button id="home" class="icon" data-t-title="nav.home" data-t-aria="nav.home">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 7 8 2.5 13.5 7v6.5h-4V10h-3v3.5h-4z"/></svg>
+    </button>
+  </div>
+
+  <h1 class="bar__title" id="docTitle"></h1>
+
+  <div class="bar__nav">
+    <button id="locate" class="icon" data-t-title="nav.locate" data-t-aria="nav.locate">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2"/></svg>
+    </button>
+    <button id="theme" class="icon" data-t-title="nav.theme" data-t-aria="nav.theme">
+      <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13 9.5A5.5 5.5 0 0 1 6.5 3a5.5 5.5 0 1 0 6.5 6.5"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="shell">
+  <aside class="side" id="side">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-panel="toc"    data-t="tab.contents" aria-selected="true"></button>
+      <button class="tab" role="tab" data-panel="idx"    data-t="tab.index"    aria-selected="false"></button>
+      <button class="tab" role="tab" data-panel="search" data-t="tab.search"   aria-selected="false"></button>
+    </div>
+
+    <section class="panel" data-panel="toc">
+      <div class="panel__body tree" id="tree" role="tree" data-t-aria="aria.tree"></div>
+    </section>
+
+    <section class="panel" data-panel="idx" hidden>
+      <div class="field">
+        <input id="idxQ" type="search" data-t-ph="field.index" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="panel__body" id="idxList"></div>
+    </section>
+
+    <section class="panel" data-panel="search" hidden>
+      <div class="field">
+        <input id="q" type="search" data-t-ph="field.search" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="panel__body" id="results"></div>
+    </section>
+
+    <footer class="side__foot">
+      <span id="stat"></span>
+      <select id="lang" class="lang" data-t-aria="aria.lang" hidden></select>
+    </footer>
+  </aside>
+
+  <div class="grip" id="grip" role="separator" aria-orientation="vertical" tabindex="0"
+       data-t-aria="aria.grip"></div>
+
+  <div class="doc">
+    <iframe id="doc" data-t-title="aria.doc" src="about:blank"></iframe>
+    <nav class="seq">
+      <button id="prev" class="seq__btn" data-t="seq.prev"></button>
+      <span class="seq__where" id="where"></span>
+      <button id="next" class="seq__btn" data-t="seq.next"></button>
+    </nav>
+  </div>
+</main>
+
+<!-- ==================================================================
+     Cadenas de la interfaz. Para añadir un idioma: copiá un bloque,
+     cambiá data-lang / data-locale / data-label y traducí los valores.
+     Sólo se traduce la interfaz; el manual queda en su idioma original.
+     {llaves} son marcadores que el visor reemplaza en tiempo de ejecución.
+     ================================================================== -->
+<template class="i18n" data-lang="en" data-locale="en-US" data-label="English">{
+  "nav.back":     "Back (Alt+←)",
+  "nav.forward":  "Forward (Alt+→)",
+  "nav.home":     "Home",
+  "nav.locate":   "Locate in contents",
+  "nav.theme":    "Switch theme",
+
+  "tab.contents": "Contents",
+  "tab.index":    "Index",
+  "tab.search":   "Search",
+
+  "field.index":  "Filter the index",
+  "field.search": "Search titles and symbols",
+
+  "seq.prev":     "Previous",
+  "seq.next":     "Next",
+
+  "side.stat":    "{topics} topics · {entries} index entries",
+  "hint.search":  "Type to search titles, functions, classes and methods.",
+  "empty.none":   "No matches.",
+  "note.capped":  "Showing {shown} of {total} matches. Narrow the search to see the rest.",
+  "tree.untitled": "(untitled)",
+  "trail.sep":    " › ",
+
+  "aria.tree":    "Table of contents",
+  "aria.doc":     "Manual content",
+  "aria.grip":    "Sidebar width",
+  "aria.lang":    "Interface language",
+
+  "kind.function":      "function",
+  "kind.class":         "class",
+  "kind.method":        "method",
+  "kind.book":          "extension",
+  "kind.ref":           "reference",
+  "kind.language":      "language",
+  "kind.control":       "structure",
+  "kind.appendices":    "appendix",
+  "kind.features":      "feature",
+  "kind.security":      "security",
+  "kind.faq":           "faq",
+  "kind.install":       "install",
+  "kind.configuration": "config",
+  "kind.migration":     "migration",
+  "kind.reserved":      "reserved",
+  "kind.internals":     "internals",
+  "kind.intro":         "intro",
+  "kind.errorfunc":     "errors",
+  "kind.context":       "context",
+  "kind.wrappers":      "wrapper",
+  "kind.section":       "section",
+  "kind.group":         "group"
+}</template>
+
+<template class="i18n" data-lang="es" data-locale="es-ES" data-label="Español">{
+  "nav.back":     "Atrás (Alt+←)",
+  "nav.forward":  "Adelante (Alt+→)",
+  "nav.home":     "Inicio",
+  "nav.locate":   "Localizar en el contenido",
+  "nav.theme":    "Cambiar tema",
+
+  "tab.contents": "Contenido",
+  "tab.index":    "Índice",
+  "tab.search":   "Buscar",
+
+  "field.index":  "Filtrar el índice",
+  "field.search": "Buscar títulos y símbolos",
+
+  "seq.prev":     "Anterior",
+  "seq.next":     "Siguiente",
+
+  "side.stat":    "{topics} temas · {entries} entradas de índice",
+  "hint.search":  "Escribí para buscar entre títulos, funciones, clases y métodos.",
+  "empty.none":   "Sin coincidencias.",
+  "note.capped":  "Se muestran {shown} de {total} coincidencias. Afiná la búsqueda para ver el resto.",
+  "tree.untitled": "(sin título)",
+  "trail.sep":    " › ",
+
+  "aria.tree":    "Tabla de contenidos",
+  "aria.doc":     "Contenido del manual",
+  "aria.grip":    "Ancho del panel lateral",
+  "aria.lang":    "Idioma de la interfaz",
+
+  "kind.function":      "función",
+  "kind.class":         "clase",
+  "kind.method":        "método",
+  "kind.book":          "extensión",
+  "kind.ref":           "referencia",
+  "kind.language":      "lenguaje",
+  "kind.control":       "estructura",
+  "kind.appendices":    "apéndice",
+  "kind.features":      "característica",
+  "kind.security":      "seguridad",
+  "kind.faq":           "faq",
+  "kind.install":       "instalación",
+  "kind.configuration": "configuración",
+  "kind.migration":     "migración",
+  "kind.reserved":      "reservado",
+  "kind.internals":     "internals",
+  "kind.intro":         "introducción",
+  "kind.errorfunc":     "errores",
+  "kind.context":       "contexto",
+  "kind.wrappers":      "wrapper",
+  "kind.section":       "sección",
+  "kind.group":         "grupo"
+}</template>
+
+<script src="data/meta.js"></script>
+<script src="data/toc.js"></script>
+<script src="data/index.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

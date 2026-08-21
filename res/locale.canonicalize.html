@@ -1,0 +1,111 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Canonicalize the locale string</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.locale.html">Locale</a></li>
+        <li>Canonicalize the locale string</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="locale.canonicalize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Locale::canonicalize</h1>
+  <h1 class="refname">locale_canonicalize</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8, PECL intl &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Locale::canonicalize</span> -- <span class="refname">locale_canonicalize</span> &mdash; <span class="dc-title">Canonicalize the locale string</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-locale.canonicalize-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><strong>Locale::canonicalize</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+
+  <p class="simpara">
+   Canonicalizes the passed locale string to ICU format.
+  </p>
+  <p class="simpara">
+   This does not necessarily indicate or return a valid locale. It is only a
+   version of the input that has been canonicalized according to ICU rules.
+  </p>
+  <p class="simpara">
+   The behavior of this function depends on the version of ICU PHP is using
+   (<strong><code><a href="intl.constants.html#constant.intl-icu-version">INTL_ICU_VERSION</a></code></strong>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-locale.canonicalize-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">locale</code></dt>
+    <dd>
+     <p class="simpara">
+      Original locale string.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-locale.canonicalize-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Canonicalized locale string.
+  </p>
+  <p class="simpara">Returns <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> when the length of <code class="parameter">locale</code> exceeds <strong><code><a href="intl.constants.html#constant.intl-max-locale-len">INTL_MAX_LOCALE_LEN</a></code></strong>.</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-locale.canonicalize-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2558">
+   <p><strong>Example #1 <span class="function"><strong>locale_canonicalize()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000">echo Locale::canonicalize('en-US.utf8') . "\n";
+echo Locale::canonicalize('totally-not-valid') . "\n";</code></pre></div>
+   </div>
+
+  </div>
+  <p class="simpara">The above example will output
+something similar to:</p>
+  <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">en_US
+totally_NOT_VALID</pre>
+</div>
+  </div>
+ </div>
+
+</div></div></div></body></html>

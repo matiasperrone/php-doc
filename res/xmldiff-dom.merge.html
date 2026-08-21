@@ -1,0 +1,91 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Produce merged DOMDocument</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.xmldiff-dom.html">XMLDiff\DOM</a></li>
+        <li>Produce merged DOMDocument</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="xmldiff-dom.merge" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">XMLDiff\DOM::merge</h1>
+  <p class="verinfo">(PECL xmldiff &gt;= 0.8.0)</p><p class="refpurpose"><span class="refname">XMLDiff\DOM::merge</span> &mdash; <span class="dc-title">Produce merged DOMDocument</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-xmldiff-dom.merge-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>XMLDiff\DOM::merge</strong></span>(<span class="methodparam"><span class="type"><a href="class.domdocument.html" class="type DOMDocument">DOMDocument</a></span> <code class="parameter">$src</code></span>, <span class="methodparam"><span class="type"><a href="class.domdocument.html" class="type DOMDocument">DOMDocument</a></span> <code class="parameter">$diff</code></span>): <span class="type"><a href="class.domdocument.html" class="type DOMDocument">DOMDocument</a></span></div>
+
+  <p class="para rdfs-comment">
+   Create new DOMDocument based on the diff.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-xmldiff-dom.merge-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">src</code></dt>
+    <dd>
+     <p class="para">
+      Source DOMDocument object.      
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">diff</code></dt>
+    <dd>
+     <p class="para">
+      DOMDocument object containing the diff information.      
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-xmldiff-dom.merge-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Merged DOMDocument or NULL. 
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

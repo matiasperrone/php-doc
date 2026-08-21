@@ -1,0 +1,101 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>variant class constructor</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.variant.html">variant</a></li>
+        <li>variant class constructor</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="variant.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">variant::__construct</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">variant::__construct</span> &mdash; <span class="dc-title">variant class constructor</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-variant.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>variant::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$value</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$type</code><span class="initializer"> = <strong><code><a href="com.constants.html#constant.vt-empty">VT_EMPTY</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$codepage</code><span class="initializer"> = <strong><code><a href="com.constants.html#constant.cp-acp">CP_ACP</a></code></strong></span></span>)</div>
+
+  <p class="para rdfs-comment">
+   Constructs a new variant object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-variant.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">value</code></dt>
+    <dd>
+     <p class="simpara">
+      Initial value. If omitted, or set to <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> an VT_EMPTY object is created.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">type</code></dt>
+    <dd>
+     <p class="simpara">
+      Specifies the content type of the variant object. Possible values are
+      one of the <strong><code><a href="com.constants.html#constant.vt-null">VT_<span class="replaceable">*</span></a></code></strong> <a href="com.constants.html" class="xref">Predefined Constants</a>.
+     </p>
+     <p class="simpara">
+      PHP can detect parameters passed by reference
+      automatically; they do not even need to be passed as variant objects.
+     </p>
+     <p class="simpara">
+      Consult the <abbr title="Microsoft Developer Network">MSDN</abbr> library for additional information
+      on the VARIANT type.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">codepage</code></dt>
+    <dd>
+     <p class="simpara">
+      Specifies the codepage that is used to convert strings to
+      unicode.  See the parameter of the same name in the
+      <a href="class.com.html" class="xref">com</a> class for more information.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+</div></div></div></body></html>

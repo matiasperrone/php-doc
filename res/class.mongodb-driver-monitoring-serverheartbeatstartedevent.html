@@ -1,0 +1,188 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.monitoring.html">MongoDB\Driver\Monitoring</a></li>
+        <li>The MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.mongodb-driver-monitoring-serverheartbeatstartedevent" class="reference">
+
+ <h1 class="title">The MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=1.13.0)</p>
+
+
+  <div class="section" id="mongodb-driver-monitoring-serverheartbeatstartedevent.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    The <span class="classname"><strong class="classname">MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent</strong></span>
+    class encapsulates information about a started server heartbeat (i.e.
+    <a href="https://www.mongodb.com/docs/manual/reference/command/hello/" class="link external" title="Link : https://www.mongodb.com/docs/manual/reference/command/hello/">&raquo;&nbsp;hello</a>
+    command issued through
+    <a href="https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.md" class="link external" title="Link : https://github.com/mongodb/specifications/blob/master/source/server-discovery-and-monitoring/server-discovery-and-monitoring.md">&raquo;&nbsp;server monitoring</a>).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-monitoring-serverheartbeatstartedevent.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.mongodb-driver-monitoring-serverheartbeatstartedevent.html#mongodb-driver-monitoring-serverheartbeatstartedevent.props.host">$<var class="varname">host</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.mongodb-driver-monitoring-serverheartbeatstartedevent.html#mongodb-driver-monitoring-serverheartbeatstartedevent.props.port">$<var class="varname">port</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+      <var class="varname"><a href="class.mongodb-driver-monitoring-serverheartbeatstartedevent.html#mongodb-driver-monitoring-serverheartbeatstartedevent.props.awaited">$<var class="varname">awaited</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.gethost.html" class="methodname">getHost</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.getport.html" class="methodname">getPort</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.isawaited.html" class="methodname">isAwaited</a></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="mongodb-driver-monitoring-serverheartbeatstartedevent.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+    
+     <dt id="mongodb-driver-monitoring-serverheartbeatstartedevent.props.host"><var class="varname">host</var></dt>
+     <dd>
+      <p class="simpara">The hostname of the server.</p>
+     </dd>
+    
+    
+     <dt id="mongodb-driver-monitoring-serverheartbeatstartedevent.props.port"><var class="varname">port</var></dt>
+     <dd>
+      <p class="simpara">The port of the server.</p>
+     </dd>
+    
+    
+     <dt id="mongodb-driver-monitoring-serverheartbeatstartedevent.props.awaited"><var class="varname">awaited</var></dt>
+     <dd>
+      <p class="simpara">
+       Whether the heartbeat used a streaming protocol. The extension does
+       not use the streaming protocol for monitoring, so this method will always
+       return <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL mongodb 2.3.0</td>
+       <td>
+        Added public <span class="modifier">readonly</span> properties.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.gethost.html">MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent::getHost</a> — Returns the hostname of the server</li><li><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.getport.html">MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent::getPort</a> — Returns the port on which this server is listening</li><li><a href="mongodb-driver-monitoring-serverheartbeatstartedevent.isawaited.html">MongoDB\Driver\Monitoring\ServerHeartbeatStartedEvent::isAwaited</a> — Returns whether the heartbeat used a streaming protocol</li></ul>
+</div>
+</div></div></body></html>

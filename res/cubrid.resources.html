@@ -1,0 +1,78 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Resource Types</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="cubrid.setup.html">Installing/Configuring</a></li>
+        <li>Resource Types</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="cubrid.resources" class="section">
+  <h2 class="title">Resource Types</h2>
+  <p class="simpara">
+   There are four resource types used in CUBRID. The first one is the link
+   identifier for a database connection, the second is the resource which
+   holds the result of a query, and the last two a resource which holds the
+   query results of BLOB/CLOB data types.
+  </p>
+  <div class="section" id="cubrid.resources.connection-identifier">
+  <h2 class="title">connection identifier</h2>
+   <p class="simpara">
+    A connection identifier returned by <span class="function"><a href="function.cubrid-connect.html" class="function">cubrid_connect()</a></span>,
+    <span class="function"><a href="function.cubrid-connect-with-url.html" class="function">cubrid_connect_with_url()</a></span>,
+    <span class="function"><a href="function.cubrid-pconnect.html" class="function">cubrid_pconnect()</a></span> and
+    <span class="function"><a href="function.cubrid-pconnect-with-url.html" class="function">cubrid_pconnect_with_url()</a></span>.
+   </p>
+  </div>
+  <div class="section" id="cubrid.resources.request-identifier">
+  <h2 class="title">request identifier</h2>
+   <p class="simpara">
+    A request identifier returned by <span class="function"><a href="function.cubrid-prepare.html" class="function">cubrid_prepare()</a></span> and <span class="function"><a href="function.cubrid-execute.html" class="function">cubrid_execute()</a></span>.
+   </p>
+  </div>
+  <div class="section" id="cubrid.resources.lob-identifier">
+  <h2 class="title">LOB identifier</h2>
+   <p class="simpara">
+    A LOB identifier returned by <span class="function"><a href="function.cubrid-lob-get.html" class="function">cubrid_lob_get()</a></span>.
+   </p>
+  </div>
+  <div class="section" id="cubrid.resources.lob2-identifier">
+  <h2 class="title">LOB2 identifier</h2>
+   <p class="simpara">
+    A LOB identifier returned by <span class="function"><a href="function.cubrid-lob2-new.html" class="function">cubrid_lob2_new()</a></span> or get
+    from the result set.
+   </p>
+  </div>
+
+ </div></div></div></body></html>

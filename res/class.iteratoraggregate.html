@@ -1,0 +1,129 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The IteratorAggregate interface</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+        <li>The IteratorAggregate interface</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.iteratoraggregate" class="reference">
+
+ <h1 class="title">The IteratorAggregate interface</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5, PHP 7, PHP 8)</p>
+
+  <div class="section" id="iteratoraggregate.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface to create an external Iterator.
+   </p>
+  </div>
+
+  <div class="section" id="iteratoraggregate.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">interface</span> <strong class="interfacename"><strong class="interfacename">IteratorAggregate</strong></strong>
+
+    <span class="modifier">extends</span>
+      <a href="class.traversable.html" class="interfacename">Traversable</a> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="iteratoraggregate.getiterator.html" class="methodname">getIterator</a></span>(): <span class="type"><a href="class.traversable.html" class="type Traversable">Traversable</a></span></div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="iteratoraggregate.examples">
+   <h2 class="title">Examples</h2>
+   <div class="example" id="iteratoraggregate.example.basic">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">class </span><span style="color: #0000BB">myData </span><span style="color: #007700">implements </span><span style="color: #0000BB">IteratorAggregate
+</span><span style="color: #007700">{
+    public function </span><span style="color: #0000BB">getIterator</span><span style="color: #007700">(): </span><span style="color: #0000BB">Traversable
+    </span><span style="color: #007700">{
+        return new </span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">([
+            </span><span style="color: #DD0000">"key one" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"item one"</span><span style="color: #007700">,
+            </span><span style="color: #DD0000">"key two" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"item two"</span><span style="color: #007700">,
+            </span><span style="color: #DD0000">"key three" </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">"item three"
+        </span><span style="color: #007700">]);
+    }
+}
+
+</span><span style="color: #0000BB">$obj </span><span style="color: #007700">= new </span><span style="color: #0000BB">myData</span><span style="color: #007700">();
+
+foreach (</span><span style="color: #0000BB">$obj </span><span style="color: #007700">as </span><span style="color: #0000BB">$key </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">, </span><span style="color: #0000BB">$value</span><span style="color: #007700">);
+    echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+}</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="annotation-interactive cdata"><pre>
+string(7) &quot;key one&quot;
+string(8) &quot;item one&quot;
+
+string(7) &quot;key two&quot;
+string(8) &quot;item two&quot;
+
+string(9) &quot;key three&quot;
+string(10) &quot;item three&quot;
+
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="iteratoraggregate.getiterator.html">IteratorAggregate::getIterator</a> — Retrieve an external iterator or traversable</li></ul>
+</div>
+</div></div></body></html>

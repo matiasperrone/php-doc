@@ -1,0 +1,128 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Recode a string according to a recode request</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.recode.html">Recode Functions</a></li>
+        <li>Recode a string according to a recode request</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.recode-string" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">recode_string</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7 &lt; 7.4.0)</p><p class="refpurpose"><span class="refname">recode_string</span> &mdash; <span class="dc-title">Recode a string according to a recode request</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.recode-string-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>recode_string</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$request</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">
+   Recode the string <code class="parameter">string</code> according to
+   the recode request <code class="parameter">request</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.recode-string-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">request</code></dt>
+    <dd>
+     <p class="simpara">
+      The desired recode request type
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">string</code></dt>
+    <dd>
+     <p class="simpara">
+      The <span class="type"><a href="language.types.string.html" class="type string">string</a></span> to be recoded
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.recode-string-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the recoded <span class="type"><a href="language.types.string.html" class="type string">string</a></span> or <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, if unable to
+   perform the recode request.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.recode-string-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2847">
+   <p><strong>Example #1 Basic <span class="function"><strong>recode_string()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">echo </span><span style="color: #0000BB">recode_string</span><span style="color: #007700">(</span><span style="color: #DD0000">"us..flat"</span><span style="color: #007700">, </span><span style="color: #DD0000">"The following character has a diacritical mark: á"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.recode-string-notes">
+  <h3 class="title">Notes</h3>
+   <p class="simpara">
+    A simple recode request may be &quot;lat1..iso646-de&quot;.
+   </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.recode-string-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li>
+    The GNU Recode documentation of your installation for detailed
+    instructions about recode requests.
+   </li>
+   <li><span class="function"><a href="function.mb-convert-encoding.html" class="function" rel="rdfs-seeAlso">mb_convert_encoding()</a> - Convert a string from one character encoding to another</span></li>
+   <li><span class="methodname"><a href="uconverter.transcode.html" class="methodname" rel="rdfs-seeAlso">UConverter::transcode()</a> - Convert a string from one character encoding to another</span></li>
+   <li><span class="function"><a href="function.iconv.html" class="function" rel="rdfs-seeAlso">iconv()</a> - Convert a string from one character encoding to another</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

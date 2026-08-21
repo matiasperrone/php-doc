@@ -1,0 +1,131 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Create a Memcached instance</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.memcached.html">Memcached</a></li>
+        <li>Create a Memcached instance</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="memcached.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::__construct</h1>
+  <p class="verinfo">(PECL memcached &gt;= 0.1.0)</p><p class="refpurpose"><span class="refname">Memcached::__construct</span> &mdash; <span class="dc-title">Create a Memcached instance</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcached.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Memcached::__construct</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$persistent_id</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span></span> <code class="parameter">$callback</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$connection_str</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>)</div>
+
+  <p class="para rdfs-comment">
+   Creates a Memcached instance representing the connection to the memcache
+   servers.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function is
+currently not documented; only its argument list is available.
+</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcached.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">persistent_id</code></dt>
+     <dd>
+      <p class="para">
+       By default the Memcached instances are destroyed at the end of the
+       request. To create an instance that persists between requests, use
+       <code class="parameter">persistent_id</code> to specify a unique ID for the
+       instance. All instances created with the same
+       <code class="parameter">persistent_id</code> will share the same connection.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">callback</code></dt>
+     <dd>
+      <div class="methodsynopsis dc-description">
+       <span class="modifier">function</span> <span class="methodname"><span class="replaceable">callback</span></span>(<span class="methodparam"><span class="type"><a href="class.memcached.html" class="type Memcached">Memcached</a></span> <code class="parameter">$memcached</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$persistent_id</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+      <p class="simpara">
+       The <code class="parameter">callback</code> parameter is called when the
+       connection is established. It should be a valid PHP <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span>
+       that receive the <span class="classname"><a href="class.memcached.html" class="classname">Memcached</a></span> object as its first
+       parameter, and <code class="parameter">persistent_id</code> as its second.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">connection_str</code></dt>
+     <dd>
+      <p class="para">
+       This parameter is used to pass additional connection options to
+       the memcache servers, such as a server weight in a cluster.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcached.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4770">
+    <p><strong>Example #1 Creating a Memcached object</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/* Create a regular instance */
+</span><span style="color: #0000BB">$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();
+echo </span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Create a persistent instance */
+</span><span style="color: #0000BB">$m2 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcached</span><span style="color: #007700">(</span><span style="color: #DD0000">'story_pool'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$m3 </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcached</span><span style="color: #007700">(</span><span style="color: #DD0000">'story_pool'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* now $m2 and $m3 share the same connection */
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

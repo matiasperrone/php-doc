@@ -1,0 +1,219 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Eio</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+        <li>Eio</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.eio" class="book">
+ 
+ <h1 class="title">Eio</h1>
+ 
+
+ <div id="intro.eio" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+   This extension provides asynchronous POSIX I/O by means of <a href="http://software.schmorp.de/pkg/libeio.html" class="link external" title="Link : http://software.schmorp.de/pkg/libeio.html">&raquo;&nbsp;libeio</a> C
+   library written by Marc Lehmann.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="simpara">This extension is not
+available on Windows platforms.</p></p></blockquote>
+
+  <p class="para">
+
+  <div class="warning"><strong class="warning">Warning</strong>
+  <p class="simpara">
+  It is important to be aware that each request is executed in a thread, and the
+  order of execution of continuously queued requests basically is
+  unpredictable. For instance, the following piece of code is incorrect.
+  </p>
+  </div>
+
+  <div class="example" id="example-3533">
+  <p><strong>Example #1 Incorrect requests</strong></p>
+  <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Request to create symlink of $filename to $link
+</span><span style="color: #0000BB">eio_symlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$link</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Request to move $filename to $new_filename
+</span><span style="color: #0000BB">eio_rename</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$new_filename</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Process requests
+</span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   </div>
+
+   In the example above <span class="function"><a href="function.eio-rename.html" class="function">eio_rename()</a></span> request may finish
+   before <span class="function"><a href="function.eio-symlink.html" class="function">eio_symlink()</a></span>. To fix it you might call <span class="function"><a href="function.eio-rename.html" class="function">eio_rename()</a></span>
+   in the callback of <span class="function"><a href="function.eio-symlink.html" class="function">eio_symlink()</a></span>:
+  <div class="example" id="example-3534">
+   <p><strong>Example #2 Calling request from a request callback</strong></p>
+   <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">my_symlink_done</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$result</span><span style="color: #007700">) {
+ </span><span style="color: #FF8000">// Request to move $filename to $new_filename
+ </span><span style="color: #0000BB">eio_rename</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #DD0000">"/path/to/new-name"</span><span style="color: #007700">);
+
+ </span><span style="color: #FF8000">// Process requests
+ </span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();
+}
+
+</span><span style="color: #FF8000">// Request to create symlink of $filename to $link
+</span><span style="color: #0000BB">eio_symlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$link</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_symlink_done"</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Process requests
+</span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+
+  Alternatively, you might want to create a request group:
+
+  <div class="example" id="example-3535">
+   <p><strong>Example #3 Calling request from a request callback</strong></p>
+   <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/* Is called when the group requests are done */
+</span><span style="color: #007700">function </span><span style="color: #0000BB">my_grp_done</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">$result</span><span style="color: #007700">) {
+ </span><span style="color: #FF8000">// ...
+</span><span style="color: #007700">}
+
+function </span><span style="color: #0000BB">my_symlink_done</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$result</span><span style="color: #007700">) {
+ </span><span style="color: #FF8000">// Create eio_rename request and add it to the group
+ </span><span style="color: #0000BB">$req </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_rename</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #DD0000">"/path/to/new-name"</span><span style="color: #007700">);
+ </span><span style="color: #0000BB">eio_grp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$grp</span><span style="color: #007700">, </span><span style="color: #0000BB">$req</span><span style="color: #007700">);
+ </span><span style="color: #FF8000">// You might want to add more requests...
+</span><span style="color: #007700">}
+
+</span><span style="color: #FF8000">// Create a request group
+</span><span style="color: #0000BB">$grp </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_grp</span><span style="color: #007700">(</span><span style="color: #DD0000">"my_grp_done"</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_grp_data"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Create eio_symlink request and add it to the group
+// Pass $filename to the callback
+</span><span style="color: #0000BB">$req </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_symlink</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">, </span><span style="color: #0000BB">$link</span><span style="color: #007700">,
+  </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_symlink_done"</span><span style="color: #007700">, </span><span style="color: #0000BB">$filename</span><span style="color: #007700">);
+</span><span style="color: #0000BB">eio_grp_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$grp</span><span style="color: #007700">, </span><span style="color: #0000BB">$req</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Process requests
+</span><span style="color: #0000BB">eio_event_loop</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div></div>
+
+  </div>
+
+  Group is a special kind of request that could accumulate a set of regular
+  <em>eio</em> requests. This could be used to create a complex
+  request that opens, reads and closes a file.
+  </p>
+  <p class="para">
+  Since version 0.3.0 alpha, a variable used in communications with libeio
+  internally, could be retrieved with
+  <span class="function"><a href="function.eio-get-event-stream.html" class="function">eio_get_event_stream()</a></span>. The variable could be used
+  to bind to an event loop supported by some other extension. You might
+  organize a simple event loop where eio and libevent work together:
+  <div class="example" id="example-3536">
+   <p><strong>Example #4 Using eio with libevent</strong></p>
+   <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">my_eio_poll</span><span style="color: #007700">(</span><span style="color: #0000BB">$fd</span><span style="color: #007700">, </span><span style="color: #0000BB">$events</span><span style="color: #007700">, </span><span style="color: #0000BB">$arg</span><span style="color: #007700">) {
+    </span><span style="color: #FF8000">/* Some libevent regulation might go here .. */
+    </span><span style="color: #007700">if (</span><span style="color: #0000BB">eio_nreqs</span><span style="color: #007700">()) {
+        </span><span style="color: #0000BB">eio_poll</span><span style="color: #007700">();
+    }
+    </span><span style="color: #FF8000">/* .. and here */
+</span><span style="color: #007700">}
+
+function </span><span style="color: #0000BB">my_res_cb</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">, </span><span style="color: #0000BB">$r</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">); </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);
+}
+
+</span><span style="color: #0000BB">$base </span><span style="color: #007700">= </span><span style="color: #0000BB">event_base_new</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$event </span><span style="color: #007700">= </span><span style="color: #0000BB">event_new</span><span style="color: #007700">();
+
+</span><span style="color: #FF8000">// This stream is used to bind with libevent
+</span><span style="color: #0000BB">$fd </span><span style="color: #007700">= </span><span style="color: #0000BB">eio_get_event_stream</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">eio_nop</span><span style="color: #007700">(</span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_res_cb"</span><span style="color: #007700">, </span><span style="color: #DD0000">"nop data"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">eio_mkdir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/tmp/abc-eio-temp"</span><span style="color: #007700">, </span><span style="color: #0000BB">0750</span><span style="color: #007700">, </span><span style="color: #0000BB">EIO_PRI_DEFAULT</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_res_cb"</span><span style="color: #007700">, </span><span style="color: #DD0000">"mkdir data"</span><span style="color: #007700">);
+</span><span style="color: #FF8000">/* some other eio_* calls here ... */
+
+
+// set event flags
+</span><span style="color: #0000BB">event_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">, </span><span style="color: #0000BB">$fd</span><span style="color: #007700">, </span><span style="color: #0000BB">EV_READ </span><span style="color: #FF8000">/*| EV_PERSIST*/</span><span style="color: #007700">, </span><span style="color: #DD0000">"my_eio_poll"</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$event</span><span style="color: #007700">, </span><span style="color: #0000BB">$base</span><span style="color: #007700">));
+
+</span><span style="color: #FF8000">// set event base
+</span><span style="color: #0000BB">event_base_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">, </span><span style="color: #0000BB">$base</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// enable event
+</span><span style="color: #0000BB">event_add</span><span style="color: #007700">(</span><span style="color: #0000BB">$event</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// start event loop
+</span><span style="color: #0000BB">event_base_loop</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* The same will be available via buffered libevent interface */
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div></div>
+
+  </div>
+
+  </p>
+ </div>
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="eio.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="eio.requirements.html">Requirements</a></li><li><a href="eio.installation.html">Installation</a></li><li><a href="eio.resources.html">Resource Types</a></li></ul></li><li><a href="eio.constants.html">Predefined Constants</a></li><li><a href="eio.examples.html">Examples</a></li><li><a href="ref.eio.html">Eio Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.eio-busy.html">eio_busy</a> — Artificially increase load. Could be useful in tests,
+  benchmarking</li><li><a href="function.eio-cancel.html">eio_cancel</a> — Cancels a request</li><li><a href="function.eio-chmod.html">eio_chmod</a> — Change file/directory permissions</li><li><a href="function.eio-chown.html">eio_chown</a> — Change file/directory ownership</li><li><a href="function.eio-close.html">eio_close</a> — Close file</li><li><a href="function.eio-custom.html">eio_custom</a> — Execute custom request like any other eio_* call</li><li><a href="function.eio-dup2.html">eio_dup2</a> — Duplicate a file descriptor</li><li><a href="function.eio-event-loop.html">eio_event_loop</a> — Polls libeio until all requests proceeded</li><li><a href="function.eio-fallocate.html">eio_fallocate</a> — Allows the caller to directly manipulate the allocated disk
+  space for a file</li><li><a href="function.eio-fchmod.html">eio_fchmod</a> — Change file permissions</li><li><a href="function.eio-fchown.html">eio_fchown</a> — Change file ownership</li><li><a href="function.eio-fdatasync.html">eio_fdatasync</a> — Synchronize a file's in-core state with storage device</li><li><a href="function.eio-fstat.html">eio_fstat</a> — Get file status</li><li><a href="function.eio-fstatvfs.html">eio_fstatvfs</a> — Get file system statistics</li><li><a href="function.eio-fsync.html">eio_fsync</a> — Synchronize a file's in-core state with storage device</li><li><a href="function.eio-ftruncate.html">eio_ftruncate</a> — Truncate a file</li><li><a href="function.eio-futime.html">eio_futime</a> — Change file last access and modification times</li><li><a href="function.eio-get-event-stream.html">eio_get_event_stream</a> — Get stream representing a variable used in internal communications with libeio</li><li><a href="function.eio-get-last-error.html">eio_get_last_error</a> — Returns string describing the last error associated with a request resource</li><li><a href="function.eio-grp.html">eio_grp</a> — Creates a request group</li><li><a href="function.eio-grp-add.html">eio_grp_add</a> — Adds a request to the request group</li><li><a href="function.eio-grp-cancel.html">eio_grp_cancel</a> — Cancels a request group</li><li><a href="function.eio-grp-limit.html">eio_grp_limit</a> — Set group limit</li><li><a href="function.eio-init.html">eio_init</a> — (Re-)initialize Eio</li><li><a href="function.eio-link.html">eio_link</a> — Create a hardlink for file</li><li><a href="function.eio-lstat.html">eio_lstat</a> — Get file status</li><li><a href="function.eio-mkdir.html">eio_mkdir</a> — Create directory</li><li><a href="function.eio-mknod.html">eio_mknod</a> — Create a special or ordinary file</li><li><a href="function.eio-nop.html">eio_nop</a> — Does nothing, except go through the whole request cycle</li><li><a href="function.eio-npending.html">eio_npending</a> — Returns number of finished, but unhandled requests</li><li><a href="function.eio-nready.html">eio_nready</a> — Returns number of not-yet handled requests</li><li><a href="function.eio-nreqs.html">eio_nreqs</a> — Returns number of requests to be processed</li><li><a href="function.eio-nthreads.html">eio_nthreads</a> — Returns number of threads currently in use</li><li><a href="function.eio-open.html">eio_open</a> — Opens a file</li><li><a href="function.eio-poll.html">eio_poll</a> — Can be called whenever there are pending requests that need finishing</li><li><a href="function.eio-read.html">eio_read</a> — Read from a file descriptor at given offset</li><li><a href="function.eio-readahead.html">eio_readahead</a> — Perform file readahead into page cache</li><li><a href="function.eio-readdir.html">eio_readdir</a> — Reads through a whole directory</li><li><a href="function.eio-readlink.html">eio_readlink</a> — Read value of a symbolic link</li><li><a href="function.eio-realpath.html">eio_realpath</a> — Get the canonicalized absolute pathname</li><li><a href="function.eio-rename.html">eio_rename</a> — Change the name or location of a file</li><li><a href="function.eio-rmdir.html">eio_rmdir</a> — Remove a directory</li><li><a href="function.eio-seek.html">eio_seek</a> — Seek to a position</li><li><a href="function.eio-sendfile.html">eio_sendfile</a> — Transfer data between file descriptors</li><li><a href="function.eio-set-max-idle.html">eio_set_max_idle</a> — Set maximum number of idle threads</li><li><a href="function.eio-set-max-parallel.html">eio_set_max_parallel</a> — Set maximum parallel threads</li><li><a href="function.eio-set-max-poll-reqs.html">eio_set_max_poll_reqs</a> — Set maximum number of requests processed in a poll</li><li><a href="function.eio-set-max-poll-time.html">eio_set_max_poll_time</a> — Set maximum poll time</li><li><a href="function.eio-set-min-parallel.html">eio_set_min_parallel</a> — Set minimum parallel thread number</li><li><a href="function.eio-stat.html">eio_stat</a> — Get file status</li><li><a href="function.eio-statvfs.html">eio_statvfs</a> — Get file system statistics</li><li><a href="function.eio-symlink.html">eio_symlink</a> — Create a symbolic link</li><li><a href="function.eio-sync.html">eio_sync</a> — Commit buffer cache to disk</li><li><a href="function.eio-sync-file-range.html">eio_sync_file_range</a> — Sync a file segment with disk</li><li><a href="function.eio-syncfs.html">eio_syncfs</a> — Calls Linux' syncfs syscall, if available</li><li><a href="function.eio-truncate.html">eio_truncate</a> — Truncate a file</li><li><a href="function.eio-unlink.html">eio_unlink</a> — Delete a name and possibly the file it refers to</li><li><a href="function.eio-utime.html">eio_utime</a> — Change file last access and modification times</li><li><a href="function.eio-write.html">eio_write</a> — Write to file</li></ul></li></ul></div></div></div></body></html>

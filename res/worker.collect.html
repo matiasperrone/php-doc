@@ -1,0 +1,120 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Collect references to completed tasks</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.worker.html">Worker</a></li>
+        <li>Collect references to completed tasks</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="worker.collect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Worker::collect</h1>
+  <p class="verinfo">(PECL pthreads &gt;= 3.0.0)</p><p class="refpurpose"><span class="refname">Worker::collect</span> &mdash; <span class="dc-title">Collect references to completed tasks</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-worker.collect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Worker::collect</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type Callable">Callable</a></span> <code class="parameter">$collector</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="simpara">
+   Allows the worker to collect references determined to be garbage by the
+   optionally given collector.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-worker.collect-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">collector</code></dt>
+    <dd>
+     <p class="simpara">
+      A Callable collector that returns a boolean on whether the task can be
+      collected or not. Only in rare cases should a custom collector need to
+      be used.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-worker.collect-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   The number of remaining tasks on the worker&#039;s stack to be collected.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-worker.collect-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-3666">
+   <p><strong>Example #1 A basic example of <span class="methodname"><strong>Worker::collect()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$worker </span><span style="color: #007700">= new </span><span style="color: #0000BB">Worker</span><span style="color: #007700">();
+
+echo </span><span style="color: #DD0000">"There are currently </span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000"> tasks on the stack to be collected\n"</span><span style="color: #007700">;
+
+for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">15</span><span style="color: #007700">; ++</span><span style="color: #0000BB">$i</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stack</span><span style="color: #007700">(new class extends </span><span style="color: #0000BB">Threaded </span><span style="color: #007700">{});
+}
+
+echo </span><span style="color: #DD0000">"There are </span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000"> tasks remaining on the stack to be collected\n"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">start</span><span style="color: #007700">();
+
+while (</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()); </span><span style="color: #FF8000">// blocks until all tasks have finished executing
+
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">"There are now </span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000"> tasks on the stack to be collected\n"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">shutdown</span><span style="color: #007700">();</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">There are currently 0 tasks on the stack to be collected
+There are 15 tasks remaining on the stack to be collected
+There are now 0 tasks on the stack to be collected</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+</div></div></div></body></html>

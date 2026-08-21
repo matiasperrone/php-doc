@@ -1,0 +1,81 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Request Injection Attacks</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.security.html">Security</a></li>
+        <li>Request Injection Attacks</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="mongodb.security.request_injection" class="section">
+  <h2 class="title">Request Injection Attacks</h2>
+  <p class="simpara">
+   If you are passing <code class="literal">$_GET</code> (or <code class="literal">$_POST</code>)
+   parameters to your queries, make sure that they are cast to strings first.
+   Users can insert associative arrays in GET and POST requests, which could
+   then become unwanted $-queries.
+  </p>
+
+  <p class="simpara">
+   A fairly innocuous example: suppose you are looking up a user&#039;s information
+   with the request <em>http://www.example.com?username=bob</em>.
+   Your application creates the query
+   <code class="literal">$q = new \MongoDB\Driver\Query( [ &#039;username&#039; =&gt; $_GET[&#039;username&#039;] ])</code>.
+  </p>
+
+  <p class="simpara">
+   Someone could subvert this by getting
+   <em>http://www.example.com?username[$ne]=foo</em>, which PHP
+   will magically turn into an associative array, turning your query into
+   <code class="literal">$q = new \MongoDB\Driver\Query( [ &#039;username&#039; =&gt; [ &#039;$ne&#039; =&gt; &#039;foo&#039; ] ] )</code>,
+   which will return all users not named &quot;foo&quot; (all of your users, probably).
+  </p>
+
+  <p class="simpara">
+   This is a fairly easy attack to defend against: make sure $_GET and $_POST
+   parameters are the type you expect before you send them to the database.
+   PHP has the <span class="function"><a href="function.filter-var.html" class="function">filter_var()</a></span> function to assist with this.
+  </p>
+
+  <p class="simpara">
+   Note that this type of attack can be used with any database interaction that
+   locates a document, including updates, upserts, deletes, and findAndModify
+   commands.
+  </p>
+
+  <p class="simpara">
+   See <a href="https://www.mongodb.com/docs/manual/security/" class="link external" title="Link : https://www.mongodb.com/docs/manual/security/">&raquo;&nbsp;the main documentation</a>
+   for more information about SQL-injection-like issues with MongoDB.
+  </p>
+ </div></div></div></body></html>

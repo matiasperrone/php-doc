@@ -1,0 +1,113 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Construct the Url object</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.uri-whatwg-url.html">Uri\WhatWg\Url</a></li>
+        <li>Construct the Url object</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="uri-whatwg-url.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Uri\WhatWg\Url::__construct</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.5.0)</p><p class="refpurpose"><span class="refname">Uri\WhatWg\Url::__construct</span> &mdash; <span class="dc-title">Construct the Url object</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-uri-whatwg-url.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Uri\WhatWg\Url::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-whatwg-url.html" class="type Uri\WhatWg\Url">Uri\WhatWg\Url</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$softErrors</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>)</div>
+
+  <p class="simpara">
+   Constructs the <span class="classname"><a href="class.uri-rfc3986-uri.html" class="classname">Uri\Rfc3986\Uri</a></span> object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-uri-whatwg-url.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">uri</code></dt>
+    <dd>
+     <p class="simpara">
+      A valid URL string to parse (e.g. <code class="literal">/foo</code> or (e.g. <code class="literal">https://example.com/foo</code>).
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">baseUrl</code></dt>
+    <dd>
+     <p class="simpara">
+      When a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> is passed, <code class="parameter">uri</code> is applied on
+      <code class="parameter">baseUrl</code>, if <code class="parameter">uri</code> is a relative-URL string.
+      If either <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> is passed, or <code class="parameter">uri</code> is a not a relative-URL string, then
+      <code class="parameter">baseUrl</code> doesn&#039;t have any effect.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">softErrors</code></dt>
+    <dd>
+     <p class="simpara">
+      An <span class="type"><a href="language.types.array.html" class="type array">array</a></span> to pass a list of <span class="classname"><a href="class.uri-whatwg-urlvalidationerror.html" class="classname">Uri\WhatWg\UrlValidationError</a></span>
+      instances by reference to provide extended information about the errors triggered during parsing.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-uri-whatwg-url.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  
+  <p class="simpara">
+   If the resulting URL is invalid, a <span class="exceptionname"><a href="class.uri-whatwg-invalidurlexception.html" class="exceptionname">Uri\WhatWg\InvalidUrlException</a></span> is thrown.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-uri-whatwg-url.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="uri-whatwg-url.parse.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::parse()</a> - Parse a URL</span></li>
+   <li><span class="methodname"><a href="uri-whatwg-url.resolve.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::resolve()</a> - Resolve a URL with the current object as the base URL</span></li>
+   <li><span class="methodname"><a href="uri-rfc3986-uri.construct.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::__construct()</a> - Construct the Uri object</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

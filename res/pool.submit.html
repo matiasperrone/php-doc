@@ -1,0 +1,155 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Submits an object for execution</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.pool.html">Pool</a></li>
+        <li>Submits an object for execution</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="pool.submit" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Pool::submit</h1>
+  <p class="verinfo">(PECL pthreads &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">Pool::submit</span> &mdash; <span class="dc-title">Submits an object for execution</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-pool.submit-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Pool::submit</strong></span>(<span class="methodparam"><span class="type"><a href="class.threaded.html" class="type Threaded">Threaded</a></span> <code class="parameter">$task</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="simpara">
+  Submit the task to the next Worker in the Pool
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-pool.submit-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">task</code></dt>
+    <dd>
+     <p class="simpara">
+  The task for execution
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pool.submit-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+ the identifier of the Worker executing the object
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pool.submit-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-3675">
+   <p><strong>Example #1 Submitting Tasks</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">MyWork </span><span style="color: #007700">extends </span><span style="color: #0000BB">Threaded </span><span style="color: #007700">{
+
+    public function </span><span style="color: #0000BB">run</span><span style="color: #007700">() {
+        </span><span style="color: #FF8000">/* ... */
+    </span><span style="color: #007700">}
+}
+
+class </span><span style="color: #0000BB">MyWorker </span><span style="color: #007700">extends </span><span style="color: #0000BB">Worker </span><span style="color: #007700">{
+
+    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">Something $something</span><span style="color: #007700">) {
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">something </span><span style="color: #007700">= </span><span style="color: #0000BB">$something</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">run</span><span style="color: #007700">() {
+        </span><span style="color: #FF8000">/** ... **/
+    </span><span style="color: #007700">}
+}
+
+</span><span style="color: #0000BB">$pool </span><span style="color: #007700">= new </span><span style="color: #0000BB">Pool</span><span style="color: #007700">(</span><span style="color: #0000BB">8</span><span style="color: #007700">, </span><span style="color: #0000BB">\MyWorker</span><span style="color: #007700">::class, [new </span><span style="color: #0000BB">Something</span><span style="color: #007700">()]);
+</span><span style="color: #0000BB">$pool</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">submit</span><span style="color: #007700">(new </span><span style="color: #0000BB">MyWork</span><span style="color: #007700">());
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$pool</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">object(Pool)#1 (6) {
+  [&quot;size&quot;:protected]=&gt;
+  int(8)
+  [&quot;class&quot;:protected]=&gt;
+  string(8) &quot;MyWorker&quot;
+  [&quot;workers&quot;:protected]=&gt;
+  array(1) {
+    [0]=&gt;
+    object(MyWorker)#4 (1) {
+      [&quot;something&quot;]=&gt;
+      object(Something)#5 (0) {
+      }
+    }
+  }
+  [&quot;work&quot;:protected]=&gt;
+  array(1) {
+    [0]=&gt;
+    object(MyWork)#3 (1) {
+      [&quot;worker&quot;]=&gt;
+      object(MyWorker)#5 (1) {
+        [&quot;something&quot;]=&gt;
+        object(Something)#6 (0) {
+        }
+      }
+    }
+  }
+  [&quot;ctor&quot;:protected]=&gt;
+  array(1) {
+    [0]=&gt;
+    object(Something)#2 (0) {
+    }
+  }
+  [&quot;last&quot;:protected]=&gt;
+  int(1)
+}</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

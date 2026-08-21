@@ -1,0 +1,65 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Unsetting References</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.references.html">References Explained</a></li>
+        <li>Unsetting References</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.references.unset" class="sect1">
+   <h2 class="title">Unsetting References</h2>
+   <p class="para">
+    When you unset the reference, you just break the binding between
+    variable name and variable content. This does not mean that
+    variable content will be destroyed. For example:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$a </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$b </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+unset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">); 
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);</span></code></pre></div>
+     </div>
+
+    </div>
+    won&#039;t unset <var class="varname">$b</var>, just <var class="varname">$a</var>. 
+   </p>
+   <p class="simpara">
+    Again, it might be useful to think about this as analogous to the Unix
+    <strong class="command">unlink</strong> call.
+   </p>
+  </div></div></div></body></html>

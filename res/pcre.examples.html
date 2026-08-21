@@ -1,0 +1,78 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.pcre.html">PCRE</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="pcre.examples" class="appendix">
+ <h1 class="title">Examples</h1>
+
+ <p class="para">
+  <div class="example" id="example-5117">
+   <p><strong>Example #1 Examples of valid patterns</strong></p>
+   <ul class="itemizedlist">
+    <li class="listitem"><p class="simpara"><code class="literal">/&lt;\/\w+&gt;/</code></p></li>
+    <li class="listitem"><p class="simpara"><code class="literal">|(\d{3})-\d+|Sm</code></p></li>
+    <li class="listitem"><p class="simpara"><code class="literal">/^(?i)php[34]/</code></p></li>
+    <li class="listitem"><p class="simpara"><code class="literal">{^\s+(\s+)?$}</code></p></li>
+   </ul>
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-5118">
+   <p><strong>Example #2 Examples of invalid patterns</strong></p>
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="simpara">
+      <code class="literal">/href=&#039;(.*)&#039;</code> - missing ending delimiter
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="simpara">
+      <code class="literal">/\w+\s*\w+/J</code> - unknown modifier &#039;J&#039;
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="simpara">
+      <code class="literal">1-\d3-\d3-\d4|</code> - missing starting delimiter
+     </p>
+    </li>
+   </ul>
+  </div>
+ </p>
+</div>
+</div></div></body></html>

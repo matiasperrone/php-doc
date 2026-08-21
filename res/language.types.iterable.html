@@ -1,0 +1,82 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Iterables</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.types.html">Types</a></li>
+        <li>Iterables</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.types.iterable" class="sect1">
+ <h2 class="title">Iterables</h2>
+
+ <p class="simpara">
+  <span class="type"><a href="language.types.iterable.html" class="type Iterable">Iterable</a></span> is a built-in compile-time type alias for
+  
+  <code class="literal">array|Traversable</code>.
+  From its introduction in PHP 7.1.0 and prior to PHP 8.2.0,
+  <span class="type"><a href="language.types.iterable.html" class="type iterable">iterable</a></span> was a built-in pseudo-type that acted as the
+  aforementioned type alias and could be used as a type declaration.
+  An iterable type can be used in <a href="control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> and with
+  <strong class="command">yield from</strong> within a
+  <a href="language.generators.html" class="link">generator</a>.
+ </p>
+
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   Functions declaring iterable as a return type may also be <a href="language.generators.html" class="link">generators</a>.
+
+   <div class="example" id="example-110">
+    <p><strong>Example #1 
+     Iterable generator return type example
+    </strong></p>
+    <div class="example-contents">
+     <div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">gen</span><span style="color: #007700">(): </span><span style="color: #0000BB">iterable </span><span style="color: #007700">{
+    yield </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+    yield </span><span style="color: #0000BB">2</span><span style="color: #007700">;
+    yield </span><span style="color: #0000BB">3</span><span style="color: #007700">;
+}
+
+foreach(</span><span style="color: #0000BB">gen</span><span style="color: #007700">() as </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {
+    echo </span><span style="color: #0000BB">$value</span><span style="color: #007700">, </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </p></blockquote>
+</div></div></div></body></html>

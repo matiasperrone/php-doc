@@ -1,0 +1,98 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Basic usage</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="pcntl.examples.html">Examples</a></li>
+        <li>Basic usage</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="pcntl.example" class="section">
+  <h2 class="title">Basic usage</h2>
+  <p class="para">
+   This example forks off a daemon process with a signal handler.
+  </p>
+  <div class="example" id="example-3596">
+   <p><strong>Example #1 Process Control Example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+pcntl_async_signals</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$pid </span><span style="color: #007700">= </span><span style="color: #0000BB">pcntl_fork</span><span style="color: #007700">();
+if (</span><span style="color: #0000BB">$pid </span><span style="color: #007700">== -</span><span style="color: #0000BB">1</span><span style="color: #007700">) {
+     die(</span><span style="color: #DD0000">"could not fork"</span><span style="color: #007700">); 
+} else if (</span><span style="color: #0000BB">$pid</span><span style="color: #007700">) {
+     exit(); </span><span style="color: #FF8000">// we are the parent 
+</span><span style="color: #007700">} else {
+     </span><span style="color: #FF8000">// we are the child
+</span><span style="color: #007700">}
+
+</span><span style="color: #FF8000">// detach from the controlling terminal
+</span><span style="color: #007700">if (</span><span style="color: #0000BB">posix_setsid</span><span style="color: #007700">() == -</span><span style="color: #0000BB">1</span><span style="color: #007700">) {
+    die(</span><span style="color: #DD0000">"could not detach from terminal"</span><span style="color: #007700">);
+}
+
+</span><span style="color: #FF8000">// setup signal handlers
+</span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">, </span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">, </span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// loop forever performing tasks
+</span><span style="color: #007700">while (</span><span style="color: #0000BB">1</span><span style="color: #007700">) {
+
+    </span><span style="color: #FF8000">// do something interesting here
+
+</span><span style="color: #007700">}
+
+function </span><span style="color: #0000BB">sig_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">) 
+{
+
+     switch (</span><span style="color: #0000BB">$signo</span><span style="color: #007700">) {
+         case </span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">:
+             </span><span style="color: #FF8000">// handle shutdown tasks
+             </span><span style="color: #007700">exit;
+             break;
+         case </span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">:
+             </span><span style="color: #FF8000">// handle restart tasks
+             </span><span style="color: #007700">break;
+         default:
+             </span><span style="color: #FF8000">// handle all other signals
+     </span><span style="color: #007700">}
+
+}
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

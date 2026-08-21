@@ -1,0 +1,102 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Dynamically constructs a new C array type</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.ffi.html">FFI</a></li>
+        <li>Dynamically constructs a new C array type</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="ffi.arraytype" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">FFI::arrayType</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.4.0, PHP 8)</p><p class="refpurpose"><span class="refname">FFI::arrayType</span> &mdash; <span class="dc-title">Dynamically constructs a new C array type</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ffi.arraytype-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><strong>FFI::arrayType</strong></span>(<span class="methodparam"><span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span> <code class="parameter">$type</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$dimensions</code></span>): <span class="type"><a href="class.ffi-ctype.html" class="type FFI\CType">FFI\CType</a></span></div>
+
+  <p class="para rdfs-comment">
+   Dynamically constructs a new C array type with elements of type defined by <code class="parameter">type</code>,
+   and dimensions specified by <code class="parameter">dimensions</code>. In the following example <code class="code">$t1</code>
+   and <code class="code">$t2</code> are equivalent array types:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$t1 </span><span style="color: #007700">= </span><span style="color: #0000BB">FFI</span><span style="color: #007700">::</span><span style="color: #0000BB">type</span><span style="color: #007700">(</span><span style="color: #DD0000">"int[2][3]"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$t2 </span><span style="color: #007700">= </span><span style="color: #0000BB">FFI</span><span style="color: #007700">::</span><span style="color: #0000BB">arrayType</span><span style="color: #007700">(</span><span style="color: #0000BB">FFI</span><span style="color: #007700">::</span><span style="color: #0000BB">type</span><span style="color: #007700">(</span><span style="color: #DD0000">"int"</span><span style="color: #007700">), [</span><span style="color: #0000BB">2</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ffi.arraytype-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">type</code></dt>
+    <dd>
+     <p class="simpara">
+      A valid C declaration as <span class="type"><a href="language.types.string.html" class="type string">string</a></span>, or an instance of <span class="classname"><a href="class.ffi-ctype.html" class="classname">FFI\CType</a></span>
+      which has already been created.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">dimensions</code></dt>
+    <dd>
+     <p class="simpara">
+      The dimensions of the type as <span class="type"><a href="language.types.array.html" class="type array">array</a></span>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ffi.arraytype-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the freshly created <span class="classname"><a href="class.ffi-ctype.html" class="classname">FFI\CType</a></span> object.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

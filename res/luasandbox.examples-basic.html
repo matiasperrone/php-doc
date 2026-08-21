@@ -1,0 +1,94 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Basic usage for LuaSandbox</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="luasandbox.examples.html">Examples</a></li>
+        <li>Basic usage for LuaSandbox</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="luasandbox.examples-basic" class="section">
+  <h2 class="title">Basic usage for LuaSandbox</h2>
+  <p class="simpara">
+   Once you&#039;ve compiled PHP with LuaSandbox support, you can begin using LuaSandbox to safely run user-provided Lua code.
+  </p>
+  <div class="example" id="example-3765">
+   <p><strong>Example #1 Execute some Lua code</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$sandbox </span><span style="color: #007700">= new </span><span style="color: #0000BB">LuaSandbox</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMemoryLimit</span><span style="color: #007700">( </span><span style="color: #0000BB">50 </span><span style="color: #007700">* </span><span style="color: #0000BB">1024 </span><span style="color: #007700">* </span><span style="color: #0000BB">1024 </span><span style="color: #007700">);
+</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCPULimit</span><span style="color: #007700">( </span><span style="color: #0000BB">10 </span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Register some functions in the Lua environment
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">frobnosticate</span><span style="color: #007700">( </span><span style="color: #0000BB">$v </span><span style="color: #007700">) {
+    return [ </span><span style="color: #0000BB">$v </span><span style="color: #007700">+ </span><span style="color: #0000BB">42 </span><span style="color: #007700">];
+}
+
+</span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerLibrary</span><span style="color: #007700">( </span><span style="color: #DD0000">'php'</span><span style="color: #007700">, [
+    </span><span style="color: #DD0000">'frobnosticate' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'frobnosticate'</span><span style="color: #007700">,
+    </span><span style="color: #DD0000">'output' </span><span style="color: #007700">=&gt; function ( </span><span style="color: #0000BB">$string </span><span style="color: #007700">) {
+        echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$string</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+    },
+    </span><span style="color: #DD0000">'error' </span><span style="color: #007700">=&gt; function () {
+        throw new </span><span style="color: #0000BB">LuaSandboxRuntimeError</span><span style="color: #007700">( </span><span style="color: #DD0000">"Something is wrong" </span><span style="color: #007700">);
+    }
+] );
+
+</span><span style="color: #FF8000">// Execute some Lua code, including callbacks into PHP and into Lua
+
+</span><span style="color: #0000BB">$luaCode </span><span style="color: #007700">= &lt;&lt;&lt;EOF
+</span><span style="color: #DD0000">php.output( "Hello, world" );
+
+return "Hi", function ( v )
+    return php.frobnosticate( v + 200 )
+end
+</span><span style="color: #007700">EOF;
+
+list( </span><span style="color: #0000BB">$hi</span><span style="color: #007700">, </span><span style="color: #0000BB">$frob </span><span style="color: #007700">) = </span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadString</span><span style="color: #007700">( </span><span style="color: #0000BB">$luaCode </span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">();
+</span><span style="color: #0000BB">assert</span><span style="color: #007700">( </span><span style="color: #0000BB">$frob</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">( </span><span style="color: #0000BB">4000 </span><span style="color: #007700">) === [ </span><span style="color: #0000BB">4242 </span><span style="color: #007700">] );
+
+</span><span style="color: #FF8000">// PHP-thrown LuaSandboxRuntimeError exceptions can be caught inside Lua
+
+</span><span style="color: #007700">list( </span><span style="color: #0000BB">$ok</span><span style="color: #007700">, </span><span style="color: #0000BB">$message </span><span style="color: #007700">) = </span><span style="color: #0000BB">$sandbox</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadString</span><span style="color: #007700">( </span><span style="color: #DD0000">'return pcall( php.error )' </span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">call</span><span style="color: #007700">();
+</span><span style="color: #0000BB">assert</span><span style="color: #007700">( !</span><span style="color: #0000BB">$ok </span><span style="color: #007700">);
+</span><span style="color: #0000BB">assert</span><span style="color: #007700">( </span><span style="color: #0000BB">$message </span><span style="color: #007700">=== </span><span style="color: #DD0000">'Something is wrong' </span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

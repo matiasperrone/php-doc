@@ -1,0 +1,136 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Passing by Reference</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.references.html">References Explained</a></li>
+        <li>Passing by Reference</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.references.pass" class="sect1">
+   <h2 class="title">Passing by Reference</h2>
+   <p class="para">
+   You can pass a variable by reference to a function so the function
+   can modify the variable. The syntax is as follows:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)
+{
+    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;
+}
+
+</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);
+print </span><span style="color: #0000BB">$a</span><span style="color: #007700">; </span><span style="color: #FF8000">// $a is 6 here</span></code></pre></div>
+     </div>
+
+    </div>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="simpara">
+      There is no reference sign on a function call - only on
+      function definitions. Function definitions alone are enough to
+      correctly pass the argument by reference.
+     </p>
+    </p></blockquote>
+  </p>
+  <p class="para">
+  The following things can be passed by reference:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="simpara">
+      Variables, i.e. <code class="literal">foo($a)</code>
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      References returned from functions, i.e.:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)
+{
+    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;
+    print </span><span style="color: #0000BB">$var</span><span style="color: #007700">;
+}
+
+function &amp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()
+{
+    </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;
+    return </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+}
+
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">bar</span><span style="color: #007700">());</span></code></pre></div>
+     </div>
+
+    </div>
+    See more about <a href="language.references.return.html" class="link">returning by reference</a>. 
+     </p>
+    </li>
+  </ul>
+  </p>
+  <p class="para">
+  No other expressions should be passed by reference, as the
+  result is undefined. For example, the following examples of passing
+  by reference are invalid:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="annotation-non-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)
+{
+    </span><span style="color: #0000BB">$var</span><span style="color: #007700">++;
+}
+
+function </span><span style="color: #0000BB">bar</span><span style="color: #007700">() </span><span style="color: #FF8000">// Note the missing &amp;
+</span><span style="color: #007700">{
+    </span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">;
+    return </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+}
+
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">bar</span><span style="color: #007700">()); </span><span style="color: #FF8000">// Produces a notice
+
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// Expression, not variable
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">); </span><span style="color: #FF8000">// Produces fatal error
+
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Foobar </span><span style="color: #007700">{}
+
+</span><span style="color: #0000BB">foo</span><span style="color: #007700">(new </span><span style="color: #0000BB">Foobar</span><span style="color: #007700">()) </span><span style="color: #FF8000">// Produces a notice as of PHP 7.0.7
+                  // Notice: Only variables should be passed by reference</span></code></pre></div>
+     </div>
+
+    </div>
+   </p>
+  </div></div></div></body></html>

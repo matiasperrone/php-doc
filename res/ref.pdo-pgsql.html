@@ -1,0 +1,240 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>PostgreSQL PDO Driver (PDO_PGSQL)</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="pdo.drivers.html">PDO Drivers</a></li>
+        <li>PostgreSQL PDO Driver (PDO_PGSQL)</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="ref.pdo-pgsql" class="reference">
+  
+  <h1 class="title">PostgreSQL PDO Driver (PDO_PGSQL)</h1>
+  
+  <div class="partintro">
+
+   <div class="section" id="ref.pdo-pgsql.intro">
+   <h2 class="title">Introduction</h2>
+    <p class="para">
+     PDO_PGSQL is a driver that implements the <a href="book.pdo.html#intro.pdo" class="link">PHP
+     Data Objects (PDO) interface</a>
+     to enable access from PHP to PostgreSQL databases.
+    </p>
+   </div>
+
+   <div class="section" id="ref.pdo-pgsql.resources">
+    <h2 class="title">Resource Types</h2>
+    <p class="simpara">
+     This extension defines a stream resource returned by
+     <span class="methodname"><a href="pdo-pgsql.lobopen.html" class="methodname">Pdo\Pgsql::lobOpen()</a></span>.
+    </p>
+   </div>
+
+   
+
+<div class="section" id="ref.pdo-pgsql.installation">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  Use <strong class="option configure">--with-pdo-pgsql[=DIR]</strong> to install
+  the PDO PostgreSQL extension, where the optional <code class="literal">[=DIR]</code>
+  is the PostgreSQL base install directory, or the path to <em>pg_config</em>.
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ ./configure --with-pdo-pgsql
+</pre></div>
+  </div>
+ </p>
+ <p class="simpara">
+  This extension requires libpq (the PostgreSQL C client library).
+  As of PHP 8.4.0, libpq 10.0 or later is required.
+ </p>
+</div>
+
+
+
+   
+
+<div class="section" id="ref.pdo-pgsql.constants">
+ <h2 class="title">Predefined Constants</h2>
+ <p class="simpara">The constants below are defined by
+this driver, and will only be available when the extension has been either
+compiled into PHP or dynamically loaded at runtime. In addition, these
+driver-specific constants should only be used if you are using this driver.
+Using driver-specific attributes with another driver may result in
+unexpected behaviour. <span class="function"><a href="pdo.getattribute.html" class="function">PDO::getAttribute()</a></span> may be used to
+obtain the <strong><code><a href="pdo.constants.html#pdo.constants.attr-driver-name">PDO::ATTR_DRIVER_NAME</a></code></strong> attribute to check the
+driver, if your code can run against multiple drivers.</p>
+ <dl>
+  
+   <dt id="pdo.constants.pgsql-attr-disable-prepares">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-attr-disable-prepares">PDO::PGSQL_ATTR_DISABLE_PREPARES</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Alias of <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.attr-disable-prepares">Pdo\Pgsql::ATTR_DISABLE_PREPARES</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated.
+    </p>
+   </dd>
+  
+  
+   <dt id="pdo.constants.pgsql-transaction-idle">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-transaction-idle">PDO::PGSQL_TRANSACTION_IDLE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Equivalent to <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.transaction-idle">Pdo\Pgsql::TRANSACTION_IDLE</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated, as it has no effect.
+    </p>
+   </dd>
+  
+  
+   <dt id="pdo.constants.pgsql-transaction-active">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-transaction-active">PDO::PGSQL_TRANSACTION_ACTIVE</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Equivalent to <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.transaction-active">Pdo\Pgsql::TRANSACTION_ACTIVE</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated, as it has no effect.
+    </p>
+   </dd>
+  
+  
+   <dt id="pdo.constants.pgsql-transaction-intrans">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-transaction-intrans">PDO::PGSQL_TRANSACTION_INTRANS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Equivalent to <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.transaction-intrans">Pdo\Pgsql::TRANSACTION_INTRANS</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated, as it has no effect.
+    </p>
+   </dd>
+  
+  
+   <dt id="pdo.constants.pgsql-transaction-inerror">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-transaction-inerror">PDO::PGSQL_TRANSACTION_INERROR</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Equivalent to <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.transaction-inerror">Pdo\Pgsql::TRANSACTION_INERROR</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated, as it has no effect.
+    </p>
+   </dd>
+  
+  
+   <dt id="pdo.constants.pgsql-transaction-unknown">
+    <strong><code><a href="ref.pdo-pgsql.html#pdo.constants.pgsql-transaction-unknown">PDO::PGSQL_TRANSACTION_UNKNOWN</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Equivalent to <strong><code><a href="class.pdo-pgsql.html#pdo-pgsql.constants.transaction-unknown">Pdo\Pgsql::TRANSACTION_UNKNOWN</a></code></strong>.
+     As of PHP 8.5.0, this constant is deprecated, as it has no effect.
+    </p>
+   </dd>
+  
+ </dl>
+</div>
+
+
+
+
+   <div class="section" id="ref.pdo-pgsql.general-notes">
+    <h2 class="title">General notes</h2>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="simpara">
+      <code class="literal">bytea</code> columns are returned as stream resources. See
+      <a href="pdo.lobs.html" class="link">Large Objects (LOBs)</a> for how to read these
+      values and how to bind data with <strong><code><a href="pdo.constants.html#pdo.constants.param-lob">PDO::PARAM_LOB</a></code></strong>.
+     </p>
+    </p></blockquote>
+   </div>
+
+  </div>
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="ref.pdo-pgsql.connection.html">PDO_PGSQL DSN</a> — Connecting to PostgreSQL databases</li><li><a href="pdo.pgsqlcopyfromarray.html">PDO::pgsqlCopyFromArray</a> — Alias of Pdo\Pgsql::copyFromArray</li><li><a href="pdo.pgsqlcopyfromfile.html">PDO::pgsqlCopyFromFile</a> — Alias of Pdo\Pgsql::copyFromFile</li><li><a href="pdo.pgsqlcopytoarray.html">PDO::pgsqlCopyToArray</a> — Alias of Pdo\Pgsql::copyToArray</li><li><a href="pdo.pgsqlcopytofile.html">PDO::pgsqlCopyToFile</a> — Alias of Pdo\Pgsql::copyToFile</li><li><a href="pdo.pgsqlgetnotify.html">PDO::pgsqlGetNotify</a> — Alias of Pdo\Pgsql::getNotify</li><li><a href="pdo.pgsqlgetpid.html">PDO::pgsqlGetPid</a> — Alias of Pdo\Pgsql::getPid</li><li><a href="pdo.pgsqllobcreate.html">PDO::pgsqlLOBCreate</a> — Alias of Pdo\Pgsql::lobCreate</li><li><a href="pdo.pgsqllobopen.html">PDO::pgsqlLOBOpen</a> — Alias of Pdo\Pgsql::lobOpen</li><li><a href="pdo.pgsqllobunlink.html">PDO::pgsqlLOBUnlink</a> — Alias of Pdo\Pgsql::lobUnlink</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,149 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Returns the default value declared for a property</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.reflectionproperty.html">ReflectionProperty</a></li>
+        <li>Returns the default value declared for a property</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="reflectionproperty.getdefaultvalue" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionProperty::getDefaultValue</h1>
+  <p class="verinfo">(PHP 8)</p><p class="refpurpose"><span class="refname">ReflectionProperty::getDefaultValue</span> &mdash; <span class="dc-title">Returns the default value declared for a property</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionproperty.getdefaultvalue-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>ReflectionProperty::getDefaultValue</strong></span>(): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+
+  <p class="para rdfs-comment">
+   Gets the implicit or explicitly declared default value for a property.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionproperty.getdefaultvalue-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionproperty.getdefaultvalue-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   The default value if the property has any default value (including <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>).
+   If there is no default value, then <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> is returned. It is not possible to differentiate
+   between a <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> default value and an uninitialized typed property.
+   Use <span class="methodname"><a href="reflectionproperty.hasdefaultvalue.html" class="methodname">ReflectionProperty::hasDefaultValue()</a></span> to detect the difference.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-reflectionproperty.getdefaultvalue-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.5.0</td>
+      <td>
+       Calling <span class="methodname"><strong>ReflectionProperty::getDefaultValue()</strong></span>
+       for properties without default values has been deprecated.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reflectionproperty.getdefaultvalue-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5696">
+ <p><strong>Example #1 <span class="methodname"><strong>ReflectionProperty::getDefaultValue()</strong></span> example</strong></p>
+ <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Foo </span><span style="color: #007700">{
+    public </span><span style="color: #0000BB">$bar </span><span style="color: #007700">= </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+    public ?</span><span style="color: #0000BB">int $baz</span><span style="color: #007700">;
+    public </span><span style="color: #0000BB">int $boing </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;
+    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(public </span><span style="color: #0000BB">string $bak </span><span style="color: #007700">= </span><span style="color: #DD0000">"default"</span><span style="color: #007700">) { }
+}
+
+</span><span style="color: #0000BB">$ro </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClass</span><span style="color: #007700">(</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::class);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ro</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getDefaultValue</span><span style="color: #007700">());
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ro</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getDefaultValue</span><span style="color: #007700">());
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ro</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'boing'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getDefaultValue</span><span style="color: #007700">());
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ro</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getProperty</span><span style="color: #007700">(</span><span style="color: #DD0000">'bak'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getDefaultValue</span><span style="color: #007700">());
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+ </div>
+
+ <div class="example-contents"><p>The above example will output:</p></div>
+ <div class="example-contents screen">
+<div class="annotation-interactive examplescode"><pre class="examplescode">int(1)
+NULL
+int(0)
+NULL</pre>
+</div>
+ </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectionproperty.getdefaultvalue-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="methodname"><a href="reflectionproperty.hasdefaultvalue.html" class="methodname" rel="rdfs-seeAlso">ReflectionProperty::hasDefaultValue()</a> - Checks if property has a default value declared</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

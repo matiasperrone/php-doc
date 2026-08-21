@@ -1,0 +1,134 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.stream.html">Streams</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="stream.examples" class="chapter">
+ <h1 class="title">Examples</h1>
+<h2>Table of Contents</h2><ul class="chunklist chunklist_chapter"><li><a href="stream.streamwrapper.example-1.html">Example class registered as stream wrapper</a></li></ul>
+
+ <p class="para">
+  <div class="example" id="example-4074">
+   <p><strong>Example #1 Using <span class="function"><a href="function.file-get-contents.html" class="function">file_get_contents()</a></span>
+    to retrieve data from multiple sources</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/* Read local file from /home/bar */
+</span><span style="color: #0000BB">$localfile </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"/home/bar/foo.txt"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Identical to above, explicitly naming FILE scheme */
+</span><span style="color: #0000BB">$localfile </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"file:///home/bar/foo.txt"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Read remote file from www.example.com using HTTP */
+</span><span style="color: #0000BB">$httpfile  </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"http://www.example.com/foo.txt"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Read remote file from www.example.com using HTTPS */
+</span><span style="color: #0000BB">$httpsfile </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"https://www.example.com/foo.txt"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Read remote file from ftp.example.com using FTP */
+</span><span style="color: #0000BB">$ftpfile   </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"ftp://user:pass@ftp.example.com/foo.txt"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/* Read remote file from ftp.example.com using FTPS */
+</span><span style="color: #0000BB">$ftpsfile  </span><span style="color: #007700">= </span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">"ftps://user:pass@ftp.example.com/foo.txt"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-4075">
+   <p><strong>Example #2 Making a POST request to an https server</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/* Send POST request to https://secure.example.com/form_action.php
+* Include form elements named "foo" and "bar" with dummy values
+*/
+
+</span><span style="color: #0000BB">$sock </span><span style="color: #007700">= </span><span style="color: #0000BB">fsockopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"ssl://secure.example.com"</span><span style="color: #007700">, </span><span style="color: #0000BB">443</span><span style="color: #007700">, </span><span style="color: #0000BB">$errno</span><span style="color: #007700">, </span><span style="color: #0000BB">$errstr</span><span style="color: #007700">, </span><span style="color: #0000BB">30</span><span style="color: #007700">);
+if (!</span><span style="color: #0000BB">$sock</span><span style="color: #007700">) die(</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000"> (</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)\n"</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #DD0000">"foo=" </span><span style="color: #007700">. </span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #DD0000">"Value for Foo"</span><span style="color: #007700">) . </span><span style="color: #DD0000">"&amp;bar=" </span><span style="color: #007700">. </span><span style="color: #0000BB">urlencode</span><span style="color: #007700">(</span><span style="color: #DD0000">"Value for Bar"</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"POST /form_action.php HTTP/1.0\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"Host: secure.example.com\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"Content-type: application/x-www-form-urlencoded\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"Content-length: " </span><span style="color: #007700">. </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">) . </span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"Accept: */*\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #DD0000">"\r\n"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$headers </span><span style="color: #007700">= </span><span style="color: #DD0000">""</span><span style="color: #007700">;
+while (</span><span style="color: #0000BB">$str </span><span style="color: #007700">= </span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #0000BB">4096</span><span style="color: #007700">)))
+</span><span style="color: #0000BB">$headers </span><span style="color: #007700">.= </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$str</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+
+echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$body </span><span style="color: #007700">= </span><span style="color: #DD0000">""</span><span style="color: #007700">;
+while (!</span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">))
+</span><span style="color: #0000BB">$body </span><span style="color: #007700">.= </span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">, </span><span style="color: #0000BB">4096</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$sock</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  <div class="example" id="example-4076">
+   <p><strong>Example #3 Writing data to a compressed file</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/* Create a compressed file containing an arbitrary string
+* File can be read back using compress.zlib stream or just
+* decompressed from the command line using 'gzip -d foo-bar.txt.gz'
+*/
+</span><span style="color: #0000BB">$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">"compress.zlib://foo-bar.txt.gz"</span><span style="color: #007700">, </span><span style="color: #DD0000">"wb"</span><span style="color: #007700">);
+if (!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">) die(</span><span style="color: #DD0000">"Unable to create file."</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #DD0000">"This is a test.\n"</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </p>
+
+ 
+</div>
+</div></div></body></html>

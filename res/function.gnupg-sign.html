@@ -1,0 +1,123 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Signs a given text</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.gnupg.html">GnuPG Functions</a></li>
+        <li>Signs a given text</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.gnupg-sign" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gnupg_sign</h1>
+  <p class="verinfo">(PECL gnupg &gt;= 0.1)</p><p class="refpurpose"><span class="refname">gnupg_sign</span> &mdash; <span class="dc-title">Signs a given text</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gnupg-sign-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>gnupg_sign</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$plaintext</code></span>): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.singleton.html" class="type false">false</a></span></span></div>
+
+  <p class="simpara">
+   Signs the given <code class="parameter">plaintext</code> with the keys, which were
+   set with <a href="function.gnupg-addsignkey.html" class="link">gnupg_addsignkey</a> before and
+   returns the signed text or the signature, depending on what was set with
+   <a href="function.gnupg-setsignmode.html" class="link">gnupg_setsignmode</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gnupg-sign-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">identifier</code></dt>
+    <dd>
+     <p class="simpara">The gnupg identifier, from a call to
+<span class="function"><a href="function.gnupg-init.html" class="function">gnupg_init()</a></span> or <span class="classname"><strong class="classname">gnupg</strong></span>.</p>
+    </dd>
+   
+   
+    <dt><code class="parameter">plaintext</code></dt>
+    <dd>
+     <p class="simpara">
+      The plain text being signed.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gnupg-sign-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   On success, this function returns the signed text or the signature.
+   On failure, this function returns <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gnupg-sign-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3495">
+    <p><strong>Example #1 Procedural <span class="function"><strong>gnupg_sign()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$res </span><span style="color: #007700">= </span><span style="color: #0000BB">gnupg_init</span><span style="color: #007700">();
+</span><span style="color: #0000BB">gnupg_addsignkey</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,</span><span style="color: #DD0000">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$signed </span><span style="color: #007700">= </span><span style="color: #0000BB">gnupg_sign</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">, </span><span style="color: #DD0000">"just a test"</span><span style="color: #007700">);
+echo </span><span style="color: #0000BB">$signed</span><span style="color: #007700">;
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-3496">
+    <p><strong>Example #2 OO <span class="function"><strong>gnupg_sign()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$gpg </span><span style="color: #007700">= new </span><span style="color: #0000BB">gnupg</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$gpg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addsignkey</span><span style="color: #007700">(</span><span style="color: #DD0000">"8660281B6051D071D94B5B230549F9DC851566DC"</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$signed </span><span style="color: #007700">= </span><span style="color: #0000BB">$gpg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sign</span><span style="color: #007700">(</span><span style="color: #DD0000">"just a test"</span><span style="color: #007700">);
+echo </span><span style="color: #0000BB">$signed</span><span style="color: #007700">;
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div></div></div></body></html>

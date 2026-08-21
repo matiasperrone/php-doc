@@ -1,0 +1,235 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Using bpftrace with PHP DTrace Static Probes</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="features.dtrace.html">DTrace Dynamic Tracing</a></li>
+        <li>Using bpftrace with PHP DTrace Static Probes</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="features.dtrace.bpftrace" class="sect1">
+  <h2 class="title">Using bpftrace with PHP DTrace Static Probes</h2>
+  <p class="simpara">
+   On Linux distributions with a kernel that supports eBPF, the
+   bpftrace utility can attach to PHP&#039;s DTrace USDT probes directly,
+   without requiring SystemTap.
+  </p>
+  <div class="sect2" id="features.dtrace.bpftrace-install">
+   <h3 class="title">Installing bpftrace</h3>
+   <p class="para">
+    Install bpftrace using the distribution&#039;s package manager. For
+    example, on Oracle Linux, RHEL, or Fedora:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># dnf install bpftrace</pre>
+</div>
+     </div>
+
+    </div>
+    Or, on Debian or Ubuntu:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="shellcode"><pre class="shellcode"># apt install bpftrace</pre>
+</div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    The examples below assume the target PHP binary is installed at
+    <var class="filename">/usr/bin/php</var>.
+   </p>
+   <p class="simpara">
+    The same USDT probes are also exposed by other SAPIs built from the same source tree, so the
+    probe target may instead be the Apache module
+    (<var class="filename">libphp.so</var>) or the FastCGI Process Manager
+    binary (<var class="filename">php-fpm</var>); substitute the appropriate
+    path or attach by PID with <code class="literal">-p</code> as needed.
+   </p>
+   <p class="simpara">
+    Make sure the target binary is built with DTrace and the environment variable is configured properly.
+    See <a href="features.dtrace.dtrace.html#features.dtrace.install" class="link">Configuring PHP for DTrace Static Probes</a> for details.
+   </p>
+   <p class="para">
+    The static probes in PHP can be listed using
+    <strong class="command">bpftrace</strong>:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+# bpftrace -l &#039;usdt:/usr/bin/php:php:*&#039;
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    This outputs:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+usdt:/usr/bin/php:php:compile__file__entry
+usdt:/usr/bin/php:php:compile__file__return
+usdt:/usr/bin/php:php:error
+usdt:/usr/bin/php:php:exception__caught
+usdt:/usr/bin/php:php:exception__thrown
+usdt:/usr/bin/php:php:execute__entry
+usdt:/usr/bin/php:php:execute__return
+usdt:/usr/bin/php:php:function__entry
+usdt:/usr/bin/php:php:function__return
+usdt:/usr/bin/php:php:request__shutdown
+usdt:/usr/bin/php:php:request__startup
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-595">
+     <p><strong>Example #1 <var class="filename">all_probes.bt</var> for tracing all PHP Static Probes with bpftrace</strong></p>
+     <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">#!/usr/bin/env bpftrace
+
+usdt:/usr/bin/php:php:compile__file__entry
+{
+    printf(&quot;Probe compile__file__entry\n&quot;);
+    printf(&quot;  compile_file %s\n&quot;, str(arg0));
+    printf(&quot;  compile_file_translated %s\n&quot;, str(arg1));
+}
+usdt:/usr/bin/php:php:compile__file__return
+{
+    printf(&quot;Probe compile__file__return\n&quot;);
+    printf(&quot;  compile_file %s\n&quot;, str(arg0));
+    printf(&quot;  compile_file_translated %s\n&quot;, str(arg1));
+}
+usdt:/usr/bin/php:php:error
+{
+    printf(&quot;Probe error\n&quot;);
+    printf(&quot;  errormsg %s\n&quot;, str(arg0));
+    printf(&quot;  request_file %s\n&quot;, str(arg1));
+    printf(&quot;  lineno %d\n&quot;, (int32)arg2);
+}
+usdt:/usr/bin/php:php:exception__caught
+{
+    printf(&quot;Probe exception__caught\n&quot;);
+    printf(&quot;  classname %s\n&quot;, str(arg0));
+}
+usdt:/usr/bin/php:php:exception__thrown
+{
+    printf(&quot;Probe exception__thrown\n&quot;);
+    printf(&quot;  classname %s\n&quot;, str(arg0));
+}
+usdt:/usr/bin/php:php:execute__entry
+{
+    printf(&quot;Probe execute__entry\n&quot;);
+    printf(&quot;  request_file %s\n&quot;, str(arg0));
+    printf(&quot;  lineno %d\n&quot;, (int32)arg1);
+}
+usdt:/usr/bin/php:php:execute__return
+{
+    printf(&quot;Probe execute__return\n&quot;);
+    printf(&quot;  request_file %s\n&quot;, str(arg0));
+    printf(&quot;  lineno %d\n&quot;, (int32)arg1);
+}
+usdt:/usr/bin/php:php:function__entry
+{
+    printf(&quot;Probe function__entry\n&quot;);
+    printf(&quot;  function_name %s\n&quot;, str(arg0));
+    printf(&quot;  request_file %s\n&quot;, str(arg1));
+    printf(&quot;  lineno %d\n&quot;, (int32)arg2);
+    printf(&quot;  classname %s\n&quot;, str(arg3));
+    printf(&quot;  scope %s\n&quot;, str(arg4));
+}
+usdt:/usr/bin/php:php:function__return
+{
+    printf(&quot;Probe function__return\n&quot;);
+    printf(&quot;  function_name %s\n&quot;, str(arg0));
+    printf(&quot;  request_file %s\n&quot;, str(arg1));
+    printf(&quot;  lineno %d\n&quot;, (int32)arg2);
+    printf(&quot;  classname %s\n&quot;, str(arg3));
+    printf(&quot;  scope %s\n&quot;, str(arg4));
+}
+usdt:/usr/bin/php:php:request__shutdown
+{
+    printf(&quot;Probe request__shutdown\n&quot;);
+    printf(&quot;  file %s\n&quot;, str(arg0));
+    printf(&quot;  request_uri %s\n&quot;, str(arg1));
+    printf(&quot;  request_method %s\n&quot;, str(arg2));
+}
+usdt:/usr/bin/php:php:request__startup
+{
+    printf(&quot;Probe request__startup\n&quot;);
+    printf(&quot;  file %s\n&quot;, str(arg0));
+    printf(&quot;  request_uri %s\n&quot;, str(arg1));
+    printf(&quot;  request_method %s\n&quot;, str(arg2));
+}</pre>
+</div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    The above script will trace all core PHP static probe points
+    throughout the duration of a running PHP script. bpftrace requires
+    root privileges:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+# USE_ZEND_DTRACE=1 bpftrace -c &#039;/usr/bin/php test.php&#039; all_probes.bt
+</pre></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    To trace an already-running PHP process (for instance, a
+    <var class="filename">php-fpm</var> worker or an Apache process loading
+    <var class="filename">libphp.so</var>), attach by PID:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="cdata"><pre>
+# bpftrace -p $PID all_probes.bt
+</pre></div>
+     </div>
+
+    </div>
+    The <code class="literal">usdt:</code> target path in the script must match the binary of
+    the running process; adjust <code class="literal">usdt:/usr/bin/php</code> to the
+    <var class="filename">php-fpm</var> binary or <var class="filename">libphp.so</var> as appropriate.
+  </p>
+  </div>
+ </div></div></div></body></html>

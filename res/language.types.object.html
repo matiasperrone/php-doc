@@ -1,0 +1,122 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Objects</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.types.html">Types</a></li>
+        <li>Objects</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.types.object" class="sect1">
+ <h2 class="title">Objects</h2>
+
+ <div class="sect2" id="language.types.object.init">
+  <h3 class="title">Object Initialization</h3>
+
+  <p class="para">
+   To create a new <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, use the <code class="literal">new</code> statement
+   to instantiate a class:
+  </p>
+
+  <div class="example" id="example-104">
+   <p><strong>Example #1 Object Construction</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">foo
+</span><span style="color: #007700">{
+    function </span><span style="color: #0000BB">do_foo</span><span style="color: #007700">()
+    {
+        echo </span><span style="color: #DD0000">"Doing foo."</span><span style="color: #007700">;
+    }
+}
+
+</span><span style="color: #0000BB">$bar </span><span style="color: #007700">= new </span><span style="color: #0000BB">foo</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$bar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">do_foo</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   For a full discussion, see the
+   <a href="language.oop5.html" class="link">Classes and Objects</a> chapter.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="language.types.object.casting">
+  <h3 class="title">Converting to object</h3>
+
+  <p class="simpara">
+   If an <span class="type"><a href="language.types.object.html" class="type object">object</a></span> is converted to an <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, it is not
+   modified. If a value of any other type is converted to an
+   <span class="type"><a href="language.types.object.html" class="type object">object</a></span>, a new instance of the <span class="classname"><a href="class.stdclass.html" class="classname">stdClass</a></span>
+   built-in class is created. If the value was <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, the new instance will be
+   empty. An <span class="type"><a href="language.types.array.html" class="type array">array</a></span> converts to an <span class="type"><a href="language.types.object.html" class="type object">object</a></span> with properties
+   named by keys and with their corresponding values.
+   Prior to PHP 7.2.0, numeric keys would have been inaccessible unless iterated.
+  </p>
+
+  <div class="example" id="example-105">
+   <p><strong>Example #2 Casting to an Object</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$obj </span><span style="color: #007700">= (object) array(</span><span style="color: #DD0000">'1' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;{</span><span style="color: #DD0000">'1'</span><span style="color: #007700">})); </span><span style="color: #FF8000">// outputs 'bool(true)'
+
+// Deprecated as of PHP 8.1
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">key</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">)); </span><span style="color: #FF8000">// outputs 'string(1) "1"'
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   For any other value, a member variable named <code class="literal">scalar</code> will contain
+   the value.
+  </p>
+
+  <div class="example" id="example-106">
+   <p><strong>Example #3 <code class="literal">(object)</code> cast</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$obj </span><span style="color: #007700">= (object) </span><span style="color: #DD0000">'ciao'</span><span style="color: #007700">;
+echo </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">scalar</span><span style="color: #007700">;  </span><span style="color: #FF8000">// outputs 'ciao'
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+
+ </div>
+</div></div></div></body></html>

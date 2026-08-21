@@ -1,0 +1,143 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Opens an existing large object stream</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.pdo-pgsql.html">Pdo\Pgsql</a></li>
+        <li>Opens an existing large object stream</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="pdo-pgsql.lobopen" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Pdo\Pgsql::lobOpen</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.4.0)</p><p class="refpurpose"><span class="refname">Pdo\Pgsql::lobOpen</span> &mdash; <span class="dc-title">Opens an existing large object stream</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-pdo-pgsql.lobopen-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Pdo\Pgsql::lobOpen</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$oid</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$mode</code><span class="initializer"> = &quot;rb&quot;</span></span>): <span class="type"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>|<span class="type"><a href="language.types.singleton.html" class="type false">false</a></span></span></div>
+
+  <p class="simpara">
+   <span class="methodname"><strong>Pdo\Pgsql::lobOpen()</strong></span> opens a stream to access
+   the data referenced by <code class="parameter">oid</code>.
+   All usual filesystem functions, such as <span class="function"><a href="function.fread.html" class="function">fread()</a></span>,
+   <span class="function"><a href="function.fwrite.html" class="function">fwrite()</a></span> or <span class="function"><a href="function.fgets.html" class="function">fgets()</a></span> can be used
+   to manipulate the contents of the stream.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    This function, and all manipulations of the large object,
+    must be called and carried out within a transaction.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-pdo-pgsql.lobopen-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">oid</code></dt>
+    <dd>
+     <p class="simpara">
+      A large object identifier.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">mode</code></dt>
+    <dd>
+     <p class="simpara">
+      The access mode. If <code class="parameter">mode</code> contains
+      <code class="literal">w</code> or <code class="literal">+</code>, the stream is opened for
+      reading and writing; otherwise it is opened for reading only. A
+      <code class="literal">b</code> (binary) flag has no effect. The default
+      <code class="literal">&quot;rb&quot;</code> opens the stream for reading.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo-pgsql.lobopen-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns a stream resource on success, or <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo-pgsql.lobopen-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="pdo-pgsql.lobopen.example.basic">
+   <p><strong>Example #1 <span class="methodname"><strong>Pdo\Pgsql::lobOpen()</strong></span> example</strong></p>
+   <div class="example-contents"><p>
+    Following on from the <span class="methodname"><a href="pdo-pgsql.lobcreate.html" class="methodname">Pdo\Pgsql::lobCreate()</a></span>
+    example, this code snippet retrieves the large object from
+    the database and outputs it to the browser.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$db </span><span style="color: #007700">= new </span><span style="color: #0000BB">Pdo\Pgsql</span><span style="color: #007700">(</span><span style="color: #DD0000">'pgsql:dbname=test host=localhost'</span><span style="color: #007700">, </span><span style="color: #0000BB">$user</span><span style="color: #007700">, </span><span style="color: #0000BB">$pass</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">beginTransaction</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT oid FROM BLOBS WHERE ident = ?"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">([</span><span style="color: #0000BB">$some_id</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindColumn</span><span style="color: #007700">(</span><span style="color: #DD0000">'oid'</span><span style="color: #007700">, </span><span style="color: #0000BB">$oid</span><span style="color: #007700">, </span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">FETCH_BOUND</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$stream </span><span style="color: #007700">= </span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">lobOpen</span><span style="color: #007700">(</span><span style="color: #0000BB">$oid</span><span style="color: #007700">, </span><span style="color: #DD0000">'r'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-type: application/octet-stream"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">fpassthru</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo-pgsql.lobopen-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="pdo-pgsql.lobcreate.html" class="methodname" rel="rdfs-seeAlso">Pdo\Pgsql::lobCreate()</a> - Creates a new large object</span></li>
+   <li><span class="methodname"><a href="pdo-pgsql.lobunlink.html" class="methodname" rel="rdfs-seeAlso">Pdo\Pgsql::lobUnlink()</a> - Deletes the large object</span></li>
+   <li><span class="function"><a href="function.pg-lo-create.html" class="function" rel="rdfs-seeAlso">pg_lo_create()</a> - Create a large object</span></li>
+   <li><span class="function"><a href="function.pg-lo-open.html" class="function" rel="rdfs-seeAlso">pg_lo_open()</a> - Open a large object</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

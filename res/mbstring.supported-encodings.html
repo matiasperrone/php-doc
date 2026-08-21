@@ -1,0 +1,158 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Supported Character Encodings</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.mbstring.html">Multibyte String</a></li>
+        <li>Supported Character Encodings</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="mbstring.supported-encodings" class="chapter">
+ <h1 class="title">Supported Character Encodings</h1>
+
+ <p class="simpara">
+  Currently the following character encodings are supported by the
+  <code class="literal">mbstring</code> module. Any of those Character encodings
+  can be specified in the <code class="literal">encoding</code> parameter of
+  <code class="literal">mbstring</code> functions.
+ </p>
+ <p class="para">
+  The following character encodings are supported in this PHP
+  extension: 
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem"><p class="simpara">UCS-4*</p></li>
+  <li class="listitem"><p class="simpara">UCS-4BE</p></li>
+  <li class="listitem"><p class="simpara">UCS-4LE*</p></li>
+  <li class="listitem"><p class="simpara">UCS-2</p></li>
+  <li class="listitem"><p class="simpara">UCS-2BE</p></li>
+  <li class="listitem"><p class="simpara">UCS-2LE</p></li>
+  <li class="listitem"><p class="simpara">UTF-32*</p></li>
+  <li class="listitem"><p class="simpara">UTF-32BE*</p></li>
+  <li class="listitem"><p class="simpara">UTF-32LE*</p></li>
+  <li class="listitem"><p class="simpara">UTF-16*</p></li>
+  <li class="listitem"><p class="simpara">UTF-16BE*</p></li>
+  <li class="listitem"><p class="simpara">UTF-16LE*</p></li>
+  <li class="listitem"><p class="simpara">UTF-7</p></li>
+  <li class="listitem"><p class="simpara">UTF7-IMAP</p></li>
+  <li class="listitem"><p class="simpara">UTF-8*</p></li>
+  <li class="listitem"><p class="simpara">ASCII*</p></li>
+  <li class="listitem"><p class="simpara">EUC-JP*</p></li>
+  <li class="listitem"><p class="simpara">SJIS*</p></li>
+  <li class="listitem"><p class="simpara">eucJP-win*</p></li>
+  <li class="listitem"><p class="simpara">SJIS-win*</p></li>
+  <li class="listitem"><p class="simpara">ISO-2022-JP</p></li>
+  <li class="listitem"><p class="simpara">ISO-2022-JP-MS</p></li>
+  <li class="listitem"><p class="simpara">CP932</p></li>
+  <li class="listitem"><p class="simpara">CP51932</p></li>
+  <li class="listitem"><p class="simpara">SJIS-mac (alias: MacJapanese)</p></li>
+  <li class="listitem"><p class="simpara">SJIS-Mobile#DOCOMO (alias: SJIS-DOCOMO)</p></li>
+  <li class="listitem"><p class="simpara">SJIS-Mobile#KDDI (alias: SJIS-KDDI)</p></li>
+  <li class="listitem"><p class="simpara">SJIS-Mobile#SOFTBANK (alias: SJIS-SOFTBANK)</p></li>
+  <li class="listitem"><p class="simpara">UTF-8-Mobile#DOCOMO (alias: UTF-8-DOCOMO)</p></li>
+  <li class="listitem"><p class="simpara">UTF-8-Mobile#KDDI-A</p></li>
+  <li class="listitem"><p class="simpara">UTF-8-Mobile#KDDI-B (alias: UTF-8-KDDI)</p></li>
+  <li class="listitem"><p class="simpara">UTF-8-Mobile#SOFTBANK (alias: UTF-8-SOFTBANK)</p></li>
+  <li class="listitem"><p class="simpara">ISO-2022-JP-MOBILE#KDDI (alias: ISO-2022-JP-KDDI)</p></li>
+  <li class="listitem"><p class="simpara">JIS</p></li>
+  <li class="listitem"><p class="simpara">JIS-ms</p></li>
+  <li class="listitem"><p class="simpara">CP50220</p></li>
+  <li class="listitem"><p class="simpara">CP50220raw</p></li>
+  <li class="listitem"><p class="simpara">CP50221</p></li>
+  <li class="listitem"><p class="simpara">CP50222</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-1*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-2*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-3*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-4*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-5*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-6*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-7*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-8*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-9*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-10*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-13*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-14*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-15*</p></li>
+  <li class="listitem"><p class="simpara">ISO-8859-16*</p></li>
+  <li class="listitem"><p class="simpara">byte2be</p></li>
+  <li class="listitem"><p class="simpara">byte2le</p></li>
+  <li class="listitem"><p class="simpara">byte4be</p></li>
+  <li class="listitem"><p class="simpara">byte4le</p></li>
+  <li class="listitem"><p class="simpara">BASE64</p></li>
+  <li class="listitem"><p class="simpara">HTML-ENTITIES (alias: HTML)</p></li>
+  <li class="listitem"><p class="simpara">7bit</p></li>
+  <li class="listitem"><p class="simpara">8bit</p></li>
+  <li class="listitem"><p class="simpara">EUC-CN*</p></li>
+  <li class="listitem"><p class="simpara">CP936</p></li>
+  <li class="listitem"><p class="simpara">GB18030</p></li>
+  <li class="listitem"><p class="simpara">HZ</p></li>
+  <li class="listitem"><p class="simpara">EUC-TW*</p></li>
+  <li class="listitem"><p class="simpara">CP950</p></li>
+  <li class="listitem"><p class="simpara">BIG-5*</p></li>
+  <li class="listitem"><p class="simpara">EUC-KR*</p></li>
+  <li class="listitem"><p class="simpara">UHC (alias: CP949)</p></li>
+  <li class="listitem"><p class="simpara">ISO-2022-KR</p></li>
+  <li class="listitem"><p class="simpara">Windows-1251 (alias: CP1251)</p></li>
+  <li class="listitem"><p class="simpara">Windows-1252 (alias: CP1252)</p></li>
+  <li class="listitem"><p class="simpara">CP866 (alias: IBM866)</p></li>
+  <li class="listitem"><p class="simpara">KOI8-R*</p></li>
+  <li class="listitem"><p class="simpara">KOI8-U*</p></li>
+  <li class="listitem"><p class="simpara">ArmSCII-8 (alias: ArmSCII8)</p></li>  
+ </ul>
+ <p class="para">
+  * denotes encodings usable also in regular expressions.
+ </p>
+ <p class="para">
+  Any <var class="filename">php.ini</var> entry which accepts an encoding name
+  can also use the values &quot;<code class="literal">auto</code>&quot; and
+  &quot;<code class="literal">pass</code>&quot;.
+  <code class="literal">mbstring</code> functions which accept an encoding
+  name can also use the value &quot;<code class="literal">auto</code>&quot;.
+ </p>
+ <p class="para">
+  If &quot;<code class="literal">pass</code>&quot; is set, no character
+  encoding conversion is performed.
+ </p>
+ <p class="para">
+  If &quot;<code class="literal">auto</code>&quot; is set, it is expanded to
+  the list of encodings defined per the <a href="mbstring.configuration.html" class="link">NLS</a>.
+  For instance, if the NLS is set to <code class="literal">Japanese</code>,
+  the value is assumed to be
+  &quot;<code class="literal">ASCII,JIS,UTF-8,EUC-JP,SJIS</code>&quot;.
+ </p>
+ <p class="para">
+  See also <span class="function"><a href="function.mb-detect-order.html" class="function">mb_detect_order()</a></span>
+ </p>
+</div>
+</div></div></body></html>

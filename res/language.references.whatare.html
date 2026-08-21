@@ -1,0 +1,57 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>What References Are</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.references.html">References Explained</a></li>
+        <li>What References Are</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.references.whatare" class="sect1">
+   <h2 class="title">What References Are</h2>
+   <p class="simpara">
+    References in PHP are a means to access the same variable content
+    by different names. They are not like C pointers; for instance,
+    you cannot perform pointer arithmetic using them, they are not
+    actual memory addresses, and so on. See
+    <a href="language.references.arent.html" class="xref">What References Are Not</a> for more
+    information. Instead, they are
+    <a href="features.gc.refcounting-basics.html" class="link">symbol table</a>
+    aliases. Note that in PHP, variable name and variable content are different, so the same
+    content can have different names. The closest analogy is with
+    Unix filenames and files - variable names are directory entries,
+    while variable content is the file itself. References can be
+    likened to hardlinking in Unix filesystem.
+   </p>
+  </div></div></div></body></html>

@@ -1,0 +1,73 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Creates a new Fiber instance</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.fiber.html">Fiber</a></li>
+        <li>Creates a new Fiber instance</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="fiber.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Fiber::__construct</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.1.0)</p><p class="refpurpose"><span class="refname">Fiber::__construct</span> &mdash; <span class="dc-title">Creates a new Fiber instance</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-fiber.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Fiber::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>)</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-fiber.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">callback</code></dt>
+    <dd>
+     <p class="para">
+      The <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> to invoke when starting the fiber.
+      Arguments given to <span class="methodname"><a href="fiber.start.html" class="methodname">Fiber::start()</a></span> will be
+      provided as arguments to the given callable.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+</div></div></div></body></html>

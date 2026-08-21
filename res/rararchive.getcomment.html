@@ -1,0 +1,131 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Get comment text from the RAR archive</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.rararchive.html">RarArchive</a></li>
+        <li>Get comment text from the RAR archive</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="rararchive.getcomment" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">RarArchive::getComment</h1>
+  <h1 class="refname">rar_comment_get</h1>
+  <p class="verinfo">(PECL rar &gt;= 2.0.0)</p><p class="refpurpose"><span class="refname">RarArchive::getComment</span> -- <span class="refname">rar_comment_get</span> &mdash; <span class="dc-title">Get comment text from the RAR archive</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-rararchive.getcomment-description">
+  <h3 class="title">Description</h3>
+  <p class="simpara">Object-oriented style (method):</p>
+   <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>RarArchive::getComment</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">Procedural style:</p>
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><strong>rar_comment_get</strong></span>(<span class="methodparam"><span class="type"><a href="class.rararchive.html" class="type RarArchive">RarArchive</a></span> <code class="parameter">$rarfile</code></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">
+   Get the (global) comment stored in the RAR archive. It may be up to 64 KiB long.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    This extension does not support comments at the entry level.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-rararchive.getcomment-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">rarfile</code></dt>
+    <dd>
+     <p class="simpara">
+      A <span class="type"><a href="class.rararchive.html" class="type RarArchive">RarArchive</a></span> object, opened with <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-rararchive.getcomment-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the comment or <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> if there is none.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="simpara">
+      RAR has currently no support for unicode comments. The encoding of the
+      result of this function is not specified, but it will probably be
+      Windows-1252.
+    </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-rararchive.getcomment-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-896">
+   <p><strong>Example #1 Object-oriented style</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$rar_arch </span><span style="color: #007700">= </span><span style="color: #0000BB">RarArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'commented.rar'</span><span style="color: #007700">);
+echo </span><span style="color: #0000BB">$rar_arch</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getComment</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">This is the comment of the file commented.rar.</pre>
+</div>
+   </div>
+  </div>
+  <div class="example" id="example-897">
+   <p><strong>Example #2 Procedural style</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$rar_arch </span><span style="color: #007700">= </span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'commented.rar'</span><span style="color: #007700">);
+echo </span><span style="color: #0000BB">rar_comment_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$rar_arch</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+  </div>
+ </div>
+
+
+
+</div></div></div></body></html>

@@ -1,0 +1,79 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Enumeration static methods</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.enumerations.html">Enumerations</a></li>
+        <li>Enumeration static methods</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.enumerations.static-methods" class="sect1">
+  <h2 class="title">Enumeration static methods</h2>
+
+  <p class="para">
+   Enumerations may also have static methods. The use for static methods on the
+   enumeration itself is primarily for alternative constructors. E.g.:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">Size
+</span><span style="color: #007700">{
+    case </span><span style="color: #0000BB">Small</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Medium</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Large</span><span style="color: #007700">;
+
+    public static function </span><span style="color: #0000BB">fromLength</span><span style="color: #007700">(</span><span style="color: #0000BB">int $cm</span><span style="color: #007700">): </span><span style="color: #0000BB">self
+    </span><span style="color: #007700">{
+        return match (</span><span style="color: #0000BB">true</span><span style="color: #007700">) {
+            </span><span style="color: #0000BB">$cm </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">50 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Small</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">$cm </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">100 </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Medium</span><span style="color: #007700">,
+            default =&gt; </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Large</span><span style="color: #007700">,
+        };
+    }
+}
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Size</span><span style="color: #007700">::</span><span style="color: #0000BB">fromLength</span><span style="color: #007700">(</span><span style="color: #0000BB">50</span><span style="color: #007700">));</span></code></pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Static methods may be public, private, or protected, although in practice private
+   and protected are equivalent as inheritance is not allowed.
+  </p>
+
+ </div></div></div></body></html>

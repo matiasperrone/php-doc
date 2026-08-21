@@ -1,0 +1,91 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Set the restriction level</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.spoofchecker.html">Spoofchecker</a></li>
+        <li>Set the restriction level</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="spoofchecker.setrestrictionlevel" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Spoofchecker::setRestrictionLevel</h1>
+  <p class="verinfo">(PHP 7 &gt;= 7.3.0, PHP 8)</p><p class="refpurpose"><span class="refname">Spoofchecker::setRestrictionLevel</span> &mdash; <span class="dc-title">Set the restriction level</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-spoofchecker.setrestrictionlevel-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Spoofchecker::setRestrictionLevel</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$level</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="para rdfs-comment">
+   Sets the restriction level of <span class="methodname"><a href="spoofchecker.issuspicious.html" class="methodname">SpoofChecker::isSuspicious()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-spoofchecker.setrestrictionlevel-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">level</code></dt>
+    <dd>
+     <p class="para">
+      The restriction level of <span class="methodname"><a href="spoofchecker.issuspicious.html" class="methodname">SpoofChecker::isSuspicious()</a></span>.
+      One of
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.ascii">Spoofchecker::ASCII</a></code></strong>,
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.single-script-restrictive">Spoofchecker::SINGLE_SCRIPT_RESTRICTIVE</a></code></strong>,
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.highly-restrictive">Spoofchecker::HIGHLY_RESTRICTIVE</a></code></strong>,
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.moderately-restrictive">Spoofchecker::MODERATELY_RESTRICTIVE</a></code></strong>,
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.minimally-restrictive">Spoofchecker::MINIMALLY_RESTRICTIVE</a></code></strong>, or
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.unrestrictive">Spoofchecker::UNRESTRICTIVE</a></code></strong>.
+      Defaults to <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.highly-restrictive">Spoofchecker::HIGHLY_RESTRICTIVE</a></code></strong>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-spoofchecker.setrestrictionlevel-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+
+</div></div></div></body></html>

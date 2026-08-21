@@ -1,0 +1,119 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Taint</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+        <li>Taint</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.taint" class="book">
+ 
+ <h1 class="title">Taint</h1>
+ 
+
+ <div id="intro.taint" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="para">
+   Taint is an extension, which is used for detecting XSS codes (tainted
+   string).
+   And also can be used to spot sql injection vulnerabilities, and shell
+   inject, etc.
+  </p>
+  <p class="para">
+   When taint is enabled, if you pass a tainted string (comes from <var class="varname"><a href="reserved.variables.get.html" class="classname">$_GET</a></var>,
+   <var class="varname"><a href="reserved.variables.post.html" class="classname">$_POST</a></var> or <var class="varname"><a href="reserved.variables.cookies.html" class="classname">$_COOKIE</a></var>) to some functions, taint will warn you about that.
+  </p>
+  <div class="example" id="example-4339">
+   <p><strong>Example #1 <span class="function"><a href="function.taint.html" class="function">Taint()</a></span>example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= </span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$_GET</span><span style="color: #007700">[</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]);
+
+</span><span style="color: #0000BB">$file_name </span><span style="color: #007700">= </span><span style="color: #DD0000">'/tmp' </span><span style="color: #007700">.  </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$output    </span><span style="color: #007700">= </span><span style="color: #DD0000">"Welcome, </span><span style="color: #007700">{</span><span style="color: #0000BB">$a</span><span style="color: #007700">}</span><span style="color: #DD0000"> !!!"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$var       </span><span style="color: #007700">= </span><span style="color: #DD0000">"output"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$sql       </span><span style="color: #007700">= </span><span style="color: #DD0000">"Select *  from " </span><span style="color: #007700">. </span><span style="color: #0000BB">$a</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$sql      </span><span style="color: #007700">.= </span><span style="color: #DD0000">"ooxx"</span><span style="color: #007700">;
+
+echo </span><span style="color: #0000BB">$output</span><span style="color: #007700">;
+
+print $</span><span style="color: #0000BB">$var</span><span style="color: #007700">;
+
+include </span><span style="color: #0000BB">$file_name</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">mysql_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: main() [function.echo]: Attempt to echo a string that might be tainted
+
+Warning: main() [function.echo]: Attempt to print a string that might be tainted
+
+Warning: include() [function.include]: File path contains data that might be tainted
+
+Warning: mysql_query() [function.mysql-query]: SQL statement contains data that might be tainted
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="taint.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="taint.installation.html">Installation</a></li><li><a href="taint.configuration.html">Runtime Configuration</a></li></ul></li><li><a href="taint.detail.html">More Details</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="taint.detail.basic.html">Functions and Statements which will spread the tainted mark of a
+   tainted string</a></li><li><a href="taint.detail.taint.html">Functions and statements which will check tainted string</a></li><li><a href="taint.detail.untaint.html">Functions which untaint the tainted string</a></li></ul></li><li><a href="ref.taint.html">Taint Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.is-tainted.html">is_tainted</a> — Checks whether a string is tainted</li><li><a href="function.taint.html">taint</a> — Taint a string</li><li><a href="function.untaint.html">untaint</a> — Untaint strings</li></ul></li></ul></div></div></div></body></html>

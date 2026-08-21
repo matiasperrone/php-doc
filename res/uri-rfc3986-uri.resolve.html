@@ -1,0 +1,123 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Resolve a URI with the current object as the base URL</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.uri-rfc3986-uri.html">Uri\Rfc3986\Uri</a></li>
+        <li>Resolve a URI with the current object as the base URL</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="uri-rfc3986-uri.resolve" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Uri\Rfc3986\Uri::resolve</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.5.0)</p><p class="refpurpose"><span class="refname">Uri\Rfc3986\Uri::resolve</span> &mdash; <span class="dc-title">Resolve a URI with the current object as the base URL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-uri-rfc3986-uri.resolve-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Uri\Rfc3986\Uri::resolve</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>): <span class="type">static</span></div>
+
+  <p class="simpara">
+   Resolves a URI - which may potentially be a relative reference - with the current object as the base URL.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-uri-rfc3986-uri.resolve-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">uri</code></dt>
+    <dd>
+     <p class="simpara">
+      A URI to apply on the current object.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-uri-rfc3986-uri.resolve-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   A new <span class="classname"><a href="class.uri-rfc3986-uri.html" class="classname">Uri\Rfc3986\Uri</a></span> instance.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-uri-rfc3986-uri.resolve-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  
+  <p class="simpara">
+   If the resulting URI is invalid, a <span class="exceptionname"><a href="class.uri-invaliduriexception.html" class="exceptionname">Uri\InvalidUriException</a></span> is thrown.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-uri-rfc3986-uri.resolve-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="uri-rfc3986-uri.resolve.example.basic">
+   <p><strong>Example #1 <span class="methodname"><strong>Uri\Rfc3986\Uri::resolve()</strong></span> basic example</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$uri </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Uri\Rfc3986\Uri</span><span style="color: #007700">(</span><span style="color: #DD0000">"https://example.com"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$uri </span><span style="color: #007700">= </span><span style="color: #0000BB">$uri</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">resolve</span><span style="color: #007700">(</span><span style="color: #DD0000">"/foo"</span><span style="color: #007700">);
+
+echo </span><span style="color: #0000BB">$uri</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toRawString</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="annotation-interactive examplescode"><pre class="examplescode">https://example.com/foo</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-uri-rfc3986-uri.resolve-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="uri-rfc3986-uri.construct.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::__construct()</a> - Construct the Uri object</span></li>
+   <li><span class="methodname"><a href="uri-rfc3986-uri.parse.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::parse()</a> - Parse a URI</span></li>
+   <li><span class="methodname"><a href="uri-whatwg-url.resolve.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::resolve()</a> - Resolve a URL with the current object as the base URL</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

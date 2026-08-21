@@ -1,0 +1,242 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Uri\Rfc3986\Uri class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.uri.html">URI</a></li>
+        <li>The Uri\Rfc3986\Uri class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.uri-rfc3986-uri" class="reference">
+ <h1 class="title">The Uri\Rfc3986\Uri class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+  <div class="section" id="uri-rfc3986-uri.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+   </p>
+  </div>
+
+  <div class="section" id="uri-rfc3986-uri.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">Uri\Rfc3986</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     
+      <span class="modifier">final</span>
+      <span class="modifier">readonly</span>
+      <span class="modifier">class</span> <strong class="classname"><strong class="classname">Uri</strong></strong>
+      {</div>
+
+     <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+     <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-rfc3986-uri.html" class="type Uri\Rfc3986\Uri">Uri\Rfc3986\Uri</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>)</div>
+
+     <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.debuginfo.html" class="methodname">__debugInfo</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.equals.html" class="methodname">equals</a></span>(<span class="methodparam"><span class="type"><a href="class.uri-rfc3986-uri.html" class="type Uri\Rfc3986\Uri">Uri\Rfc3986\Uri</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><a href="enum.uri-uricomparisonmode.html" class="type Uri\UriComparisonMode">Uri\UriComparisonMode</a></span> <code class="parameter">$comparisonMode</code><span class="initializer"> = <strong><code>Uri\UriComparisonMode::ExcludeFragment</code></strong></span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getfragment.html" class="methodname">getFragment</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.gethost.html" class="methodname">getHost</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getpassword.html" class="methodname">getPassword</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getpath.html" class="methodname">getPath</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getport.html" class="methodname">getPort</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getquery.html" class="methodname">getQuery</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawfragment.html" class="methodname">getRawFragment</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawhost.html" class="methodname">getRawHost</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawpassword.html" class="methodname">getRawPassword</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawpath.html" class="methodname">getRawPath</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawquery.html" class="methodname">getRawQuery</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawscheme.html" class="methodname">getRawScheme</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawuserinfo.html" class="methodname">getRawUserInfo</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getrawusername.html" class="methodname">getRawUsername</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getscheme.html" class="methodname">getScheme</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getuserinfo.html" class="methodname">getUserInfo</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.getusername.html" class="methodname">getUsername</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.parse.html" class="methodname">parse</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-rfc3986-uri.html" class="type Uri\Rfc3986\Uri">Uri\Rfc3986\Uri</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type">static</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.resolve.html" class="methodname">resolve</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.serialize.html" class="methodname">__serialize</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.torawstring.html" class="methodname">toRawString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.tostring.html" class="methodname">toString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.unserialize.html" class="methodname">__unserialize</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withfragment.html" class="methodname">withFragment</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$fragment</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withhost.html" class="methodname">withHost</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$host</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withpath.html" class="methodname">withPath</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withport.html" class="methodname">withPort</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$port</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withquery.html" class="methodname">withQuery</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$query</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withscheme.html" class="methodname">withScheme</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$scheme</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-rfc3986-uri.withuserinfo.html" class="methodname">withUserInfo</a></span>(<span class="methodparam"><span class="attribute">#[<a href="class.sensitiveparameter.html">\SensitiveParameter</a>]</span><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$userinfo</code></span>): <span class="type">static</span></div>
+
+    }
+   </div>
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="uri-rfc3986-uri.construct.html">Uri\Rfc3986\Uri::__construct</a> — Construct the Uri object</li><li><a href="uri-rfc3986-uri.debuginfo.html">Uri\Rfc3986\Uri::__debugInfo</a> — Return the internal state of the URI</li><li><a href="uri-rfc3986-uri.equals.html">Uri\Rfc3986\Uri::equals</a> — Check if two URIs are equivalent</li><li><a href="uri-rfc3986-uri.getfragment.html">Uri\Rfc3986\Uri::getFragment</a> — Retrieve the normalized fragment component</li><li><a href="uri-rfc3986-uri.gethost.html">Uri\Rfc3986\Uri::getHost</a> — Retrieve the normalized host component</li><li><a href="uri-rfc3986-uri.getpassword.html">Uri\Rfc3986\Uri::getPassword</a> — Retrieve the normalized password</li><li><a href="uri-rfc3986-uri.getpath.html">Uri\Rfc3986\Uri::getPath</a> — Retrieve the normalized path component</li><li><a href="uri-rfc3986-uri.getport.html">Uri\Rfc3986\Uri::getPort</a> — Retrieve the normalized port component</li><li><a href="uri-rfc3986-uri.getquery.html">Uri\Rfc3986\Uri::getQuery</a> — Retrieve the normalized query component</li><li><a href="uri-rfc3986-uri.getrawfragment.html">Uri\Rfc3986\Uri::getRawFragment</a> — Retrieve the raw fragment component</li><li><a href="uri-rfc3986-uri.getrawhost.html">Uri\Rfc3986\Uri::getRawHost</a> — Retrieve the raw host component</li><li><a href="uri-rfc3986-uri.getrawpassword.html">Uri\Rfc3986\Uri::getRawPassword</a> — Retrieve the raw password</li><li><a href="uri-rfc3986-uri.getrawpath.html">Uri\Rfc3986\Uri::getRawPath</a> — Retrieve the raw path component</li><li><a href="uri-rfc3986-uri.getrawquery.html">Uri\Rfc3986\Uri::getRawQuery</a> — Retrieve the raw query component</li><li><a href="uri-rfc3986-uri.getrawscheme.html">Uri\Rfc3986\Uri::getRawScheme</a> — Retrieve the raw scheme component</li><li><a href="uri-rfc3986-uri.getrawuserinfo.html">Uri\Rfc3986\Uri::getRawUserInfo</a> — Retrieve the raw userinfo component</li><li><a href="uri-rfc3986-uri.getrawusername.html">Uri\Rfc3986\Uri::getRawUsername</a> — Retrieve the raw username</li><li><a href="uri-rfc3986-uri.getscheme.html">Uri\Rfc3986\Uri::getScheme</a> — Retrieve the normalized scheme component</li><li><a href="uri-rfc3986-uri.getuserinfo.html">Uri\Rfc3986\Uri::getUserInfo</a> — Retrieve the normalized userinfo component</li><li><a href="uri-rfc3986-uri.getusername.html">Uri\Rfc3986\Uri::getUsername</a> — Retrieve the normalized username</li><li><a href="uri-rfc3986-uri.parse.html">Uri\Rfc3986\Uri::parse</a> — Parse a URI</li><li><a href="uri-rfc3986-uri.resolve.html">Uri\Rfc3986\Uri::resolve</a> — Resolve a URI with the current object as the base URL</li><li><a href="uri-rfc3986-uri.serialize.html">Uri\Rfc3986\Uri::__serialize</a> — Serialize the Uri object</li><li><a href="uri-rfc3986-uri.torawstring.html">Uri\Rfc3986\Uri::toRawString</a> — Recompose the raw URI</li><li><a href="uri-rfc3986-uri.tostring.html">Uri\Rfc3986\Uri::toString</a> — Recompose the normalized URI</li><li><a href="uri-rfc3986-uri.unserialize.html">Uri\Rfc3986\Uri::__unserialize</a> — Deserialize the data parameter into a Uri object</li><li><a href="uri-rfc3986-uri.withfragment.html">Uri\Rfc3986\Uri::withFragment</a> — Modify the fragment component</li><li><a href="uri-rfc3986-uri.withhost.html">Uri\Rfc3986\Uri::withHost</a> — Modify the host component</li><li><a href="uri-rfc3986-uri.withpath.html">Uri\Rfc3986\Uri::withPath</a> — Modify the path component</li><li><a href="uri-rfc3986-uri.withport.html">Uri\Rfc3986\Uri::withPort</a> — Modify the port component</li><li><a href="uri-rfc3986-uri.withquery.html">Uri\Rfc3986\Uri::withQuery</a> — Modify the query component</li><li><a href="uri-rfc3986-uri.withscheme.html">Uri\Rfc3986\Uri::withScheme</a> — Modify the scheme component</li><li><a href="uri-rfc3986-uri.withuserinfo.html">Uri\Rfc3986\Uri::withUserInfo</a> — Modify the userinfo component</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,92 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Vtiful\Kernel\Excel constructor</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.vtiful-kernel-excel.html">Vtiful\Kernel\Excel</a></li>
+        <li>Vtiful\Kernel\Excel constructor</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="vtiful-kernel-excel.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Vtiful\Kernel\Excel::__construct</h1>
+  <p class="verinfo">(PECL xlswriter &gt;= 1.2.1)</p><p class="refpurpose"><span class="refname">Vtiful\Kernel\Excel::__construct</span> &mdash; <span class="dc-title">Vtiful\Kernel\Excel constructor</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-vtiful-kernel-excel.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Vtiful\Kernel\Excel::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$config</code></span>)</div>
+
+  <p class="para rdfs-comment">
+    <span class="classname"><a href="class.vtiful-kernel-excel.html" class="classname">Vtiful\Kernel\Excel</a></span> constructor, create a class object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-vtiful-kernel-excel.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">config</code></dt>
+    <dd>
+     <p class="para">
+      XLSX file export configuration
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-vtiful-kernel-excel.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-3517">
+   <p><strong>Example #1 example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$config </span><span style="color: #007700">= [
+  </span><span style="color: #DD0000">'path' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'/home/viest'
+</span><span style="color: #007700">];
+
+</span><span style="color: #0000BB">$excelObject </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Vtiful\Kernel\Excel</span><span style="color: #007700">(</span><span style="color: #0000BB">$config</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

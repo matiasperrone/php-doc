@@ -1,0 +1,110 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Checks if the image has an alpha channel</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.imagick.html">Imagick</a></li>
+        <li>Checks if the image has an alpha channel</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="imagick.getimagealphachannel" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::getImageAlphaChannel</h1>
+  <p class="verinfo">(PECL imagick 2 &gt;= 2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::getImageAlphaChannel</span> &mdash; <span class="dc-title">Checks if the image has an alpha channel</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.getimagealphachannel-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Imagick::getImageAlphaChannel</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   Returns whether the image has an alpha channel.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.getimagealphachannel-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.getimagealphachannel-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> if the image has an alpha channel value and <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> if not,
+   i.e. the image is <abbr title="Red-Green-Blue">RGB</abbr> rather than <abbr>RGBA</abbr>
+   or <abbr>CMYK</abbr> rather than <abbr>CMYKA</abbr>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-imagick.getimagealphachannel-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws ImagickException on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-imagick.getimagealphachannel-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>PECL imagick 3.6.0</td>
+      <td>
+       Returns a <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> now; previously, an <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> was returned.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,376 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Operator Overloading Magic Methods</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.operator.html">Operator Overloading</a></li>
+        <li>Operator Overloading Magic Methods</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="operator.overloading" class="chapter">
+ <h1 class="title">Operator Overloading Magic Methods</h1>
+
+ <p class="simpara">
+  The operator overloading extension allows you to define how an object reacts to operators. This is done by implementing the following magic methods:
+ </p>
+ <p class="para">
+  Arithmetic operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__add($b)</code></li>
+   <li><code class="literal">$a::__sub($b)</code></li>
+   <li><code class="literal">$a::__mul($b)</code></li>
+   <li><code class="literal">$a::__div($b)</code></li>
+   <li><code class="literal">$a::__mod($b)</code></li>
+   <li><code class="literal">$a::__pow($b)</code></li>
+  </ul>
+ </p>
+ <p class="para">
+  Assignment operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__assign($b)</code></li>
+   <li><code class="literal">$a::__assign_add($b)</code></li>
+   <li><code class="literal">$a::__assign_sub($b)</code></li>
+   <li><code class="literal">$a::__assign_mul($b)</code></li>
+   <li><code class="literal">$a::__assign_div($b)</code></li>
+   <li><code class="literal">$a::__assign_mod($b)</code></li>
+   <li><code class="literal">$a::__assign_pow($b)</code></li>
+   <li><code class="literal">$a::__assign_bw_and($b)</code></li>
+   <li><code class="literal">$a::__assign_bw_or($b)</code></li>
+   <li><code class="literal">$a::__assign_bw_xor($b)</code></li>
+   <li><code class="literal">$a::__assign_sl($b)</code></li>
+   <li><code class="literal">$a::__assign_sr($b)</code></li>
+   <li><code class="literal">$a::__assign_concat($b)</code></li>
+  </ul>
+ </p>
+ <p class="para">
+  Bitwise operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__bw_and($b)</code></li>
+   <li><code class="literal">$a::__bw_or($b)</code></li>
+   <li><code class="literal">$a::__bw_xor($b)</code></li>
+   <li><code class="literal">$a::__bw_not()</code></li>
+   <li><code class="literal">$a::__sl($b)</code></li>
+   <li><code class="literal">$a::__sr($b)</code></li>
+  </ul>
+ </p>
+ <p class="para">
+  Comparison operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__is_equal($b)</code></li>
+   <li><code class="literal">$a::__is_not_equal($b)</code></li>
+   <li><code class="literal">$a::__is_identical($b)</code></li>
+   <li><code class="literal">$a::__is_not_identical($b)</code></li>
+   <li><code class="literal">$a::__is_smaller($b)</code></li>
+   <li><code class="literal">$a::__is_smaller_or_equal($b)</code></li>
+   <li><code class="literal">$a::__is_greater($b)</code></li>
+   <li><code class="literal">$a::__is_greater_or_equal($b)</code></li>
+   <li><code class="literal">$a::__spaceship($b)</code></li>
+  </ul>
+ </p>
+ <p class="para">
+  Incrementing and decrementing operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__pre_inc()</code></li>
+   <li><code class="literal">$a::__post_inc()</code></li>
+   <li><code class="literal">$a::__pre_dec()</code></li>
+   <li><code class="literal">$a::__post_dec()</code></li>
+  </ul>
+ </p>
+ <p class="para">
+  String operators:
+  <ul class="simplelist">
+   <li><code class="literal">$a::__concat($b)</code></li>
+  </ul>
+ </p>
+ <div class="section">
+  <h2 class="title">Operator Overloading Examples</h2>
+  <p class="simpara">
+   The following is the class that is used in the testing of the operator overloading extension.
+   It overloads all of the possible operators that can be overloaded for testing.
+  </p>
+  <div class="example" id="operator.overloading.complete-class">
+   <p><strong>Example #1 Complete class for operator overloading</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">OperatorOverloading </span><span style="color: #007700">{
+    protected </span><span style="color: #0000BB">mixed $value</span><span style="color: #007700">;
+
+    </span><span style="color: #FF8000">//region Standard magic methods
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__get</span><span style="color: #007700">(</span><span style="color: #0000BB">string $name</span><span style="color: #007700">)
+    {
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__set</span><span style="color: #007700">(</span><span style="color: #0000BB">string $name</span><span style="color: #007700">, </span><span style="color: #0000BB">mixed $value</span><span style="color: #007700">)
+    {
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">= </span><span style="color: #0000BB">$value</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $init </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">)
+    {
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">= </span><span style="color: #0000BB">$init</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region Arithmetic Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__add</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">float
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">+ </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__div</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">float
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">/ </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__mod</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">% </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__mul</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">float
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">* </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__pow</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">float
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">** </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__sub</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">float
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">- </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region Assignment Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__assign</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_add</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">+= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_bw_and</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&amp;= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_bw_or</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">|= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_concat</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">string
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">.= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_div</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">/= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_mod</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">%= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_mul</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">*= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_pow</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">**= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_sl</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&lt;&lt;= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_sr</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&gt;&gt;= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__assign_sub</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">-= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region Bitwise Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__bw_and</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&amp; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__bw_not</span><span style="color: #007700">(): </span><span style="color: #0000BB">int</span><span style="color: #007700">|</span><span style="color: #0000BB">string
+    </span><span style="color: #007700">{
+        return ~</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__bw_or</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">| </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__bw_xor</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">^ </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__sl</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&lt;&lt; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__sr</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&gt;&gt; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region Comparison Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__is_equal</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">== </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_greater</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&gt; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_greater_or_equal</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&gt;= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_identical</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">=== </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_not_equal</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">!= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_not_identical</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">!== </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_smaller</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__is_smaller_or_equal</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&lt;= </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__spaceship</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">int
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">&lt;=&gt; </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region Incrementing/Decrementing Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__post_dec</span><span style="color: #007700">(): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">--;
+    }
+
+    public function </span><span style="color: #0000BB">__post_inc</span><span style="color: #007700">(): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">++;
+    }
+
+    public function </span><span style="color: #0000BB">__pre_dec</span><span style="color: #007700">(): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return --</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">__pre_inc</span><span style="color: #007700">(): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return ++</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+    //region String Operators
+    </span><span style="color: #007700">public function </span><span style="color: #0000BB">__concat</span><span style="color: #007700">(</span><span style="color: #0000BB">mixed $val</span><span style="color: #007700">): </span><span style="color: #0000BB">string
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value </span><span style="color: #007700">. </span><span style="color: #0000BB">$val</span><span style="color: #007700">;
+    }
+    </span><span style="color: #FF8000">//endregion
+
+</span><span style="color: #007700">}</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>
+    Using the above class, you can overload the operators as follows:
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= new </span><span style="color: #0000BB">OperatorOverloading</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">+ </span><span style="color: #0000BB">10</span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a </span><span style="color: #007700">- </span><span style="color: #0000BB">10</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$b </span><span style="color: #007700">= new </span><span style="color: #0000BB">OperatorOverloading</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$b </span><span style="color: #007700">. </span><span style="color: #DD0000">" World"</span><span style="color: #007700">);</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>
+    The above code will output:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(15)
+int(-5)
+string(11) &quot;Hello World&quot;
+</pre></div>
+   </div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

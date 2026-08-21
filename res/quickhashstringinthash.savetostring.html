@@ -1,0 +1,94 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>This method returns a serialized version of the hash</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.quickhashstringinthash.html">QuickHashStringIntHash</a></li>
+        <li>This method returns a serialized version of the hash</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="quickhashstringinthash.savetostring" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">QuickHashStringIntHash::saveToString</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">QuickHashStringIntHash::saveToString</span> &mdash; <span class="dc-title">This method returns a serialized version of the hash</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-quickhashstringinthash.savetostring-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>QuickHashStringIntHash::saveToString</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">
+   This method returns a serialized version of the hash in the same format that
+   <span class="methodname"><a href="quickhashstringinthash.loadfromstring.html" class="methodname">QuickHashStringIntHash::loadFromString()</a></span> can read.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-quickhashstringinthash.savetostring-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-quickhashstringinthash.savetostring-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   This method returns a serialized format of an existing hash, in the same format
+   that <span class="methodname"><a href="quickhashstringinthash.loadfromstring.html" class="methodname">QuickHashStringIntHash::loadFromString()</a></span> can read.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-quickhashstringinthash.savetostring-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5545">
+   <p><strong>Example #1 <span class="function"><strong>QuickHashStringIntHash::saveToString()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$hash </span><span style="color: #007700">= new </span><span style="color: #0000BB">QuickHashStringIntHash</span><span style="color: #007700">( </span><span style="color: #0000BB">1024 </span><span style="color: #007700">);
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">( </span><span style="color: #DD0000">"forty three"</span><span style="color: #007700">, </span><span style="color: #0000BB">42 </span><span style="color: #007700">) );
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">( </span><span style="color: #DD0000">"fifty two"</span><span style="color: #007700">, </span><span style="color: #0000BB">52 </span><span style="color: #007700">) );
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">( </span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveToString</span><span style="color: #007700">() );
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+
+</div></div></div></body></html>

@@ -1,0 +1,162 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>New functions</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="migration71.html">Migrating from PHP 7.0.x to PHP 7.1.x</a></li>
+        <li>New functions</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="migration71.new-functions" class="sect1">
+ <h2 class="title">New functions</h2>
+
+ <div class="sect2" id="migration71.new-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.sapi-windows-cp-get.html" class="function">sapi_windows_cp_get()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.sapi-windows-cp-set.html" class="function">sapi_windows_cp_set()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.sapi-windows-cp-conv.html" class="function">sapi_windows_cp_conv()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.sapi-windows-cp-is-utf8.html" class="function">sapi_windows_cp_is_utf8()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.closure">
+  <h3 class="title"><a href="class.closure.html" class="link">Closure</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="methodname"><a href="closure.fromcallable.html" class="methodname">Closure::fromCallable()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.curl">
+  <h3 class="title"><a href="book.curl.html" class="link">CURL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.curl-multi-errno.html" class="function">curl_multi_errno()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.curl-share-errno.html" class="function">curl_share_errno()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.curl-share-strerror.html" class="function">curl_share_strerror()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.openssl">
+  <h3 class="title"><a href="book.openssl.html" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.openssl-get-curve-names.html" class="function">openssl_get_curve_names()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.session">
+  <h3 class="title"><a href="book.session.html" class="link">Session</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.session-create-id.html" class="function">session_create_id()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.session-gc.html" class="function">session_gc()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.spl">
+  <h3 class="title"><a href="book.spl.html" class="link">SPL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.is-iterable.html" class="function">is_iterable()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.new-functions.pcntl">
+  <h3 class="title"><a href="book.pcntl.html" class="link">PCNTL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.pcntl-async-signals.html" class="function">pcntl_async_signals()</a></span>
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     <span class="function"><a href="function.pcntl-signal-get-handler.html" class="function">pcntl_signal_get_handler()</a></span>
+    </p>
+   </li>
+  </ul>
+ </div>
+</div></div></div></body></html>

@@ -1,0 +1,79 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>For Each</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="com.examples.html">Examples</a></li>
+        <li>For Each</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="com.examples.foreach" class="section">
+  <h2 class="title">For Each</h2>
+  <p class="para">
+   You may use PHP&#039;s own 
+   <a href="control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> statement to iterate
+   over the contents of a standard COM/OLE IEnumVariant.  In layman&#039;s terms,
+   this means that you can use foreach in places where you would have used
+   <code class="literal">For Each</code> in VB/ASP code.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5835">
+    <p><strong>Example #1 For Each in ASP</strong></p>
+    <div class="example-contents">
+<div class="aspcode"><pre class="aspcode">&lt;%
+Set domainObject = GetObject(&quot;WinNT://Domain&quot;)
+For Each obj in domainObject
+  Response.Write obj.Name &amp; &quot;&lt;br /&gt;&quot;
+Next
+%&gt;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5836">
+    <p><strong>Example #2 foreach in PHP</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php 
+$domainObject </span><span style="color: #007700">= new </span><span style="color: #0000BB">COM</span><span style="color: #007700">(</span><span style="color: #DD0000">"WinNT://Domain"</span><span style="color: #007700">); 
+foreach (</span><span style="color: #0000BB">$domainObject </span><span style="color: #007700">as </span><span style="color: #0000BB">$obj</span><span style="color: #007700">) { 
+   echo </span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Name </span><span style="color: #007700">. </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">; 
+} 
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

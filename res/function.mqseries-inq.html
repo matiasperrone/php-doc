@@ -1,0 +1,192 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>MQSeries MQINQ</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.mqseries.html">mqseries Functions</a></li>
+        <li>MQSeries MQINQ</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.mqseries-inq" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mqseries_inq</h1>
+  <p class="verinfo">(PECL mqseries &gt;= 0.10.0)</p><p class="refpurpose"><span class="refname">mqseries_inq</span> &mdash; <span class="dc-title">MQSeries MQINQ</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mqseries-inq-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>mqseries_inq</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$hconn</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$hobj</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$selectorCount</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$selectors</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$intAttrCount</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter reference">&$intAttr</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$charAttrLength</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter reference">&$charAttr</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter reference">&$compCode</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter reference">&$reason</code></span><br>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="simpara">
+   The
+   <span class="function"><strong>mqseries_inq()</strong></span>
+   (MQINQ) call returns an array of integers and a set of character strings
+   containing the attributes of an object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mqseries-inq-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt>
+     <code class="parameter">hConn</code>
+    </dt>
+    <dd>
+     <p class="simpara">Connection handle.</p>
+     <p class="simpara">This handle represents the connection to the queue manager.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">hObj</code>
+    </dt>
+    <dd>
+     <p class="simpara">Object handle.</p>
+     <p class="simpara">This handle represents the object to be used.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">selectorCount</code>
+    </dt>
+    <dd>
+     <p class="simpara">Count of selectors.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">selectors</code>
+    </dt>
+    <dd>
+     <p class="simpara">Array of attribute selectors.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">intAttrLength</code>
+    </dt>
+    <dd>
+     <p class="simpara">Count of integer attributes.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">intAttr</code>
+    </dt>
+    <dd>
+     <p class="simpara">Array of integer attributes.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">charAttrLength</code>
+    </dt>
+    <dd>
+     <p class="simpara">Length of character attributes buffer.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">charAttr</code>
+    </dt>
+    <dd>
+     <p class="simpara">Character attributes.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">compCode</code>
+    </dt>
+    <dd>
+     <p class="simpara">Completion code.</p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">reason</code>
+    </dt>
+    <dd>
+     <p class="simpara">Reason code qualifying the compCode.</p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mqseries-inq-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">No value is returned.</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mqseries-inq-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4806">
+   <p><strong>Example #1 
+    <span class="function"><strong>mqseries_inq()</strong></span>
+    example
+   </strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+    $int_attr </span><span style="color: #007700">= array();
+    </span><span style="color: #0000BB">$char_attr </span><span style="color: #007700">= </span><span style="color: #DD0000">""</span><span style="color: #007700">;
+
+    </span><span style="color: #0000BB">mqseries_inq</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$obj</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, array(</span><span style="color: #0000BB">MQSERIES_MQCA_Q_MGR_NAME</span><span style="color: #007700">), </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">$int_attr</span><span style="color: #007700">, </span><span style="color: #0000BB">48</span><span style="color: #007700">, </span><span style="color: #0000BB">$char_attr</span><span style="color: #007700">, </span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">, </span><span style="color: #0000BB">$reason</span><span style="color: #007700">);
+
+    if (</span><span style="color: #0000BB">$comp_code </span><span style="color: #007700">!== </span><span style="color: #0000BB">MQSERIES_MQCC_OK</span><span style="color: #007700">) {
+        </span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"INQ CompCode:%d Reason:%d Text:%s&lt;br&gt;\n"</span><span style="color: #007700">, </span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">, </span><span style="color: #0000BB">$reason</span><span style="color: #007700">, </span><span style="color: #0000BB">mqseries_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">$reason</span><span style="color: #007700">));
+    } else {
+        echo </span><span style="color: #DD0000">"INQ QManager name result "</span><span style="color: #007700">.</span><span style="color: #0000BB">$char_attr</span><span style="color: #007700">.</span><span style="color: #DD0000">"&lt;br&gt;\n"</span><span style="color: #007700">;
+    }
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mqseries-inq-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.mqseries-conn.html" class="function" rel="rdfs-seeAlso">mqseries_conn()</a> - MQSeries MQCONN</span></li>
+   <li><span class="function"><a href="function.mqseries-connx.html" class="function" rel="rdfs-seeAlso">mqseries_connx()</a> - MQSeries MQCONNX</span></li>
+   <li><span class="function"><a href="function.mqseries-open.html" class="function" rel="rdfs-seeAlso">mqseries_open()</a> - MQSeries MQOPEN</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

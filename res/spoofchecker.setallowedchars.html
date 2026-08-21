@@ -1,0 +1,140 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Set the set of characters allowed when running checks</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.spoofchecker.html">Spoofchecker</a></li>
+        <li>Set the set of characters allowed when running checks</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="spoofchecker.setallowedchars" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Spoofchecker::setAllowedChars</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.4.0)</p><p class="refpurpose"><span class="refname">Spoofchecker::setAllowedChars</span> &mdash; <span class="dc-title">Set the set of characters allowed when running checks</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-spoofchecker.setallowedchars-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Spoofchecker::setAllowedChars</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$pattern</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$patternOptions</code><span class="initializer"> = 0</span></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+  <p class="simpara">
+   Restricts the characters that are considered acceptable by subsequent checks to the
+   set described by <code class="parameter">pattern</code>. Any character outside of this set
+   causes <span class="methodname"><a href="spoofchecker.issuspicious.html" class="methodname">Spoofchecker::isSuspicious()</a></span> to report a result.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-spoofchecker.setallowedchars-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">pattern</code></dt>
+    <dd>
+     <p class="simpara">
+      A character set described as a <code class="literal">UnicodeSet</code> pattern, that is a
+      regular-expression style character class. It must begin with <code class="literal">[</code>
+      and end with <code class="literal">]</code>, for example <code class="literal">[a-z0-9]</code>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">patternOptions</code></dt>
+    <dd>
+     <p class="simpara">
+      A bitmask controlling how <code class="parameter">pattern</code> is interpreted. It must be
+      <code class="literal">0</code>, or <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.ignore-space">Spoofchecker::IGNORE_SPACE</a></code></strong> on its own
+      or combined with exactly one of <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.case-insensitive">Spoofchecker::CASE_INSENSITIVE</a></code></strong>,
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.add-case-mappings">Spoofchecker::ADD_CASE_MAPPINGS</a></code></strong>, or
+      <strong><code><a href="class.spoofchecker.html#spoofchecker.constants.simple-case-insensitive">Spoofchecker::SIMPLE_CASE_INSENSITIVE</a></code></strong>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-spoofchecker.setallowedchars-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-spoofchecker.setallowedchars-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="simpara">
+   Throws a <span class="exceptionname"><a href="class.valueerror.html" class="exceptionname">ValueError</a></span> if <code class="parameter">pattern</code> is
+   not a valid character set pattern, or if <code class="parameter">patternOptions</code> is not
+   a valid combination of options.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-spoofchecker.setallowedchars-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2710">
+   <p><strong>Example #1 <span class="methodname"><strong>Spoofchecker::setAllowedChars()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$checker </span><span style="color: #007700">= new </span><span style="color: #0000BB">Spoofchecker</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$checker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAllowedChars</span><span style="color: #007700">(</span><span style="color: #DD0000">'[a-z0-9]'</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$checker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isSuspicious</span><span style="color: #007700">(</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">));
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$checker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isSuspicious</span><span style="color: #007700">(</span><span style="color: #DD0000">'héllo'</span><span style="color: #007700">));
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">bool(false)
+bool(true)</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-spoofchecker.setallowedchars-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="spoofchecker.setallowedlocales.html" class="methodname" rel="rdfs-seeAlso">Spoofchecker::setAllowedLocales()</a> - Locales to use when running checks</span></li>
+   <li><span class="methodname"><a href="spoofchecker.issuspicious.html" class="methodname" rel="rdfs-seeAlso">Spoofchecker::isSuspicious()</a> - Checks if a given text contains any suspicious characters</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

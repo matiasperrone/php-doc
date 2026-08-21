@@ -1,0 +1,87 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>High resolution timing</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+        <li>High resolution timing</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.hrtime" class="book">
+ 
+ <h1 class="title">High resolution timing</h1>
+ 
+
+ <div id="intro.hrtime" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+The HRTime extension implements a high resolution StopWatch class. It uses the
+best possible APIs on different platforms which brings resolution up to nanoseconds. It also makes possible to implement
+a custom stopwatch using low level ticks delivered by the underlying APIs.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    As of PHP 7.3.0 the related function <span class="function"><a href="function.hrtime.html" class="function">hrtime()</a></span> is part of
+    the core.
+   </p>
+  </p></blockquote>
+ </div>
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="hrtime.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="hrtime.installation.html">Installation</a></li></ul></li><li><a href="hrtime.examples.html">Examples</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="hrtime.example.basic.html">Basic usage</a></li></ul></li><li><a href="class.hrtime-performancecounter.html">HRTime\PerformanceCounter</a> — The HRTime\PerformanceCounter class<ul class="chunklist chunklist_book chunklist_children"><li><a href="hrtime-performancecounter.getfrequency.html">HRTime\PerformanceCounter::getFrequency</a> — Timer frequency in ticks per second</li><li><a href="hrtime-performancecounter.getticks.html">HRTime\PerformanceCounter::getTicks</a> — Current ticks from the system</li><li><a href="hrtime-performancecounter.gettickssince.html">HRTime\PerformanceCounter::getTicksSince</a> — Ticks elapsed since the given value</li></ul></li><li><a href="class.hrtime-stopwatch.html">HRTime\StopWatch</a> — The HRTime\StopWatch class<ul class="chunklist chunklist_book chunklist_children"><li><a href="hrtime-stopwatch.getelapsedticks.html">HRTime\StopWatch::getElapsedTicks</a> — Get elapsed ticks for all intervals</li><li><a href="hrtime-stopwatch.getelapsedtime.html">HRTime\StopWatch::getElapsedTime</a> — Get elapsed time for all intervals</li><li><a href="hrtime-stopwatch.getlastelapsedticks.html">HRTime\StopWatch::getLastElapsedTicks</a> — Get elapsed ticks for the last interval</li><li><a href="hrtime-stopwatch.getlastelapsedtime.html">HRTime\StopWatch::getLastElapsedTime</a> — Get elapsed time for the last interval</li><li><a href="hrtime-stopwatch.isrunning.html">HRTime\StopWatch::isRunning</a> — Whether the measurement is running</li><li><a href="hrtime-stopwatch.start.html">HRTime\StopWatch::start</a> — Start time measurement</li><li><a href="hrtime-stopwatch.stop.html">HRTime\StopWatch::stop</a> — Stop time measurement</li></ul></li><li><a href="class.hrtime-unit.html">HRTime\Unit</a> — The HRTime\Unit class</li></ul></div></div></div></body></html>

@@ -1,0 +1,76 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.enchant.html">Enchant</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="enchant.examples" class="appendix">
+ <h1 class="title">Examples</h1>
+
+ <div class="example" id="example-2481">
+  <p><strong>Example #1 Enchant Usage Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$tag </span><span style="color: #007700">= </span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$r </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_init</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$bprovides </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_describe</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">);
+echo </span><span style="color: #DD0000">"Current broker provides the following backend(s):\n"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$bprovides</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$dicts </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_list_dicts</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">);
+</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$dicts</span><span style="color: #007700">);
+if (</span><span style="color: #0000BB">enchant_broker_dict_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">,</span><span style="color: #0000BB">$tag</span><span style="color: #007700">)) {
+    </span><span style="color: #0000BB">$d </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_broker_request_dict</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">, </span><span style="color: #0000BB">$tag</span><span style="color: #007700">);
+    </span><span style="color: #0000BB">$dprovides </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_dict_describe</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);
+    echo </span><span style="color: #DD0000">"dictionary </span><span style="color: #0000BB">$tag</span><span style="color: #DD0000"> provides:\n"</span><span style="color: #007700">;
+    </span><span style="color: #0000BB">$wordcorrect </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_dict_check</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">, </span><span style="color: #DD0000">"soong"</span><span style="color: #007700">);
+    </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$dprovides</span><span style="color: #007700">);
+    if (!</span><span style="color: #0000BB">$wordcorrect</span><span style="color: #007700">) {
+        </span><span style="color: #0000BB">$suggs </span><span style="color: #007700">= </span><span style="color: #0000BB">enchant_dict_suggest</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">, </span><span style="color: #DD0000">"soong"</span><span style="color: #007700">);
+        echo </span><span style="color: #DD0000">"Suggestions for 'soong':"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$suggs</span><span style="color: #007700">);
+    }
+    </span><span style="color: #0000BB">enchant_broker_free_dict</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);
+} else {
+}
+</span><span style="color: #0000BB">enchant_broker_free</span><span style="color: #007700">(</span><span style="color: #0000BB">$r</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+ </div>
+</div>
+</div></div></body></html>

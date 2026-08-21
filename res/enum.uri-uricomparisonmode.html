@@ -1,0 +1,82 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Uri\UriComparisonMode enum</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.uri.html">URI</a></li>
+        <li>The Uri\UriComparisonMode enum</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="enum.uri-uricomparisonmode" class="reference">
+ <h1 class="title">The Uri\UriComparisonMode enum</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+  <div class="section" id="enum.uri-uricomparisonmode.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    Specifies if the <code class="literal">fragment</code> component should affect
+    the result of a URI comparison.
+   </p>
+   <p class="simpara">
+    If the fragment is excluded from the comparison, two URIs will be
+    compared as if neither of them has a <code class="literal">fragment</code>
+    component.
+   </p>
+  </div>
+
+  <div class="section" id="enum.uri-uricomparisonmode.synopsis">
+   <h2 class="title">Enum synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">Uri</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">enum</span> <strong class="classname"><strong class="enumname">UriComparisonMode</strong></strong><br/>{</div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">IncludeFragment</span>
+      ; //The <code class="literal">fragment</code> component is included in the comparison.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">ExcludeFragment</span>
+      ; //The <code class="literal">fragment</code> component is excluded from the comparison.<br><br>
+     </div>
+    }
+   </div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

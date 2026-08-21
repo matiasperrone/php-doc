@@ -1,0 +1,169 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>New Functions</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="migration85.html">Migrating from PHP 8.4.x to PHP 8.5.x</a></li>
+        <li>New Functions</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="migration85.new-functions" class="sect1">
+ <h2 class="title">New Functions</h2>
+
+ <div class="sect2" id="migration85.new-functions.core">
+  <h3 class="title">Core</h3>
+
+  <ul class="simplelist">
+   
+   
+   <li><span class="function"><a href="function.get-error-handler.html" class="function">get_error_handler()</a></span></li>
+   <li><span class="function"><a href="function.get-exception-handler.html" class="function">get_exception_handler()</a></span></li>
+   <li>
+    <span class="methodname"><a href="closure.getcurrent.html" class="methodname">Closure::getCurrent()</a></span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.curl">
+  <h3 class="title">Curl</h3>
+
+  <ul class="simplelist">
+   
+   <li><span class="function"><strong>curl_multi_get_handles()</strong></span></li>
+   <li><span class="function"><a href="function.curl-share-init-persistent.html" class="function">curl_share_init_persistent()</a></span></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.dom">
+  <h3 class="title">DOM</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><strong>Dom\Element::getElementsByClassName()</strong></span>
+   </li>
+   <li>
+    <span class="methodname"><strong>Dom\Element::insertAdjacentHTML()</strong></span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.enchant">
+  <h3 class="title">Enchant</h3>
+  <ul class="simplelist">
+   <li><span class="function"><strong>enchant_dict_remove_from_session()</strong></span></li>
+   <li><span class="function"><strong>enchant_dict_remove()</strong></span></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.intl">
+  <h3 class="title">Intl</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><a href="locale.isrighttoleft.html" class="methodname">Locale::isRightToLeft()</a></span>
+   </li>
+   <li><span class="function"><a href="locale.isrighttoleft.html" class="function">locale_is_right_to_left()</a></span></li>
+   
+   <li><span class="function"><strong>grapheme_levenshtein()</strong></span></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.opcache">
+  <h3 class="title">Opcache</h3>
+
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.opcache-is-script-cached-in-file-cache.html" class="function">opcache_is_script_cached_in_file_cache()</a></span></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.pdo-sqlite">
+  <h3 class="title">PDO_SQLITE</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><strong>Pdo\Sqlite::setAuthorizer()</strong></span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.pgsql">
+  <h3 class="title">PGSQL</h3>
+
+  <ul class="simplelist">
+   <li><span class="function"><strong>pg_close_stmt()</strong></span></li>
+   <li><span class="function"><strong>pg_service()</strong></span></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.reflection">
+  <h3 class="title">Reflection</h3>
+
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><a href="reflectionconstant.getfilename.html" class="methodname">ReflectionConstant::getFileName()</a></span>
+   </li>
+   <li>
+    <span class="methodname"><a href="reflectionconstant.getextension.html" class="methodname">ReflectionConstant::getExtension()</a></span>
+   </li>
+   <li>
+    <span class="methodname"><a href="reflectionconstant.getextensionname.html" class="methodname">ReflectionConstant::getExtensionName()</a></span>
+   </li>
+   
+   <li>
+    <span class="methodname"><a href="reflectionconstant.getattributes.html" class="methodname">ReflectionConstant::getAttributes()</a></span>
+   </li>
+   <li>
+    <span class="methodname"><a href="reflectionproperty.getmangledname.html" class="methodname">ReflectionProperty::getMangledName()</a></span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.sqlite">
+  <h3 class="title">Sqlite</h3>
+
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><strong>Sqlite3Stmt::busy()</strong></span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.new-functions.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="simplelist">
+   
+   <li><span class="function"><a href="function.array-first.html" class="function">array_first()</a></span></li>
+   <li><span class="function"><a href="function.array-last.html" class="function">array_last()</a></span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

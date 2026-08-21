@@ -1,0 +1,205 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The IntlListFormatter class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.intl.html">intl</a></li>
+        <li>The IntlListFormatter class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.intllistformatter" class="reference">
+ <h1 class="title">The IntlListFormatter class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(No version information available, might only be in Git)</p>
+
+  
+  <div class="section" id="intllistformatter.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    Formats, orders, and punctuates a list of items according to locale-specific rules.
+    Requires ICU 67 or later.
+   </p>
+  </div>
+  
+
+  <div class="section" id="intllistformatter.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">IntlListFormatter</strong></strong>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.type-and"><var class="varname">TYPE_AND</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.type-or"><var class="varname">TYPE_OR</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.type-units"><var class="varname">TYPE_UNITS</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.width-wide"><var class="varname">WIDTH_WIDE</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.width-short"><var class="varname">WIDTH_SHORT</var></a></var>;</div>
+
+    <div class="fieldsynopsis"><span class="modifier">public</span>
+     <span class="modifier">const</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="fieldsynopsis_varname"><a href="class.intllistformatter.html#intllistformatter.constants.width-narrow"><var class="varname">WIDTH_NARROW</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="intllistformatter.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$locale</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$type</code><span class="initializer"> = <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-and">IntlListFormatter::TYPE_AND</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code><span class="initializer"> = <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-wide">IntlListFormatter::WIDTH_WIDE</a></code></strong></span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="intllistformatter.format.html" class="methodname">format</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$list</code></span>): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.singleton.html" class="type false">false</a></span></span></div>
+
+   }</div>
+   
+
+  </div>
+
+  <div class="section" id="intllistformatter.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+    
+     <dt id="intllistformatter.constants.type-and"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-and">IntlListFormatter::TYPE_AND</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Formats a list using conjunction (e.g. &quot;A, B, and C&quot;).
+      </p>
+     </dd>
+    
+    
+     <dt id="intllistformatter.constants.type-or"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-or">IntlListFormatter::TYPE_OR</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Formats a list using disjunction (e.g. &quot;A, B, or C&quot;).
+      </p>
+     </dd>
+    
+    
+     <dt id="intllistformatter.constants.type-units"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-units">IntlListFormatter::TYPE_UNITS</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Formats a list of units (e.g. &quot;3 ft, 7 in&quot;).
+      </p>
+     </dd>
+    
+    
+     <dt id="intllistformatter.constants.width-wide"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-wide">IntlListFormatter::WIDTH_WIDE</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Uses the widest (most verbose) list format, typically with conjunctions spelled out in full.
+      </p>
+     </dd>
+    
+    
+     <dt id="intllistformatter.constants.width-short"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-short">IntlListFormatter::WIDTH_SHORT</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Uses a short list format, typically using abbreviations.
+      </p>
+     </dd>
+    
+    
+     <dt id="intllistformatter.constants.width-narrow"><strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-narrow">IntlListFormatter::WIDTH_NARROW</a></code></strong></dt>
+     <dd>
+      <p class="simpara">
+       Uses the narrowest list format, with minimal punctuation.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+
+  <div class="section" id="intllistformatter.changelog">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.5.0</td>
+       <td>
+        The class was added.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="intllistformatter.construct.html">IntlListFormatter::__construct</a> — Creates a new IntlListFormatter instance</li><li><a href="intllistformatter.format.html">IntlListFormatter::format</a> — Format a list of items</li></ul>
+</div>
+</div></div></body></html>

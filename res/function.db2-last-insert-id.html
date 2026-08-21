@@ -1,0 +1,164 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Returns the auto generated ID of the last insert query that successfully
+  executed on this connection</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.ibm-db2.html">IBM DB2 Functions</a></li>
+        <li>Returns the auto generated ID of the last insert query that successfully
+  executed on this connection</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.db2-last-insert-id" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_last_insert_id</h1>
+  <p class="verinfo">(PECL ibm_db2 &gt;= 1.7.1)</p><p class="refpurpose"><span class="refname">db2_last_insert_id</span> &mdash; <span class="dc-title">Returns the auto generated ID of the last insert query that successfully
+  executed on this connection</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.db2-last-insert-id-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>db2_last_insert_id</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$resource</code></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+
+  <p class="simpara">
+   Returns the auto generated ID of the last insert query that successfully
+  executed on this connection.
+  </p>
+  <p class="para">
+   The result of this function is not affected by any of the following:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="simpara">
+      A single row INSERT statement with a VALUES clause for a table without an identity column.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="simpara">
+      A multiple row INSERT statement with a VALUES clause.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="simpara">
+      An INSERT statement with a fullselect.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="simpara">
+      A ROLLBACK TO SAVEPOINT statement.
+     </p>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-last-insert-id-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">resource</code></dt>
+    <dd>
+     <p class="simpara">
+      A valid connection resource as returned from <span class="function"><a href="function.db2-connect.html" class="function">db2_connect()</a></span>
+      or <span class="function"><a href="function.db2-pconnect.html" class="function">db2_pconnect()</a></span>. The value of this parameter cannot be a
+      statement resource or result set resource.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-last-insert-id-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the auto generated ID of last insert query that successfully
+  executed on this connection.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.db2-last-insert-id-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="db2-last-insert-id.example.basic">
+   <p><strong>Example #1 A <span class="function"><strong>db2_last_insert_id()</strong></span> example</strong></p>
+   <div class="example-contents"><p>
+     The following example shows how to return the
+     auto generated ID of last insert query that successfully
+     executed on this connection.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$database </span><span style="color: #007700">= </span><span style="color: #DD0000">"SAMPLE"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$user </span><span style="color: #007700">= </span><span style="color: #DD0000">"db2inst1"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$password </span><span style="color: #007700">= </span><span style="color: #DD0000">"ibmdb2"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$conn </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$database</span><span style="color: #007700">, </span><span style="color: #0000BB">$user</span><span style="color: #007700">, </span><span style="color: #0000BB">$password</span><span style="color: #007700">);
+if(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">$createTable </span><span style="color: #007700">= </span><span style="color: #DD0000">"CREATE TABLE lastInsertID
+      (id integer GENERATED BY DEFAULT AS IDENTITY, name varchar(20))"</span><span style="color: #007700">;
+    </span><span style="color: #0000BB">$insertTable </span><span style="color: #007700">= </span><span style="color: #DD0000">"INSERT INTO lastInsertID (name) VALUES ('Temp Name')"</span><span style="color: #007700">;
+
+    </span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= @</span><span style="color: #0000BB">db2_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$createTable</span><span style="color: #007700">);
+
+    </span><span style="color: #FF8000">/* Checking for single row inserted. */
+    </span><span style="color: #0000BB">$stmt </span><span style="color: #007700">= </span><span style="color: #0000BB">db2_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">, </span><span style="color: #0000BB">$insertTable</span><span style="color: #007700">);
+    </span><span style="color: #0000BB">$ret </span><span style="color: #007700">=  </span><span style="color: #0000BB">db2_last_insert_id</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);
+    if(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">) {
+        echo </span><span style="color: #DD0000">"Last Insert ID is : " </span><span style="color: #007700">. </span><span style="color: #0000BB">$ret </span><span style="color: #007700">. </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+    } else {
+        echo </span><span style="color: #DD0000">"No Last insert ID.\n"</span><span style="color: #007700">;
+    }
+
+    </span><span style="color: #0000BB">db2_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);
+}
+else {
+    echo </span><span style="color: #DD0000">"Connection failed."</span><span style="color: #007700">;
+}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">Last Insert ID is : 1</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

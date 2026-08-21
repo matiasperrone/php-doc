@@ -1,0 +1,207 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>New Global Constants</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="migration81.html">Migrating from PHP 8.0.x to PHP 8.1.x</a></li>
+        <li>New Global Constants</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="migration81.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration81.constants.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-doh-url">CURLOPT_DOH_URL</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-issuercert-blob">CURLOPT_ISSUERCERT_BLOB</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-proxy-issuercert">CURLOPT_PROXY_ISSUERCERT</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-proxy-issuercert-blob">CURLOPT_PROXY_ISSUERCERT_BLOB</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-proxy-sslcert-blob">CURLOPT_PROXY_SSLCERT_BLOB</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-proxy-sslkey-blob">CURLOPT_PROXY_SSLKEY_BLOB</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-sslcert-blob">CURLOPT_SSLCERT_BLOB</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="curl.constants.html#constant.curlopt-sslkey-blob">CURLOPT_SSLKEY_BLOB</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.gd">
+  <h3 class="title">GD</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="image.constants.html#constant.img-avif">IMG_AVIF</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="image.constants.html#constant.img-webp-lossless">IMG_WEBP_LOSSLESS</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.mysqli">
+  <h3 class="title">MySQLi</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="mysqli.constants.html#constant.mysqli-refresh-replica">MYSQLI_REFRESH_REPLICA</a></code></strong></p>
+    <p class="para">
+     This constant has been added as a replacement for
+     <strong><code><a href="mysqli.constants.html#constant.mysqli-refresh-slave">MYSQLI_REFRESH_SLAVE</a></code></strong>,
+     in line with an upstream change in MySQL.
+     The old constant is still available for backwards-compatibility reasons,
+     but may be deprecated/removed in the future.
+    </p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.pcntl">
+  <h3 class="title">PCNTL</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="pcntl.constants.html#constant.prio-darwin-bg">PRIO_DARWIN_BG</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="pcntl.constants.html#constant.prio-darwin-thread">PRIO_DARWIN_THREAD</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.posix">
+  <h3 class="title">POSIX</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-kqueues">POSIX_RLIMIT_KQUEUES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="posix.constants.setrlimit.html#constant.posix-rlimit-npts">POSIX_RLIMIT_NPTS</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <p class="para">
+   The following socket options are now defined if they are supported:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sockets.constants.html#constant.so-acceptfilter">SO_ACCEPTFILTER</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sockets.constants.html#constant.so-donttrunc">SO_DONTTRUNC</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sockets.constants.html#constant.so-wantmore">SO_WANTMORE</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sockets.constants.html#constant.so-mark">SO_MARK</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sockets.constants.html#constant.tcp-defer-accept">TCP_DEFER_ACCEPT</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.sodium">
+  <h3 class="title">Sodium</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-stream-xchacha20-noncebytes">SODIUM_CRYPTO_STREAM_XCHACHA20_NONCEBYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-stream-xchacha20-keybytes">SODIUM_CRYPTO_STREAM_XCHACHA20_KEYBYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-scalarmult-ristretto255-bytes">SODIUM_CRYPTO_SCALARMULT_RISTRETTO255_BYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-scalarmult-ristretto255-scalarbytes">SODIUM_CRYPTO_SCALARMULT_RISTRETTO255_SCALARBYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-core-ristretto255-bytes">SODIUM_CRYPTO_CORE_RISTRETTO255_BYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-core-ristretto255-hashbytes">SODIUM_CRYPTO_CORE_RISTRETTO255_HASHBYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-core-ristretto255-scalarbytes">SODIUM_CRYPTO_CORE_RISTRETTO255_SCALARBYTES</a></code></strong></p>
+   </li>
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="sodium.constants.html#constant.sodium-crypto-core-ristretto255-nonreducedscalarbytes">SODIUM_CRYPTO_CORE_RISTRETTO255_NONREDUCEDSCALARBYTES</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="image.constants.html#constant.imagetype-avif">IMAGETYPE_AVIF</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration81.constants.tokenizer">
+  <h3 class="title">Tokenizer</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><strong><code><a href="tokens.html#constant.t-readonly">T_READONLY</a></code></strong></p>
+   </li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,89 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>GNU Readline</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.utilspec.cmdline.html">Command Line Specific Extensions</a></li>
+        <li>GNU Readline</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.readline" class="book">
+ 
+ <h1 class="title">GNU Readline</h1>
+ 
+
+ 
+ <div id="intro.readline" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+   The readline functions implement an interface
+   to the GNU Readline library. These are functions that provide
+   editable command lines. An example being the way Bash allows you
+   to use the arrow keys to insert characters or scroll through
+   command history. Because of the interactive nature of this
+   library, it will be of little use for writing Web applications,
+   but may be useful when writing scripts used from a
+   <a href="features.commandline.html" class="link">command line</a>.
+  </p>
+  <p class="simpara">
+   As of PHP 7.1.0 this extension is supported on Windows.
+  </p>
+  <div class="caution"><strong class="caution">Caution</strong>
+   <p class="simpara">
+    The readline extension is not thread-safe! Thus, the usage of it with any
+    true thread safe SAPI (like Apache mod_winnt) is strongly discouraged.
+   </p>
+  </div>
+ </div>
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="readline.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="readline.requirements.html">Requirements</a></li><li><a href="readline.installation.html">Installation</a></li><li><a href="readline.configuration.html">Runtime Configuration</a></li></ul></li><li><a href="readline.constants.html">Predefined Constants</a></li><li><a href="ref.readline.html">Readline Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.readline.html">readline</a> — Reads a line</li><li><a href="function.readline-add-history.html">readline_add_history</a> — Adds a line to the history</li><li><a href="function.readline-callback-handler-install.html">readline_callback_handler_install</a> — Initializes the readline callback interface and terminal, prints the prompt and returns immediately</li><li><a href="function.readline-callback-handler-remove.html">readline_callback_handler_remove</a> — Removes a previously installed callback handler and restores terminal settings</li><li><a href="function.readline-callback-read-char.html">readline_callback_read_char</a> — Reads a character and informs the readline callback interface when a line is received</li><li><a href="function.readline-clear-history.html">readline_clear_history</a> — Clears the history</li><li><a href="function.readline-completion-function.html">readline_completion_function</a> — Registers a completion function</li><li><a href="function.readline-info.html">readline_info</a> — Gets/sets various internal readline variables</li><li><a href="function.readline-list-history.html">readline_list_history</a> — Lists the history</li><li><a href="function.readline-on-new-line.html">readline_on_new_line</a> — Inform readline that the cursor has moved to a new line</li><li><a href="function.readline-read-history.html">readline_read_history</a> — Reads the history</li><li><a href="function.readline-redisplay.html">readline_redisplay</a> — Redraws the display</li><li><a href="function.readline-write-history.html">readline_write_history</a> — Writes the history</li></ul></li></ul></div></div></div></body></html>

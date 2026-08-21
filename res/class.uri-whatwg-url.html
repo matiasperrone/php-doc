@@ -1,0 +1,207 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Uri\WhatWg\Url class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.uri.html">URI</a></li>
+        <li>The Uri\WhatWg\Url class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.uri-whatwg-url" class="reference">
+ <h1 class="title">The Uri\WhatWg\Url class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+  <div class="section" id="uri-whatwg-url.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+   </p>
+  </div>
+
+  <div class="section" id="uri-whatwg-url.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">Uri\WhatWg</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     
+      <span class="modifier">final</span>
+      <span class="modifier">readonly</span>
+      <span class="modifier">class</span> <strong class="classname"><strong class="classname">Url</strong></strong>
+      {</div>
+
+     <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+     <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-whatwg-url.html" class="type Uri\WhatWg\Url">Uri\WhatWg\Url</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$softErrors</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>)</div>
+
+     <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.debuginfo.html" class="methodname">__debugInfo</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.equals.html" class="methodname">equals</a></span>(<span class="methodparam"><span class="type"><a href="class.uri-whatwg-url.html" class="type Uri\WhatWg\Url">Uri\WhatWg\Url</a></span> <code class="parameter">$url</code></span>, <span class="methodparam"><span class="type"><a href="enum.uri-uricomparisonmode.html" class="type Uri\UriComparisonMode">Uri\UriComparisonMode</a></span> <code class="parameter">$comparisonMode</code><span class="initializer"> = <strong><code>Uri\UriComparisonMode::ExcludeFragment</code></strong></span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getasciihost.html" class="methodname">getAsciiHost</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getfragment.html" class="methodname">getFragment</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getpassword.html" class="methodname">getPassword</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getpath.html" class="methodname">getPath</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getport.html" class="methodname">getPort</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getquery.html" class="methodname">getQuery</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getscheme.html" class="methodname">getScheme</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getunicodehost.html" class="methodname">getUnicodeHost</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.getusername.html" class="methodname">getUsername</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.parse.html" class="methodname">parse</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-whatwg-url.html" class="type Uri\WhatWg\Url">Uri\WhatWg\Url</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$errors</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type">static</span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.resolve.html" class="methodname">resolve</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$softErrors</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.serialize.html" class="methodname">__serialize</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.toasciistring.html" class="methodname">toAsciiString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.tounicodestring.html" class="methodname">toUnicodeString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.unserialize.html" class="methodname">__unserialize</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withfragment.html" class="methodname">withFragment</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$fragment</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withhost.html" class="methodname">withHost</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$host</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withpassword.html" class="methodname">withPassword</a></span>(<span class="methodparam"><span class="attribute">#[<a href="class.sensitiveparameter.html">\SensitiveParameter</a>]</span><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$password</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withpath.html" class="methodname">withPath</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$path</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withport.html" class="methodname">withPort</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$port</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withquery.html" class="methodname">withQuery</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$query</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withscheme.html" class="methodname">withScheme</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$scheme</code></span>): <span class="type">static</span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-url.withusername.html" class="methodname">withUsername</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$username</code></span>): <span class="type">static</span></div>
+
+    }
+   </div>
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="uri-whatwg-url.construct.html">Uri\WhatWg\Url::__construct</a> — Construct the Url object</li><li><a href="uri-whatwg-url.debuginfo.html">Uri\WhatWg\Url::__debugInfo</a> — Return the internal state of the URL</li><li><a href="uri-whatwg-url.equals.html">Uri\WhatWg\Url::equals</a> — Check if two URLs are equivalent</li><li><a href="uri-whatwg-url.getasciihost.html">Uri\WhatWg\Url::getAsciiHost</a> — Retrieve the host component as an ASCII string</li><li><a href="uri-whatwg-url.getfragment.html">Uri\WhatWg\Url::getFragment</a> — Retrieve the fragment component</li><li><a href="uri-whatwg-url.getpassword.html">Uri\WhatWg\Url::getPassword</a> — Retrieve the password component</li><li><a href="uri-whatwg-url.getpath.html">Uri\WhatWg\Url::getPath</a> — Retrieve the path component</li><li><a href="uri-whatwg-url.getport.html">Uri\WhatWg\Url::getPort</a> — Retrieve the port component</li><li><a href="uri-whatwg-url.getquery.html">Uri\WhatWg\Url::getQuery</a> — Retrieve the query component</li><li><a href="uri-whatwg-url.getscheme.html">Uri\WhatWg\Url::getScheme</a> — Retrieve the scheme component</li><li><a href="uri-whatwg-url.getunicodehost.html">Uri\WhatWg\Url::getUnicodeHost</a> — Retrieve the host component as an Unicode string</li><li><a href="uri-whatwg-url.getusername.html">Uri\WhatWg\Url::getUsername</a> — Retrieve the username component</li><li><a href="uri-whatwg-url.parse.html">Uri\WhatWg\Url::parse</a> — Parse a URL</li><li><a href="uri-whatwg-url.resolve.html">Uri\WhatWg\Url::resolve</a> — Resolve a URL with the current object as the base URL</li><li><a href="uri-whatwg-url.serialize.html">Uri\WhatWg\Url::__serialize</a> — Serialize the Url object</li><li><a href="uri-whatwg-url.toasciistring.html">Uri\WhatWg\Url::toAsciiString</a> — Recompose the URL as an ASCII string</li><li><a href="uri-whatwg-url.tounicodestring.html">Uri\WhatWg\Url::toUnicodeString</a> — Recompose the URL as a Unicode string</li><li><a href="uri-whatwg-url.unserialize.html">Uri\WhatWg\Url::__unserialize</a> — Deserialize the data parameter into a Url object</li><li><a href="uri-whatwg-url.withfragment.html">Uri\WhatWg\Url::withFragment</a> — Modify the fragment component</li><li><a href="uri-whatwg-url.withhost.html">Uri\WhatWg\Url::withHost</a> — Modify the host component</li><li><a href="uri-whatwg-url.withpassword.html">Uri\WhatWg\Url::withPassword</a> — Modify the password component</li><li><a href="uri-whatwg-url.withpath.html">Uri\WhatWg\Url::withPath</a> — Modify the path component</li><li><a href="uri-whatwg-url.withport.html">Uri\WhatWg\Url::withPort</a> — Modify the port component</li><li><a href="uri-whatwg-url.withquery.html">Uri\WhatWg\Url::withQuery</a> — Modify the query component</li><li><a href="uri-whatwg-url.withscheme.html">Uri\WhatWg\Url::withScheme</a> — Modify the scheme component</li><li><a href="uri-whatwg-url.withusername.html">Uri\WhatWg\Url::withUsername</a> — Modify the username component</li></ul>
+</div>
+</div></div></body></html>

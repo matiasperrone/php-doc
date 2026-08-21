@@ -1,0 +1,118 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Compiling PECL extensions statically into PHP</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="install.pecl.html">Installation of PECL extensions</a></li>
+        <li>Compiling PECL extensions statically into PHP</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="install.pecl.static" class="sect1">
+  <h2 class="title">Compiling PECL extensions statically into PHP</h2>
+  <div class="warning"><strong class="warning">Warning</strong>
+ <p class="simpara">
+  PECL is deprecated.
+  PHP Installer for Extensions (<abbr>PIE</abbr>) replaces PECL and is recommended to install extensions.
+  Find out more at <a href="https://github.com/php/pie" class="link external" title="Link : https://github.com/php/pie">&raquo;&nbsp;https://github.com/php/pie</a>
+ </p>
+</div>
+  <p class="simpara">
+   It may be necessary to build a PECL extension statically into the PHP binary.
+   To do this, the extension source will need to be placed under the
+   <var class="filename">/path/to/php/src/dir/ext/</var>
+   directory, and the PHP build system will be required to regenerate its
+   configure script.
+  </p>
+  <p class="para">
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+$ cd /path/to/php/src/dir/ext
+$ pecl download extname
+$ gzip -d &lt; extname.tgz | tar -xvf -
+$ mv extname-x.x.x extname
+</pre></div>
+   </div>
+  </p>
+  <p class="simpara">
+   This will result in the following directory:
+  </p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/php/src/dir/ext/extname
+</pre></div>
+  </div>
+  <p class="simpara">
+   From here, PHP needs to be forced to rebuild the configure script, and then
+   it can be built as normal:
+  </p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ cd /path/to/php/src/dir
+$ rm configure
+$ ./buildconf --force
+$ ./configure --help
+$ ./configure --with-extname --enable-someotherext --with-foobar
+$ make
+$ make install
+</pre></div>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    To run the <strong class="command">buildconf</strong> script, the
+    <strong class="command">autoconf</strong>
+    <code class="literal">2.68</code>
+    and
+    <strong class="command">automake</strong>
+    <code class="literal">1.4+</code>
+    will be needed.
+    Newer versions of <strong class="command">autoconf</strong> may work but are not
+    supported.
+   </p>
+  </p></blockquote>
+  <p class="simpara">
+   Whether
+   <strong class="option configure">--enable-extname</strong>
+   or
+   <strong class="option configure">--with-extname</strong>
+   is used depends on the extension.
+   Typically, an extension that does not require external libraries uses
+   <strong class="option configure">--enable</strong>.
+   To be sure, run the following after <strong class="command">buildconf</strong>:
+  </p>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ ./configure --help | grep extname
+</pre></div>
+  </div>
+ </div></div></div></body></html>

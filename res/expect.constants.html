@@ -1,0 +1,121 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Predefined Constants</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.expect.html">Expect</a></li>
+        <li>Predefined Constants</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="expect.constants" class="appendix">
+ <h1 class="title">Predefined Constants</h1>
+
+ <p class="simpara">
+The constants below are defined by this extension, and
+will only be available when the extension has either
+been compiled into PHP or dynamically loaded at runtime.
+</p>
+ <dl>
+  
+   <dt id="constant.exp-glob">
+    <strong><code><a href="expect.constants.html#constant.exp-glob">EXP_GLOB</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Indicates that the pattern is a glob-style string pattern.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.exp-exact">
+    <strong><code><a href="expect.constants.html#constant.exp-exact">EXP_EXACT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Indicates that the pattern is an exact string.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.exp-regexp">
+    <strong><code><a href="expect.constants.html#constant.exp-regexp">EXP_REGEXP</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Indicates that the pattern is a regexp-style string pattern.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.exp-eof">
+    <strong><code><a href="expect.constants.html#constant.exp-eof">EXP_EOF</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Value, returned by <span class="function"><a href="function.expect-expectl.html" class="function">expect_expectl()</a></span>, when EOF is
+     reached.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.exp-timeout">
+    <strong><code><a href="expect.constants.html#constant.exp-timeout">EXP_TIMEOUT</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Value, returned by <span class="function"><a href="function.expect-expectl.html" class="function">expect_expectl()</a></span> upon timeout of
+     seconds, specified in value of <a href="expect.configuration.html#ini.expect.timeout" class="link">expect.timeout</a>
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.exp-fullbuffer">
+    <strong><code><a href="expect.constants.html#constant.exp-fullbuffer">EXP_FULLBUFFER</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Value, returned by <span class="function"><a href="function.expect-expectl.html" class="function">expect_expectl()</a></span> if no pattern have
+     been matched.
+    </p>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

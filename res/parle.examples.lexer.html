@@ -1,0 +1,111 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Lexer examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="parle.examples.html">Examples</a></li>
+        <li>Lexer examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="parle.examples.lexer" class="section">
+  <h2 class="title">Lexer examples</h2>
+  <div class="example" id="example-5113">
+   <p><strong>Example #1 Tokenize comma separated integer list</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">use </span><span style="color: #0000BB">Parle\Token</span><span style="color: #007700">;
+use </span><span style="color: #0000BB">Parle\Lexer</span><span style="color: #007700">;
+use </span><span style="color: #0000BB">Parle\LexerException</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">/* name =&gt; id */
+</span><span style="color: #0000BB">$token </span><span style="color: #007700">= array(
+        </span><span style="color: #DD0000">"COMMA" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">1</span><span style="color: #007700">,
+        </span><span style="color: #DD0000">"CRLF" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">2</span><span style="color: #007700">,
+        </span><span style="color: #DD0000">"DECIMAL" </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">3</span><span style="color: #007700">,
+);
+</span><span style="color: #FF8000">/* id =&gt; name */
+</span><span style="color: #0000BB">$tokenIdToName </span><span style="color: #007700">= </span><span style="color: #0000BB">array_flip</span><span style="color: #007700">(</span><span style="color: #0000BB">$token</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$lex </span><span style="color: #007700">= new </span><span style="color: #0000BB">Lexer</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"[\x2c]"</span><span style="color: #007700">, </span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #DD0000">"COMMA"</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"[\r][\n]"</span><span style="color: #007700">, </span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #DD0000">"CRLF"</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"[\d]+"</span><span style="color: #007700">, </span><span style="color: #0000BB">$token</span><span style="color: #007700">[</span><span style="color: #DD0000">"DECIMAL"</span><span style="color: #007700">]);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">build</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">$in </span><span style="color: #007700">= </span><span style="color: #DD0000">"0,1,2\r\n3,42,5\r\n6,77,8\r\n"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">consume</span><span style="color: #007700">(</span><span style="color: #0000BB">$in</span><span style="color: #007700">);
+
+do {
+        </span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">advance</span><span style="color: #007700">();
+        </span><span style="color: #0000BB">$tok </span><span style="color: #007700">= </span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getToken</span><span style="color: #007700">();
+
+        if (</span><span style="color: #0000BB">Token</span><span style="color: #007700">::</span><span style="color: #0000BB">UNKNOWN </span><span style="color: #007700">== </span><span style="color: #0000BB">$tok</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">) {
+                throw new </span><span style="color: #0000BB">LexerException</span><span style="color: #007700">(</span><span style="color: #DD0000">"Unknown token '</span><span style="color: #007700">{</span><span style="color: #0000BB">$tok</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">}</span><span style="color: #DD0000">' at offset </span><span style="color: #007700">{</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">marker</span><span style="color: #007700">}</span><span style="color: #DD0000">."</span><span style="color: #007700">);
+        }
+
+        echo </span><span style="color: #DD0000">"TOKEN: "</span><span style="color: #007700">, </span><span style="color: #0000BB">$tokenIdToName</span><span style="color: #007700">[</span><span style="color: #0000BB">$tok</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">], </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
+} while (</span><span style="color: #0000BB">Token</span><span style="color: #007700">::</span><span style="color: #0000BB">EOI </span><span style="color: #007700">!= </span><span style="color: #0000BB">$tok</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">);</span></code></pre></div>
+   </div>
+
+  </div>
+  <div class="example" id="example-5114">
+   <p><strong>Example #2 Tokenize assign statement</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">use </span><span style="color: #0000BB">Parle</span><span style="color: #007700">\{</span><span style="color: #0000BB">Token</span><span style="color: #007700">, </span><span style="color: #0000BB">Lexer</span><span style="color: #007700">};
+
+</span><span style="color: #0000BB">$lex </span><span style="color: #007700">= new </span><span style="color: #0000BB">Lexer</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"\$[a-zA-Z_][a-zA-Z0-9_]*"</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"="</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">"\d+"</span><span style="color: #007700">, </span><span style="color: #0000BB">3</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">push</span><span style="color: #007700">(</span><span style="color: #DD0000">";"</span><span style="color: #007700">, </span><span style="color: #0000BB">4</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">build</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">consume</span><span style="color: #007700">(</span><span style="color: #DD0000">'$x = 42; $y = 24;'</span><span style="color: #007700">);
+
+
+do {
+    </span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">advance</span><span style="color: #007700">();
+    </span><span style="color: #0000BB">$tok </span><span style="color: #007700">= </span><span style="color: #0000BB">$lex</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getToken</span><span style="color: #007700">();
+    </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$tok</span><span style="color: #007700">);
+} while (</span><span style="color: #0000BB">Token</span><span style="color: #007700">::</span><span style="color: #0000BB">EOI </span><span style="color: #007700">!= </span><span style="color: #0000BB">$tok</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">);</span></code></pre></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

@@ -1,0 +1,102 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>URI</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+        <li>URI</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.uri" class="book">
+ 
+ <h1 class="title">URI</h1>
+ 
+
+ <div id="intro.uri" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+   This chapter describes the functions that allow you to work with
+   Uniform Resource Identifiers (URIs). A URI is a string of characters
+   used to identify a resource. URIs are used in web technologies to
+   identify resources on the Internet.
+  </p>
+  <p class="simpara">
+   This extension implements functionality that follows the
+   <a href="https://www.ietf.org/rfc/rfc3986.txt" class="link external" title="Link : https://www.ietf.org/rfc/rfc3986.txt">&raquo;&nbsp;RFC 3986,
+   Uniform Resource Identifier (URI): Generic Syntax</a> and
+   <a href="https://url.spec.whatwg.org/" class="link external" title="Link : https://url.spec.whatwg.org/">&raquo;&nbsp;WHATWG URL Standard</a>
+   specifications.
+  </p>
+ </div>
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="class.uri-rfc3986-uri.html">Uri\Rfc3986\Uri</a> — The Uri\Rfc3986\Uri class<ul class="chunklist chunklist_book chunklist_children"><li><a href="uri-rfc3986-uri.construct.html">Uri\Rfc3986\Uri::__construct</a> — Construct the Uri object</li><li><a href="uri-rfc3986-uri.debuginfo.html">Uri\Rfc3986\Uri::__debugInfo</a> — Return the internal state of the URI</li><li><a href="uri-rfc3986-uri.equals.html">Uri\Rfc3986\Uri::equals</a> — Check if two URIs are equivalent</li><li><a href="uri-rfc3986-uri.getfragment.html">Uri\Rfc3986\Uri::getFragment</a> — Retrieve the normalized fragment component</li><li><a href="uri-rfc3986-uri.gethost.html">Uri\Rfc3986\Uri::getHost</a> — Retrieve the normalized host component</li><li><a href="uri-rfc3986-uri.getpassword.html">Uri\Rfc3986\Uri::getPassword</a> — Retrieve the normalized password</li><li><a href="uri-rfc3986-uri.getpath.html">Uri\Rfc3986\Uri::getPath</a> — Retrieve the normalized path component</li><li><a href="uri-rfc3986-uri.getport.html">Uri\Rfc3986\Uri::getPort</a> — Retrieve the normalized port component</li><li><a href="uri-rfc3986-uri.getquery.html">Uri\Rfc3986\Uri::getQuery</a> — Retrieve the normalized query component</li><li><a href="uri-rfc3986-uri.getrawfragment.html">Uri\Rfc3986\Uri::getRawFragment</a> — Retrieve the raw fragment component</li><li><a href="uri-rfc3986-uri.getrawhost.html">Uri\Rfc3986\Uri::getRawHost</a> — Retrieve the raw host component</li><li><a href="uri-rfc3986-uri.getrawpassword.html">Uri\Rfc3986\Uri::getRawPassword</a> — Retrieve the raw password</li><li><a href="uri-rfc3986-uri.getrawpath.html">Uri\Rfc3986\Uri::getRawPath</a> — Retrieve the raw path component</li><li><a href="uri-rfc3986-uri.getrawquery.html">Uri\Rfc3986\Uri::getRawQuery</a> — Retrieve the raw query component</li><li><a href="uri-rfc3986-uri.getrawscheme.html">Uri\Rfc3986\Uri::getRawScheme</a> — Retrieve the raw scheme component</li><li><a href="uri-rfc3986-uri.getrawuserinfo.html">Uri\Rfc3986\Uri::getRawUserInfo</a> — Retrieve the raw userinfo component</li><li><a href="uri-rfc3986-uri.getrawusername.html">Uri\Rfc3986\Uri::getRawUsername</a> — Retrieve the raw username</li><li><a href="uri-rfc3986-uri.getscheme.html">Uri\Rfc3986\Uri::getScheme</a> — Retrieve the normalized scheme component</li><li><a href="uri-rfc3986-uri.getuserinfo.html">Uri\Rfc3986\Uri::getUserInfo</a> — Retrieve the normalized userinfo component</li><li><a href="uri-rfc3986-uri.getusername.html">Uri\Rfc3986\Uri::getUsername</a> — Retrieve the normalized username</li><li><a href="uri-rfc3986-uri.parse.html">Uri\Rfc3986\Uri::parse</a> — Parse a URI</li><li><a href="uri-rfc3986-uri.resolve.html">Uri\Rfc3986\Uri::resolve</a> — Resolve a URI with the current object as the base URL</li><li><a href="uri-rfc3986-uri.serialize.html">Uri\Rfc3986\Uri::__serialize</a> — Serialize the Uri object</li><li><a href="uri-rfc3986-uri.torawstring.html">Uri\Rfc3986\Uri::toRawString</a> — Recompose the raw URI</li><li><a href="uri-rfc3986-uri.tostring.html">Uri\Rfc3986\Uri::toString</a> — Recompose the normalized URI</li><li><a href="uri-rfc3986-uri.unserialize.html">Uri\Rfc3986\Uri::__unserialize</a> — Deserialize the data parameter into a Uri object</li><li><a href="uri-rfc3986-uri.withfragment.html">Uri\Rfc3986\Uri::withFragment</a> — Modify the fragment component</li><li><a href="uri-rfc3986-uri.withhost.html">Uri\Rfc3986\Uri::withHost</a> — Modify the host component</li><li><a href="uri-rfc3986-uri.withpath.html">Uri\Rfc3986\Uri::withPath</a> — Modify the path component</li><li><a href="uri-rfc3986-uri.withport.html">Uri\Rfc3986\Uri::withPort</a> — Modify the port component</li><li><a href="uri-rfc3986-uri.withquery.html">Uri\Rfc3986\Uri::withQuery</a> — Modify the query component</li><li><a href="uri-rfc3986-uri.withscheme.html">Uri\Rfc3986\Uri::withScheme</a> — Modify the scheme component</li><li><a href="uri-rfc3986-uri.withuserinfo.html">Uri\Rfc3986\Uri::withUserInfo</a> — Modify the userinfo component</li></ul></li><li><a href="class.uri-whatwg-url.html">Uri\WhatWg\Url</a> — The Uri\WhatWg\Url class<ul class="chunklist chunklist_book chunklist_children"><li><a href="uri-whatwg-url.construct.html">Uri\WhatWg\Url::__construct</a> — Construct the Url object</li><li><a href="uri-whatwg-url.debuginfo.html">Uri\WhatWg\Url::__debugInfo</a> — Return the internal state of the URL</li><li><a href="uri-whatwg-url.equals.html">Uri\WhatWg\Url::equals</a> — Check if two URLs are equivalent</li><li><a href="uri-whatwg-url.getasciihost.html">Uri\WhatWg\Url::getAsciiHost</a> — Retrieve the host component as an ASCII string</li><li><a href="uri-whatwg-url.getfragment.html">Uri\WhatWg\Url::getFragment</a> — Retrieve the fragment component</li><li><a href="uri-whatwg-url.getpassword.html">Uri\WhatWg\Url::getPassword</a> — Retrieve the password component</li><li><a href="uri-whatwg-url.getpath.html">Uri\WhatWg\Url::getPath</a> — Retrieve the path component</li><li><a href="uri-whatwg-url.getport.html">Uri\WhatWg\Url::getPort</a> — Retrieve the port component</li><li><a href="uri-whatwg-url.getquery.html">Uri\WhatWg\Url::getQuery</a> — Retrieve the query component</li><li><a href="uri-whatwg-url.getscheme.html">Uri\WhatWg\Url::getScheme</a> — Retrieve the scheme component</li><li><a href="uri-whatwg-url.getunicodehost.html">Uri\WhatWg\Url::getUnicodeHost</a> — Retrieve the host component as an Unicode string</li><li><a href="uri-whatwg-url.getusername.html">Uri\WhatWg\Url::getUsername</a> — Retrieve the username component</li><li><a href="uri-whatwg-url.parse.html">Uri\WhatWg\Url::parse</a> — Parse a URL</li><li><a href="uri-whatwg-url.resolve.html">Uri\WhatWg\Url::resolve</a> — Resolve a URL with the current object as the base URL</li><li><a href="uri-whatwg-url.serialize.html">Uri\WhatWg\Url::__serialize</a> — Serialize the Url object</li><li><a href="uri-whatwg-url.toasciistring.html">Uri\WhatWg\Url::toAsciiString</a> — Recompose the URL as an ASCII string</li><li><a href="uri-whatwg-url.tounicodestring.html">Uri\WhatWg\Url::toUnicodeString</a> — Recompose the URL as a Unicode string</li><li><a href="uri-whatwg-url.unserialize.html">Uri\WhatWg\Url::__unserialize</a> — Deserialize the data parameter into a Url object</li><li><a href="uri-whatwg-url.withfragment.html">Uri\WhatWg\Url::withFragment</a> — Modify the fragment component</li><li><a href="uri-whatwg-url.withhost.html">Uri\WhatWg\Url::withHost</a> — Modify the host component</li><li><a href="uri-whatwg-url.withpassword.html">Uri\WhatWg\Url::withPassword</a> — Modify the password component</li><li><a href="uri-whatwg-url.withpath.html">Uri\WhatWg\Url::withPath</a> — Modify the path component</li><li><a href="uri-whatwg-url.withport.html">Uri\WhatWg\Url::withPort</a> — Modify the port component</li><li><a href="uri-whatwg-url.withquery.html">Uri\WhatWg\Url::withQuery</a> — Modify the query component</li><li><a href="uri-whatwg-url.withscheme.html">Uri\WhatWg\Url::withScheme</a> — Modify the scheme component</li><li><a href="uri-whatwg-url.withusername.html">Uri\WhatWg\Url::withUsername</a> — Modify the username component</li></ul></li><li><a href="enum.uri-uricomparisonmode.html">Uri\UriComparisonMode</a> — The Uri\UriComparisonMode enum</li><li><a href="class.uri-uriexception.html">Uri\UriException</a> — The Uri\UriException class</li><li><a href="class.uri-urierror.html">Uri\UriError</a> — The Uri\UriError class</li><li><a href="class.uri-invaliduriexception.html">Uri\InvalidUriException</a> — The Uri\InvalidUriException class</li><li><a href="class.uri-whatwg-invalidurlexception.html">Uri\WhatWg\InvalidUrlException</a> — The Uri\WhatWg\InvalidUrlException class<ul class="chunklist chunklist_book chunklist_children"><li><a href="uri-whatwg-invalidurlexception.construct.html">Uri\WhatWg\InvalidUrlException::__construct</a> — Construct an InvalidUrlException object</li></ul></li><li><a href="class.uri-whatwg-urlvalidationerror.html">Uri\WhatWg\UrlValidationError</a> — The Uri\WhatWg\UrlValidationError class<ul class="chunklist chunklist_book chunklist_children"><li><a href="uri-whatwg-urlvalidationerror.construct.html">Uri\WhatWg\UrlValidationError::__construct</a> — Construct a UrlValidationError object</li></ul></li><li><a href="enum.uri-whatwg-urlvalidationerrortype.html">Uri\WhatWg\UrlValidationErrorType</a> — The Uri\WhatWg\UrlValidationErrorType enum</li></ul></div></div></div></body></html>

@@ -1,0 +1,212 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>New Global Constants</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="migration85.html">Migrating from PHP 8.4.x to PHP 8.5.x</a></li>
+        <li>New Global Constants</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="migration85.constants" class="sect1">
+ <h2 class="title">New Global Constants</h2>
+
+ <div class="sect2" id="migration85.constants.core">
+  <h3 class="title">Core</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code><a href="reserved.constants.html#constant.php-build-date">PHP_BUILD_DATE</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="reserved.constants.html#constant.php-build-provider">PHP_BUILD_PROVIDER</a></code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.curl">
+  <h3 class="title">cURL</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlinfo-used-proxy">CURLINFO_USED_PROXY</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlinfo-httpauth-used">CURLINFO_HTTPAUTH_USED</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlinfo-proxyauth-used">CURLINFO_PROXYAUTH_USED</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlinfo-conn-id">CURLINFO_CONN_ID</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlinfo-queue-time-t">CURLINFO_QUEUE_TIME_T</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlopt-infilesize-large">CURLOPT_INFILESIZE_LARGE</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlfollow-all">CURLFOLLOW_ALL</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlfollow-obeycode">CURLFOLLOW_OBEYCODE</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="curl.constants.html#constant.curlfollow-firstonly">CURLFOLLOW_FIRSTONLY</a></code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.filter">
+  <h3 class="title">Filter</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code><a href="filter.constants.html#constant.filter-throw-on-failure">FILTER_THROW_ON_FAILURE</a></code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.intl">
+  <h3 class="title">Intl</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code>DECIMAL_COMPACT_SHORT</code></strong>
+   </li>
+   <li>
+    <strong><code>DECIMAL_COMPACT_LONG</code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.openssl">
+  <h3 class="title">OpenSSL</h3>
+
+  <ul class="simplelist">
+   <li><strong><code><a href="openssl.padding.html#constant.openssl-pkcs1-pss-padding">OPENSSL_PKCS1_PSS_PADDING</a></code></strong></li>
+   <li><strong><code><a href="openssl.pkcs7.flags.html#constant.pkcs7-nosmimecap">PKCS7_NOSMIMECAP</a></code></strong></li>
+   <li><strong><code><a href="openssl.pkcs7.flags.html#constant.pkcs7-crlfeol">PKCS7_CRLFEOL</a></code></strong></li>
+   <li><strong><code><a href="openssl.pkcs7.flags.html#constant.pkcs7-nocrl">PKCS7_NOCRL</a></code></strong></li>
+   <li><strong><code><a href="openssl.pkcs7.flags.html#constant.pkcs7-no-dual-content">PKCS7_NO_DUAL_CONTENT</a></code></strong></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.posix">
+  <h3 class="title">POSIX</h3>
+
+  <ul class="simplelist">
+   <li><strong><code>POSIX_SC_OPEN_MAX</code></strong></li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.sockets">
+  <h3 class="title">Sockets</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code>IPPROTO_ICMP</code></strong>
+   </li>
+   <li>
+    <strong><code>IPPROTO_ICMPV6</code></strong>
+   </li>
+   <li>
+    <strong><code>TCP_FUNCTION_BLK</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_FUNCTION_ALIAS</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA_NODOM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_REUSPORT_LB_NUMA_CURDOM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code>TCP_BBR_ALGORITHM</code></strong> (FreeBSD only)
+   </li>
+   <li>
+    <strong><code><a href="sockets.constants.html#constant.af-packet">AF_PACKET</a></code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>IP_BINDANY</code></strong> (FreeBSD/NetBSD/OpenBSD only)
+   </li>
+   <li>
+    <strong><code>SO_BUSY_POLL</code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>UDP_SEGMENT</code></strong> (Linux only)
+   </li>
+   <li>
+    <strong><code>SHUT_RD</code></strong>
+   </li>
+   <li>
+    <strong><code>SHUT_WR</code></strong>
+   </li>
+   <li>
+    <strong><code>SHUT_RDWR</code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.tokenizer">
+  <h3 class="title">Tokenizer</h3>
+  <ul class="simplelist">
+   <li>
+    <strong><code><a href="tokens.html#constant.t-void-cast">T_VOID_CAST</a></code></strong>
+   </li>
+   <li>
+    <strong><code><a href="tokens.html#constant.t-pipe">T_PIPE</a></code></strong>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration85.constants.standard">
+  <h3 class="title">Standard</h3>
+
+  <ul class="simplelist">
+   <li>
+    <strong><code><a href="image.constants.html#constant.imagetype-heif">IMAGETYPE_HEIF</a></code></strong>
+   </li>
+   <li>
+    <strong><code>IMAGETYPE_SVG</code></strong>
+    when libxml is loaded.
+   </li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

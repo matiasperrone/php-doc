@@ -1,0 +1,215 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The NoDiscard attribute</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="reserved.attributes.html">Predefined Attributes</a></li>
+        <li>The NoDiscard attribute</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.nodiscard" class="reference">
+ <h1 class="title">The NoDiscard attribute</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+
+  <div class="section" id="nodiscard.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    This attribute can be used to indicate that the return value of a function
+    or a method should not be discarded. If the return value is not used in any
+    way, a warning will be emitted.
+   </p>
+   <p class="simpara">
+    This is useful for functions where not checking the return value is likely
+    to be a bug.
+   </p>
+   <p class="simpara">
+    To intentionally discard the return value of such a function, use (void)
+    cast to suppress the warning.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="simpara">
+     Since attributes are designed to be backwards compatible,
+     <code class="code">#[\NoDiscard]</code> can be added to functions and methods
+     even when PHP 8.4 or below are supported, it just won&#039;t do anything.
+     On PHP 8.5 and above a warning will be emitted if the result is unused.
+     To suppress the warning without using <code class="code">(void)</code>,
+     which is not supported before PHP 8.5,
+     consider using a variable like <code class="code">$_</code>.
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="simpara">
+     <code class="code">#[\NoDiscard]</code> applies to the specific function or method
+     declaration it is written on, and the warning is emitted based on the
+     declaration that is actually called. As a result, adding
+     <code class="code">#[\NoDiscard]</code> to an interface method or an abstract method
+     does not emit a warning, because the method that is invoked is the
+     implementing or overriding method. Likewise, a method that overrides a
+     <code class="code">#[\NoDiscard]</code> method does not emit the warning unless it is
+     itself marked with the attribute. In contrast, a method imported from a
+     trait keeps the attribute, because the trait method is copied into the
+     using class as if declared there.
+    </p>
+   </p></blockquote>
+  </div>
+
+  <div class="section" id="nodiscard.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="attribute">#[<a href="class.attribute.html">\Attribute</a>]</span><br>
+     <span class="modifier">final</span>
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">NoDiscard</strong></strong>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.nodiscard.html#nodiscard.props.message">$<var class="varname">message</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="nodiscard.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$message</code><span class="initializer"> = <a href="reserved.constants.html#constant.null">null</a></span></span>)</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="nodiscard.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+    
+     <dt id="nodiscard.props.message"><var class="varname">message</var></dt>
+     <dd>
+      <p class="simpara">
+       An optional message explaining why the return value should not be discarded.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Examples</h2>
+   <div class="example" id="example-505">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">/**
+ * Processes all the given items and returns an array with the results of the
+ * operation for each item. `null` indicates success and an Exception indicates
+ * an error. The keys of the result array match the keys of the $items array.
+ *
+ * @param array&lt;string&gt; $items
+ * @return array&lt;null|Exception&gt;
+ */
+</span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">(</span><span style="color: #DD0000">"as processing might fail for individual items"</span><span style="color: #007700">)]
+function </span><span style="color: #0000BB">bulk_process</span><span style="color: #007700">(array </span><span style="color: #0000BB">$items</span><span style="color: #007700">): array {
+    </span><span style="color: #0000BB">$results </span><span style="color: #007700">= [];
+
+    foreach (</span><span style="color: #0000BB">$items </span><span style="color: #007700">as </span><span style="color: #0000BB">$key </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$item</span><span style="color: #007700">) {
+        if (</span><span style="color: #0000BB">\random_int</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">9999</span><span style="color: #007700">) &lt; </span><span style="color: #0000BB">9999</span><span style="color: #007700">) {
+            </span><span style="color: #FF8000">// Pretend to do something useful with $item,
+            // which will succeed in 99.99% of cases.
+            </span><span style="color: #007700">echo </span><span style="color: #DD0000">"Processing </span><span style="color: #007700">{</span><span style="color: #0000BB">$item</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">, </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;
+            </span><span style="color: #0000BB">$error </span><span style="color: #007700">= </span><span style="color: #0000BB">null</span><span style="color: #007700">;
+        } else {
+            </span><span style="color: #0000BB">$error </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">"Failed to process </span><span style="color: #007700">{</span><span style="color: #0000BB">$item</span><span style="color: #007700">}</span><span style="color: #DD0000">."</span><span style="color: #007700">);
+        }
+
+        </span><span style="color: #0000BB">$results</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">] = </span><span style="color: #0000BB">$error</span><span style="color: #007700">;
+    }
+
+    return </span><span style="color: #0000BB">$results</span><span style="color: #007700">;
+}
+
+</span><span style="color: #0000BB">bulk_process</span><span style="color: #007700">(</span><span style="color: #0000BB">$items</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>Output of the above example in PHP 8.5 is similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: The return value of function bulk_process() should either be used or intentionally ignored by casting it as (void), as processing might fail for individual items
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-506">
+    <p><strong>Example #2 Intentionally discarding the return value</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">]
+function </span><span style="color: #0000BB">some_command</span><span style="color: #007700">(): </span><span style="color: #0000BB">int </span><span style="color: #007700">{
+    return </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+}
+
+</span><span style="color: #FF8000">// Suppress the warning using (void) - PHP 8.5+
+</span><span style="color: #007700">(</span><span style="color: #0000BB">void</span><span style="color: #007700">) </span><span style="color: #0000BB">some_command</span><span style="color: #007700">();
+
+</span><span style="color: #FF8000">// For compatibility with PHP versions before 8.5, use a temporary variable
+</span><span style="color: #0000BB">$_ </span><span style="color: #007700">= </span><span style="color: #0000BB">some_command</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="section" id="nodiscard.seealso">
+   <h2 class="title">See Also</h2>
+   <ul class="simplelist">
+    <li><a href="language.attributes.html" class="link">Attributes overview</a></li>
+   </ul>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="nodiscard.construct.html">NoDiscard::__construct</a> — Construct a new NoDiscard attribute instance</li></ul>
+</div>
+</div></div></body></html>

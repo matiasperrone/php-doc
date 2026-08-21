@@ -1,0 +1,198 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Predefined Constants</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.fileinfo.html">Fileinfo</a></li>
+        <li>Predefined Constants</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="fileinfo.constants" class="appendix">
+ <h1 class="title">Predefined Constants</h1>
+
+ <p class="simpara">
+The constants below are defined by this extension, and
+will only be available when the extension has either
+been compiled into PHP or dynamically loaded at runtime.
+</p>
+ <dl>
+  
+   <dt id="constant.fileinfo-none">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-none">FILEINFO_NONE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     No special handling.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-symlink">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-symlink">FILEINFO_SYMLINK</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Follow symlinks.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-mime-type">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-mime-type">FILEINFO_MIME_TYPE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Return the mime type.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-mime-encoding">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-mime-encoding">FILEINFO_MIME_ENCODING</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Return the mime encoding of the file.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-mime">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-mime">FILEINFO_MIME</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Return the mime type and mime encoding as defined by RFC 2045.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-compress">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-compress">FILEINFO_COMPRESS</a></code></strong>
+     (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Decompress compressed files.
+    </p>
+    <p class="simpara">
+     Disabled due to thread safety issues.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-devices">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-devices">FILEINFO_DEVICES</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Look at the contents of blocks or character special devices.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-continue">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-continue">FILEINFO_CONTINUE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Return all matches, not just the first.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-preserve-atime">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-preserve-atime">FILEINFO_PRESERVE_ATIME</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     If possible preserve the original access time.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-raw">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-raw">FILEINFO_RAW</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Don&#039;t translate unprintable characters to a <code class="literal">\ooo</code> octal
+     representation.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-extension">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-extension">FILEINFO_EXTENSION</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Returns the file extension appropriate for the MIME type detected in
+     the file.
+    </p>
+    <p class="simpara">
+     For types that commonly have multiple file extensions, such as <code class="literal">JPEG</code>
+     images, then the return value is multiple extensions separated by a forward slash e.g.:
+     <code class="literal">&quot;jpeg/jpg/jpe/jfif&quot;</code>. For unknown types not available in the
+     <var class="filename">magic.mime</var> database, then return value is <code class="literal">&quot;???&quot;</code>.
+    </p>
+    <p class="simpara">
+     Available since PHP 7.2.0.
+    </p>
+   </dd>
+  
+  
+   <dt id="constant.fileinfo-apple">
+    <strong><code><a href="fileinfo.constants.html#constant.fileinfo-apple">FILEINFO_APPLE</a></code></strong>
+    (<span class="type"><a href="language.types.integer.html" class="type int">int</a></span>)
+   </dt>
+   <dd>
+    <p class="simpara">
+     Return the Apple creator and type.
+    </p>
+   </dd>
+  
+ </dl>
+</div>
+</div></div></body></html>

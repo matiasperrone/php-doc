@@ -1,0 +1,103 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Basics of Japanese multi-byte encodings</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.mbstring.html">Multibyte String</a></li>
+        <li>Basics of Japanese multi-byte encodings</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="mbstring.ja-basic" class="chapter">
+ <h1 class="title">Basics of Japanese multi-byte encodings</h1>
+
+ <p class="para">
+  Japanese characters can only be represented by multibyte encodings, 
+  and multiple encoding standards are used depending on platform and 
+  text purpose. To make matters worse, these encoding standards 
+  differ slightly from one another. In order to create a web 
+  application which would be usable in a Japanese environment, a 
+  developer has to keep these complexities in mind to ensure that the
+  proper character encodings are used.
+ </p>
+ <p class="para">
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara">Storage for a character can be up to six bytes</p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     Most Japanese multibyte characters appear twice as wide as
+     single-byte characters. These characters are called 
+     &quot;zen-kaku&quot; in Japanese, which means 
+     &quot;full width&quot;. Other, narrower, characters are called 
+     &quot;han-kaku&quot;, which means &quot;half width&quot;. The 
+     graphical properties of the characters, however, depends upon 
+     the type faces used to display them.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     Some character encodings use shift(escape) sequences defined
+     in ISO-2022 to switch the code map of the specific code area
+     (<code class="literal">00h</code> to <code class="literal">7fh</code>).
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     ISO-2022-JP should be used in SMTP/NNTP, and headers and entities
+     should be reencoded as per RFC requirements. Although those are not
+     requisites, it&#039;s still a good idea because several popular user
+     agents cannot recognize any other encoding methods.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+     Web pages created for mobile phone services such as
+     <a href="http://www.nttdocomo.com/services/imode/" class="link external" title="Link : http://www.nttdocomo.com/services/imode/">&raquo;&nbsp;i-mode</a>
+     or <a href="http://www.au.kddi.com/english/service/ezweb/index.html" class="link external" title="Link : http://www.au.kddi.com/english/service/ezweb/index.html">&raquo;&nbsp;EZweb</a>
+     are supposed to use Shift_JIS.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="simpara">
+      Emoji used for mobile phone service such as 
+      <a href="http://www.nttdocomo.com/services/imode/" class="link external" title="Link : http://www.nttdocomo.com/services/imode/">&raquo;&nbsp;i-mode</a>
+      or <a href="http://www.au.kddi.com/english/service/ezweb/index.html" class="link external" title="Link : http://www.au.kddi.com/english/service/ezweb/index.html">&raquo;&nbsp;EZweb</a>
+      are supported.
+    </p>
+   </li>
+  </ul>
+ </p>
+</div>
+</div></div></body></html>

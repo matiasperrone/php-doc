@@ -1,0 +1,97 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Switch QueryParser to be EDisMax</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.solrdismaxquery.html">SolrDisMaxQuery</a></li>
+        <li>Switch QueryParser to be EDisMax</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="solrdismaxquery.useedismaxqueryparser" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SolrDisMaxQuery::useEDisMaxQueryParser</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">SolrDisMaxQuery::useEDisMaxQueryParser</span> &mdash; <span class="dc-title">Switch QueryParser to be EDisMax</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-solrdismaxquery.useedismaxqueryparser-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>SolrDisMaxQuery::useEDisMaxQueryParser</strong></span>(): <span class="type"><a href="class.solrdismaxquery.html" class="type SolrDisMaxQuery">SolrDisMaxQuery</a></span></div>
+
+  <p class="para rdfs-comment">
+    Switch QueryParser to be EDisMax. By default the query builder uses edismax, if it was switched using <span class="methodname"><a href="solrdismaxquery.usedismaxqueryparser.html" class="methodname">SolrDisMaxQuery::useDisMaxQueryParser()</a></span>, it can be switched back using this method.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-solrdismaxquery.useedismaxqueryparser-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-solrdismaxquery.useedismaxqueryparser-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="type"><a href="class.solrdismaxquery.html" class="type SolrDisMaxQuery">SolrDisMaxQuery</a></span>
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-solrdismaxquery.useedismaxqueryparser-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5078">
+   <p><strong>Example #1 <span class="function"><strong>SolrDisMaxQuery::useEDisMaxQueryParser()</strong></span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$dismaxQuery </span><span style="color: #007700">= new </span><span style="color: #0000BB">SolrDisMaxQuery</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$dismaxQuery</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">useEDisMaxQueryParser</span><span style="color: #007700">();
+echo </span><span style="color: #0000BB">$dismaxQuery</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">defType=edismax</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

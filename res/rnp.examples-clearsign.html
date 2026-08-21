@@ -1,0 +1,68 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Clearsign text</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="rnp.examples.html">Examples</a></li>
+        <li>Clearsign text</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="rnp.examples-clearsign" class="section">
+  <h2 class="title">Clearsign text</h2>
+  <p class="simpara">
+   This example will clearsign a given text.
+  </p>
+  <div class="example" id="example-1080">
+   <p><strong>Example #1 RNP clearsign example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// init FFI object
+</span><span style="color: #0000BB">$ffi </span><span style="color: #007700">= </span><span style="color: #0000BB">rnp_ffi_create</span><span style="color: #007700">(</span><span style="color: #DD0000">'GPG'</span><span style="color: #007700">, </span><span style="color: #DD0000">'GPG'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// generate RSA key
+</span><span style="color: #0000BB">$key </span><span style="color: #007700">= </span><span style="color: #0000BB">rnp_op_generate_key</span><span style="color: #007700">(</span><span style="color: #0000BB">$ffi</span><span style="color: #007700">, </span><span style="color: #DD0000">'test@example.com'</span><span style="color: #007700">, </span><span style="color: #DD0000">'RSA'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// sign
+</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #DD0000">"Example text to sign"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$signature </span><span style="color: #007700">= </span><span style="color: #0000BB">rnp_op_sign_cleartext</span><span style="color: #007700">(</span><span style="color: #0000BB">$ffi</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$key</span><span style="color: #007700">));
+
+echo </span><span style="color: #0000BB">$signature</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">// destroy FFI object
+</span><span style="color: #0000BB">rnp_ffi_destroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$ffi</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

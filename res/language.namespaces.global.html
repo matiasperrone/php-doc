@@ -1,0 +1,67 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Global space</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.namespaces.html">Namespaces</a></li>
+        <li>Global space</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.namespaces.global" class="sect1">
+  <h2 class="title">Global space</h2>
+  
+  <p class="verinfo">(PHP 5 &gt;= 5.3.0, PHP 7, PHP 8)</p>
+  <p class="para">
+   Without any namespace definition, all class and function definitions are
+   placed into the global space - as it was in PHP before namespaces were
+   supported. Prefixing a name with <code class="literal">\</code> will specify that
+   the name is required from the global space even in the context of the
+   namespace.
+   <div class="example" id="example-397">
+    <p><strong>Example #1 Using global space specification</strong></p>
+    <div class="example-contents">
+     <div class="annotation-non-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">namespace </span><span style="color: #0000BB">A\B\C</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">/* This function is A\B\C\fopen */
+</span><span style="color: #007700">function </span><span style="color: #0000BB">fopen</span><span style="color: #007700">() {
+     </span><span style="color: #FF8000">/* ... */
+     </span><span style="color: #0000BB">$f </span><span style="color: #007700">= </span><span style="color: #0000BB">\fopen</span><span style="color: #007700">(...); </span><span style="color: #FF8000">// call global fopen
+     </span><span style="color: #007700">return </span><span style="color: #0000BB">$f</span><span style="color: #007700">;
+}</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

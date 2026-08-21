@@ -1,0 +1,82 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Sessions support</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.memcached.html">Memcached</a></li>
+        <li>Sessions support</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="memcached.sessions" class="chapter">
+ <h1 class="title">Sessions support</h1>
+
+ <p class="para">Memcached provides a custom session handler that can be used to store
+  user sessions in memcache. A completely separate memcached instance is used
+  for that internally, so you can use a different server pool if necessary. The
+  session keys are stored under the prefix
+  <code class="literal">memc.sess.key.</code>, so be aware of this if you use the
+  same server pool for sessions and generic caching.</p>
+ <p class="para">
+  <dl>
+
+   
+    <dt id="memcache.sessions.save-handler">
+     <code class="parameter">session.save_handler</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Set to <code class="literal">memcached</code> to enable sessions support.
+     </p>
+    </dd>
+   
+
+   
+    <dt id="memcache.sessions.save-path">
+     <code class="parameter">session.save_path</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Defines a comma separated of <code class="literal">hostname:port</code> entries to
+      use for session server pool, for example
+      <code class="literal">&quot;sess1:11211, sess2:11211&quot;</code>.
+     </p>
+    </dd>
+   
+
+  </dl>
+ </p>
+</div>
+</div></div></body></html>

@@ -1,0 +1,118 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Constructs the EvIdle watcher object</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.evidle.html">EvIdle</a></li>
+        <li>Constructs the EvIdle watcher object</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="evidle.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EvIdle::__construct</h1>
+  <p class="verinfo">(PECL ev &gt;= 0.2.0)</p><p class="refpurpose"><span class="refname">EvIdle::__construct</span> &mdash; <span class="dc-title">Constructs the EvIdle watcher object</span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-evidle.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">function</span> <span class="methodname"><strong>EvIdle::__construct</strong></span>(<span class="methodparam">
+    
+    <span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code>
+   </span>, <span class="methodparam">
+    
+    <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code>
+   <span class="initializer"> = ?</span></span>, <span class="methodparam">
+    
+    <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$priority</code>
+   <span class="initializer"> = ?</span></span>)</div>
+
+  <p class="simpara">
+   Constructs the EvIdle watcher object and starts the watcher automatically.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-evidle.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt>
+     <code class="parameter">callback</code>
+    </dt>
+    <dd>
+     <p class="simpara">
+      See
+      <a href="ev.watcher-callbacks.html" class="link">Watcher callbacks</a>.
+     </p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">data</code>
+    </dt>
+    <dd>
+     <p class="simpara">
+      Custom data associated with the watcher.
+     </p>
+    </dd>
+   
+   
+    <dt>
+     <code class="parameter">priority</code>
+    </dt>
+    <dd>
+     <p class="simpara">
+      <a href="class.ev.html#ev.constants.watcher-pri" class="link">Watcher priority</a>
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-evidle.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li>
+    <span class="methodname"><a href="evidle.createstopped.html" class="methodname" rel="rdfs-seeAlso">EvIdle::createStopped()</a> - Creates instance of a stopped EvIdle watcher object</span>
+   </li>
+   <li>
+    <span class="methodname"><a href="evloop.idle.html" class="methodname" rel="rdfs-seeAlso">EvLoop::idle()</a> - Creates EvIdle watcher object associated with the current event
+  loop instance</span>
+   </li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

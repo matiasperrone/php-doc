@@ -1,0 +1,132 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Errors in PHP 7</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.errors.html">Errors</a></li>
+        <li>Errors in PHP 7</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.errors.php7" class="sect1">
+ <h2 class="title">Errors in PHP 7</h2>
+
+ <p class="para">
+  PHP 7 changes how most errors are reported by PHP. Instead of reporting
+  errors through the traditional error reporting mechanism used by PHP 5, most
+  errors are now reported by throwing <span class="classname"><a href="class.error.html" class="classname">Error</a></span> exceptions.
+ </p>
+
+ <p class="para">
+  As with normal exceptions, these <span class="classname"><a href="class.error.html" class="classname">Error</a></span> exceptions
+  will bubble up until they reach the first matching
+  <a href="language.exceptions.html#language.exceptions.catch" class="link"><code class="literal">catch</code></a>
+  block. If there are no matching blocks, then any default exception handler
+  installed with <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> will be called,
+  and if there is no default exception handler, then the exception will be
+  converted to a fatal error and will be handled like a traditional error.
+ </p>
+
+ <p class="para">
+  As the <span class="classname"><a href="class.error.html" class="classname">Error</a></span> hierarchy does not inherit from
+  <span class="classname"><a href="class.exception.html" class="classname">Exception</a></span>, code that uses
+  <code class="code">catch (Exception $e) { ... }</code> blocks to handle uncaught
+  exceptions in PHP 5 will find that these <span class="classname"><a href="class.error.html" class="classname">Error</a></span>s are
+  not caught by these blocks. Either a <code class="code">catch (Error $e) { ... }</code>
+  block or a <span class="function"><a href="function.set-exception-handler.html" class="function">set_exception_handler()</a></span> handler is required.
+ </p>
+
+ <div class="sect2" id="language.errors.php7.hierarchy">
+  <h3 class="title"><span class="classname"><a href="class.error.html" class="classname">Error</a></span> hierarchy</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="simpara"><span class="classname"><a href="class.throwable.html" class="classname">Throwable</a></span></p>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <p class="simpara"><span class="classname"><a href="class.error.html" class="classname">Error</a></span></p>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.arithmeticerror.html" class="classname">ArithmeticError</a></span></p>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <p class="simpara"><span class="classname"><a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a></span></p>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.assertionerror.html" class="classname">AssertionError</a></span></p>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.compileerror.html" class="classname">CompileError</a></span></p>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <p class="simpara"><span class="classname"><a href="class.parseerror.html" class="classname">ParseError</a></span></p>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span></p>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <p class="simpara"><span class="classname"><a href="class.argumentcounterror.html" class="classname">ArgumentCountError</a></span></p>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.valueerror.html" class="classname">ValueError</a></span></p>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.unhandledmatcherror.html" class="classname">UnhandledMatchError</a></span></p>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.fibererror.html" class="classname">FiberError</a></span></p>
+       </li>
+       <li class="listitem">
+        <p class="simpara"><span class="classname"><a href="class.requestparsebodyexception.html" class="classname">RequestParseBodyException</a></span></p>
+       </li>
+      </ul>
+     </li>
+     <li class="listitem">
+      <p class="simpara"><span class="classname"><a href="class.exception.html" class="classname">Exception</a></span></p>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <p class="simpara">...</p>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+</div></div></div></body></html>

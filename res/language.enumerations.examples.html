@@ -1,0 +1,148 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.enumerations.html">Enumerations</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.enumerations.examples" class="sect1">
+  <h2 class="title">Examples</h2>
+
+  <p class="para">
+   <div class="example" id="example-412">
+    <p><strong>Example #1 Basic limited values</strong></p>
+    <div class="example-contents">
+<div class="annotation-non-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">SortOrder
+</span><span style="color: #007700">{
+    case </span><span style="color: #0000BB">Asc</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Desc</span><span style="color: #007700">;
+}
+
+function </span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$fields</span><span style="color: #007700">, </span><span style="color: #0000BB">$filter</span><span style="color: #007700">, </span><span style="color: #0000BB">SortOrder $order </span><span style="color: #007700">= </span><span style="color: #0000BB">SortOrder</span><span style="color: #007700">::</span><span style="color: #0000BB">Asc</span><span style="color: #007700">)
+{
+     </span><span style="color: #FF8000">/* ... */
+</span><span style="color: #007700">}</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>
+     The <code class="literal">query()</code> function can now proceed safe in the knowledge that
+     <code class="literal">$order</code> is guaranteed to be either <code class="literal">SortOrder::Asc</code>
+     or <code class="literal">SortOrder::Desc</code>. Any other value would have resulted in a
+     <span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span>, so no further error checking or testing is needed.
+    </p></div>
+   </div>
+  </p>
+
+  <p class="para">
+
+   <div class="example" id="example-413">
+    <p><strong>Example #2 Advanced exclusive values</strong></p>
+
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">UserStatus</span><span style="color: #007700">: </span><span style="color: #0000BB">string
+</span><span style="color: #007700">{
+    case </span><span style="color: #0000BB">Pending </span><span style="color: #007700">= </span><span style="color: #DD0000">'P'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Active </span><span style="color: #007700">= </span><span style="color: #DD0000">'A'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Suspended </span><span style="color: #007700">= </span><span style="color: #DD0000">'S'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">CanceledByUser </span><span style="color: #007700">= </span><span style="color: #DD0000">'C'</span><span style="color: #007700">;
+
+    public function </span><span style="color: #0000BB">label</span><span style="color: #007700">(): </span><span style="color: #0000BB">string
+    </span><span style="color: #007700">{
+        return match (</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Pending </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Pending'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Active </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Active'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Suspended </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Suspended'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CanceledByUser </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Canceled by user'</span><span style="color: #007700">,
+        };
+    }
+}
+
+</span><span style="color: #0000BB">$status </span><span style="color: #007700">= </span><span style="color: #0000BB">UserStatus</span><span style="color: #007700">::</span><span style="color: #0000BB">Suspended</span><span style="color: #007700">;
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$status</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">label</span><span style="color: #007700">());</span></code></pre></div>
+    </div>
+
+
+    <div class="example-contents"><p>
+     In this example, a user&#039;s status may be one of, and exclusively, <code class="literal">UserStatus::Pending</code>,
+     <code class="literal">UserStatus::Active</code>, <code class="literal">UserStatus::Suspended</code>, or
+     <code class="literal">UserStatus::CanceledByUser</code>. A function can type a parameter against
+     <code class="literal">UserStatus</code> and then only accept those four values, period.
+    </p></div>
+
+    <div class="example-contents"><p>
+     All four values have a <code class="literal">label()</code> method, which returns a human-readable string.
+     That string is independent of the &quot;machine name&quot; scalar equivalent string, which can be used in,
+     for example, a database field or an HTML select box.
+    </p></div>
+
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">UserStatus</span><span style="color: #007700">: </span><span style="color: #0000BB">string
+</span><span style="color: #007700">{
+    case </span><span style="color: #0000BB">Pending </span><span style="color: #007700">= </span><span style="color: #DD0000">'P'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Active </span><span style="color: #007700">= </span><span style="color: #DD0000">'A'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Suspended </span><span style="color: #007700">= </span><span style="color: #DD0000">'S'</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">CanceledByUser </span><span style="color: #007700">= </span><span style="color: #DD0000">'C'</span><span style="color: #007700">;
+
+    public function </span><span style="color: #0000BB">label</span><span style="color: #007700">(): </span><span style="color: #0000BB">string
+    </span><span style="color: #007700">{
+        return match(</span><span style="color: #0000BB">$this</span><span style="color: #007700">) {
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Pending </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Pending'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Active </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Active'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">Suspended </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Suspended'</span><span style="color: #007700">,
+            </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CanceledByUser </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'Canceled by user'</span><span style="color: #007700">,
+        };
+    }
+}
+
+foreach (</span><span style="color: #0000BB">UserStatus</span><span style="color: #007700">::</span><span style="color: #0000BB">cases</span><span style="color: #007700">() as </span><span style="color: #0000BB">$case</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">printf</span><span style="color: #007700">(
+        </span><span style="color: #DD0000">"&lt;option value=\"%s\"&gt;%s&lt;/option&gt;\n"</span><span style="color: #007700">,
+        </span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$case</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">),
+        </span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$case</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">label</span><span style="color: #007700">())
+    );
+}</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+
+ </div></div></div></body></html>

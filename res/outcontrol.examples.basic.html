@@ -1,0 +1,69 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Basic usage</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="outcontrol.examples.html">Examples</a></li>
+        <li>Basic usage</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="outcontrol.examples.basic" class="section">
+  <h2 class="title">Basic usage</h2>
+  <p class="para">
+   <div class="example" id="example-633">
+    <p><strong>Example #1 Output Control example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+ob_start</span><span style="color: #007700">();
+echo </span><span style="color: #DD0000">"Hello\n"</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">setcookie</span><span style="color: #007700">(</span><span style="color: #DD0000">"cookiename"</span><span style="color: #007700">, </span><span style="color: #DD0000">"cookiedata"</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">ob_end_flush</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   In the above example, the output from <span class="function"><a href="function.echo.html" class="function">echo</a></span>
+   would be stored in the output buffer until
+   <span class="function"><a href="function.ob-end-flush.html" class="function">ob_end_flush()</a></span> was called. In the mean time,
+   the call to <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> successfully stored a
+   cookie without causing an error. (Headers cannot normally be sent
+   to the browser after data has already been sent.)
+  </p>
+ </div></div></div></body></html>

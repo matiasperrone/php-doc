@@ -1,0 +1,91 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>iconv</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.international.html">Human Language and
+ Character Encoding Support</a></li>
+        <li>iconv</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.iconv" class="book">
+ 
+ <h1 class="title">iconv</h1>
+ 
+ 
+ <div id="intro.iconv" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="para">
+   This module contains an interface to iconv character set conversion
+   facility. With this module, you can turn a string represented by a local
+   character set into the one represented by another character set,
+   which may be the Unicode character set. Supported character sets
+   depend on the iconv implementation of your system.
+   Note that the iconv function on some systems may not work
+   as you expect. In such case, it&#039;d be a good idea to install the
+   <a href="http://www.gnu.org/software/libiconv/" class="link external" title="Link : http://www.gnu.org/software/libiconv/">&raquo;&nbsp;GNU libiconv</a> library. It will most
+   likely end up with more consistent results.
+  </p>
+
+  <p class="para">
+   This extension comes with
+   various utility functions that help you to write multilingual
+   scripts. Let&#039;s have a look at the following sections to explore the new
+   features.
+  </p> 
+ </div>
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="iconv.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="iconv.requirements.html">Requirements</a></li><li><a href="iconv.installation.html">Installation</a></li><li><a href="iconv.configuration.html">Runtime Configuration</a></li></ul></li><li><a href="iconv.constants.html">Predefined Constants</a></li><li><a href="ref.iconv.html">iconv Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.iconv.html">iconv</a> — Convert a string from one character encoding to another</li><li><a href="function.iconv-get-encoding.html">iconv_get_encoding</a> — Retrieve internal configuration variables of iconv extension</li><li><a href="function.iconv-mime-decode.html">iconv_mime_decode</a> — Decodes a MIME header field</li><li><a href="function.iconv-mime-decode-headers.html">iconv_mime_decode_headers</a> — Decodes multiple MIME header fields at once</li><li><a href="function.iconv-mime-encode.html">iconv_mime_encode</a> — Composes a MIME header field</li><li><a href="function.iconv-set-encoding.html">iconv_set_encoding</a> — Set current setting for character encoding conversion</li><li><a href="function.iconv-strlen.html">iconv_strlen</a> — Returns the character count of string</li><li><a href="function.iconv-strpos.html">iconv_strpos</a> — Finds position of first occurrence of a needle within a haystack</li><li><a href="function.iconv-strrpos.html">iconv_strrpos</a> — Finds the last occurrence of a needle within a haystack</li><li><a href="function.iconv-substr.html">iconv_substr</a> — Cut out part of a string</li><li><a href="function.ob-iconv-handler.html">ob_iconv_handler</a> — Convert character encoding as output buffer handler</li></ul></li></ul></div></div></div></body></html>

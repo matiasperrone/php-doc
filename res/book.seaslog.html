@@ -1,0 +1,133 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Seaslog</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+        <li>Seaslog</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.seaslog" class="book">
+ 
+ <h1 class="title">Seaslog</h1>
+ 
+
+ <div id="intro.seaslog" class="preface">
+  <h1 class="title">Introduction</h1>
+   <p class="simpara">
+   The <abbr>Seaslog</abbr> is an effective,fast,stable log extension for PHP.
+  </p>
+  <p class="simpara">
+  The log journal，which is usually the operate record of the system，
+  software and the application record.
+  Through the analysis of the log，it can facilitate users to understand the operation of the system，
+  software and the application situation.
+  If your application log is rich enough,
+  it can also analyze the previous use’s operation behavior,type,
+  regional distribution or other more information.
+  The application log also points the multiple levels at the same time,
+  you can easily get the application analysis of health status,
+  timely find problems and quick positioning, and solve the problem, remedy the loss.
+  </p>
+  <p class="simpara">
+  The error_log, syslog function which built in PHP is powerful and excellent performance,
+  but due to various defects (error_log have no error level, no fixed format, syslog regardless of module,
+  and mix with system log ), reducing a lot of flexibility , and can&#039;t meet the application requirements.
+  </p>
+  <p class="simpara">
+  The good news is that there are a number of third-party log class library established
+  to make up for the defects, such as log4php, plog, monolog (of course,
+  there are many applications in the project development of the log class).
+  </p>
+  <p class="para">
+  So is there a log of libraries meet the following requirements：
+    <ul class="simplelist">
+        <li>Modules, classification</li>
+        <li>Simple configuration (preferably without configuration)</li>
+        <li>Clear log format and easy understanding</li>
+        <li>Simple application and well performance</li>
+    </ul>
+    <abbr>Seaslog</abbr> just meet these demands.
+  </p>
+  <p class="para">
+  What is provided at present:
+    <ul class="simplelist">
+        <li>In the PHP project, record the log specification and repidly.</li>
+        <li>Configure the default log directory and module</li>
+        <li>Specified log directory and capture current configuration</li>
+        <li>Preliminary analysis of the early warning framework</li>
+        <li>Efficient log buffer and convenient buffer debug</li>
+        <li>Follow the PSR-3 log interface specification</li>
+        <li>Automatically record error information</li>
+        <li>Automatically record abnormal information</li>
+        <li>Support Connect the TCP port, send with RFC5424</li>
+        <li>Support Connect the UDP port, send with RFC5424</li>
+        <li>Support RequestId differentiated requests</li>
+        <li>Support for log template customizations</li>
+    </ul>
+  </p>
+  <p class="simpara">
+   Read More <a href="https://seasx.github.io/SeasLog/" class="link external" title="Link : https://seasx.github.io/SeasLog/">&raquo;&nbsp;SeasLog Document</a> at Github.
+  </p>
+ </div>
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="seaslog.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="seaslog.requirements.html">Requirements</a></li><li><a href="seaslog.installation.html">Installation</a></li><li><a href="seaslog.configuration.html">Runtime Configuration</a></li><li><a href="seaslog.resources.html">Resource Types</a></li></ul></li><li><a href="seaslog.constants.html">Predefined Constants</a></li><li><a href="seaslog.examples.html">Examples</a></li><li><a href="ref.seaslog.html">Seaslog Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.seaslog-get-author.html">seaslog_get_author</a> — Get SeasLog author.</li><li><a href="function.seaslog-get-version.html">seaslog_get_version</a> — Get SeasLog version.</li></ul></li><li><a href="class.seaslog.html">SeasLog</a> — The SeasLog class<ul class="chunklist chunklist_book chunklist_children"><li><a href="seaslog.alert.html">SeasLog::alert</a> — Record alert log information</li><li><a href="seaslog.analyzercount.html">SeasLog::analyzerCount</a> — Get log count by level, log_path and key_word</li><li><a href="seaslog.analyzerdetail.html">SeasLog::analyzerDetail</a> — Get log detail by level, log_path, key_word, start, limit, order</li><li><a href="seaslog.closeloggerstream.html">SeasLog::closeLoggerStream</a> — Manually release stream flow from logger</li><li><a href="seaslog.construct.html">SeasLog::__construct</a> — Description</li><li><a href="seaslog.critical.html">SeasLog::critical</a> — Record critical log information</li><li><a href="seaslog.debug.html">SeasLog::debug</a> — Record debug log information</li><li><a href="seaslog.destruct.html">SeasLog::__destruct</a> — Description</li><li><a href="seaslog.emergency.html">SeasLog::emergency</a> — Record emergency log information</li><li><a href="seaslog.error.html">SeasLog::error</a> — Record error log information</li><li><a href="seaslog.flushbuffer.html">SeasLog::flushBuffer</a> — Flush logs buffer, dump to appender file, or send to remote api with tcp/udp</li><li><a href="seaslog.getbasepath.html">SeasLog::getBasePath</a> — Get SeasLog base path.</li><li><a href="seaslog.getbuffer.html">SeasLog::getBuffer</a> — Get the logs buffer in memory as array</li><li><a href="seaslog.getbufferenabled.html">SeasLog::getBufferEnabled</a> — Determin if buffer enabled</li><li><a href="seaslog.getdatetimeformat.html">SeasLog::getDatetimeFormat</a> — Get SeasLog datetime format style</li><li><a href="seaslog.getlastlogger.html">SeasLog::getLastLogger</a> — Get SeasLog last logger path</li><li><a href="seaslog.getrequestid.html">SeasLog::getRequestID</a> — Get SeasLog request_id differentiated requests</li><li><a href="seaslog.getrequestvariable.html">SeasLog::getRequestVariable</a> — Get SeasLog request variable</li><li><a href="seaslog.info.html">SeasLog::info</a> — Record info log information</li><li><a href="seaslog.log.html">SeasLog::log</a> — The Common Record Log Function</li><li><a href="seaslog.notice.html">SeasLog::notice</a> — Record notice log information</li><li><a href="seaslog.setbasepath.html">SeasLog::setBasePath</a> — Set SeasLog base path</li><li><a href="seaslog.setdatetimeformat.html">SeasLog::setDatetimeFormat</a> — Set SeasLog datetime format style</li><li><a href="seaslog.setlogger.html">SeasLog::setLogger</a> — Set SeasLog logger name</li><li><a href="seaslog.setrequestid.html">SeasLog::setRequestID</a> — Set SeasLog request_id differentiated requests</li><li><a href="seaslog.setrequestvariable.html">SeasLog::setRequestVariable</a> — Manually set SeasLog request variable</li><li><a href="seaslog.warning.html">SeasLog::warning</a> — Record warning log information</li></ul></li></ul></div></div></div></body></html>

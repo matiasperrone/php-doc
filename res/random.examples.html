@@ -1,0 +1,85 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.random.html">Random</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="random.examples" class="chapter">
+ <h1 class="title">Examples</h1>
+
+ <div class="example" id="example-3805">
+  <p><strong>Example #1 Random Example</strong></p>
+  <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$r </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Random\Randomizer</span><span style="color: #007700">();
+
+</span><span style="color: #FF8000">// Generating a random domain name
+</span><span style="color: #0000BB">printf</span><span style="color: #007700">(
+    </span><span style="color: #DD0000">"%s.example.com\n"</span><span style="color: #007700">,
+    </span><span style="color: #0000BB">$r</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getBytesFromString</span><span style="color: #007700">(</span><span style="color: #DD0000">'abcdefghijklmnopqrstuvwxyz0123456789'</span><span style="color: #007700">, </span><span style="color: #0000BB">16</span><span style="color: #007700">)
+);
+
+</span><span style="color: #FF8000">// Shuffle array:
+</span><span style="color: #0000BB">$fruits </span><span style="color: #007700">= [ </span><span style="color: #DD0000">'red' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍎'</span><span style="color: #007700">, </span><span style="color: #DD0000">'green' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🥝'</span><span style="color: #007700">, </span><span style="color: #DD0000">'yellow' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍌'</span><span style="color: #007700">, </span><span style="color: #DD0000">'pink' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍑'</span><span style="color: #007700">, </span><span style="color: #DD0000">'purple' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍇' </span><span style="color: #007700">];
+echo </span><span style="color: #DD0000">"Salad: "</span><span style="color: #007700">, </span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">', '</span><span style="color: #007700">, </span><span style="color: #0000BB">$r</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">shuffleArray</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">)), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">// Shuffeling array keys
+</span><span style="color: #0000BB">$fruits </span><span style="color: #007700">= [ </span><span style="color: #DD0000">'red' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍎'</span><span style="color: #007700">, </span><span style="color: #DD0000">'green' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🥝'</span><span style="color: #007700">, </span><span style="color: #DD0000">'yellow' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍌'</span><span style="color: #007700">, </span><span style="color: #DD0000">'pink' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍑'</span><span style="color: #007700">, </span><span style="color: #DD0000">'purple' </span><span style="color: #007700">=&gt; </span><span style="color: #DD0000">'🍇' </span><span style="color: #007700">];
+
+</span><span style="color: #0000BB">$keys </span><span style="color: #007700">= </span><span style="color: #0000BB">$r</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pickArrayKeys</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruits</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);
+</span><span style="color: #FF8000">// Look up the values for the picked keys.
+</span><span style="color: #0000BB">$selection </span><span style="color: #007700">= </span><span style="color: #0000BB">array_map</span><span style="color: #007700">(
+    static fn (</span><span style="color: #0000BB">$key</span><span style="color: #007700">) =&gt; </span><span style="color: #0000BB">$fruits</span><span style="color: #007700">[</span><span style="color: #0000BB">$key</span><span style="color: #007700">],
+    </span><span style="color: #0000BB">$keys
+</span><span style="color: #007700">);
+
+echo </span><span style="color: #DD0000">"Values: "</span><span style="color: #007700">, </span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">', '</span><span style="color: #007700">, </span><span style="color: #0000BB">$selection</span><span style="color: #007700">), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="annotation-interactive cdata"><pre>
+j87fzv1p0daiwmlo.example.com
+Salad: 🥝, 🍇, 🍎, 🍌, 🍑
+Values: 🍌, 🍑
+</pre></div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

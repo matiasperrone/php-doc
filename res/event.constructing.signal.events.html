@@ -1,0 +1,110 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Constructing signal events</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.event.html">Event</a></li>
+        <li>Constructing signal events</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="event.constructing.signal.events" class="chapter">
+ <h1 class="title">Constructing signal events</h1>
+
+ <p class="para">
+  Event can also watch for POSIX-style signals. To construct a handler for a
+  signal, use
+  <span class="methodname"><a href="event.construct.html" class="methodname">Event::__construct()</a></span>
+  constructor with
+  <strong><code><a href="class.event.html#event.constants.signal">Event::SIGNAL</a></code></strong>
+  flag, or
+  <span class="methodname"><a href="event.signal.html" class="methodname">Event::signal()</a></span>
+  factory method.
+ </p>
+ <div class="example" id="example-4618">
+  <p><strong>Example #1 Handling <code class="literal">SIGTERM</code> signal</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/*
+Launch it in a terminal window:
+
+$ php examples/signal.php
+
+In another terminal window find out the pid and send SIGTERM, e.g.:
+
+$ ps aux | grep examp
+ruslan    3976  0.2  0.0 139896 11256 pts/1    S+   10:25   0:00 php examples/signal.php
+ruslan    3978  0.0  0.0   9572   864 pts/2    S+   10:26   0:00 grep --color=auto examp
+$ kill -TERM 3976
+
+At the first terminal window you should catch the following:
+
+Caught signal 15
+*/
+</span><span style="color: #007700">class </span><span style="color: #0000BB">MyEventSignal </span><span style="color: #007700">{
+    private </span><span style="color: #0000BB">$base</span><span style="color: #007700">, </span><span style="color: #0000BB">$ev</span><span style="color: #007700">;
+
+    public function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">) {
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">base </span><span style="color: #007700">= </span><span style="color: #0000BB">$base</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ev </span><span style="color: #007700">= </span><span style="color: #0000BB">Event</span><span style="color: #007700">::</span><span style="color: #0000BB">signal</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">, </span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">, array(</span><span style="color: #0000BB">$this</span><span style="color: #007700">, </span><span style="color: #DD0000">'eventSighandler'</span><span style="color: #007700">));
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ev</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">();
+    }
+
+    public function </span><span style="color: #0000BB">eventSighandler</span><span style="color: #007700">(</span><span style="color: #0000BB">$no</span><span style="color: #007700">, </span><span style="color: #0000BB">$c</span><span style="color: #007700">) {
+        echo </span><span style="color: #DD0000">"Caught signal </span><span style="color: #0000BB">$no</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exit</span><span style="color: #007700">();
+    }
+}
+
+</span><span style="color: #0000BB">$base </span><span style="color: #007700">= new </span><span style="color: #0000BB">EventBase</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$c    </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyEventSignal</span><span style="color: #007700">(</span><span style="color: #0000BB">$base</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$base</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loop</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+ </div>
+ <p class="para">
+  Note that signal callbacks are run in the event loop after the signal
+  occurs, so it is safe for them to call functions that you are not supposed
+  to call from a regular POSIX signal handler.
+ </p>
+ <p class="para"/>
+ <p class="para">
+  See also
+  <a href="http://www.wangafu.net/~nickm/libevent-book/Ref4_event.html#_constructing_signal_events" class="link external" title="Link : http://www.wangafu.net/~nickm/libevent-book/Ref4_event.html#_constructing_signal_events">&raquo;&nbsp;Fast
+ portable non-blocking network programming with Libevent, Constructing Signal
+ Events</a>.
+ </p>
+</div>
+</div></div></body></html>

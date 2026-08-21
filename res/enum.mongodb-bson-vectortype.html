@@ -1,0 +1,87 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The MongoDB\BSON\VectorType enum</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.bson.html">MongoDB\BSON</a></li>
+        <li>The MongoDB\BSON\VectorType enum</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="enum.mongodb-bson-vectortype" class="reference">
+
+ <h1 class="title">The MongoDB\BSON\VectorType enum</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=2.2.0)</p>
+  <div class="section" id="mongodb-bson-vectortype.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    The <span class="enumname"><strong class="enumname">MongoDB\BSON\VectorType</strong></span> enum is used to specify the type of
+    vector data stored in a <span class="classname"><a href="class.mongodb-bson-binary.html" class="classname">MongoDB\BSON\Binary</a></span> with
+    subtype <strong><code><a href="class.mongodb-bson-binary.html#mongodb-bson-binary.constants.type-vector">MongoDB\BSON\Binary::TYPE_VECTOR</a></code></strong>.
+   </p>
+  </div>
+
+  <div class="section" id="mongodb-bson-vectortype.synopsis">
+   <h2 class="title">Enum synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">enum</span> <strong class="classname"><strong class="enumname">MongoDB\BSON\VectorType</strong></strong><br/>{</div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">Float32</span>
+     ; //
+      Each element in the vector is a 32-bit floating point value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">Int8</span>
+     ; //
+      Each element in the vector is an 8-bit integer value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">PackedBit</span>
+     ; //
+      Each element in the vector is a 1-bit value. When creating vectors of this
+      type, you may pass either <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> or 1-bit <span class="type"><a href="language.types.integer.html" class="type int">int</a></span> values, i.e. <code class="literal">0</code> or <code class="literal">1</code>.
+     <br><br>
+    </div>
+   }</div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

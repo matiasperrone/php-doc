@@ -1,0 +1,222 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Swoole\Event class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.swoole.html">Swoole</a></li>
+        <li>The Swoole\Event class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.swoole-event" class="reference">
+
+ <h1 class="title">The Swoole\Event class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL swoole &gt;= 1.9.0)</p>
+
+
+  <div class="section" id="swoole-event.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    The Swoole extension provides low-level interfaces to directly manipulate the underlying epoll/kqueue/poll/select event loop.
+    It allows adding sockets created by other extensions or PHP&#039;s stream/socket extensions to Swoole&#039;s EventLoop.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="simpara">
+     The Event module is low-level, being a basic encapsulation of epoll. Users should have experience with IO multiplexing programming.
+    </p>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="swoole-event.event-priority">
+   <h2 class="title">Event Priority</h2>
+   <ol type="1">
+    <li class="listitem"><p class="simpara">Signal handler callback functions set via Process::signal</p></li>
+    <li class="listitem"><p class="simpara">Timer callback functions set via Timer::tick and Timer::after</p></li>
+    <li class="listitem"><p class="simpara">Deferred execution functions set via Event::defer</p></li>
+    <li class="listitem"><p class="simpara">Periodic callback functions set via Event::cycle</p></li>
+   </ol>
+  </div>
+
+  <div class="section" id="swoole-event.event-socket">
+   <h2 class="title">Swoole Event Socket Type</h2>
+   <p class="para">
+    <dl>
+     
+      <dt id="swoole-event.int">
+       <code class="parameter">fd</code>
+       <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      </dt>
+      <dd>
+       <p class="simpara">
+        File descriptors, including Swoole\Client-&gt;$sock, Swoole\Process-&gt;$pipe, or any other file descriptor (fd).
+       </p>
+      </dd>
+     
+     
+      <dt id="swoole-event.stream">
+       <code class="parameter">stream resource</code>
+       <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+      </dt>
+      <dd>
+       <p class="simpara">
+        Resources created by stream_socket_client/fsockopen.
+       </p>
+      </dd>
+     
+     
+      <dt id="swoole-event.socket">
+       <code class="parameter">socket resource</code>
+       <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span>
+      </dt>
+      <dd>
+       <p class="simpara">
+        Resources created by socket_create from the sockets extension require
+        the --enable-sockets flag during Swoole compilation.
+       </p>
+      </dd>
+     
+     
+      <dt id="swoole-event.object">
+       <code class="parameter">object</code>
+       <span class="type"><a href="language.types.object.html" class="type object">object</a></span>
+      </dt>
+      <dd>
+       <p class="simpara">
+        Swoole automatically converts Swoole\Process into UnixSocket and Swoole\Client
+        into connected client sockets at the underlying level.
+       </p>
+      </dd>
+     
+    </dl>
+   </p>
+  </div>
+
+  <div class="section" id="swoole-event.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">Swoole\Event</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.add.html" class="methodname">add</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$sock</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$read_callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$write_callback</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.cycle.html" class="methodname">cycle</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$before</code><span class="initializer"> = false</span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.defer.html" class="methodname">defer</a></span>(<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$callback_function</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.del.html" class="methodname">del</a></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$sock</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.dispatch.html" class="methodname">dispatch</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span>  <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.isset.html" class="methodname">isset</a></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$events</code>
+    <span class="initializer"> = 
+     SWOOLE_EVENT_READ | SWOOLE_EVENT_WRITE
+    </span>
+   </span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.set.html" class="methodname">set</a></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$sock</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$read_callback</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.callable.html" class="type callable">callable</a></span> <code class="parameter">$write_callback</code><span class="initializer"> = ?</span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = ?</span></span><br>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.wait.html" class="methodname">wait</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><a href="swoole-event.write.html" class="methodname">write</a></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>, <span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="swoole-event.add.html">Swoole\Event::add</a> — Add a socket to the underlying reactor event listener</li><li><a href="swoole-event.cycle.html">Swoole\Event::cycle</a> — Define a function to execute at the end of each event loop iteration</li><li><a href="swoole-event.defer.html">Swoole\Event::defer</a> — Execute a function at the start of the next event loop</li><li><a href="swoole-event.del.html">Swoole\Event::del</a> — Remove a socket from reactor event listener</li><li><a href="swoole-event.dispatch.html">Swoole\Event::dispatch</a> — Perform a single event loop iteration</li><li><a href="swoole-event.isset.html">Swoole\Event::isset</a> — Check if a socket is being monitored in the event loop</li><li><a href="swoole-event.set.html">Swoole\Event::set</a> — Modify event listener callbacks and mask</li><li><a href="swoole-event.wait.html">Swoole\Event::wait</a> — Start event loop</li><li><a href="swoole-event.write.html">Swoole\Event::write</a> — Write data to socket asynchronously</li></ul>
+</div>
+</div></div></body></html>

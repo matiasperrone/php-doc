@@ -1,0 +1,128 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Get an XPath for a node</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.domnode.html">DOMNode</a></li>
+        <li>Get an XPath for a node</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="domnode.getnodepath" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMNode::getNodePath</h1>
+  <p class="verinfo">(PHP 5 &gt;= 5.2.0, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">DOMNode::getNodePath</span> &mdash; <span class="dc-title">Get an XPath for a node</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-domnode.getnodepath-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>DOMNode::getNodePath</strong></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Gets an XPath location path for the node.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-domnode.getnodepath-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-domnode.getnodepath-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> containing the XPath, or <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> in case of an error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-domnode.getnodepath-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5915">
+    <p><strong>Example #1 <span class="methodname"><strong>DOMNode::getNodePath()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Create a new DOMDocument instance
+</span><span style="color: #0000BB">$dom </span><span style="color: #007700">= new </span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">// Load the XML
+</span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'
+&lt;fruits&gt;
+ &lt;apples&gt;
+  &lt;apple&gt;braeburn&lt;/apple&gt;
+  &lt;apple&gt;granny smith&lt;/apple&gt;
+ &lt;/apples&gt;
+ &lt;pears&gt;
+  &lt;pear&gt;conference&lt;/pear&gt;
+ &lt;/pears&gt;
+&lt;/fruits&gt;
+'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Print XPath for each element
+</span><span style="color: #007700">foreach (</span><span style="color: #0000BB">$dom</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'*'</span><span style="color: #007700">) as </span><span style="color: #0000BB">$node</span><span style="color: #007700">) {
+    echo </span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNodePath</span><span style="color: #007700">() . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="annotation-interactive examplescode"><pre class="examplescode">/fruits
+/fruits/apples
+/fruits/apples/apple[1]
+/fruits/apples/apple[2]
+/fruits/pears
+/fruits/pears/pear</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-domnode.getnodepath-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="classname"><a href="class.domxpath.html" class="classname">DOMXPath</a></span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

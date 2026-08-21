@@ -1,0 +1,78 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.v8js.html">V8js</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="v8js.examples" class="chapter">
+ <h1 class="title">Examples</h1>
+
+ <p class="para">
+  Basic usage
+ </p>
+ <div class="example" id="example-4240">
+  <p><strong>Example #1 Basic Javascript execution</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$v8 </span><span style="color: #007700">= new </span><span style="color: #0000BB">V8Js</span><span style="color: #007700">();
+
+</span><span style="color: #FF8000">/* basic.js */
+</span><span style="color: #0000BB">$JS </span><span style="color: #007700">= &lt;&lt;&lt; EOT
+</span><span style="color: #DD0000">len = print('Hello' + ' ' + 'World!' + "\\n");
+len;
+</span><span style="color: #007700">EOT;
+
+try {
+  </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$v8</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeString</span><span style="color: #007700">(</span><span style="color: #0000BB">$JS</span><span style="color: #007700">, </span><span style="color: #DD0000">'basic.js'</span><span style="color: #007700">));
+} catch (</span><span style="color: #0000BB">V8JsException $e</span><span style="color: #007700">) {
+  </span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);
+}
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello World!
+int(13)
+</pre></div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

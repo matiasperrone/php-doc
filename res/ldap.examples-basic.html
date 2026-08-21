@@ -1,0 +1,94 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Basic usage</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ldap.examples.html">Examples</a></li>
+        <li>Basic usage</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="ldap.examples-basic" class="section">
+  <h2 class="title">Basic usage</h2>
+  <p class="para">
+   Retrieve information for all entries where the surname starts
+   with &quot;S&quot; from a directory server, displaying an extract with
+   name and email address.
+  </p>
+
+  <div class="example" id="example-4710">
+   <p><strong>Example #1 LDAP search example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// basic sequence with LDAP is connect, bind, search, interpret search
+// result, close connection
+
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">"&lt;h3&gt;LDAP query test&lt;/h3&gt;"</span><span style="color: #007700">;
+echo </span><span style="color: #DD0000">"Connecting ..."</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$ds</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);  </span><span style="color: #FF8000">// must be a valid LDAP server!
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">"connect result is " </span><span style="color: #007700">. </span><span style="color: #0000BB">$ds </span><span style="color: #007700">. </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+
+if (</span><span style="color: #0000BB">$ds</span><span style="color: #007700">) {
+    echo </span><span style="color: #DD0000">"Binding ..."</span><span style="color: #007700">;
+    </span><span style="color: #0000BB">$r</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">);     </span><span style="color: #FF8000">// this is an "anonymous" bind, typically
+                           // read-only access
+    </span><span style="color: #007700">echo </span><span style="color: #DD0000">"Bind result is " </span><span style="color: #007700">. </span><span style="color: #0000BB">$r </span><span style="color: #007700">. </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+
+    echo </span><span style="color: #DD0000">"Searching for (sn=S*) ..."</span><span style="color: #007700">;
+    </span><span style="color: #FF8000">// Search surname entry
+    </span><span style="color: #0000BB">$sr</span><span style="color: #007700">=</span><span style="color: #0000BB">ldap_search</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #DD0000">"o=My Company, c=US"</span><span style="color: #007700">, </span><span style="color: #DD0000">"sn=S*"</span><span style="color: #007700">);
+    echo </span><span style="color: #DD0000">"Search result is " </span><span style="color: #007700">. </span><span style="color: #0000BB">$sr </span><span style="color: #007700">. </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+
+    echo </span><span style="color: #DD0000">"Number of entries returned is " </span><span style="color: #007700">. </span><span style="color: #0000BB">ldap_count_entries</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #0000BB">$sr</span><span style="color: #007700">) . </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+
+    echo </span><span style="color: #DD0000">"Getting entries ...&lt;p&gt;"</span><span style="color: #007700">;
+    </span><span style="color: #0000BB">$info </span><span style="color: #007700">= </span><span style="color: #0000BB">ldap_get_entries</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">, </span><span style="color: #0000BB">$sr</span><span style="color: #007700">);
+    echo </span><span style="color: #DD0000">"Data for " </span><span style="color: #007700">. </span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">] . </span><span style="color: #DD0000">" items returned:&lt;p&gt;"</span><span style="color: #007700">;
+
+    for (</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">"count"</span><span style="color: #007700">]; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {
+        echo </span><span style="color: #DD0000">"dn is: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">"dn"</span><span style="color: #007700">] . </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+        echo </span><span style="color: #DD0000">"first cn entry is: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">"cn"</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">"&lt;br /&gt;"</span><span style="color: #007700">;
+        echo </span><span style="color: #DD0000">"first email entry is: " </span><span style="color: #007700">. </span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">][</span><span style="color: #DD0000">"mail"</span><span style="color: #007700">][</span><span style="color: #0000BB">0</span><span style="color: #007700">] . </span><span style="color: #DD0000">"&lt;br /&gt;&lt;hr /&gt;"</span><span style="color: #007700">;
+    }
+
+    echo </span><span style="color: #DD0000">"Closing connection"</span><span style="color: #007700">;
+    </span><span style="color: #0000BB">ldap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ds</span><span style="color: #007700">);
+
+} else {
+    echo </span><span style="color: #DD0000">"&lt;h4&gt;Unable to connect to LDAP server&lt;/h4&gt;"</span><span style="color: #007700">;
+}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div></div></div></body></html>

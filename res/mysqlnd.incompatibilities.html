@@ -1,0 +1,62 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Incompatibilities</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+        <li>Incompatibilities</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="mysqlnd.incompatibilities" class="chapter">
+ <h1 class="title">Incompatibilities</h1>
+
+ <p class="simpara">
+  MySQL Native Driver is in most cases compatible with MySQL Client Library
+  (<code class="literal">libmysql</code>). This section documents incompatibilities
+  between these libraries.
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="simpara">
+    Values of <code class="literal">bit</code> data type are returned as binary strings
+    (e.g. &quot;\0&quot; or &quot;\x1F&quot;) with <code class="literal">libmysql</code> and as decimal
+    strings (e.g. &quot;0&quot; or &quot;31&quot;) with <code class="literal">mysqlnd</code>. If you want the
+    code to be compatible with both libraries then always return bit fields as
+    numbers from MySQL with a query like this:
+    <code class="literal">SELECT bit + 0 FROM table</code>.
+   </p>
+  </li>
+ </ul>
+</div>
+</div></div></body></html>

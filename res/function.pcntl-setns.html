@@ -1,0 +1,105 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Reassociate the calling process with a namespace of another process</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.pcntl.html">PCNTL Functions</a></li>
+        <li>Reassociate the calling process with a namespace of another process</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.pcntl-setns" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pcntl_setns</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">pcntl_setns</span> &mdash; <span class="dc-title">Reassociate the calling process with a namespace of another process</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pcntl-setns-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>pcntl_setns</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$process_id</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$nstype</code><span class="initializer"> = <strong><code><a href="pcntl.constants.html#constant.clone-newnet">CLONE_NEWNET</a></code></strong></span></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="simpara">
+   Reassociates the calling process with a Linux namespace of the process
+   specified by <code class="parameter">process_id</code>, using a pidfd obtained
+   via <code class="literal">pidfd_open(2)</code> and <code class="literal">setns(2)</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pcntl-setns-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">process_id</code></dt>
+    <dd>
+     <p class="simpara">
+      The process ID of the target process whose namespace to join.
+      If <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, the calling process&#039;s own PID is used.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">nstype</code></dt>
+    <dd>
+     <p class="simpara">
+      The namespace type to reassociate with. Defaults to
+      <strong><code><a href="pcntl.constants.html#constant.clone-newnet">CLONE_NEWNET</a></code></strong> (network namespace).
+      Possible values include <strong><code><a href="pcntl.constants.html#constant.clone-newnet">CLONE_NEWNET</a></code></strong>,
+      <strong><code><a href="pcntl.constants.html#constant.clone-newipc">CLONE_NEWIPC</a></code></strong>,
+      <strong><code><a href="pcntl.constants.html#constant.clone-newuts">CLONE_NEWUTS</a></code></strong>, and others.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pcntl-setns-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> on success or <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pcntl-setns-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.pcntl-unshare.html" class="function" rel="rdfs-seeAlso">pcntl_unshare()</a> - Dissociates parts of the process execution context</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

@@ -1,0 +1,83 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Watchers</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.ev.html">Ev</a></li>
+        <li>Watchers</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="ev.watchers" class="chapter">
+ <h1 class="title">Watchers</h1>
+
+ <p class="para">
+  A watcher is an object that gets created to record interest in some event.
+  For instance, the following code waits for
+  <strong><code><a href="reserved.constants.html#constant.stdin">STDIN</a></code></strong>
+  to become readable:
+  <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Wait until STDIN is readable
+</span><span style="color: #0000BB">$w </span><span style="color: #007700">= new </span><span style="color: #0000BB">EvIo</span><span style="color: #007700">(</span><span style="color: #0000BB">STDIN</span><span style="color: #007700">, </span><span style="color: #0000BB">Ev</span><span style="color: #007700">::</span><span style="color: #0000BB">READ</span><span style="color: #007700">, function (</span><span style="color: #0000BB">$watcher</span><span style="color: #007700">, </span><span style="color: #0000BB">$revents</span><span style="color: #007700">) {
+ echo </span><span style="color: #DD0000">"STDIN is readable\n"</span><span style="color: #007700">;
+});
+</span><span style="color: #0000BB">Ev</span><span style="color: #007700">::</span><span style="color: #0000BB">run</span><span style="color: #007700">(</span><span style="color: #0000BB">Ev</span><span style="color: #007700">::</span><span style="color: #0000BB">RUN_ONCE</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+ </p>
+ <p class="simpara">
+  All the watcher constructors automatically start the watchers.
+  <code class="literal">createStopped</code>
+  methods create stopped watchers(e.g.
+  <span class="methodname"><a href="evio.createstopped.html" class="methodname">EvIo::createStopped()</a></span>)
+ </p>
+ <p class="simpara">
+  Note that a watcher will automatically be stopped when the watcher object is
+  destroyed. Therefore, the watcher objects returned by the constructors or
+  factory methods should be kept.
+ </p>
+ <p class="simpara">
+  Note also that all methods changing some watcher property(
+  <em>set</em>,
+  <var class="varname">priority</var>
+  etc.) automatically stop and start it again if it is active, which means
+  pending events get lost.
+ </p>
+ <p class="simpara">
+  See also:
+  <a href="ev.watcher-callbacks.html" class="link">Watcher callbacks</a>.
+ </p>
+</div>
+</div></div></body></html>

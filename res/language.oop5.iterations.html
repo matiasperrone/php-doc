@@ -1,0 +1,120 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Object Iteration</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.oop5.html">Classes and Objects</a></li>
+        <li>Object Iteration</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.oop5.iterations" class="sect1">
+  <h2 class="title">Object Iteration</h2>
+  <p class="simpara">
+   PHP provides a way for objects to be defined so it is possible to iterate
+   through a list of items with, for example, a <a href="control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> statement. By default,
+   all <a href="language.oop5.visibility.html" class="link">visible</a> properties will be used
+   for the iteration.
+  </p>
+
+  <div class="example" id="example-352">
+   <p><strong>Example #1 Simple Object Iteration</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">class </span><span style="color: #0000BB">MyClass
+</span><span style="color: #007700">{
+    public </span><span style="color: #0000BB">$var1 </span><span style="color: #007700">= </span><span style="color: #DD0000">'value 1'</span><span style="color: #007700">;
+    public </span><span style="color: #0000BB">$var2 </span><span style="color: #007700">= </span><span style="color: #DD0000">'value 2'</span><span style="color: #007700">;
+    public </span><span style="color: #0000BB">$var3 </span><span style="color: #007700">= </span><span style="color: #DD0000">'value 3'</span><span style="color: #007700">;
+
+    protected </span><span style="color: #0000BB">$protected </span><span style="color: #007700">= </span><span style="color: #DD0000">'protected var'</span><span style="color: #007700">;
+    private   </span><span style="color: #0000BB">$private   </span><span style="color: #007700">= </span><span style="color: #DD0000">'private var'</span><span style="color: #007700">;
+
+    function </span><span style="color: #0000BB">iterateVisible</span><span style="color: #007700">() {
+       echo </span><span style="color: #DD0000">"MyClass::iterateVisible:\n"</span><span style="color: #007700">;
+       foreach (</span><span style="color: #0000BB">$this </span><span style="color: #007700">as </span><span style="color: #0000BB">$key </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {
+           print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000"> =&gt; </span><span style="color: #0000BB">$value</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+       }
+    }
+}
+
+</span><span style="color: #0000BB">$class </span><span style="color: #007700">= new </span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();
+
+foreach(</span><span style="color: #0000BB">$class </span><span style="color: #007700">as </span><span style="color: #0000BB">$key </span><span style="color: #007700">=&gt; </span><span style="color: #0000BB">$value</span><span style="color: #007700">) {
+    print </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000"> =&gt; </span><span style="color: #0000BB">$value</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+}
+echo </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+
+
+</span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">iterateVisible</span><span style="color: #007700">();
+
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div> 
+   <div class="example-contents screen">
+<div class="annotation-interactive cdata"><pre>
+var1 =&gt; value 1
+var2 =&gt; value 2
+var3 =&gt; value 3
+
+MyClass::iterateVisible:
+var1 =&gt; value 1
+var2 =&gt; value 2
+var3 =&gt; value 3
+protected =&gt; protected var
+private =&gt; private var
+</pre></div>
+   </div>
+
+  </div>
+
+ <p class="para">
+  As the output shows, the <a href="control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> iterated through all of the
+  <a href="language.oop5.visibility.html" class="link">visible</a> properties that could be
+  accessed.
+ </p>
+
+ <div class="simplesect">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="language.generators.html" class="link">Generators</a></li>
+    <li><span class="interfacename"><a href="class.iterator.html" class="interfacename">Iterator</a></span></li>
+    <li><span class="interfacename"><a href="class.iteratoraggregate.html" class="interfacename">IteratorAggregate</a></span> </li>
+    <li><a href="spl.iterators.html" class="link">SPL Iterators</a></li>
+   </ul>
+  </p>
+ </div>
+
+ </div></div></div></body></html>

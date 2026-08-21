@@ -1,0 +1,140 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Returns the currently executing closure</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.closure.html">Closure</a></li>
+        <li>Returns the currently executing closure</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="closure.getcurrent" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Closure::getCurrent</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.5.0)</p><p class="refpurpose"><span class="refname">Closure::getCurrent</span> &mdash; <span class="dc-title">Returns the currently executing closure</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-closure.getcurrent-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><strong>Closure::getCurrent</strong></span>(): <span class="type"><a href="class.closure.html" class="type Closure">Closure</a></span></div>
+
+  <p class="simpara">
+   Returns the currently executing closure. This method is primarily useful
+   for implementing recursive closures without needing to capture a reference
+   to the closure variable using the <code class="literal">use</code> keyword.
+  </p>
+  <p class="simpara">
+   This method must be called from within a closure; calling it outside of a
+   closure context will result in <code class="literal">Error: Current function is not a closure.</code>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-closure.getcurrent-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-closure.getcurrent-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the currently executing <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span> instance.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-closure.getcurrent-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="simpara">
+   Throws an <span class="exceptionname"><a href="class.error.html" class="exceptionname">Error</a></span> if called outside of a closure
+   context.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-closure.getcurrent-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="closure.getcurrent.example.basic">
+   <p><strong>Example #1 <span class="methodname"><strong>Closure::getCurrent()</strong></span> example</strong></p>
+   <div class="example-contents"><p>
+    Using <span class="methodname"><strong>Closure::getCurrent()</strong></span> to implement a
+    recursive Fibonacci function:
+   </p></div>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$fibonacci </span><span style="color: #007700">= function (</span><span style="color: #0000BB">int $n</span><span style="color: #007700">) {
+    if (</span><span style="color: #0000BB">$n </span><span style="color: #007700">=== </span><span style="color: #0000BB">0 </span><span style="color: #007700">|| </span><span style="color: #0000BB">$n </span><span style="color: #007700">=== </span><span style="color: #0000BB">1</span><span style="color: #007700">) {
+        return </span><span style="color: #0000BB">$n</span><span style="color: #007700">;
+    }
+
+    </span><span style="color: #0000BB">$fn </span><span style="color: #007700">= </span><span style="color: #0000BB">Closure</span><span style="color: #007700">::</span><span style="color: #0000BB">getCurrent</span><span style="color: #007700">();
+    return </span><span style="color: #0000BB">$fn</span><span style="color: #007700">(</span><span style="color: #0000BB">$n </span><span style="color: #007700">- </span><span style="color: #0000BB">1</span><span style="color: #007700">) + </span><span style="color: #0000BB">$fn</span><span style="color: #007700">(</span><span style="color: #0000BB">$n </span><span style="color: #007700">- </span><span style="color: #0000BB">2</span><span style="color: #007700">);
+};
+
+echo </span><span style="color: #0000BB">$fibonacci</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">); </span><span style="color: #FF8000">// Outputs: 55
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+  <div class="example" id="closure.getcurrent.example.comparison">
+   <p><strong>Example #2 Comparison with traditional approach</strong></p>
+   <div class="example-contents"><p>
+    Prior to PHP 8.5, implementing recursive closures required capturing a reference
+    to the closure variable using the <code class="literal">use</code> keyword:
+   </p></div>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">// Traditional approach (still works in PHP 8.5)
+</span><span style="color: #0000BB">$fibonacci </span><span style="color: #007700">= function (</span><span style="color: #0000BB">int $n</span><span style="color: #007700">) use (&amp;</span><span style="color: #0000BB">$fibonacci</span><span style="color: #007700">) {
+    if (</span><span style="color: #0000BB">$n </span><span style="color: #007700">=== </span><span style="color: #0000BB">0</span><span style="color: #007700">) return </span><span style="color: #0000BB">0</span><span style="color: #007700">;
+    if (</span><span style="color: #0000BB">$n </span><span style="color: #007700">=== </span><span style="color: #0000BB">1</span><span style="color: #007700">) return </span><span style="color: #0000BB">1</span><span style="color: #007700">;
+    return </span><span style="color: #0000BB">$fibonacci</span><span style="color: #007700">(</span><span style="color: #0000BB">$n </span><span style="color: #007700">- </span><span style="color: #0000BB">1</span><span style="color: #007700">) + </span><span style="color: #0000BB">$fibonacci</span><span style="color: #007700">(</span><span style="color: #0000BB">$n </span><span style="color: #007700">- </span><span style="color: #0000BB">2</span><span style="color: #007700">);
+};
+
+echo </span><span style="color: #0000BB">$fibonacci</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">); </span><span style="color: #FF8000">// Outputs: 55
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>
+    The <span class="methodname"><strong>Closure::getCurrent()</strong></span> approach eliminates the need to
+    declare the variable with a reference in the <code class="literal">use</code> clause,
+    making the code cleaner and less error-prone.
+   </p></div>
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

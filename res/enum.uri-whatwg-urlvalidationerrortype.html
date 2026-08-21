@@ -1,0 +1,221 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Uri\WhatWg\UrlValidationErrorType enum</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.uri.html">URI</a></li>
+        <li>The Uri\WhatWg\UrlValidationErrorType enum</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="enum.uri-whatwg-urlvalidationerrortype" class="reference">
+ <h1 class="title">The Uri\WhatWg\UrlValidationErrorType enum</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+  <div class="section" id="enum.uri-whatwg-urlvalidationerrortype.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    The possible validation errors defined in the <a href="https://url.spec.whatwg.org/" class="link external" title="Link : https://url.spec.whatwg.org/">&raquo;&nbsp;WHATWG URL Standard</a>.
+   </p>
+  </div>
+
+  <div class="section" id="enum.uri-whatwg-urlvalidationerrortype.synopsis">
+   <h2 class="title">Enum synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">Uri\WhatWg</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">enum</span> <strong class="classname"><strong class="enumname">UrlValidationErrorType</strong></strong><br/>{</div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">DomainToAscii</span>
+      ; //Error during the process of converting the domain name to an ASCII string.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">DomainToUnicode</span>
+      ; //Error during the process of converting the domain name to a Unicode string.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">DomainInvalidCodePoint</span>
+      ; //The input&#039;s host contains a forbidden domain code point.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">HostInvalidCodePoint</span>
+      ; //An opaque host (in a URL that is not special) contains a forbidden host code point.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4EmptyPart</span>
+      ; //An IPv4 address ends with a <code class="literal">U+002E</code> (<code class="literal">.</code>).<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4TooManyParts</span>
+      ; //An IPv4 address does not consist of exactly 4 parts.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4NonNumericPart</span>
+      ; //An IPv4 address part is not numeric.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4NonDecimalPart</span>
+      ; //The IPv4 address contains numbers expressed using hexadecimal or octal digits.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4OutOfRangePart</span>
+      ; //An IPv4 address part exceeds <code class="literal">255</code>.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6Unclosed</span>
+      ; //An IPv6 address is missing the closing <code class="literal">U+005D</code> (<code class="literal">]</code>).<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6InvalidCompression</span>
+      ; //An IPv6 address begins with improper compression.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6TooManyPieces</span>
+      ; //An IPv6 address contains more than 8 pieces.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6MultipleCompression</span>
+      ; //An IPv6 address is compressed in more than one spot.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6InvalidCodePoint</span>
+      ; //
+       An IPv6 address contains a code point that is neither an ASCII hex digit
+       nor a <code class="literal">U+003A</code> (<code class="literal">:</code>). Or it unexpectedly ends.
+      <br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv6TooFewPieces</span>
+      ; //An uncompressed IPv6 address contains fewer than 8 pieces.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4InIpv6TooManyPieces</span>
+      ; //An IPv6 address with IPv4 address syntax: the IPv6 address has more than 6 pieces.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4InIpv6InvalidCodePoint</span>
+      ; //An IPv6 address with IPv4 address syntax.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4InIpv6OutOfRangePart</span>
+      ; //An IPv6 address with IPv4 address syntax: an IPv4 part exceeds <code class="literal">255</code>.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">Ipv4InIpv6TooFewParts</span>
+      ; //An IPv6 address with IPv4 address syntax: an IPv4 address contains too few parts.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">InvalidUrlUnit</span>
+      ; //A code point is found that is not a URL unit.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">SpecialSchemeMissingFollowingSolidus</span>
+      ; //The input’s scheme is not followed by <code class="literal">//</code>.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">MissingSchemeNonRelativeUrl</span>
+      ; //
+       The input is missing a scheme, because it does not begin with an ASCII alpha, and either no base URL was provided
+       or the base URL cannot be used as a base URL because it has an opaque path.
+      <br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">InvalidReverseSoldius</span>
+      ; //The URL has a special scheme and it uses <code class="literal">U+005C</code> (<code class="literal">\</code>)
+       instead of <code class="literal">U+002F</code> (<code class="literal">/</code>).<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">InvalidCredentials</span>
+      ; //The input includes credentials.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">HostMissing</span>
+      ; //The input has a special scheme, but does not contain a host.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">PortOutOfRange</span>
+      ; //The input’s port is too big.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">PortInvalid</span>
+      ; //The input’s port is invalid.<br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">FileInvalidWindowsDriveLetter</span>
+      ; //
+       The input is a relative-URL string that starts with a Windows drive letter and
+       the base URL&#039;s scheme is <code class="literal">file</code>.
+      <br><br>
+     </div>
+
+     <div class="fieldsynopsis">
+          <span class="modifier">case</span>  <span class="classname">FileInvalidWindowsDriveLetterHost</span>
+      ; //A <code class="literal">file:</code> URL&#039;s host is a Windows drive letter.<br><br>
+     </div>
+    }
+   </div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

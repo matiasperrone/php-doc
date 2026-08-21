@@ -1,0 +1,193 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.cubrid.html">CUBRID</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="cubrid.examples" class="chapter">
+ <h1 class="title">Examples</h1>
+
+ <p class="simpara">The following is a simple example that establishes a connection between PHP and CUBRID. This section will cover the most basic and notable features. The following code required to connect to CUBRID database, which means CUBRID Server and CUBRID Broker have to be running.</p>
+ <p class="simpara">The example below uses the demodb database as an examples. By default it is created during the installation. Make sure it has been created.</p>
+
+ <div class="example" id="example-1239">
+  <p><strong>Example #1 Example of Data Retrieval</strong></p>
+  <div class="example-contents">
+    <div class="phpcode"><pre><code style="color: #000000">&lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=euc-kr"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;
+    &lt;table border=2&gt;
+    <span style="color: #0000BB">&lt;?php
+        </span><span style="color: #FF8000">/**
+         * Set server information for CUBRID connection. host_ip is the IP
+         * address where the CUBRID Broker is installed (localhost in this
+         * example), and host_port is the port number of the CUBRID Broker.
+         * The port number is the default given during the installation.
+         * For details, see "Administrator's Guide."
+         */
+        </span><span style="color: #0000BB">$host_ip </span><span style="color: #007700">= </span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$host_port </span><span style="color: #007700">= </span><span style="color: #0000BB">33000</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$db_name </span><span style="color: #007700">= </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">;
+        </span><span style="color: #FF8000">/**
+         * Connect to CUBRID Server. Do not make the actual connection, but
+         * only retain the connection information. The reason for not making
+         * the actual connection is to handle transaction more efficiently
+         * in the 3-tier architecture.
+         */
+        </span><span style="color: #0000BB">$cubrid_con </span><span style="color: #007700">= @</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host_ip</span><span style="color: #007700">, </span><span style="color: #0000BB">$host_port</span><span style="color: #007700">, </span><span style="color: #0000BB">$db_name</span><span style="color: #007700">);
+
+        if (!</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">) {
+            echo </span><span style="color: #DD0000">"Database Connection Error"</span><span style="color: #007700">;
+            exit;
+        }
+    </span><span style="color: #0000BB">?&gt;
+</span>    <span style="color: #0000BB">&lt;?php
+        $sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"select sports, count(players) as players from event group by sports"</span><span style="color: #007700">;
+        </span><span style="color: #FF8000">/**
+         * Request the CUBRID Server for the results of the SQL statement.
+         * Now make the actual connection to the CUBRID Server.
+         */
+        </span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);
+
+        if (</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {
+            </span><span style="color: #FF8000">/**
+             * Get the column names from the result set created by the SQL query.
+             */
+            </span><span style="color: #0000BB">$columns </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_column_names</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);
+            </span><span style="color: #FF8000">/**
+             * Get the number of columns in the result set created by the SQL query.
+             */
+            </span><span style="color: #0000BB">$num_fields </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_num_cols</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">);
+            </span><span style="color: #FF8000">/**
+             * List the column names of the result set on the screen.
+             */
+            </span><span style="color: #007700">echo </span><span style="color: #DD0000">"&lt;tr&gt;"</span><span style="color: #007700">;
+
+            while (list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">, </span><span style="color: #0000BB">$colname</span><span style="color: #007700">) = </span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$columns</span><span style="color: #007700">)) {
+                echo </span><span style="color: #DD0000">"&lt;td align=center&gt;</span><span style="color: #0000BB">$colname</span><span style="color: #DD0000">&lt;/td&gt;"</span><span style="color: #007700">;
+            }
+
+            echo </span><span style="color: #DD0000">"&lt;/tr&gt;"</span><span style="color: #007700">;
+
+            </span><span style="color: #FF8000">/**
+             * Get the results from the result set.
+             */
+            </span><span style="color: #007700">while (</span><span style="color: #0000BB">$row </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_fetch</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">)) {
+                echo </span><span style="color: #DD0000">"&lt;tr&gt;"</span><span style="color: #007700">;
+
+                for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$num_fields</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {
+                    echo </span><span style="color: #DD0000">"&lt;td align=center&gt;"</span><span style="color: #007700">;
+                    echo </span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">$i</span><span style="color: #007700">];
+                    echo </span><span style="color: #DD0000">"&lt;/td&gt;"</span><span style="color: #007700">;
+                }
+
+                echo </span><span style="color: #DD0000">"&lt;/tr&gt;"</span><span style="color: #007700">;
+            }
+        }
+        </span><span style="color: #FF8000">/**
+         * The PHP module in the CUBRID runs in a 3-tier architecture. Even when
+         * calling SELECT for transaction processing, it is processed as a part
+         * of the transaction. Therefore, the transaction needs to be rolled back
+         * by calling commit or rollback even though SELECT was called for smooth
+         * performance.
+         */
+        </span><span style="color: #0000BB">cubrid_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">);
+        </span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">);
+    </span><span style="color: #0000BB">?&gt;
+</span>    &lt;/body&gt;
+    &lt;/html&gt;</code></pre></div>
+  </div>
+
+ </div>
+ <div class="example" id="example-1240">
+ <p><strong>Example #2 Example of Data Insertion</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><pre><code style="color: #000000">&lt;html&gt;
+    &lt;head&gt;
+    &lt;meta http-equiv="content-type" content="text/html; charset=euc- kr"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+    &lt;center&gt;
+    &lt;table border=2&gt;
+    <span style="color: #0000BB">&lt;?php
+        </span><span style="color: #FF8000">/**
+         * host_ip is the IP address where the CUBRID Broker is installed
+         * host_port is the port number of the CUBRID Broker
+         * db_name is the name of CUBRID Database
+         */
+        </span><span style="color: #0000BB">$host_ip </span><span style="color: #007700">= </span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$host_port </span><span style="color: #007700">= </span><span style="color: #0000BB">33000</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$db_name </span><span style="color: #007700">= </span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$cubrid_con </span><span style="color: #007700">= @</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$host_ip</span><span style="color: #007700">, </span><span style="color: #0000BB">$host_port</span><span style="color: #007700">, </span><span style="color: #0000BB">$db_name</span><span style="color: #007700">);
+
+        if (!</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">) {
+            echo </span><span style="color: #DD0000">"Database Connection Error"</span><span style="color: #007700">;
+            exit;
+        }
+    </span><span style="color: #0000BB">?&gt;
+</span>    <span style="color: #0000BB">&lt;?php
+        $sql </span><span style="color: #007700">= </span><span style="color: #DD0000">"insert into olympic (host_year,host_nation,host_city,"
+            </span><span style="color: #007700">. </span><span style="color: #DD0000">"opening_date,closing_date) values (2008, 'China', 'Beijing',"
+            </span><span style="color: #007700">. </span><span style="color: #DD0000">"to_date('08-08-2008','mm-dd- yyyy'),to_date('08-24-2008','mm-dd-yyyy')) ;"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$result </span><span style="color: #007700">= </span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">, </span><span style="color: #0000BB">$sql</span><span style="color: #007700">);
+        if (</span><span style="color: #0000BB">$result</span><span style="color: #007700">) {
+            </span><span style="color: #FF8000">/**
+             * Handled successfully, so commit.
+             */
+            </span><span style="color: #0000BB">cubrid_commit</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">);
+            echo </span><span style="color: #DD0000">"Inserted successfully "</span><span style="color: #007700">;
+        } else {
+            </span><span style="color: #FF8000">/**
+             * Error occurred, so the error message is output and rollback is called.
+             */
+            </span><span style="color: #007700">echo </span><span style="color: #0000BB">cubrid_error_msg</span><span style="color: #007700">();
+            </span><span style="color: #0000BB">cubrid_rollback</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">);
+        }
+        </span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$cubrid_con</span><span style="color: #007700">);
+    </span><span style="color: #0000BB">?&gt;
+</span>    &lt;/body&gt;
+    &lt;/html&gt;</code></pre></div>
+  </div>
+
+ </div>
+
+
+</div>
+</div></div></body></html>

@@ -1,0 +1,75 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Acquire the lock, blocking if necessary</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.swoole-coroutine-lock.html">Swoole\Coroutine\Lock</a></li>
+        <li>Acquire the lock, blocking if necessary</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="swoole-coroutine-lock.lock" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Swoole\Coroutine\Lock::lock</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">Swoole\Coroutine\Lock::lock</span> &mdash; <span class="dc-title">Acquire the lock, blocking if necessary</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-swoole-coroutine-lock.lock-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Swoole\Coroutine\Lock::lock</strong></span>(): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="para rdfs-comment">
+   When executing the lock operation, if the lock is already held by another coroutine,
+   the current coroutine will actively yield CPU control and enter a suspended state.
+   When the coroutine holding the lock calls unlock(), the waiting coroutine will be
+   awakened and try to acquire the lock again.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-swoole-coroutine-lock.lock-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-swoole-coroutine-lock.lock-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> if the lock was acquired successfully,
+   <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> otherwise.
+  </p>
+ </div>
+
+</div></div></div></body></html>

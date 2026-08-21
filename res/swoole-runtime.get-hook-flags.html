@@ -1,0 +1,75 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Get current hook flags</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.swoole-runtime.html">Swoole\Runtime</a></li>
+        <li>Get current hook flags</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="swoole-runtime.get-hook-flags" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Swoole\Runtime::getHookFlags</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">Swoole\Runtime::getHookFlags</span> &mdash; <span class="dc-title">Get current hook flags</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-swoole-runtime.get-hook-flags-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><strong>Swoole\Runtime::getHookFlags</strong></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   Gets the current hook flags.
+   Note that the returned flags might differ from what was set if some hooks failed.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-swoole-runtime.get-hook-flags-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   This function has no parameters.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-swoole-runtime.get-hook-flags-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the current hook flags as a bitmask.
+  </p>
+ </div>
+
+</div></div></div></body></html>

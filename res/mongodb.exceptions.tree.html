@@ -1,0 +1,87 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>MongoDB Exception Class Tree</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.exceptions.html">MongoDB\Driver\Exception</a></li>
+        <li>MongoDB Exception Class Tree</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="mongodb.exceptions.tree" class="article">
+   
+   <h1 class="title">MongoDB Exception Class Tree</h1>
+
+
+   <p class="simpara">
+    The class hierarchy for MongoDB exceptions is modeled after that of the
+    <a href="spl.exceptions.html" class="link">SPL Exceptions</a>. Base classes extend
+    their SPL counterpart and all exception classes in the extension implement
+    the <span class="classname"><a href="class.mongodb-driver-exception-exception.html" class="classname">MongoDB\Driver\Exception\Exception</a></span> interface.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-logicexception.html" class="classname">MongoDB\Driver\Exception\LogicException</a></span> (extends <span class="classname"><a href="class.logicexception.html" class="classname">LogicException</a></span>)</p></li>
+    <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-invalidargumentexception.html" class="classname">MongoDB\Driver\Exception\InvalidArgumentException</a></span> (extends <span class="classname"><a href="class.invalidargumentexception.html" class="classname">InvalidArgumentException</a></span>)</p></li>
+    <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-unexpectedvalueexception.html" class="classname">MongoDB\Driver\Exception\UnexpectedValueException</a></span> (extends <span class="classname"><a href="class.unexpectedvalueexception.html" class="classname">UnexpectedValueException</a></span>)</p></li>
+    <li class="listitem">
+     <p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-runtimeexception.html" class="classname">MongoDB\Driver\Exception\RuntimeException</a></span> (extends <span class="classname"><a href="class.runtimeexception.html" class="classname">RuntimeException</a></span>)</p>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-connectionexception.html" class="classname">MongoDB\Driver\Exception\ConnectionException</a></span></p>
+       <ul class="itemizedlist">
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-authenticationexception.html" class="classname">MongoDB\Driver\Exception\AuthenticationException</a></span></p></li>
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-connectiontimeoutexception.html" class="classname">MongoDB\Driver\Exception\ConnectionTimeoutException</a></span></p></li>
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-sslconnectionexception.html" class="classname">MongoDB\Driver\Exception\SSLConnectionException</a></span> (deprecated)</p></li>
+       </ul>
+      </li>
+      <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-encryptionexception.html" class="classname">MongoDB\Driver\Exception\EncryptionException</a></span></p></li>
+      <li class="listitem">
+       <p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-serverexception.html" class="classname">MongoDB\Driver\Exception\ServerException</a></span></p>
+       <ul class="itemizedlist">
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-bulkwritecommandexception.html" class="classname">MongoDB\Driver\Exception\BulkWriteCommandException</a></span></p></li>
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-commandexception.html" class="classname">MongoDB\Driver\Exception\CommandException</a></span></p></li>
+        <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-executiontimeoutexception.html" class="classname">MongoDB\Driver\Exception\ExecutionTimeoutException</a></span></p></li>
+        <li class="listitem">
+         <p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-writeexception.html" class="classname">MongoDB\Driver\Exception\WriteException</a></span> (deprecated)</p>
+         <ul class="itemizedlist">
+          <li class="listitem"><p class="simpara"><span class="classname"><a href="class.mongodb-driver-exception-bulkwriteexception.html" class="classname">MongoDB\Driver\Exception\BulkWriteException</a></span></p></li>
+         </ul>
+        </li>
+       </ul>
+      </li>
+     </ul>
+    </li>
+   </ul>
+  </div>
+</div></div></body></html>

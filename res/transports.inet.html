@@ -1,0 +1,121 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Internet Domain: TCP, UDP, SSL, and TLS</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="transports.html">List of Supported Socket Transports</a></li>
+        <li>Internet Domain: TCP, UDP, SSL, and TLS</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="transports.inet" class="section">
+  <h2 class="title">Internet Domain: TCP, UDP, SSL, and TLS</h2>
+  <p class="simpara">
+   <code class="literal">ssl://</code>, <code class="literal">tls://</code>,
+   <code class="literal">sslv2://</code> &amp; <code class="literal">sslv3://</code>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    The <code class="literal">sslv2://</code> and <code class="literal">sslv3://</code> transports
+    are obsolete and should not be used. They are documented for
+    backward compatibility only.
+   </p>
+  </p></blockquote>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    If no transport is specified, <code class="literal">tcp://</code> will be assumed.
+   </p>
+  </p></blockquote>
+
+  <ul class="itemizedlist">
+   <li class="listitem"><p class="simpara"><code class="literal">127.0.0.1</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">fe80::1</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">www.example.com</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://127.0.0.1</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://fe80::1</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://www.example.com</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">udp://www.example.com</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">ssl://www.example.com</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tls://www.example.com</code></p></li>
+  </ul>
+
+  <p class="simpara">
+   Internet Domain sockets expect a port number in addition
+   to a target address.  In the case of <span class="function"><a href="function.fsockopen.html" class="function">fsockopen()</a></span>
+   this is specified in a second parameter and therefore does
+   not impact the formatting of transport URL.  With
+   <span class="function"><a href="function.stream-socket-client.html" class="function">stream_socket_client()</a></span> and related functions
+   as with traditional URLs however, the port number is specified
+   as a suffix of the transport URL delimited by a colon.
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://127.0.0.1:80</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://[fe80::1]:80</code></p></li>
+   <li class="listitem"><p class="simpara"><code class="literal">tcp://www.example.com:80</code></p></li>
+  </ul>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>IPv6 numeric addresses with port numbers</strong><br />
+   <p class="simpara">
+    In the second example above, while the IPv4 and hostname
+    examples are left untouched apart from the addition of 
+    their colon and portnumber, the IPv6 address is wrapped in
+    square brackets: <code class="literal">[fe80::1]</code>.  This is to
+    distinguish between the colons used in an IPv6 address and
+    the colon used to delimit the portnumber.
+   </p>
+  </p></blockquote>
+
+  <p class="simpara">
+   The <code class="literal">ssl://</code> and <code class="literal">tls://</code> transports 
+   (available only when openssl support is compiled into PHP) are extensions 
+   of the <code class="literal">tcp://</code> transport which include SSL encryption.
+  </p>
+
+  <p class="simpara">
+   <code class="literal">ssl://</code> will attempt to negotiate a secure SSL/TLS
+   connection depending on the capabilities and preferences of both the
+   client and the remote host. The actual protocols that may be used are
+   determined by the OpenSSL configuration and by any options provided
+   through <span class="function"><a href="function.stream-context-create.html" class="function">stream_context_create()</a></span>, such as
+   <code class="literal">ssl.crypto_method</code>.
+  </p>
+
+  <p class="simpara">
+   The SSLv2 and SSLv3 protocols are obsolete and insecure. Their use is
+   strongly discouraged and they are no longer enabled by default in
+   modern versions of PHP and OpenSSL.
+  </p>
+ </div></div></div></body></html>

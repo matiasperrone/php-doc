@@ -1,0 +1,95 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Return blob length and other useful info</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.ibase.html">Firebird/InterBase Functions</a></li>
+        <li>Return blob length and other useful info</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.ibase-blob-info" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ibase_blob_info</h1>
+  <p class="verinfo">(PHP 5, PHP 7 &lt; 7.4.0)</p><p class="refpurpose"><span class="refname">ibase_blob_info</span> &mdash; <span class="dc-title">Return blob length and other useful info</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.ibase-blob-info-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>ibase_blob_info</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$link_identifier</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$blob_id</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><strong>ibase_blob_info</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$blob_id</code></span>): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+
+  <p class="simpara">
+   Returns the BLOB length and other useful information.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ibase-blob-info-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">link_identifier</code></dt>
+    <dd>
+     <p class="simpara">
+      An InterBase link identifier. If omitted, the last opened link is
+      assumed.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">blob_id</code></dt>
+    <dd>
+     <p class="simpara">
+      A BLOB id.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ibase-blob-info-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns an array containing information about a BLOB. The information returned
+   consists of the length of the BLOB, the number of segments it contains, the size
+   of the largest segment, and whether it is a stream BLOB or a segmented BLOB.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

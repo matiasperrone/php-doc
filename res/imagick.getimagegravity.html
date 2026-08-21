@@ -1,0 +1,78 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Gets the image gravity</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.imagick.html">Imagick</a></li>
+        <li>Gets the image gravity</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="imagick.getimagegravity" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Imagick::getImageGravity</h1>
+  <p class="verinfo">(PECL imagick 2 &gt;= 2.3.0, PECL imagick 3)</p><p class="refpurpose"><span class="refname">Imagick::getImageGravity</span> &mdash; <span class="dc-title">Gets the image gravity</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagick.getimagegravity-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Imagick::getImageGravity</strong></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+
+  <p class="para rdfs-comment">
+   Gets the current gravity value of the
+   image. Unlike <span class="function"><a href="imagick.getgravity.html" class="function">Imagick::getGravity()</a></span>, this method
+   returns the gravity defined for the current image sequence.
+   This method is available if Imagick has been compiled against ImageMagick version 6.4.4 or newer.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagick.getimagegravity-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-imagick.getimagegravity-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the images gravity property. Refer to the list of 
+   <a href="imagick.constants.html#imagick.constants.gravity" class="link">gravity constants</a>.
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

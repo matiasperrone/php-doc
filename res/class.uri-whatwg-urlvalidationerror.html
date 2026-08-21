@@ -1,0 +1,129 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Uri\WhatWg\UrlValidationError class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.uri.html">URI</a></li>
+        <li>The Uri\WhatWg\UrlValidationError class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.uri-whatwg-urlvalidationerror" class="reference">
+ <h1 class="title">The Uri\WhatWg\UrlValidationError class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+  <div class="section" id="uri-whatwg-urlvalidationerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    Provides details about errors that were detected when parsing a URL with
+    <span class="classname"><a href="class.uri-whatwg-url.html" class="classname">Uri\WhatWg\Url</a></span>.
+   </p>
+  </div>
+
+  <div class="section" id="uri-whatwg-urlvalidationerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">Uri\WhatWg</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     
+      <span class="modifier">final</span>
+      <span class="modifier">readonly</span>
+      <span class="modifier">class</span> <strong class="classname"><strong class="classname">UrlValidationError</strong></strong>
+      {</div>
+
+     <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+     <div class="fieldsynopsis">
+      <span class="modifier">public</span>
+      <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+       <var class="varname"><a href="class.uri-whatwg-urlvalidationerror.html#uri-whatwg-urlvalidationerror.props.context">$<var class="varname">context</var></a></var>;</div>
+
+     <div class="fieldsynopsis"><span class="modifier">public</span>
+      <span class="type"><a href="enum.uri-whatwg-urlvalidationerrortype.html" class="type Uri\WhatWg\UrlValidationErrorType">Uri\WhatWg\UrlValidationErrorType</a></span>
+       <var class="varname"><a href="class.uri-whatwg-urlvalidationerror.html#uri-whatwg-urlvalidationerror.props.type">$<var class="varname">type</var></a></var>;</div>
+
+     <div class="fieldsynopsis"><span class="modifier">public</span>
+      <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>
+       <var class="varname"><a href="class.uri-whatwg-urlvalidationerror.html#uri-whatwg-urlvalidationerror.props.failure">$<var class="varname">failure</var></a></var>;</div>
+
+
+     <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+     <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="uri-whatwg-urlvalidationerror.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$context</code></span>, <span class="methodparam"><span class="type"><a href="enum.uri-whatwg-urlvalidationerrortype.html" class="type Uri\WhatWg\UrlValidationErrorType">Uri\WhatWg\UrlValidationErrorType</a></span> <code class="parameter">$type</code></span>, <span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$failure</code></span>)</div>
+
+    }
+   </div>
+  </div>
+
+  <div class="section" id="uri-whatwg-urlvalidationerror.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+    
+     <dt id="uri-whatwg-urlvalidationerror.props.context"><var class="varname">context</var></dt>
+     <dd>
+      <p class="simpara">
+       The input URL at the point where the error was detected.
+      </p>
+     </dd>
+    
+    
+     <dt id="uri-whatwg-urlvalidationerror.props.type"><var class="varname">type</var></dt>
+     <dd>
+      <p class="simpara">
+       The type of error.
+      </p>
+     </dd>
+    
+    
+     <dt id="uri-whatwg-urlvalidationerror.props.failure"><var class="varname">failure</var></dt>
+     <dd>
+      <p class="simpara">
+       If <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> the error caused the URL to be rejected as invalid. If <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>
+       the error is a soft error that was automatically corrected during parsing.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+ </div>
+
+ 
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="uri-whatwg-urlvalidationerror.construct.html">Uri\WhatWg\UrlValidationError::__construct</a> — Construct a UrlValidationError object</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,135 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The GMP class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.gmp.html">GMP</a></li>
+        <li>The GMP class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.gmp" class="reference">
+
+ <h1 class="title">The GMP class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 5 &gt;= 5.6.0, PHP 7, PHP 8)</p>
+  <div class="section" id="gmp.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A GMP number. These objects support overloaded
+    <a href="language.operators.arithmetic.html" class="link">arithmetic</a>,
+    <a href="language.operators.bitwise.html" class="link">bitwise</a> and
+    <a href="language.operators.comparison.html" class="link">comparison</a> operators.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     No object-oriented interface is provided to manipulate
+     <span class="classname"><strong class="classname">GMP</strong></span> objects. Please use the
+     <a href="book.gmp.html" class="link">procedural GMP API</a>.
+    </p>
+   </p></blockquote>
+  </div>
+
+  <div class="section" id="gmp.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="modifier">final</span>
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">GMP</strong></strong>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="gmp.construct.html" class="methodname">__construct</a></span>(<span class="methodparam"><span class="type"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$num</code><span class="initializer"> = 0</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$base</code><span class="initializer"> = 0</span></span>)</div>
+
+    <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="gmp.serialize.html" class="methodname">__serialize</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="gmp.unserialize.html" class="methodname">__unserialize</a></span>(<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$data</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+   }</div>
+  </div>
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.4.0</td>
+       <td>
+        <span class="classname"><strong class="classname">GMP</strong></span> is now marked <span class="modifier">final</span>
+       </td>
+      </tr>
+
+      <tr>
+       <td>8.4.0</td>
+       <td>
+        A <span class="classname"><strong class="classname">GMP</strong></span> object can now be cast to
+        <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>; an object representing <code class="literal">0</code> is cast
+        to <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong>, and any other value to <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>. Previously, casting to
+        <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> emitted an <strong><code><a href="errorfunc.constants.html#constant.e-recoverable-error">E_RECOVERABLE_ERROR</a></code></strong>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="gmp.construct.html">GMP::__construct</a> — Create GMP number</li><li><a href="gmp.serialize.html">GMP::__serialize</a> — Serializes the GMP object</li><li><a href="gmp.unserialize.html">GMP::__unserialize</a> — Deserializes the data parameter into a GMP object</li></ul>
+</div>
+</div></div></body></html>

@@ -1,0 +1,220 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Encode character to HTML numeric string reference</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.mbstring.html">Multibyte String Functions</a></li>
+        <li>Encode character to HTML numeric string reference</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.mb-encode-numericentity" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_encode_numericentity</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.0.6, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">mb_encode_numericentity</span> &mdash; <span class="dc-title">Encode character to HTML numeric string reference</span></p>
+
+ </div>
+   
+ <div class="refsect1 description" id="refsect1-function.mb-encode-numericentity-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>mb_encode_numericentity</strong></span>(<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$string</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter">$map</code></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.string.html" class="type string">string</a></span></span> <code class="parameter">$encoding</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>,<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$hex</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong></span></span><br>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   Converts
+   specified character codes in <span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">string</code>
+   from character code to HTML numeric character reference.    
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mb-encode-numericentity-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">string</code></dt>
+     <dd>
+      <p class="para">
+       The <span class="type"><a href="language.types.string.html" class="type string">string</a></span> being encoded.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">map</code></dt>
+     <dd>
+      <p class="para">
+       <code class="parameter">map</code> is array specifies code area to
+       convert.
+      </p>
+     </dd>
+    
+    
+     <dt><code class="parameter">encoding</code></dt>
+     <dd>
+      <p class="simpara">The <code class="parameter">encoding</code>
+parameter is the character encoding. If it is omitted or <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, the internal character
+encoding value will be used.</p>
+     </dd>
+    
+    
+     <dt><code class="parameter">hex</code></dt>
+     <dd>
+      <p class="para">
+       Whether the returned entity reference should be in hexadecimal notation
+       (otherwise it is in decimal notation).
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-encode-numericentity-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The converted <span class="type"><a href="language.types.string.html" class="type string">string</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mb-encode-numericentity-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="simpara">
+   Throws a <span class="exceptionname"><a href="class.valueerror.html" class="exceptionname">ValueError</a></span> if
+   <code class="parameter">map</code> is not a list of <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>s.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.mb-encode-numericentity-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>8.4.0</td>
+      <td>
+       <span class="function"><strong>mb_encode_numericentity()</strong></span> now throws a
+       <span class="exceptionname"><a href="class.valueerror.html" class="exceptionname">ValueError</a></span> if <code class="parameter">map</code>
+       is not a list of <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>s.
+      </td>
+     </tr>
+
+     <tr>
+ <td>8.0.0</td>
+ <td>
+  <code class="parameter">encoding</code> is nullable now.
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mb-encode-numericentity-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2812">
+    <p><strong>Example #1 <code class="parameter">map</code> example</strong></p>
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$convmap </span><span style="color: #007700">= array (
+ </span><span style="color: #0000BB">int start_code1</span><span style="color: #007700">, </span><span style="color: #0000BB">int end_code1</span><span style="color: #007700">, </span><span style="color: #0000BB">int offset1</span><span style="color: #007700">, </span><span style="color: #0000BB">int mask1</span><span style="color: #007700">,
+ </span><span style="color: #0000BB">int start_code2</span><span style="color: #007700">, </span><span style="color: #0000BB">int end_code2</span><span style="color: #007700">, </span><span style="color: #0000BB">int offset2</span><span style="color: #007700">, </span><span style="color: #0000BB">int mask2</span><span style="color: #007700">,
+ ........
+ </span><span style="color: #0000BB">int start_codeN</span><span style="color: #007700">, </span><span style="color: #0000BB">int end_codeN</span><span style="color: #007700">, </span><span style="color: #0000BB">int offsetN</span><span style="color: #007700">, </span><span style="color: #0000BB">int maskN </span><span style="color: #007700">);
+</span><span style="color: #FF8000">// Specify Unicode value for start_codeN and end_codeN
+// Add offsetN to value and take bit-wise 'AND' with maskN, then
+// it converts value to numeric string reference.
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-2813">
+    <p><strong>Example #2 <span class="function"><strong>mb_encode_numericentity()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$str </span><span style="color: #007700">= </span><span style="color: #DD0000">"aAæÆあア𩸽"</span><span style="color: #007700">;
+
+</span><span style="color: #FF8000">/* Convert all UTF8 characters up to 4 bytes to HTML numeric character reference */
+</span><span style="color: #0000BB">$convmap </span><span style="color: #007700">= [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0x1FFFFF</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0x10FFFF</span><span style="color: #007700">];
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mb_encode_numericentity</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">$convmap</span><span style="color: #007700">, </span><span style="color: #DD0000">"utf8"</span><span style="color: #007700">));
+
+</span><span style="color: #FF8000">/* Converts only 2-byte and 4-byte UTF8 characters to HTML numeric character reference */
+</span><span style="color: #0000BB">$convmap </span><span style="color: #007700">= [
+    </span><span style="color: #0000BB">0x80</span><span style="color: #007700">, </span><span style="color: #0000BB">0x7FF</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0x10FFFF</span><span style="color: #007700">,
+    </span><span style="color: #0000BB">0x10000</span><span style="color: #007700">, </span><span style="color: #0000BB">0x1FFFFF</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">0x10FFFF</span><span style="color: #007700">,
+];
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">mb_encode_numericentity</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">, </span><span style="color: #0000BB">$convmap</span><span style="color: #007700">, </span><span style="color: #DD0000">"utf8"</span><span style="color: #007700">));
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="annotation-interactive examplescode"><pre class="examplescode">string(46) &quot;&amp;#97;&amp;#65;&amp;#230;&amp;#198;&amp;#12354;&amp;#12450;&amp;#40509;&quot;
+string(28) &quot;aA&amp;#230;&amp;#198;あア&amp;#40509;&quot;</pre>
+</div>
+   </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mb-encode-numericentity-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><span class="function"><a href="function.mb-decode-numericentity.html" class="function" rel="rdfs-seeAlso">mb_decode_numericentity()</a> - Decode HTML numeric string reference to character</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

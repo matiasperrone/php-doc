@@ -1,0 +1,284 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>CommonMark</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="refs.basic.text.html">Text Processing</a></li>
+        <li>CommonMark</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="book.cmark" class="book">
+ 
+ <h1 class="title">CommonMark</h1>
+ 
+
+ <div id="intro.cmark" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+  This extension provides access to the reference implementation of CommonMark, a rationalized version of Markdown syntax with a specification.
+  </p>
+  <p class="formalpara">
+    <h5 class="title">Parsing:</h5>
+    <p class="para">
+    The CommonMark extension provides a simple parsing API:
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-parse.html" class="methodname">CommonMark\Parse</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$content</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span></div>
+
+    </p>
+  </p>
+  <p class="formalpara">
+    <h5 class="title">Rendering:</h5>
+    <p class="para">
+    The CommonMark extension provides simple rendering API that supports multiple formats:
+    <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-render.html" class="methodname">CommonMark\Render</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-render-html.html" class="methodname">CommonMark\Render\HTML</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-render-xml.html" class="methodname">CommonMark\Render\XML</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-render-man.html" class="methodname">CommonMark\Render\Man</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <div class="methodsynopsis dc-description"><span class="modifier">function</span> <span class="methodname"><a href="function.commonmark-render-latex.html" class="methodname">CommonMark\Render\Latex</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-node.html" class="type CommonMark\Node">CommonMark\Node</a></span> <code class="parameter">$node</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$options</code><span class="initializer"> = ?</span></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$width</code><span class="initializer"> = ?</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+    </p>
+  </p>
+  <p class="formalpara">
+    <h5 class="title">AST:</h5>
+    <p class="para">
+    The CommonMark extension implements visitation for CommonMark\Node objects:
+  <div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="commonmark-node.accept.html" class="methodname">CommonMark\Node::accept</a></span>(<span class="methodparam"><span class="type"><a href="class.commonmark-interfaces-ivisitor.html" class="type CommonMark\Interfaces\IVisitor">CommonMark\Interfaces\IVisitor</a></span> <code class="parameter">$visitor</code></span>): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+    </p>
+  </p>
+  <p class="formalpara">
+    <h5 class="title">CQL:</h5>
+    <p class="para">
+    The CommonMark extension provides an interface to CQL, CommonMark Query Language:
+    <div class="constructorsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="commonmark-cql.construct.html" class="methodname">CommonMark\CQL::__construct</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$query</code></span>)</div>
+
+    </p>
+  </p>
+ </div>
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
+<ul class="chunklist chunklist_book"><li><a href="cmark.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="cmark.requirements.html">Requirements</a></li><li><a href="cmark.installation.html">Installation</a></li></ul></li><li><a href="cmark.constants.html">Predefined Constants</a></li><li><a href="class.commonmark-node-document.html">CommonMark\Node\Document</a> — Document concrete CommonMark\Node</li><li><a href="class.commonmark-node-heading.html">CommonMark\Node\Heading</a> — Heading concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-heading.construct.html">CommonMark\Node\Heading::__construct</a> — Heading Construction</li></ul></li><li><a href="class.commonmark-node-paragraph.html">CommonMark\Node\Paragraph</a> — Paragraph concrete CommonMark\Node</li><li><a href="class.commonmark-node-blockquote.html">CommonMark\Node\BlockQuote</a> — BlockQuote concrete CommonMark\Node</li><li><a href="class.commonmark-node-bulletlist.html">CommonMark\Node\BulletList</a> — BulletList concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-bulletlist.construct.html">CommonMark\Node\BulletList::__construct</a> — BulletList Construction</li></ul></li><li><a href="class.commonmark-node-orderedlist.html">CommonMark\Node\OrderedList</a> — OrderedList concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-orderedlist.construct.html">CommonMark\Node\OrderedList::__construct</a> — OrderedList Construction</li></ul></li><li><a href="class.commonmark-node-item.html">CommonMark\Node\Item</a> — Item concrete CommonMark\Node</li><li><a href="class.commonmark-node-text.html">CommonMark\Node\Text</a> — Text concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-text.construct.html">CommonMark\Node\Text::__construct</a> — Text Construction</li></ul></li><li><a href="class.commonmark-node-text-strong.html">CommonMark\Node\Text\Strong</a> — Strong concrete CommonMark\Node</li><li><a href="class.commonmark-node-text-emphasis.html">CommonMark\Node\Text\Emphasis</a> — Emphasis concrete CommonMark\Node</li><li><a href="class.commonmark-node-thematicbreak.html">CommonMark\Node\ThematicBreak</a> — ThematicBreak concrete CommonMark\Node</li><li><a href="class.commonmark-node-softbreak.html">CommonMark\Node\SoftBreak</a> — SoftBreak concrete CommonMark\Node</li><li><a href="class.commonmark-node-linebreak.html">CommonMark\Node\LineBreak</a> — LineBreak concrete CommonMark\Node</li><li><a href="class.commonmark-node-code.html">CommonMark\Node\Code</a> — Code concrete CommonMark\Node</li><li><a href="class.commonmark-node-codeblock.html">CommonMark\Node\CodeBlock</a> — CodeBlock concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-codeblock.construct.html">CommonMark\Node\CodeBlock::__construct</a> — CodeBlock Construction</li></ul></li><li><a href="class.commonmark-node-htmlblock.html">CommonMark\Node\HTMLBlock</a> — HTMLBlock concrete CommonMark\Node</li><li><a href="class.commonmark-node-htmlinline.html">CommonMark\Node\HTMLInline</a> — HTMLInline concrete CommonMark\Node</li><li><a href="class.commonmark-node-image.html">CommonMark\Node\Image</a> — Image concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-image.construct.html">CommonMark\Node\Image::__construct</a> — Image Construction</li></ul></li><li><a href="class.commonmark-node-link.html">CommonMark\Node\Link</a> — Link concrete CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node-link.construct.html">CommonMark\Node\Link::__construct</a> — Link Construction</li></ul></li><li><a href="class.commonmark-node-customblock.html">CommonMark\Node\CustomBlock</a> — CustomBlock concrete CommonMark\Node</li><li><a href="class.commonmark-node-custominline.html">CommonMark\Node\CustomInline</a> — CustomInline concrete CommonMark\Node</li><li><a href="class.commonmark-node.html">CommonMark\Node</a> — Abstract CommonMark\Node<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-node.appendchild.html">CommonMark\Node::appendChild</a> — AST Manipulation</li><li><a href="commonmark-node.prependchild.html">CommonMark\Node::prependChild</a> — AST Manipulation</li><li><a href="commonmark-node.insertafter.html">CommonMark\Node::insertAfter</a> — AST Manipulation</li><li><a href="commonmark-node.insertbefore.html">CommonMark\Node::insertBefore</a> — AST Manipulation</li><li><a href="commonmark-node.replace.html">CommonMark\Node::replace</a> — AST Manipulation</li><li><a href="commonmark-node.unlink.html">CommonMark\Node::unlink</a> — AST Manipulation</li><li><a href="commonmark-node.accept.html">CommonMark\Node::accept</a> — Visitation</li></ul></li><li><a href="class.commonmark-interfaces-ivisitor.html">CommonMark\Interfaces\IVisitor</a> — The CommonMark\Interfaces\IVisitor interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-interfaces-ivisitor.enter.html">CommonMark\Interfaces\IVisitor::enter</a> — Visitation</li><li><a href="commonmark-interfaces-ivisitor.leave.html">CommonMark\Interfaces\IVisitor::leave</a> — Visitation</li></ul></li><li><a href="class.commonmark-interfaces-ivisitable.html">CommonMark\Interfaces\IVisitable</a> — The CommonMark\Interfaces\IVisitable interface<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-interfaces-ivisitable.accept.html">CommonMark\Interfaces\IVisitable::accept</a> — Visitation</li></ul></li><li><a href="class.commonmark-parser.html">CommonMark\Parser</a> — The CommonMark\Parser class<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-parser.construct.html">CommonMark\Parser::__construct</a> — Parsing</li><li><a href="commonmark-parser.parse.html">CommonMark\Parser::parse</a> — Parsing</li><li><a href="commonmark-parser.finish.html">CommonMark\Parser::finish</a> — Parsing</li></ul></li><li><a href="class.commonmark-cql.html">CommonMark\CQL</a> — The CommonMark\CQL class<ul class="chunklist chunklist_book chunklist_children"><li><a href="commonmark-cql.construct.html">CommonMark\CQL::__construct</a> — CQL Construction</li><li><a href="commonmark-cql.invoke.html">CommonMark\CQL::__invoke</a> — CQL Execution</li></ul></li><li><a href="ref.cmark.html">CommonMark Functions</a><ul class="chunklist chunklist_book chunklist_children"><li><a href="function.commonmark-parse.html">CommonMark\Parse</a> — Parsing</li><li><a href="function.commonmark-render.html">CommonMark\Render</a> — Rendering</li><li><a href="function.commonmark-render-html.html">CommonMark\Render\HTML</a> — Rendering</li><li><a href="function.commonmark-render-latex.html">CommonMark\Render\Latex</a> — Rendering</li><li><a href="function.commonmark-render-man.html">CommonMark\Render\Man</a> — Rendering</li><li><a href="function.commonmark-render-xml.html">CommonMark\Render\XML</a> — Rendering</li></ul></li></ul></div></div></div></body></html>

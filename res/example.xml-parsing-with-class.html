@@ -1,0 +1,117 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>XML Parsing With Class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="xml.examples.html">Examples</a></li>
+        <li>XML Parsing With Class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="example.xml-parsing-with-class" class="section">
+  <h2 class="title">XML Parsing With Class</h2>
+  <p class="para">
+   This example shows how to use a class with handlers.
+   <div class="example" id="example-6005">
+    <p><strong>Example #1 Show XML Element Structure</strong></p>
+    <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$file </span><span style="color: #007700">= </span><span style="color: #DD0000">"examples/book.xml"</span><span style="color: #007700">;
+
+class </span><span style="color: #0000BB">CustomXMLParser
+</span><span style="color: #007700">{
+    private </span><span style="color: #0000BB">$fp</span><span style="color: #007700">;
+    private </span><span style="color: #0000BB">$parser</span><span style="color: #007700">;
+    private </span><span style="color: #0000BB">$depth </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">;
+
+    function </span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">string $file</span><span style="color: #007700">)
+    {
+        if (!(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fp </span><span style="color: #007700">= </span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">, </span><span style="color: #DD0000">'r'</span><span style="color: #007700">))) {
+            throw new </span><span style="color: #0000BB">RunTimeException</span><span style="color: #007700">(</span><span style="color: #DD0000">"could not open XML file '</span><span style="color: #007700">{</span><span style="color: #0000BB">$file</span><span style="color: #007700">}</span><span style="color: #DD0000">'"</span><span style="color: #007700">);
+        }
+
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser </span><span style="color: #007700">= </span><span style="color: #0000BB">xml_parser_create</span><span style="color: #007700">();
+
+        </span><span style="color: #0000BB">xml_set_element_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser</span><span style="color: #007700">, </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">startElement</span><span style="color: #007700">(...), </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">endElement</span><span style="color: #007700">(...));
+        </span><span style="color: #0000BB">xml_set_character_data_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser</span><span style="color: #007700">, </span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">cdata</span><span style="color: #007700">(...));
+    }
+
+    private function </span><span style="color: #0000BB">startElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">, </span><span style="color: #0000BB">$attrs</span><span style="color: #007700">)
+    {
+        for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">depth</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {
+            echo </span><span style="color: #DD0000">"  "</span><span style="color: #007700">;
+        }
+        echo </span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">depth</span><span style="color: #007700">++;
+    }
+
+    private function </span><span style="color: #0000BB">endElement</span><span style="color: #007700">(</span><span style="color: #0000BB">$parser</span><span style="color: #007700">, </span><span style="color: #0000BB">$name</span><span style="color: #007700">)
+    {
+        </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">depth</span><span style="color: #007700">--;
+    }
+
+    private function </span><span style="color: #0000BB">cdata</span><span style="color: #007700">(</span><span style="color: #0000BB">$parse</span><span style="color: #007700">, </span><span style="color: #0000BB">$cdata</span><span style="color: #007700">)
+    {
+        if (</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$cdata</span><span style="color: #007700">) === </span><span style="color: #DD0000">''</span><span style="color: #007700">) {
+            return;
+        }
+        for (</span><span style="color: #0000BB">$i </span><span style="color: #007700">= </span><span style="color: #0000BB">0</span><span style="color: #007700">; </span><span style="color: #0000BB">$i </span><span style="color: #007700">&lt; </span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">depth</span><span style="color: #007700">; </span><span style="color: #0000BB">$i</span><span style="color: #007700">++) {
+            echo </span><span style="color: #DD0000">"  "</span><span style="color: #007700">;
+        }
+        echo </span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$cdata</span><span style="color: #007700">), </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">parse</span><span style="color: #007700">()
+    {
+        while (</span><span style="color: #0000BB">$data </span><span style="color: #007700">= </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fp</span><span style="color: #007700">, </span><span style="color: #0000BB">4096</span><span style="color: #007700">)) {
+            if (!</span><span style="color: #0000BB">xml_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser</span><span style="color: #007700">, </span><span style="color: #0000BB">$data</span><span style="color: #007700">, </span><span style="color: #0000BB">feof</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fp</span><span style="color: #007700">))) {
+                throw new </span><span style="color: #0000BB">RunTimeException</span><span style="color: #007700">(
+                    </span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(
+                        </span><span style="color: #DD0000">"XML error: %s at line %d"</span><span style="color: #007700">,
+                        </span><span style="color: #0000BB">xml_error_string</span><span style="color: #007700">(</span><span style="color: #0000BB">xml_get_error_code</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser</span><span style="color: #007700">)),
+                        </span><span style="color: #0000BB">xml_get_current_line_number</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parser</span><span style="color: #007700">)
+                    )
+                );
+            }
+        }
+    }
+}
+
+</span><span style="color: #0000BB">$xmlParser </span><span style="color: #007700">= new </span><span style="color: #0000BB">CustomXMLParser</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$xmlParser</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parse</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div></div></div></body></html>

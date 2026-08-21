@@ -1,0 +1,214 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Predefined Classes</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="reserved.html">List of Reserved Words</a></li>
+        <li>Predefined Classes</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="reserved.classes" class="sect1">
+   <h2 class="title">Predefined Classes</h2>
+   <p class="para">
+    This section lists standard predefined classes. Miscellaneous extensions
+    define other classes which are described in their reference.
+   </p>
+
+   <div class="sect2" id="reserved.classes.standard">
+    <h3 class="title">Standard Defined Classes</h3>
+
+    <p class="simpara">
+     These classes are defined in the standard set of functions included
+     in the PHP build.
+    </p>
+
+    <dl>
+     
+      <dt><span class="classname"><a href="class.directory.html" class="classname">Directory</a></span></dt>
+      <dd>
+       <p class="simpara">
+        Created by <span class="function"><a href="function.dir.html" class="function">dir()</a></span>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.stdclass.html" class="classname">stdClass</a></span></dt>
+      <dd>
+       <p class="simpara">
+        A generic empty class created as a result of
+        <a href="language.types.object.html#language.types.object.casting" class="link">typecasting
+        to object</a> or various standard functions.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.php-incomplete-class.html" class="classname">__PHP_Incomplete_Class</a></span></dt>
+      <dd>
+       <p class="simpara">
+        Possibly created by <span class="function"><a href="function.unserialize.html" class="function">unserialize()</a></span>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.exception.html" class="classname">Exception</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.errorexception.html" class="classname">ErrorException</a></span></dt>
+      <dd>
+       <p class="simpara">
+
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.php-user-filter.html" class="classname">php_user_filter</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.closure.html" class="classname">Closure</a></span></dt>
+      <dd>
+       <p class="simpara">
+        The predefined final class <span class="classname"><a href="class.closure.html" class="classname">Closure</a></span>
+        is used for representing <a href="functions.anonymous.html" class="link">anonymous functions</a>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.generator.html" class="classname">Generator</a></span></dt>
+      <dd>
+       <p class="simpara">
+        The predefined final class <span class="classname"><a href="class.generator.html" class="classname">Generator</a></span>
+        is used for representing <a href="language.generators.html" class="link">generators</a>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.arithmeticerror.html" class="classname">ArithmeticError</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.assertionerror.html" class="classname">AssertionError</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.divisionbyzeroerror.html" class="classname">DivisionByZeroError</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.error.html" class="classname">Error</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.throwable.html" class="classname">Throwable</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.parseerror.html" class="classname">ParseError</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><a href="class.typeerror.html" class="classname">TypeError</a></span></dt>
+      <dd>
+       <p class="simpara">
+       </p>
+      </dd>
+     
+    </dl>
+   </div>
+
+   <div class="sect2" id="reserved.classes.special">
+    <h3 class="title">Special classes</h3>
+    
+    <p class="simpara">
+     Following identifiers may not be used as a class name as they have
+     special purpose.
+    </p>
+    
+    <dl>
+     
+      <dt><span class="classname"><strong class="classname">self</strong></span></dt>
+      <dd>
+       <p class="simpara">
+        <a href="language.oop5.paamayim-nekudotayim.html" class="link">Current
+        class</a>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><strong class="classname">static</strong></span></dt>
+      <dd>
+       <p class="simpara">
+        <a href="language.oop5.late-static-bindings.html" class="link">Current class in
+        runtime</a>.
+       </p>
+      </dd>
+     
+     
+      <dt><span class="classname"><strong class="classname">parent</strong></span></dt>
+      <dd>
+       <p class="simpara">
+        <a href="language.oop5.paamayim-nekudotayim.html" class="link">Parent
+        class</a>.
+       </p>
+      </dd>
+     
+    </dl>
+   </div>
+
+  </div></div></div></body></html>

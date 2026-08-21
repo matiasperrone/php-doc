@@ -1,0 +1,128 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The RoundingMode Enum</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.math.html">Math</a></li>
+        <li>The RoundingMode Enum</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="enum.roundingmode" class="reference">
+ <h1 class="title">The RoundingMode Enum</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.4.0)</p>
+  <div class="section" id="enum.roundingmode.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    The <span class="enumname"><strong class="enumname">RoundingMode</strong></span> enum is used to specify how rounding
+    should be performed for <span class="function"><a href="function.round.html" class="function">round()</a></span>,
+    <span class="function"><a href="function.bcround.html" class="function">bcround()</a></span>, and <span class="methodname"><a href="bcmath-number.round.html" class="methodname">BcMath\Number::round()</a></span>.
+   </p>
+  </div>
+
+  <div class="section" id="enum.roundingmode.synopsis">
+   <h2 class="title">Enum synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">enum</span> <strong class="classname"><strong class="enumname">RoundingMode</strong></strong><br/>{</div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">HalfAwayFromZero</span>
+     ; //
+      Round to the nearest integer.
+      If the decimal part is <code class="literal">5</code>,
+      round to the integer with the larger absolute value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">HalfTowardsZero</span>
+     ; //
+      Round to the nearest integer.
+      If the decimal part is <code class="literal">5</code>,
+      round to the integer with the smaller absolute value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">HalfEven</span>
+     ; //
+      Round to the nearest integer.
+      If the decimal part is <code class="literal">5</code>,
+      round to the even integer.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">HalfOdd</span>
+     ; //
+      Round to the nearest integer.
+      If the decimal part is <code class="literal">5</code>,
+      round to the odd integer.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">TowardsZero</span>
+     ; //
+      Round to the nearest integer with a smaller or equal absolute value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">AwayFromZero</span>
+     ; //
+      Round to the nearest integer with a greater or equal absolute value.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">NegativeInfinity</span>
+     ; //
+      Round to the largest integer that is smaller or equal.
+     <br><br>
+    </div>
+
+    <div class="fieldsynopsis">
+         <span class="modifier">case</span>  <span class="classname">PositiveInfinity</span>
+     ; //
+      Round to the smallest integer that is greater or equal.
+     <br><br>
+    </div>
+   }</div>
+  </div>
+ </div>
+</div>
+</div></div></body></html>

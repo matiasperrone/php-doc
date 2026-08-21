@@ -1,0 +1,117 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Manual installation of pre-built binaries</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="install.windows.html">Installation on Windows systems</a></li>
+        <li>Manual installation of pre-built binaries</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="install.windows.manual" class="sect1">
+ <h2 class="title">Manual installation of pre-built binaries</h2>
+
+ <div class="simplesect" id="install.windows.requirements">
+  <h3 class="title">Installation requirements</h3>
+  <p class="simpara">
+   PHP is only available for 32-bit x86 or 64-bit x64 systems, and does
+   not currently run on Windows RT or Windows on ARM.
+   As of version 8.3.0, PHP requires Windows 8 or Windows Server 2012.
+   Versions after 7.2.0 required Windows 2008 R2 or Windows 7.
+   Versions before 7.2.0 supported Windows 2008 and Vista.
+  </p>
+
+  <p class="simpara">
+   PHP requires the Visual C runtime (CRT). Many other applications also
+   require it, so it is likely to already be installed, but if it is
+   not the Microsoft Visual C++ Redistributable for Visual Studio 2022
+   is suitable for use with all PHP versions and can be
+   <a href="https://visualstudio.microsoft.com/downloads/#microsoft-visual-c-redistributable-for-visual-studio-2022" class="link external" title="Link : https://visualstudio.microsoft.com/downloads/#microsoft-visual-c-redistributable-for-visual-studio-2022">&raquo;&nbsp;downloaded from Microsoft</a>.
+  </p>
+
+  <p class="simpara">
+   The x86 CRT must be downloaded for use with PHP x86 builds and the
+   x64 CRT for PHP x64 builds.
+   If CRT is already installed, the installer will display a message
+   that it was already installed and not make any changes.
+   The CRT installer supports the <strong class="option unknown">/quiet</strong> and
+   <strong class="option unknown">/norestart</strong> command-line switches, so the installation
+   can be scripted.
+  </p>
+ </div>
+
+ <div class="simplesect">
+  <h3 class="title">Where to download PHP binaries</h3>
+  <p class="simpara">
+   Windows builds can be downloaded from <a href="https://windows.php.net/download/" class="link external" title="Link : https://windows.php.net/download/">&raquo;&nbsp;the
+   PHP Windows website</a>.
+   All builds are optimized (<abbr class="abbrev">PGO</abbr>), and QA and GA releases
+   are thoroughly tested.
+  </p>
+ </div>
+
+ <div class="simplesect" id="install.windows.pecl">
+  <h3 class="title">Pre-built PECL Extensions</h3>
+  <p class="para">
+   Pre-built Windows versions of PECL extensions are distributed as DLL
+   files on the extension&#039;s PECL page.
+  </p>
+  <p class="para">
+   Binaries are not available for extensions that use features specific
+   to other systems, like Unix, or depend on libraries that are not
+   available on Windows.
+  </p>
+ </div>
+
+
+ <div class="simplesect">
+  <h3 class="title">Build types</h3>
+  <p class="para">
+   There are four types of PHP builds:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">Thread-Safe (TS) - for single process web servers, like Apache with mod_php</p>
+    </li>
+    <li class="listitem">
+     <p class="para">Non-Thread-Safe (NTS) - for IIS and other FastCGI web servers (Apache with mod_fastcgi) and recommended for command-line scripts</p>
+    </li>
+    <li class="listitem">
+     <p class="para">x86 - for 32-bit systems.</p>
+    </li>
+    <li class="listitem">
+     <p class="para">x64 - for 64-bit systems.</p>
+    </li>
+   </ul>
+  </p>
+ </div>
+</div></div></div></body></html>

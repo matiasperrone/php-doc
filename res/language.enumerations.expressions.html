@@ -1,0 +1,105 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Enum values in constant expressions</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.enumerations.html">Enumerations</a></li>
+        <li>Enum values in constant expressions</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.enumerations.expressions" class="sect1">
+  <h2 class="title">Enum values in constant expressions</h2>
+
+  <p class="para">
+   Because cases are represented as constants on the enum itself, they may be used as static
+   values in most constant expressions: property defaults, static variable defaults, parameter
+   defaults, global and class constant values. They may not be used in other enum case values, but
+   normal constants may refer to an enum case.
+  </p>
+
+  <p class="para">
+   However, implicit magic method calls such as <span class="classname"><a href="class.arrayaccess.html" class="classname">ArrayAccess</a></span> on enums are not allowed in static
+   or constant definitions as we cannot absolutely guarantee that the resulting value is deterministic
+   or that the method invocation is free of side effects. Function calls, method calls, and
+   property access continue to be invalid operations in constant expressions.
+  </p>
+
+  <div class="example-contents">
+<div class="annotation-non-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #FF8000">// This is an entirely legal Enum definition.
+</span><span style="color: #007700">enum </span><span style="color: #0000BB">Direction </span><span style="color: #007700">implements </span><span style="color: #0000BB">ArrayAccess
+</span><span style="color: #007700">{
+    case </span><span style="color: #0000BB">Up</span><span style="color: #007700">;
+    case </span><span style="color: #0000BB">Down</span><span style="color: #007700">;
+
+    public function </span><span style="color: #0000BB">offsetExists</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">): </span><span style="color: #0000BB">bool
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">false</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">offsetGet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">): </span><span style="color: #0000BB">mixed
+    </span><span style="color: #007700">{
+        return </span><span style="color: #0000BB">null</span><span style="color: #007700">;
+    }
+
+    public function </span><span style="color: #0000BB">offsetSet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">, </span><span style="color: #0000BB">$value</span><span style="color: #007700">): </span><span style="color: #0000BB">void
+    </span><span style="color: #007700">{
+        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">();
+    }
+
+    public function </span><span style="color: #0000BB">offsetUnset</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">): </span><span style="color: #0000BB">void
+    </span><span style="color: #007700">{
+        throw new </span><span style="color: #0000BB">Exception</span><span style="color: #007700">();
+    }
+}
+
+class </span><span style="color: #0000BB">Foo
+</span><span style="color: #007700">{
+    </span><span style="color: #FF8000">// This is allowed.
+    </span><span style="color: #007700">const </span><span style="color: #0000BB">DOWN </span><span style="color: #007700">= </span><span style="color: #0000BB">Direction</span><span style="color: #007700">::</span><span style="color: #0000BB">Down</span><span style="color: #007700">;
+
+    </span><span style="color: #FF8000">// This is disallowed, as it may not be deterministic.
+    </span><span style="color: #007700">const </span><span style="color: #0000BB">UP </span><span style="color: #007700">= </span><span style="color: #0000BB">Direction</span><span style="color: #007700">::</span><span style="color: #0000BB">Up</span><span style="color: #007700">[</span><span style="color: #DD0000">'short'</span><span style="color: #007700">];
+    </span><span style="color: #FF8000">// Fatal error: Cannot use [] on enums in constant expression
+</span><span style="color: #007700">}
+
+</span><span style="color: #FF8000">// This is entirely legal, because it's not a constant expression.
+</span><span style="color: #0000BB">$x </span><span style="color: #007700">= </span><span style="color: #0000BB">Direction</span><span style="color: #007700">::</span><span style="color: #0000BB">Up</span><span style="color: #007700">[</span><span style="color: #DD0000">'short'</span><span style="color: #007700">];
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #DD0000">"\$x is " </span><span style="color: #007700">. </span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">, </span><span style="color: #0000BB">true</span><span style="color: #007700">));
+
+</span><span style="color: #0000BB">$foo </span><span style="color: #007700">= new </span><span style="color: #0000BB">Foo</span><span style="color: #007700">();</span></code></pre></div>
+  </div>
+
+ </div></div></div></body></html>

@@ -1,0 +1,119 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Retrieve fingerprint of remote server</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.ssh2.html">SSH2 Functions</a></li>
+        <li>Retrieve fingerprint of remote server</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.ssh2-fingerprint" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ssh2_fingerprint</h1>
+  <p class="verinfo">(PECL ssh2 &gt;= 0.9.0)</p><p class="refpurpose"><span class="refname">ssh2_fingerprint</span> &mdash; <span class="dc-title">Retrieve fingerprint of remote server</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.ssh2-fingerprint-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>ssh2_fingerprint</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$session</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$flags</code><span class="initializer"> = SSH2_FINGERPRINT_MD5 | SSH2_FINGERPRINT_HEX</span></span>): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="simpara">
+   Returns a server hostkey hash from an active session.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ssh2-fingerprint-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">session</code></dt>
+    <dd>
+     <p class="simpara">
+      An SSH connection link identifier, obtained from a call to
+      <span class="function"><a href="function.ssh2-connect.html" class="function">ssh2_connect()</a></span>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">flags</code></dt>
+    <dd>
+     <p class="simpara">
+      <code class="parameter">flags</code> may be either of
+      <strong><code><a href="ssh2.constants.html#constant.ssh2-fingerprint-md5">SSH2_FINGERPRINT_MD5</a></code></strong> or
+      <strong><code><a href="ssh2.constants.html#constant.ssh2-fingerprint-sha1">SSH2_FINGERPRINT_SHA1</a></code></strong> logically ORed with
+      <strong><code><a href="ssh2.constants.html#constant.ssh2-fingerprint-hex">SSH2_FINGERPRINT_HEX</a></code></strong> or
+      <strong><code><a href="ssh2.constants.html#constant.ssh2-fingerprint-raw">SSH2_FINGERPRINT_RAW</a></code></strong>.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ssh2-fingerprint-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the hostkey hash as a string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ssh2-fingerprint-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4916">
+   <p><strong>Example #1 Checking the fingerprint against a known value</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$known_host </span><span style="color: #007700">= </span><span style="color: #DD0000">'6F89C2F0A719B30CC38ABDF90755F2E4'</span><span style="color: #007700">;
+
+</span><span style="color: #0000BB">$connection </span><span style="color: #007700">= </span><span style="color: #0000BB">ssh2_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">'shell.example.com'</span><span style="color: #007700">, </span><span style="color: #0000BB">22</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$fingerprint </span><span style="color: #007700">= </span><span style="color: #0000BB">ssh2_fingerprint</span><span style="color: #007700">(</span><span style="color: #0000BB">$connection</span><span style="color: #007700">,
+               </span><span style="color: #0000BB">SSH2_FINGERPRINT_MD5 </span><span style="color: #007700">| </span><span style="color: #0000BB">SSH2_FINGERPRINT_HEX</span><span style="color: #007700">);
+
+if (</span><span style="color: #0000BB">$fingerprint </span><span style="color: #007700">!= </span><span style="color: #0000BB">$known_host</span><span style="color: #007700">) {
+  die(</span><span style="color: #DD0000">"HOSTKEY MISMATCH!\n" </span><span style="color: #007700">.
+      </span><span style="color: #DD0000">"Possible Man-In-The-Middle Attack?"</span><span style="color: #007700">);
+}
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+</div></div></div></body></html>

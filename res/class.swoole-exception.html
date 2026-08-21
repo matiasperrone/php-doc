@@ -1,0 +1,111 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The Swoole\Exception class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.swoole.html">Swoole</a></li>
+        <li>The Swoole\Exception class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.swoole-exception" class="reference">
+
+ <h1 class="title">The Swoole\Exception class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PECL swoole &gt;= 1.9.0)</p>
+
+
+  <div class="section" id="swoole-exception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="swoole-exception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">Swoole\Exception</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+       <a href="class.exception.html" class="classname">Exception</a>
+     </span>
+     
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.throwable.html" class="interfacename">Throwable</a></span> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.message">$<var class="varname">message</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.string">$<var class="varname">string</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.code">$<var class="varname">code</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.file">$<var class="varname">file</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.line">$<var class="varname">line</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.trace">$<var class="varname">trace</var></a></var><span class="initializer"> = []</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.exception.html#exception.props.previous">$<var class="varname">previous</var></a></var><span class="initializer"> = null</span>;</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+</div>
+</div></div></body></html>

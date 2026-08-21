@@ -1,0 +1,188 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>C Data Handles</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.ffi.html">FFI</a></li>
+        <li>C Data Handles</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.ffi-cdata" class="reference">
+
+ <h1 class="title">C Data Handles</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 7 &gt;= 7.4.0, PHP 8)</p>
+
+
+  <div class="section" id="ffi-cdata.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname"><strong class="classname">FFI\CData</strong></span> objects can be used in a number of ways as a regular
+
+    PHP data:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <p class="simpara">
+       C data of scalar types can be read and assigned via the <span class="property">$cdata</span> property, e.g. 
+       <code class="code">$x = FFI::new(&#039;int&#039;); $x-&gt;cdata = 42;</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C struct and union fields can be accessed as regular PHP object property, e.g.
+       <code class="code">$cdata-&gt;field</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C array elements can be accessed as regular PHP array elements, e.g.
+       <code class="code">$cdata[$offset]</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C arrays can be iterated using <a href="control-structures.foreach.html" class="link"><code class="literal">foreach</code></a> statements.
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C arrays can be used as arguments of <span class="function"><a href="function.count.html" class="function">count()</a></span>.
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C pointers can be dereferenced as arrays, e.g. <code class="code">$cdata[0]</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C pointers can be compared using regular comparison operators (<code class="code">&lt;</code>,
+       <code class="code">&lt;=</code>, <code class="code">==</code>, <code class="code">!=</code>, <code class="code">&gt;=</code>, <code class="code">&gt;</code>).
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C pointers can be incremented and decremented using regular <code class="code">+</code>/<code class="code">-</code>/
+       <code class="code">++</code>/<code class="code">--</code> operations, e.g. <code class="code">$cdata += 5</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C pointers can be subtracted from another using regular <code class="code">-</code> operations.
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       C pointers to functions can be called as a regular PHP closure, e.g. <code class="code">$cdata()</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       Any C data can be duplicated using the <a href="language.oop5.cloning.html" class="link">clone</a>
+       operator, e.g. <code class="code">$cdata2 = clone $cdata;</code>
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       Any C data can be visualized using <span class="function"><a href="function.var-dump.html" class="function">var_dump()</a></span>, <span class="function"><a href="function.print-r.html" class="function">print_r()</a></span>, etc.
+      </p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">
+       <span class="classname"><strong class="classname">FFI\CData</strong></span> can now be assigned to structs and fields as of PHP 8.3.0.
+      </p>
+     </li>
+    </ul>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="simpara">
+      Notable limitations are that <span class="classname"><strong class="classname">FFI\CData</strong></span> instances do not support
+      <span class="function"><a href="function.isset.html" class="function">isset()</a></span>, <span class="function"><a href="function.empty.html" class="function">empty()</a></span> and <span class="function"><a href="function.unset.html" class="function">unset()</a></span>,
+      and that wrapped C structs and unions do not implement <span class="interfacename"><a href="class.traversable.html" class="interfacename">Traversable</a></span>.
+     </p>
+    </p></blockquote>
+   </p>
+  </div>
+
+
+  <div class="section" id="ffi-cdata.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    <span class="modifier">namespace</span> <strong class="package">FFI</strong>;</div>
+
+    <div class="classsynopsisinfo">
+     
+      <span class="modifier">final</span>
+      <span class="modifier">class</span> <strong class="classname"><strong class="classname">CData</strong></strong>
+      {</div>
+    }
+   </div>
+
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.3.0</td>
+       <td>
+        <span class="classname"><strong class="classname">FFI\CData</strong></span> can now be assigned to structs and fields.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+ </div>
+
+ 
+
+</div>
+</div></div></body></html>

@@ -1,0 +1,257 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Raises an arbitrary precision number</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.bcmath-number.html">BcMath\Number</a></li>
+        <li>Raises an arbitrary precision number</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="bcmath-number.pow" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">BcMath\Number::pow</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.4.0)</p><p class="refpurpose"><span class="refname">BcMath\Number::pow</span> &mdash; <span class="dc-title">Raises an arbitrary precision number</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-bcmath-number.pow-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>BcMath\Number::pow</strong></span>(<span class="methodparam"><span class="type"><span class="type"><a href="class.bcmath-number.html" class="type BcMath\Number">BcMath\Number</a></span>|<span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$exponent</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="language.types.integer.html" class="type int">int</a></span></span> <code class="parameter">$scale</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>): <span class="type"><a href="class.bcmath-number.html" class="type BcMath\Number">BcMath\Number</a></span></div>
+
+  <p class="simpara">
+   Raises <var class="varname">$this</var> to the <code class="parameter">exponent</code> power.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-bcmath-number.pow-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">exponent</code></dt>
+    <dd>
+     <p class="simpara">
+       The exponent. Must be a value with no fractional part.
+       The valid range of the <code class="parameter">exponent</code> is platform specific,
+       but it is at least <code class="literal">-2147483648</code> to <code class="literal">2147483647</code>.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">scale</code></dt>
+    <dd>
+     <p class="simpara">
+      <span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> explicitly specified for calculation results.
+      If <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong>, the <span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of the calculation result will be set automatically.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-bcmath-number.pow-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the result of power as a new <span class="classname"><a href="class.bcmath-number.html" class="classname">BcMath\Number</a></span> object.
+  </p>
+  <p class="para">
+   When the <span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of the result object is automatically set,
+   depending on the value of <code class="parameter">exponent</code>, the <span class="property">BcMath\Number::scale
+   </span> of result will be as follows:
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th><code class="parameter">exponent</code></th>
+       <th><span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of result</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>positive</td>
+       <td>(<span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of power base) * (<code class="parameter">exponent</code>&#039;s value)</td>
+      </tr>
+
+      <tr>
+       <td><code class="literal">0</code></td>
+       <td><code class="literal">0</code></td>
+      </tr>
+
+      <tr>
+       <td>negative</td>
+       <td>Between (<span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of power base) and (<span class="property">BcMath\Number::scale
+       </span> of power base + <code class="literal">10</code>)</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+  <p class="simpara">
+   If an indivisible division occurs due to a negative <code class="parameter">exponent</code>, the <span class="property">
+   BcMath\Number::scale</span> of the result is expanded. Expansion is done only as needed, up to
+   a maximum of <code class="literal">+10</code>.
+   This behavior is the same as <span class="methodname"><a href="bcmath-number.div.html" class="methodname">BcMath\Number::div()</a></span>, so please see that for details.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-bcmath-number.pow-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method throws a <span class="exceptionname"><a href="class.valueerror.html" class="exceptionname">ValueError</a></span> in the following cases:
+   <ul class="simplelist">
+    <li><code class="parameter">exponent</code> is <span class="type"><a href="language.types.string.html" class="type string">string</a></span> and not a well-formed BCMath numeric string</li>
+    <li><code class="parameter">exponent</code> has a fractional part</li>
+    <li><code class="parameter">exponent</code> or <code class="parameter">scale</code> is outside the valid range</li>
+    <li><span class="property"><a href="class.bcmath-number.html#bcmath-number.props.scale">BcMath\Number::scale</a></span> of the result object is outside the valid range</li>
+   </ul>
+  </p>
+  <p class="simpara">
+   This method throws a <span class="exceptionname"><a href="class.divisionbyzeroerror.html" class="exceptionname">DivisionByZeroError</a></span> exception if <var class="varname">$this</var>&#039;s value
+   is <code class="literal">0</code> and <code class="parameter">exponent</code> is a negative value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-bcmath-number.pow-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-3336">
+   <p><strong>Example #1 <span class="methodname"><strong>BcMath\Number::pow()</strong></span> example when <code class="parameter">scale</code> is not specified</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$number </span><span style="color: #007700">= new </span><span style="color: #0000BB">BcMath\Number</span><span style="color: #007700">(</span><span style="color: #DD0000">'3.0'</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$ret1 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(new </span><span style="color: #0000BB">BcMath\Number</span><span style="color: #007700">(</span><span style="color: #DD0000">'5'</span><span style="color: #007700">));
+</span><span style="color: #0000BB">$ret2 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(</span><span style="color: #DD0000">'-1'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$ret3 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$number</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret1</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret2</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret3</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">object(BcMath\Number)#1 (2) {
+  [&quot;value&quot;]=&gt;
+  string(3) &quot;3.0&quot;
+  [&quot;scale&quot;]=&gt;
+  int(1)
+}
+object(BcMath\Number)#3 (2) {
+  [&quot;value&quot;]=&gt;
+  string(9) &quot;243.00000&quot;
+  [&quot;scale&quot;]=&gt;
+  int(5)
+}
+object(BcMath\Number)#2 (2) {
+  [&quot;value&quot;]=&gt;
+  string(13) &quot;0.33333333333&quot;
+  [&quot;scale&quot;]=&gt;
+  int(11)
+}
+object(BcMath\Number)#4 (2) {
+  [&quot;value&quot;]=&gt;
+  string(1) &quot;1&quot;
+  [&quot;scale&quot;]=&gt;
+  int(0)
+}</pre>
+</div>
+   </div>
+  </div>
+
+  <div class="example" id="example-3337">
+   <p><strong>Example #2 <span class="methodname"><strong>BcMath\Number::pow()</strong></span> example of explicitly specifying <code class="parameter">scale</code></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$number </span><span style="color: #007700">= new </span><span style="color: #0000BB">BcMath\Number</span><span style="color: #007700">(</span><span style="color: #DD0000">'3.0'</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$ret1 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(new </span><span style="color: #0000BB">BcMath\Number</span><span style="color: #007700">(</span><span style="color: #DD0000">'5'</span><span style="color: #007700">), </span><span style="color: #0000BB">0</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$ret2 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(</span><span style="color: #DD0000">'-1'</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$ret3 </span><span style="color: #007700">= </span><span style="color: #0000BB">$number</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">pow</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">10</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$number</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret1</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret2</span><span style="color: #007700">, </span><span style="color: #0000BB">$ret3</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">object(BcMath\Number)#1 (2) {
+  [&quot;value&quot;]=&gt;
+  string(3) &quot;3.0&quot;
+  [&quot;scale&quot;]=&gt;
+  int(1)
+}
+object(BcMath\Number)#3 (2) {
+  [&quot;value&quot;]=&gt;
+  string(3) &quot;243&quot;
+  [&quot;scale&quot;]=&gt;
+  int(0)
+}
+object(BcMath\Number)#2 (2) {
+  [&quot;value&quot;]=&gt;
+  string(4) &quot;0.33&quot;
+  [&quot;scale&quot;]=&gt;
+  int(2)
+}
+object(BcMath\Number)#4 (2) {
+  [&quot;value&quot;]=&gt;
+  string(12) &quot;1.0000000000&quot;
+  [&quot;scale&quot;]=&gt;
+  int(10)
+}</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-bcmath-number.pow-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.bcpow.html" class="function" rel="rdfs-seeAlso">bcpow()</a> - Raise an arbitrary precision number to another</span></li>
+   <li><span class="methodname"><a href="bcmath-number.powmod.html" class="methodname" rel="rdfs-seeAlso">BcMath\Number::powmod()</a> - Raises an arbitrary precision number, reduced by a specified modulus</span></li>
+   <li><span class="methodname"><a href="bcmath-number.mul.html" class="methodname" rel="rdfs-seeAlso">BcMath\Number::mul()</a> - Multiplies an arbitrary precision number</span></li>
+   <li><span class="methodname"><a href="bcmath-number.sqrt.html" class="methodname" rel="rdfs-seeAlso">BcMath\Number::sqrt()</a> - Gets the square root of an arbitrary precision number</span></li>
+   <li><span class="methodname"><a href="bcmath-number.div.html" class="methodname" rel="rdfs-seeAlso">BcMath\Number::div()</a> - Divides by an arbitrary precision number</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

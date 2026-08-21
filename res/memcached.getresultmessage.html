@@ -1,0 +1,100 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Return the message describing the result of the last operation</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.memcached.html">Memcached</a></li>
+        <li>Return the message describing the result of the last operation</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="memcached.getresultmessage" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::getResultMessage</h1>
+  <p class="verinfo">(PECL memcached &gt;= 1.0.0)</p><p class="refpurpose"><span class="refname">Memcached::getResultMessage</span> &mdash; <span class="dc-title">Return the message describing the result of the last operation</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcached.getresultmessage-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Memcached::getResultMessage</strong></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>Memcached::getResultMessage()</strong></span> returns a string that
+   describes the result code of the last executed Memcached method.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcached.getresultmessage-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-memcached.getresultmessage-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Message describing the result of the last Memcached operation.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcached.getresultmessage-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4785">
+    <p><strong>Example #1 <span class="function"><strong>Memcached::getResultMessage()</strong></span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$m </span><span style="color: #007700">= new </span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();
+</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #0000BB">11211</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">); </span><span style="color: #FF8000">// first time should succeed
+</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">, </span><span style="color: #DD0000">'bar'</span><span style="color: #007700">);
+echo </span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResultMessage</span><span style="color: #007700">(),</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">NOT STORED</pre>
+</div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

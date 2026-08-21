@@ -1,0 +1,103 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Send data to the server during a COPY operation</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.pgsql.html">PostgreSQL Functions</a></li>
+        <li>Send data to the server during a COPY operation</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.pg-put-copy-data" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pg_put_copy_data</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.4.0)</p><p class="refpurpose"><span class="refname">pg_put_copy_data</span> &mdash; <span class="dc-title">Send data to the server during a COPY operation</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.pg-put-copy-data-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>pg_put_copy_data</strong></span>(<span class="methodparam"><span class="type"><a href="class.pgsql-connection.html" class="type PgSql\Connection">PgSql\Connection</a></span> <code class="parameter">$connection</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$cmd</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="simpara">
+   Sends data to the server during a <code class="literal">COPY FROM STDIN</code>
+   operation. A <code class="literal">COPY</code> command must have been issued
+   via <span class="function"><a href="function.pg-query.html" class="function">pg_query()</a></span> before calling this function.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pg-put-copy-data-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">connection</code></dt>
+    <dd>
+     <p class="simpara">An <span class="classname"><a href="class.pgsql-connection.html" class="classname">PgSql\Connection</a></span> instance.</p>
+    </dd>
+   
+   
+    <dt><code class="parameter">cmd</code></dt>
+    <dd>
+     <p class="simpara">
+      The data to send to the server. A final newline is automatically
+      added if not present. The data must be formatted according to
+      the <code class="literal">COPY</code> command&#039;s format.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pg-put-copy-data-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns <code class="literal">1</code> on success, <code class="literal">0</code> if the
+   data could not be queued (only in non-blocking mode), or
+   <code class="literal">-1</code> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pg-put-copy-data-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="function"><a href="function.pg-put-copy-end.html" class="function" rel="rdfs-seeAlso">pg_put_copy_end()</a> - Signal the completion of a COPY operation to the server</span></li>
+   <li><span class="function"><a href="function.pg-query.html" class="function" rel="rdfs-seeAlso">pg_query()</a> - Execute a query</span></li>
+  </ul>
+ </div>
+
+
+</div></div></div></body></html>

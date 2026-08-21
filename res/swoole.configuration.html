@@ -1,0 +1,182 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Runtime Configuration</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="swoole.setup.html">Installing/Configuring</a></li>
+        <li>Runtime Configuration</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="swoole.configuration" class="section">
+ <h2 class="title">Runtime Configuration</h2>
+ <p class="simpara">
+The behaviour of these functions is affected by settings in <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Swoole Configure Options</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Changeable</th>
+      <th>Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.enable-library" class="link">swoole.enable_library</a></td>
+      <td>On</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.enable-fiber-mock" class="link">swoole.enable_fiber_mock</a></td>
+      <td>Off</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.enable-preemptive-scheduler" class="link">swoole.enable_preemptive_scheduler</a></td>
+      <td>Off</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.display-errors" class="link">swoole.display_errors</a></td>
+      <td>On</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.use-shortname" class="link">swoole.use_shortname</a></td>
+      <td>On</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-system">INI_SYSTEM</a></code></strong></td>
+      <td></td>
+     </tr>
+
+     <tr>
+      <td><a href="swoole.configuration.html#ini.swoole.unixsock-buffer-size" class="link">swoole.unixsock_buffer_size</a></td>
+      <td>8388608</td>
+      <td><strong><code><a href="info.constants.html#constant.ini-all">INI_ALL</a></code></strong></td>
+      <td></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+
+ <p class="simpara">Here&#039;s a short explanation of
+the configuration directives.</p>
+
+ <p class="para">
+  <dl>
+   
+    <dt id="ini.swoole.enable-library">
+     <code class="parameter">swoole.enable_library</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Enable/disable the extension&#039;s built-in library.
+     </p>
+    </dd>
+   
+   
+    <dt id="ini.swoole.enable-fiber-mock">
+     <code class="parameter">swoole.enable_fiber_mock</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Enable/disable use the xdebug extension to debug Swoole programs.
+     </p>
+    </dd>
+   
+   
+    <dt id="ini.swoole.enable-preemptive-scheduler">
+     <code class="parameter">swoole.enable_preemptive_scheduler</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Prevent some coroutines from consuming CPU time for too long in a tight loop (10ms of CPU time), preventing other coroutines from getting scheduled.
+     </p>
+    </dd>
+   
+   
+    <dt id="ini.swoole.display-errors">
+     <code class="parameter">swoole.display_errors</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Enable/disable displaying Swoole error messages.
+     </p>
+    </dd>
+   
+   
+    <dt id="ini.swoole.use-shortname">
+     <code class="parameter">swoole.use_shortname</code>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Enable/disable short aliases.
+     </p>
+    </dd>
+   
+   
+    <dt id="ini.swoole.unixsock-buffer-size">
+     <code class="parameter">swoole.unixsock_buffer_size</code>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+    </dt>
+    <dd>
+     <p class="para">
+      Set the size of the Socket buffer for inter-process communication.
+     </p>
+    </dd>
+   
+  </dl>
+ </p>
+</div></div></div></body></html>

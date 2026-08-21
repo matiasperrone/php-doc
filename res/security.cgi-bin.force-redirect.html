@@ -1,0 +1,69 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Case 2: using cgi.force_redirect</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="security.cgi-bin.html">Installed as CGI binary</a></li>
+        <li>Case 2: using cgi.force_redirect</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="security.cgi-bin.force-redirect" class="sect1">
+    <h2 class="title">Case 2: using <code class="literal">cgi.force_redirect</code></h2>
+    <p class="simpara">
+     The configuration directive <a href="ini.core.html#ini.cgi.force-redirect" class="link">cgi.force_redirect</a>
+     prevents anyone from calling <strong class="command">php</strong>
+     directly with a URL like <var class="filename">http://my.host/cgi-bin/php/secretdir/script.php</var>.
+     Instead, PHP will only parse in this mode if it has gone through
+     a web server redirect rule.
+    </p>
+    <p class="simpara">
+     Usually the redirection in the Apache configuration is done with
+     the following directives:
+    </p>
+    <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">Action php-script /cgi-bin/php
+AddHandler php-script .php</pre>
+</div>
+    </div>
+
+    <p class="simpara">
+     This option has only been tested with the Apache web server, and
+     relies on Apache to set the non-standard CGI environment variable
+     <var class="envar">REDIRECT_STATUS</var> on redirected requests.  If your
+     web server does not support any way of telling if the request is
+     direct or redirected, you cannot use this option and you must use
+     one of the other ways of running the CGI version documented
+     here.
+    </p>
+   </div></div></div></body></html>

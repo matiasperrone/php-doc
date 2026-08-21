@@ -1,0 +1,68 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Examples</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="book.gmagick.html">Gmagick</a></li>
+        <li>Examples</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="gmagick.examples" class="chapter">
+ <h1 class="title">Examples</h1>
+
+ <p class="simpara">
+  The following shows some common Gmagick image operations.
+ </p>
+ <div class="example" id="example-2989">
+  <p><strong>Example #1 Gmagick Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">//Instantiate a new Gmagick object
+</span><span style="color: #0000BB">$image </span><span style="color: #007700">= new </span><span style="color: #0000BB">Gmagick</span><span style="color: #007700">(</span><span style="color: #DD0000">'example.jpg'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">//Make thumbnail from image loaded. 0 for either axes preserves aspect ratio
+</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">thumbnailimage</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">, </span><span style="color: #0000BB">0</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">//Create a border around the image, then simulate how the image will look like as an oil painting
+//Notice the chaining of mutator methods which is supported in gmagick
+</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">borderimage</span><span style="color: #007700">(</span><span style="color: #DD0000">"yellow"</span><span style="color: #007700">, </span><span style="color: #0000BB">8</span><span style="color: #007700">, </span><span style="color: #0000BB">8</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">oilpaintimage</span><span style="color: #007700">(</span><span style="color: #0000BB">0.3</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">//Write the current image at the current state to a file
+</span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">write</span><span style="color: #007700">(</span><span style="color: #DD0000">'example_thumbnail.jpg'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+  </div>
+
+ </div>
+</div>
+</div></div></body></html>

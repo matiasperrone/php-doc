@@ -1,0 +1,123 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Returning values</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.functions.html">Functions</a></li>
+        <li>Returning values</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="functions.returning-values" class="sect1">
+   <h2 class="title">Returning values</h2>
+
+   <p class="para">
+    Values are returned by using the optional return statement. Any
+    type may be returned, including arrays and objects. This causes the
+    function to end its execution immediately and pass control back to
+    the line from which it was called. See <span class="function"><a href="function.return.html" class="function">return</a></span>
+    for more information.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     If the <span class="function"><a href="function.return.html" class="function">return</a></span> is omitted the value <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> will be
+     returned.
+    </p>
+   </p></blockquote>
+
+   <div class="sect2">
+    <h3 class="title">Use of return</h3>
+    <p class="para">
+     <div class="example" id="example-234">
+      <p><strong>Example #1 Use of <span class="function"><a href="function.return.html" class="function">return</a></span></strong></p>
+      <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">$num</span><span style="color: #007700">)
+{
+    return </span><span style="color: #0000BB">$num </span><span style="color: #007700">* </span><span style="color: #0000BB">$num</span><span style="color: #007700">;
+}
+echo </span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);   </span><span style="color: #FF8000">// outputs '16'.</span></code></pre></div>
+      </div>
+
+     </div>
+    </p>
+
+    <p class="para">
+     A function can not return multiple values, but similar results can be
+     obtained by returning an array.
+    </p>
+    <p class="para">
+     <div class="example" id="example-235">
+      <p><strong>Example #2 Returning an array to get multiple values</strong></p>
+      <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function </span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">()
+{
+    return [</span><span style="color: #0000BB">0</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">, </span><span style="color: #0000BB">2</span><span style="color: #007700">];
+}
+</span><span style="color: #FF8000">// Array destructuring will collect each member of the array individually
+</span><span style="color: #007700">[</span><span style="color: #0000BB">$zero</span><span style="color: #007700">, </span><span style="color: #0000BB">$one</span><span style="color: #007700">, </span><span style="color: #0000BB">$two</span><span style="color: #007700">] = </span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">();
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$zero</span><span style="color: #007700">, </span><span style="color: #0000BB">$one</span><span style="color: #007700">, </span><span style="color: #0000BB">$two</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// Prior to 7.1.0, the only equivalent alternative is using list() construct
+</span><span style="color: #007700">list(</span><span style="color: #0000BB">$zero</span><span style="color: #007700">, </span><span style="color: #0000BB">$one</span><span style="color: #007700">, </span><span style="color: #0000BB">$two</span><span style="color: #007700">) = </span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">();</span></code></pre></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="para">
+     To return a reference from a function, use the reference operator &amp; in
+     both the function declaration and when assigning the returned value to a
+     variable:
+    </p>
+    <p class="para">
+     <div class="example" id="example-236">
+      <p><strong>Example #3 Returning a reference from a function</strong></p>
+      <div class="example-contents">
+<div class="annotation-non-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">function &amp;</span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">()
+{
+    return </span><span style="color: #0000BB">$someref</span><span style="color: #007700">;
+}
+
+</span><span style="color: #0000BB">$newref </span><span style="color: #007700">=&amp; </span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">();</span></code></pre></div>
+      </div>
+
+     </div>
+    </p>
+    <p class="simpara">
+     For more information on references, please check out <a href="language.references.html" class="link">References Explained</a>.
+    </p>
+   </div>
+  </div></div></div></body></html>

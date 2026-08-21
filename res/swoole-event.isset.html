@@ -1,0 +1,114 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Check if a socket is being monitored in the event loop</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.swoole-event.html">Swoole\Event</a></li>
+        <li>Check if a socket is being monitored in the event loop</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="swoole-event.isset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Swoole\Event::isset</h1>
+  <p class="verinfo">(No version information available, might only be in Git)</p><p class="refpurpose"><span class="refname">Swoole\Event::isset</span> &mdash; <span class="dc-title">Check if a socket is being monitored in the event loop</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-swoole-event.isset-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="modifier">static</span> <span class="modifier">function</span> <span class="methodname"><strong>Swoole\Event::isset</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span> <code class="parameter">$fd</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$events</code>
+    <span class="initializer"> = 
+     SWOOLE_EVENT_READ | SWOOLE_EVENT_WRITE
+    </span>
+   </span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+  <p class="simpara">
+   Checks whether the specified file descriptor is being monitored for the given event types in the event loop.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-swoole-event.isset-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">fd</code></dt>
+    <dd>
+     <p class="simpara">
+      File descriptor (stream/socket resource, integer, or object).
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">events</code></dt>
+    <dd>
+     <p class="simpara">
+      Event types to check (bitmask of <strong><code><a href="swoole.constants.html#constant.swoole-event-read">SWOOLE_EVENT_READ</a></code></strong> and/or <strong><code><a href="swoole.constants.html#constant.swoole-event-write">SWOOLE_EVENT_WRITE</a></code></strong>).
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-swoole-event.isset-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> on success or <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-swoole-event.isset-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4121">
+    <p><strong>Example #1 Checking event monitoring status</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$fp </span><span style="color: #007700">= </span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://www.qq.com:80"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">Swoole\Event</span><span style="color: #007700">::</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, function (</span><span style="color: #0000BB">$fp</span><span style="color: #007700">) {
+    echo </span><span style="color: #0000BB">fread</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">8192</span><span style="color: #007700">);
+}, </span><span style="color: #0000BB">null</span><span style="color: #007700">, </span><span style="color: #0000BB">SWOOLE_EVENT_READ</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Swoole\Event</span><span style="color: #007700">::isset(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">SWOOLE_EVENT_READ</span><span style="color: #007700">)); </span><span style="color: #FF8000">// Output: true
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">Swoole\Event</span><span style="color: #007700">::isset(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">, </span><span style="color: #0000BB">SWOOLE_EVENT_WRITE</span><span style="color: #007700">)); </span><span style="color: #FF8000">// Output: false</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div></div></div></body></html>

@@ -1,0 +1,72 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Installation</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="luasandbox.setup.html">Installing/Configuring</a></li>
+        <li>Installation</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="luasandbox.installation" class="section">
+  <h2 class="title">Installation</h2>
+
+  <p class="para">
+   If the operating system is Debian 10 or later, or Ubuntu 18.04 or later, then
+   LuaSandbox should typically be installed from the package
+   <code class="literal">php-luasandbox</code>:
+
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">sudo apt-get install php-luasandbox</pre>
+</div>
+   </div>
+
+  </p>
+
+  <p class="para">
+   To install LuaSandbox using <a href="https://github.com/php/pie" class="link external" title="Link : https://github.com/php/pie">&raquo;&nbsp;PIE</a>,
+   run the following command:
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">pie install wikimedia/luasandbox</pre>
+</div>
+   </div>
+
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    Old releases can be found in the <a href="https://pecl.php.net/package/luasandbox" class="link external" title="Link : https://pecl.php.net/package/luasandbox">&raquo;&nbsp;LuaSandbox PECL package</a>.
+   </p>
+  </p></blockquote>
+
+ </div></div></div></body></html>

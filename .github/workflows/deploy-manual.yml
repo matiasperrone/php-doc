@@ -1,0 +1,50 @@
+name: Deploy Manual
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      # The viewer resolves pages against '../', so res/ and viewer/
+      # must be shipped together. images/ is included because the manual CSS
+      # references it with an absolute path. The root only redirects to viewer.
+      - name: Assemble site
+        run: |
+          mkdir -p _site
+          cp -r images res viewer _site/
+          cat > _site/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>PHP Manual</title>
+          <meta http-equiv="refresh" content="0; url=viewer/">
+          <a href="viewer/">PHP Manual</a>
+          HTML
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

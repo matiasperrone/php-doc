@@ -1,0 +1,91 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>dotnet class constructor</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.dotnet.html">dotnet</a></li>
+        <li>dotnet class constructor</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="dotnet.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dotnet::__construct</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.1.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">dotnet::__construct</span> &mdash; <span class="dc-title">dotnet class constructor</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-dotnet.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>dotnet::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$assembly_name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$datatype_name</code></span>, <span class="methodparam"><span class="type"><a href="language.types.integer.html" class="type int">int</a></span> <code class="parameter">$codepage</code><span class="initializer"> = <strong><code><a href="com.constants.html#constant.cp-acp">CP_ACP</a></code></strong></span></span>)</div>
+
+  <p class="para rdfs-comment">
+   Constructs a new dotnet object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-dotnet.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">assembly_name</code></dt>
+    <dd>
+     <p class="simpara">
+      Specifies which assembly should be loaded.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">datatype_name</code></dt>
+    <dd>
+     <p class="simpara">
+      Specifies which class in that assembly to instantiate.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">codepage</code></dt>
+    <dd>
+     <p class="simpara">
+      Codepage to use for unicode string transformations;
+      see the <a href="class.com.html" class="xref">com</a> class for more details on code pages.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+</div></div></div></body></html>

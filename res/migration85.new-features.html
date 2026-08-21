@@ -1,0 +1,513 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>New Features</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="migration85.html">Migrating from PHP 8.4.x to PHP 8.5.x</a></li>
+        <li>New Features</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="migration85.new-features" class="sect1">
+ <h2 class="title">New Features</h2>
+
+ <div class="sect2" id="migration85.new-features.core">
+  <h3 class="title">PHP Core</h3>
+
+  <div class="sect3" id="migration85.new-features.core.pipe-operator">
+   <h4 class="title">Pipe Operator</h4>
+
+   <p class="simpara">
+    Added the <a href="language.operators.functional.html" class="link">pipe
+    (<code class="literal">|&gt;</code>) operator</a>.
+    
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$result </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello World" </span><span style="color: #007700">|&gt; </span><span style="color: #0000BB">strlen</span><span style="color: #007700">(...);
+print </span><span style="color: #0000BB">$result </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;  </span><span style="color: #FF8000">// Prints "11"</span></code></pre></div>
+    </div>
+
+   </div>
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.closures-in-constexpr">
+   <h4 class="title">Closure in constant expressions</h4>
+
+   <p class="para">
+    Added support for <a href="class.closure.html" class="link">Closures</a> and
+    <a href="functions.first_class_callable_syntax.html" class="link">first class callables</a>
+    in constant expressions. This includes:
+
+    <ul class="simplelist">
+     <li>Attribute parameters.</li>
+     <li>Default values of properties and parameters.</li>
+     <li>Constants and Class Constants.</li>
+    </ul>
+
+    
+    
+   </p>
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.nodiscard-attribute">
+   <h4 class="title">#[\NoDiscard] attribute</h4>
+
+   <p class="simpara">
+    Added the <span class="classname"><a href="class.nodiscard.html" class="classname">NoDiscard</a></span> attribute to indicate that a
+    function&#039;s return value is important and should be consumed.
+    
+   </p>
+
+   <p class="simpara">
+    Also, added the <code class="literal">(void)</code> cast to indicate that not using a value is intentional.
+    The <code class="literal">(void)</code> cast has no effect on the program&#039;s execution by itself, but
+    it can be used to suppress warnings emitted by <code class="code">#[\NoDiscard]</code> and possibly
+    also diagnostics emitted by external IDEs or static analysis tools.
+    
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">#[</span><span style="color: #0000BB">\NoDiscard</span><span style="color: #007700">]
+function </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #0000BB">string $a</span><span style="color: #007700">, </span><span style="color: #0000BB">string $b</span><span style="color: #007700">): </span><span style="color: #0000BB">string </span><span style="color: #007700">{
+     return </span><span style="color: #0000BB">$a </span><span style="color: #007700">. </span><span style="color: #0000BB">$b</span><span style="color: #007700">;
+}
+
+</span><span style="color: #FF8000">// Warning: The return value of function concat() should either be used or
+// intentionally ignored by casting it as (void) in xxx.php
+</span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// No warning, because the return value is consumed by the assignment.
+</span><span style="color: #0000BB">$results </span><span style="color: #007700">= </span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">// No warning, because the (void) cast is used.
+</span><span style="color: #007700">(</span><span style="color: #0000BB">void</span><span style="color: #007700">)</span><span style="color: #0000BB">concat</span><span style="color: #007700">(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">, </span><span style="color: #DD0000">"b"</span><span style="color: #007700">);</span></code></pre></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.attributes-on-constants">
+   <h4 class="title">Attributes on Constants</h4>
+
+   <p class="simpara">
+    Added support for attributes on compile-time non-class constants
+    (e.g. <code class="code">const MY_CONST = 1;</code> rather than
+    <code class="code">define(&#039;MY_CONST&#039;, 1);</code>).
+    
+   </p>
+
+   <p class="simpara">
+    The <span class="classname"><a href="class.deprecated.html" class="classname">Deprecated</a></span> attribute can now be used on constants.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.delayedtargetvalidation-attribute">
+   <h4 class="title"><code class="code">#[\DelayedTargetValidation]</code> attribute</h4>
+
+   <p class="simpara">
+    The new <span class="classname"><a href="class.delayedtargetvalidation.html" class="classname">DelayedTargetValidation</a></span> attribute can be used
+    to suppress compile-time errors from core (or extension) attributes that are
+    used on invalid targets. These errors are instead reported at runtime if and
+    when <span class="methodname"><a href="reflectionattribute.newinstance.html" class="methodname">ReflectionAttribute::newInstance()</a></span> is called.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.override-for-properties">
+   <h4 class="title"><code class="code">#[\Override]</code> for properties</h4>
+
+   <p class="simpara">
+    <span class="classname"><a href="class.override.html" class="classname">Override</a></span> attribute can now be applied to properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.static-aviz">
+   <h4 class="title">Static Asymmetric Visibility</h4>
+
+   <p class="simpara">
+    Added <a href="language.oop5.visibility.html#language.oop5.visibility-members-aviz" class="link">asymmetric
+    visibility</a> support for static properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.backtraces-for-fatal-errors">
+   <h4 class="title">Backtraces for Fatal Errors</h4>
+
+   <p class="simpara">
+    Fatal Errors (such as an exceeded maximum execution time) now include a
+    backtrace.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.final-property-promotion">
+   <h4 class="title">Constructor promotion for final property</h4>
+
+   <p class="simpara">
+    <a href="language.oop5.decon.html#language.oop5.decon.constructor.promotion" class="link">Constructor
+    property promotion</a> can now be used for final properties.
+    
+   </p>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.casts-in-constexpr">
+   <h4 class="title">Casts in constant expressions</h4>
+
+   <p class="simpara">
+    Added support for casts in constant expressions.
+   </p>
+
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">const </span><span style="color: #0000BB">T1 </span><span style="color: #007700">= (int) </span><span style="color: #0000BB">0.3</span><span style="color: #007700">; </span><span style="color: #FF8000">// Previously: "Fatal error: Constant expression contains invalid operations"
+</span><span style="color: #007700">print </span><span style="color: #0000BB">T1 </span><span style="color: #007700">. </span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;   </span><span style="color: #FF8000">// Prints "0"</span></code></pre></div>
+    </div>
+
+   </div>
+
+  </div>
+
+  <div class="sect3" id="migration85.new-features.core.clone-function">
+   <h4 class="title">Clone function</h4>
+
+   <p class="simpara">
+    The <a href="language.oop5.cloning.html" class="link">clone language construct</a>
+    is now a function and supports reassigning (readonly) properties during
+    cloning via the new <span class="property">$withProperties</span> parameter.
+    
+   </p>
+
+  </div>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.curl">
+  <h3 class="title">cURL</h3>
+
+  <p class="simpara">
+   Added support for
+   <a href="class.curlsharepersistenthandle.html" class="link">share handles</a>
+   that are persisted across multiple PHP requests, safely allowing for
+   more effective connection reuse.
+   
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code><a href="curl.constants.html#constant.curlinfo-used-proxy">CURLINFO_USED_PROXY</a></code></strong> (libcurl &gt;= 8.7.0),
+   <strong><code><a href="curl.constants.html#constant.curlinfo-httpauth-used">CURLINFO_HTTPAUTH_USED</a></code></strong>,
+   and <strong><code><a href="curl.constants.html#constant.curlinfo-proxyauth-used">CURLINFO_PROXYAUTH_USED</a></code></strong> (libcurl &gt;= 8.12.0)
+   to the <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span> function.
+   When <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span> returns an array, the same information
+   is available as <code class="literal">&quot;used_proxy&quot;</code>,
+   <code class="literal">&quot;httpauth_used&quot;</code>, and <code class="literal">&quot;proxyauth_used&quot;</code>
+   keys.
+   <strong><code><a href="curl.constants.html#constant.curlinfo-used-proxy">CURLINFO_USED_PROXY</a></code></strong> gets zero set if no proxy was used in the
+   previous transfer or a non-zero value if a proxy was used.
+   <strong><code><a href="curl.constants.html#constant.curlinfo-httpauth-used">CURLINFO_HTTPAUTH_USED</a></code></strong> and
+   <strong><code><a href="curl.constants.html#constant.curlinfo-proxyauth-used">CURLINFO_PROXYAUTH_USED</a></code></strong> get bitmasks
+   indicating the HTTP and proxy authentication methods that were
+   used in the previous request.
+   See <strong><code><a href="curl.constants.html#constant.curlauth-any">CURLAUTH_<span class="replaceable">*</span></a></code></strong> constants for
+   possible values.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code><a href="curl.constants.html#constant.curlopt-infilesize-large">CURLOPT_INFILESIZE_LARGE</a></code></strong> Curl option, which is a safe
+   replacement for <strong><code><a href="curl.constants.html#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong>. On certain systems,
+   <strong><code><a href="curl.constants.html#constant.curlopt-infilesize">CURLOPT_INFILESIZE</a></code></strong> only accepts a 32-bit signed integer as
+   the file size (2.0 GiB) even on 64-bit systems.
+   <strong><code><a href="curl.constants.html#constant.curlopt-infilesize-large">CURLOPT_INFILESIZE_LARGE</a></code></strong> accepts the largest integer value
+   the system can handle.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code><a href="curl.constants.html#constant.curlfollow-obeycode">CURLFOLLOW_OBEYCODE</a></code></strong>,
+   <strong><code><a href="curl.constants.html#constant.curlfollow-firstonly">CURLFOLLOW_FIRSTONLY</a></code></strong> and <strong><code><a href="curl.constants.html#constant.curlfollow-all">CURLFOLLOW_ALL</a></code></strong>
+   values for <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong>
+   <span class="function"><a href="function.curl-setopt.html" class="function">curl_setopt()</a></span> option.
+   <strong><code><a href="curl.constants.html#constant.curlfollow-obeycode">CURLFOLLOW_OBEYCODE</a></code></strong> to follow more strictly in regard to
+   redirect if they are allowed.
+   <strong><code><a href="curl.constants.html#constant.curlfollow-firstonly">CURLFOLLOW_FIRSTONLY</a></code></strong> to follow only the first redirect thus
+   if there is any follow up redirect, it won&#039;t go any further.
+   <strong><code><a href="curl.constants.html#constant.curlfollow-all">CURLFOLLOW_ALL</a></code></strong> is equivalent to setting
+   <strong><code><a href="curl.constants.html#constant.curlopt-followlocation">CURLOPT_FOLLOWLOCATION</a></code></strong> to true.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code><a href="curl.constants.html#constant.curlinfo-conn-id">CURLINFO_CONN_ID</a></code></strong> (libcurl &gt;= 8.2.0)
+   to the <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span> function. This constant allows retrieving
+   the unique ID of the connection used by a cURL transfer. It is primarily
+   useful when connection reuse or connection pooling logic is needed in
+   PHP-level applications. When <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span> returns an array,
+   this value is available as the <code class="literal">&quot;conn_id&quot;</code> key.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code><a href="curl.constants.html#constant.curlinfo-queue-time-t">CURLINFO_QUEUE_TIME_T</a></code></strong> (libcurl &gt;= 8.6.0)
+   to the <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span> function. This constant allows
+   retrieving the time (in microseconds) that the request spent in libcurl’s
+   connection queue before it was sent.
+   This value can also be retrieved by passing
+   <strong><code><a href="curl.constants.html#constant.curlinfo-queue-time-t">CURLINFO_QUEUE_TIME_T</a></code></strong> to the <span class="function"><a href="function.curl-getinfo.html" class="function">curl_getinfo()</a></span>
+   <code class="parameter">option</code> parameter.
+  </p>
+
+  <p class="simpara">
+   Added support for <strong><code>CURLOPT_SSL_SIGNATURE_ALGORITHMS</code></strong> to
+   specify the signature algorithms to use for TLS.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.dom">
+  <h3 class="title">DOM</h3>
+
+  <p class="simpara">
+   Added <span class="property"><a href="class.dom-element.html#dom-element.props.outerhtml">Dom\Element::$outerHTML</a></span>.
+  </p>
+
+  <p class="simpara">
+   Added <span class="property">$children</span> property to
+   <span class="interfacename"><a href="class.dom-parentnode.html" class="interfacename">Dom\ParentNode</a></span> implementations.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.exif">
+  <h3 class="title">EXIF</h3>
+
+  <p class="simpara">
+   Added support for <code class="literal">OffsetTime*</code> Exif tags.
+  </p>
+
+  <p class="simpara">
+   Added support for HEIF/HEIC.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.filter">
+  <h3 class="title">Filter</h3>
+
+  <p class="simpara">
+   Added new <strong><code><a href="filter.constants.html#constant.filter-throw-on-failure">FILTER_THROW_ON_FAILURE</a></code></strong> flag which can be
+   passed to the filter functions and will force an exception to be triggered
+   when validation fails.
+   The new flag cannot be combined with
+   <strong><code><a href="filter.constants.html#constant.filter-null-on-failure">FILTER_NULL_ON_FAILURE</a></code></strong>; trying to do so will result
+   in a <span class="exceptionname"><a href="class.valueerror.html" class="exceptionname">ValueError</a></span> being thrown.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.intl">
+  <h3 class="title">Intl</h3>
+
+  <p class="simpara">
+   Added class constants <strong><code><a href="class.numberformatter.html#numberformatter.constants.currency-iso">NumberFormatter::CURRENCY_ISO</a></code></strong>,
+   <strong><code><a href="class.numberformatter.html#numberformatter.constants.currency-plural">NumberFormatter::CURRENCY_PLURAL</a></code></strong>,
+   <strong><code><a href="class.numberformatter.html#numberformatter.constants.cash-currency">NumberFormatter::CASH_CURRENCY</a></code></strong>,
+   and <strong><code><a href="class.numberformatter.html#numberformatter.constants.currency-standard">NumberFormatter::CURRENCY_STANDARD</a></code></strong>
+   for various currency-related number formats.
+  </p>
+
+  <p class="simpara">
+   Added <span class="methodname"><strong>Locale::addLikelySubtags()</strong></span> and
+   <span class="methodname"><strong>Locale::minimizeSubtags()</strong></span> to handle likely tags
+   on a given locale.
+  </p>
+
+  <p class="simpara">
+   Added <span class="classname"><a href="class.intllistformatter.html" class="classname">IntlListFormatter</a></span> class to format, order,
+   and punctuate a list of items with a given locale,
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-and">IntlListFormatter::TYPE_AND</a></code></strong>,
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-or">IntlListFormatter::TYPE_OR</a></code></strong>,
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.type-units">IntlListFormatter::TYPE_UNITS</a></code></strong> operands and
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-wide">IntlListFormatter::WIDTH_WIDE</a></code></strong>,
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-short">IntlListFormatter::WIDTH_SHORT</a></code></strong> and
+   <strong><code><a href="class.intllistformatter.html#intllistformatter.constants.width-narrow">IntlListFormatter::WIDTH_NARROW</a></code></strong> widths.
+   It is supported from icu 67.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.pdo-sqlite">
+  <h3 class="title">PDO_Sqlite</h3>
+
+  <p class="simpara">
+   Added class constant <strong><code>Pdo\Sqlite::ATTR_BUSY_STATEMENT</code></strong>.
+  </p>
+
+  <p class="simpara">
+   Added class constants <strong><code>Pdo\Sqlite::ATTR_EXPLAIN_STATEMENT</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_PREPARED</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_EXPLAIN</code></strong>,
+   <strong><code>Pdo\Sqlite::EXPLAIN_MODE_EXPLAIN_QUERY_PLAN</code></strong>.
+  </p>
+
+  <p class="simpara">
+   Added <strong><code>Pdo\Sqlite::ATTR_TRANSACTION_MODE</code></strong> connection attribute
+   with possible values <strong><code>Pdo\Sqlite::TRANSACTION_MODE_DEFERRED</code></strong>,
+   <strong><code>Pdo\Sqlite::TRANSACTION_MODE_IMMEDIATE</code></strong>,
+   and <strong><code>Pdo\Sqlite::TRANSACTION_MODE_EXCLUSIVE</code></strong>,
+   allowing to configure the transaction mode to use when calling beginTransaction().
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.session">
+  <h3 class="title">Session</h3>
+
+  <p class="simpara">
+   <span class="function"><a href="function.session-set-cookie-params.html" class="function">session_set_cookie_params()</a></span>,
+   <span class="function"><a href="function.session-get-cookie-params.html" class="function">session_get_cookie_params()</a></span>,
+   and <span class="function"><a href="function.session-start.html" class="function">session_start()</a></span> now support partitioned cookies via the
+   <code class="literal">&quot;partitioned&quot;</code> key.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.soap">
+  <h3 class="title">SOAP</h3>
+
+  <p class="simpara">
+   Enumeration cases are now dumped in <span class="methodname"><a href="soapclient.gettypes.html" class="methodname">SoapClient::__getTypes()</a></span>.
+  </p>
+
+  <p class="simpara">
+   Added support for Soap 1.2 Reason Text xml:lang attribute.
+  </p>
+
+  <p class="simpara">
+   The signature of <span class="methodname"><a href="soapfault.construct.html" class="methodname">SoapFault::__construct()</a></span> and
+   <span class="methodname"><a href="soapserver.fault.html" class="methodname">SoapServer::fault()</a></span> therefore
+   now have an optional <code class="parameter">lang</code> parameter.
+   This support solves compatibility with .NET SOAP clients.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.standard">
+  <h3 class="title">Standard</h3>
+
+  <p class="simpara">
+   <span class="function"><a href="function.mail.html" class="function">mail()</a></span> now returns the actual sendmail error and detects
+   if the sendmail process was terminated unexpectedly.
+   In such cases, a warning is emitted and the function returns false.
+   Previously, these errors were silently ignored.
+   This change affects only the sendmail transport.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> now supports HEIF/HEIC images.
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> now supports SVG images when ext-libxml
+   is also loaded.
+   Similarly, <span class="function"><a href="function.image-type-to-extension.html" class="function">image_type_to_extension()</a></span> and
+   <span class="function"><a href="function.image-type-to-mime-type.html" class="function">image_type_to_mime_type()</a></span>
+   now also handle IMAGETYPE_SVG.
+  </p>
+
+  <p class="simpara">
+   The array returned by <span class="function"><a href="function.getimagesize.html" class="function">getimagesize()</a></span> now has two additional entries:
+   <code class="literal">&quot;width_unit&quot;</code> and <code class="literal">&quot;height_unit&quot;</code> to indicate in
+   which units the dimensions are expressed. These units are px by default. They are not
+   necessarily the same (just to give one example: one may be cm and the other may be px).
+  </p>
+
+  <p class="simpara">
+   <span class="function"><a href="function.setcookie.html" class="function">setcookie()</a></span> and <span class="function"><a href="function.setrawcookie.html" class="function">setrawcookie()</a></span> now support the
+   <code class="literal">&quot;partitioned&quot;</code> key.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.uri">
+  <h3 class="title">URI</h3>
+
+  <p class="simpara">
+   An always enabled uri extension is added that can be used for handling
+   URIs and URLs according to RFC 3986 and WHATWG URL.
+   
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.xsl">
+  <h3 class="title">XSL</h3>
+
+  <p class="simpara">
+   The <code class="parameter">namespace</code> argument of <span class="methodname"><a href="xsltprocessor.getparameter.html" class="methodname">XSLTProcessor::getParameter()</a></span>,
+   <span class="methodname"><a href="xsltprocessor.setparameter.html" class="methodname">XSLTProcessor::setParameter()</a></span> and
+   <span class="methodname"><a href="xsltprocessor.removeparameter.html" class="methodname">XSLTProcessor::removeParameter()</a></span> now actually works
+   instead of being treated as empty.
+   This only works if the <code class="parameter">name</code> argument does not use Clark notation and is not a
+   QName because in those cases the namespace is taken from the namespace href or
+   prefix respectively.
+  </p>
+
+ </div>
+
+ <div class="sect2" id="migration85.new-features.zlib">
+  <h3 class="title">Zlib</h3>
+
+  <p class="simpara">
+   <span class="function"><a href="function.flock.html" class="function">flock()</a></span> is now supported on zlib streams. Previously,
+   this always failed to perform any locking action.
+  </p>
+
+ </div>
+
+</div></div></div></body></html>

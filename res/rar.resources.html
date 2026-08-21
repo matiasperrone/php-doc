@@ -1,0 +1,54 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Resource Types</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="rar.setup.html">Installing/Configuring</a></li>
+        <li>Resource Types</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="rar.resources" class="section">
+  <h2 class="title">Resource Types</h2>
+  <p class="simpara">
+   This extension registers three internal classes:
+   the archive representations returned by <span class="function"><a href="rararchive.open.html" class="function">rar_open()</a></span> –
+   <span class="type"><a href="class.rararchive.html" class="type RarArchive">RarArchive</a></span>, the entry representations returned by
+   <span class="function"><a href="rararchive.getentries.html" class="function">rar_list()</a></span> and <span class="function"><a href="rararchive.getentry.html" class="function">rar_entry_get()</a></span> –
+   <span class="type"><a href="class.rarentry.html" class="type RarEntry">RarEntry</a></span> and the exception type <span class="type"><a href="class.rarexception.html" class="type RarException">RarException</a></span>.
+  </p>
+  <p class="simpara">
+   This extension also register a stream resource, called &quot;rar&quot; and a URL
+   wrapper called &quot;rar wrapper&quot; and registered under the prefix &quot;rar&quot;.
+  </p>
+ </div></div></div></body></html>

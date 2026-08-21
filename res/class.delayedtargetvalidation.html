@@ -1,0 +1,152 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The DelayedTargetValidation attribute</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="reserved.attributes.html">Predefined Attributes</a></li>
+        <li>The DelayedTargetValidation attribute</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.delayedtargetvalidation" class="reference">
+ <h1 class="title">The DelayedTargetValidation attribute</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(PHP 8 &gt;= 8.5.0)</p>
+
+  <div class="section" id="delayedtargetvalidation.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    This attribute delays target validation errors for internal attributes
+    from compile time to when the attribute is instantiated via the Reflection API.
+   </p>
+   <p class="simpara">
+    When applied to a declaration, any invalid usage of internal attributes
+    on the same target will not trigger a compile time error. Instead, the
+    validation is deferred and performed when the attribute is instantiated
+    via <a href="reflectionattribute.newinstance.html" class="link">ReflectionAttribute::newInstance()</a>.
+   </p>
+   <p class="simpara">
+    This is primarily intended for forward compatibility, allowing code to
+    use attributes that may gain additional valid targets in future PHP
+    versions without breaking on older versions.
+   </p>
+  </div>
+
+  <div class="section" id="delayedtargetvalidation.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   <div class="classsynopsis"><div class="classsynopsisinfo">
+    
+     <span class="attribute">#[<a href="class.attribute.html">\Attribute</a>]</span><br>
+     <span class="modifier">final</span>
+     <span class="modifier">class</span> <strong class="classname"><strong class="classname">DelayedTargetValidation</strong></strong>
+     {</div>
+   }</div>
+
+  </div>
+
+  <div class="section" id="delayedtargetvalidation.examples">
+   <h2 class="title">Examples</h2>
+
+   <div class="example" id="example-503">
+    <p><strong>Example #1 Delaying validation of an invalid target</strong></p>
+    <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+</span><span style="color: #007700">class </span><span style="color: #0000BB">Base </span><span style="color: #007700">{
+    protected function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}
+}
+
+class </span><span style="color: #0000BB">Child </span><span style="color: #007700">extends </span><span style="color: #0000BB">Base </span><span style="color: #007700">{
+
+    #[</span><span style="color: #0000BB">\DelayedTargetValidation</span><span style="color: #007700">]
+    #[</span><span style="color: #0000BB">\Override</span><span style="color: #007700">]
+    public const </span><span style="color: #0000BB">NAME </span><span style="color: #007700">= </span><span style="color: #DD0000">'child'</span><span style="color: #007700">;
+
+    #[</span><span style="color: #0000BB">\Override</span><span style="color: #007700">]
+    protected function </span><span style="color: #0000BB">foo</span><span style="color: #007700">(): </span><span style="color: #0000BB">void </span><span style="color: #007700">{}
+}</span></code></pre></div></div>
+
+
+    <div class="example-contents"><p>
+     On PHP versions where <span class="classname"><a href="class.override.html" class="classname">Override</a></span> is not allowed on
+     class constants, this does not produce a compile time error.
+    </p></div>
+   </div>
+
+   <div class="example" id="example-504">
+    <p><strong>Example #2 Validation occurs during reflection</strong></p>
+    <div class="example-contents"><div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+
+$reflection </span><span style="color: #007700">= new </span><span style="color: #0000BB">ReflectionClassConstant</span><span style="color: #007700">(</span><span style="color: #0000BB">Child</span><span style="color: #007700">::class, </span><span style="color: #DD0000">'NAME'</span><span style="color: #007700">);
+
+foreach (</span><span style="color: #0000BB">$reflection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getAttributes</span><span style="color: #007700">() as </span><span style="color: #0000BB">$attribute</span><span style="color: #007700">) {
+    </span><span style="color: #0000BB">$attribute</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">newInstance</span><span style="color: #007700">(); </span><span style="color: #FF8000">// May throw if invalid
+</span><span style="color: #007700">}</span></code></pre></div></div>
+
+
+    <div class="example-contents"><p>
+     When any attribute applied to the same target (other than
+     DelayedTargetValidation itself) is instantiated via reflection using
+     <a href="reflectionattribute.newinstance.html" class="link">ReflectionAttribute::newInstance()</a>,
+     target validation is performed and an exception may be thrown if the attribute
+     is used on an unsupported target.
+    </p></div>
+   </div>
+
+  </div>
+
+  <div class="section" id="delayedtargetvalidation.notes">
+   <h2 class="title">Notes</h2>
+   <p class="simpara">
+    This attribute only affects target validation of internal attributes.
+   </p>
+   <p class="simpara">
+    It does not suppress functional validation performed by those attributes.
+    For example, <span class="classname"><a href="class.override.html" class="classname">Override</a></span> will still emit an error if a
+    method does not actually override a parent method.
+   </p>
+  </div>
+
+  <div class="section" id="delayedtargetvalidation.seealso">
+   <h2 class="title">See Also</h2>
+   <ul class="simplelist">
+    <li><a href="language.attributes.html" class="link">Attributes overview</a></li>
+    <li><a href="class.override.html" class="link">Override</a></li>
+   </ul>
+  </div>
+
+ </div>
+
+</div>
+</div></div></body></html>

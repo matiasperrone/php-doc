@@ -1,0 +1,115 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Pathname of current directory</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.posix.html">POSIX Functions</a></li>
+        <li>Pathname of current directory</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.posix-getcwd" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">posix_getcwd</h1>
+  <p class="verinfo">(PHP 4, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">posix_getcwd</span> &mdash; <span class="dc-title">Pathname of current directory</span></p>
+
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.posix-getcwd-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>posix_getcwd</strong></span>(): <span class="type"><span class="type"><a href="language.types.string.html" class="type string">string</a></span>|<span class="type"><a href="language.types.singleton.html" class="type false">false</a></span></span></div>
+
+  <p class="para rdfs-comment">
+   Gets the absolute pathname of the script&#039;s current working directory.
+   On error, it sets errno which can be checked using
+   <span class="function"><a href="function.posix-get-last-error.html" class="function">posix_get_last_error()</a></span>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.posix-getcwd-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="simpara">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.posix-getcwd-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> of the absolute pathname on success.  
+   On error, returns <strong><code><a href="reserved.constants.html#constant.false">false</a></code></strong> and sets errno which can be checked with
+   <span class="function"><a href="function.posix-get-last-error.html" class="function">posix_get_last_error()</a></span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.posix-getcwd-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3611">
+    <p><strong>Example #1 <span class="function"><strong>posix_getcwd()</strong></span> example</strong></p>
+    <div class="example-contents"><p>
+     This example will return the absolute path of the current working 
+     directory of the script.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #007700">echo </span><span style="color: #DD0000">'My current working directory is '</span><span style="color: #007700">.</span><span style="color: #0000BB">posix_getcwd</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.posix-getcwd-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    This function can fail on
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <p class="simpara">Read or Search permission was denied</p>
+     </li>
+     <li class="listitem">
+      <p class="simpara">Pathname no longer exists</p>
+     </li>
+    </ul> 
+   </p>
+  </p></blockquote>
+ </div>
+
+
+</div></div></div></body></html>

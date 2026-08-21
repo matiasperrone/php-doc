@@ -1,0 +1,92 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Installation</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ftp.setup.html">Installing/Configuring</a></li>
+        <li>Installation</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="ftp.installation" class="section">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  In order to use FTP functions with your PHP configuration, you should
+  add the <strong class="option configure">--enable-ftp</strong> option when
+  installing PHP.
+ </p>
+ <p class="para">
+  In Autotools, the FTP SSL support is enabled implicitly when building together
+  with the <code class="literal">openssl</code> extension using the
+  <strong class="option configure">--with-openssl</strong> configure option. When
+  building without <code class="literal">openssl</code> extension, the
+  <strong class="option configure">--with-ftp-ssl</strong> Autotools configure option
+  can be used to enable the FTP SSL support explicitly.
+ </p>
+ <p class="para">
+  On Windows this extension is always built as shared extension
+  and as such has to be enabled in <var class="filename">php.ini</var>.
+ </p>
+
+ <div class="simplesect">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.4.0</td>
+       <td>
+        Autotools configure option <strong class="option configure">--with-openssl-dir</strong>
+        has been removed in favor of the new
+        <strong class="option configure">--with-ftp-ssl</strong> that enables the FTP
+        SSL support explicitly when building without the <code class="literal">openssl</code>
+        extension.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+</div></div></div></body></html>

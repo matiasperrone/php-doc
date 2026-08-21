@@ -1,0 +1,126 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Close pipes to a process opened by proc_open, wait for it to terminate, and return its exit code</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.exec.html">Program execution Functions</a></li>
+        <li>Close pipes to a process opened by proc_open, wait for it to terminate, and return its exit code</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.proc-close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">proc_close</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">proc_close</span> &mdash; <span class="dc-title">Close pipes to a process opened by <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span>, wait for it to terminate, and return its exit code</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.proc-close-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>proc_close</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> <code class="parameter">$process</code></span>): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+
+  <p class="para rdfs-comment">
+   <span class="function"><strong>proc_close()</strong></span> is similar to <span class="function"><a href="function.pclose.html" class="function">pclose()</a></span>
+   except that it only works on processes opened by
+   <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span>.
+   <span class="function"><strong>proc_close()</strong></span> waits for the process to terminate, and
+   returns its exit code.  Open pipes to that process are closed
+   when this function is called, in
+   order to avoid a deadlock - the child process may not be able to exit
+   while the pipes are open.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.proc-close-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+    
+     <dt><code class="parameter">process</code></dt>
+     <dd>
+      <p class="para">
+       The <span class="function"><a href="function.proc-open.html" class="function">proc_open()</a></span> <span class="type"><a href="language.types.resource.html" class="type resource">resource</a></span> that will
+       be closed.
+      </p>
+     </dd>
+    
+   </dl>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.proc-close-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Returns the termination status of the process that was run. In case of 
+   an error, <code class="literal">-1</code> is returned.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+ <p class="simpara">
+  If PHP has been compiled with --enable-sigchild, the return value of this function is undefined.
+ </p>
+</p></blockquote>
+
+ </div>
+
+  <div class="refsect1 changelog" id="refsect1-function.proc-close-changelog">
+   <h3 class="title">Changelog</h3>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.3.0</td>
+       <td>
+        <span class="function"><strong>proc_close()</strong></span> now returns the correct exit code
+        even after <span class="function"><a href="function.proc-get-status.html" class="function">proc_get_status()</a></span> was called first.
+        Previously, <code class="literal">-1</code> was returned in that case.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+</div></div></div></body></html>

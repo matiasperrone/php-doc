@@ -1,0 +1,90 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Installation</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="apcu.setup.html">Installing/Configuring</a></li>
+        <li>Installation</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="apcu.installation" class="section">
+  <h2 class="title">Installation</h2>
+  <p class="simpara">
+   Information for installing this PECL extension may be
+found in the manual chapter titled <a href="install.pecl.html" class="link">Installation
+of PECL extensions</a>. Additional information such as new releases,
+downloads, source files, maintainer information, and a CHANGELOG, can be
+located here: 
+   <a href="https://pecl.php.net/package/apcu" class="link external" title="Link : https://pecl.php.net/package/apcu">&raquo;&nbsp;https://pecl.php.net/package/apcu</a>.
+  </p>
+  <div class="tip"><strong class="tip">Tip</strong>
+   <p class="simpara">
+    PHP 7 has a separate module (<a href="https://pecl.php.net/apcu_bc" class="link external" title="Link : https://pecl.php.net/apcu_bc">&raquo;&nbsp;apcu-bc</a>) for backwards compatibility with APC.
+   </p>
+   <p class="simpara">
+    In backward compatibility mode, APCu registers the applicable APC functions
+    with backward compatible prototypes.
+   </p>
+   <p class="simpara">
+    Where an APC function accepted <code class="parameter">cache_type</code>, it is simply
+    ignored by the backward compatible version, and omitted from the prototype for
+    the APCu version.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="simpara">
+    As of PHP 8.0.0, apcu-bc is no longer supported.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    On Windows, APCu needs a temp path to exist, and be
+    writable by the web server.  It checks the TMP, TEMP
+    and USERPROFILE environment variables in that order
+    and finally tries the WINDOWS directory if none of
+    those are set.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="simpara">
+    For more in-depth, highly technical implementation details, see the
+    <a href="https://github.com/php/pecl-caching-apc/blob/master/TECHNOTES.txt" class="link external" title="Link : https://github.com/php/pecl-caching-apc/blob/master/TECHNOTES.txt">&raquo;&nbsp;
+     developer-supplied TECHNOTES file
+    </a>.
+   </p>
+  </p></blockquote>
+  <p class="simpara">
+   APCu sources can be found <a href="https://github.com/krakjoe/apcu" class="link external" title="Link : https://github.com/krakjoe/apcu">&raquo;&nbsp;here</a>.
+  </p>
+ </div></div></div></body></html>

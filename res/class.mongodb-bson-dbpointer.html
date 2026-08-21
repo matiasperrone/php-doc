@@ -1,0 +1,153 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The MongoDB\BSON\DBPointer class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.bson.html">MongoDB\BSON</a></li>
+        <li>The MongoDB\BSON\DBPointer class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.mongodb-bson-dbpointer" class="reference">
+
+ <h1 class="title">The MongoDB\BSON\DBPointer class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;=1.4.0)</p>
+
+
+  <div class="section" id="mongodb-bson-dbpointer.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    BSON type for the &quot;DBPointer&quot; type. This BSON type is deprecated, and this
+    class can not be instantiated. It will be created from a BSON DBPointer
+    type while converting BSON to PHP, and can also be converted back into
+    BSON while storing documents in the database.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-bson-dbpointer.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">MongoDB\BSON\DBPointer</strong>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.mongodb-bson-type.html" class="interfacename">MongoDB\BSON\Type</a></span><span class="oointerface">,  <a href="class.jsonserializable.html" class="interfacename">JsonSerializable</a></span><span class="oointerface">,  <a href="class.stringable.html" class="interfacename">Stringable</a></span> {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-bson-dbpointer.construct.html" class="methodname">__construct</a></span>()</div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-bson-dbpointer.jsonserialize.html" class="methodname">jsonSerialize</a></span>(): <span class="type"><a href="language.types.mixed.html" class="type mixed">mixed</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-bson-dbpointer.tostring.html" class="methodname">__toString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      
+       <tr>
+        <td>PECL mongodb 2.0.0</td>
+        <td>
+         <span class="simpara">
+          This class no longer implements the
+          <span class="interfacename"><a href="class.serializable.html" class="interfacename">Serializable</a></span> interface.
+         </span>
+        </td>
+       </tr>
+
+
+      <tr>
+       <td>PECL mongodb 1.12.0</td>
+       <td>
+        Implements <span class="interfacename"><a href="class.stringable.html" class="interfacename">Stringable</a></span> for PHP 8.0+.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-bson-dbpointer.construct.html">MongoDB\BSON\DBPointer::__construct</a> — Construct a new DBPointer (unused)</li><li><a href="mongodb-bson-dbpointer.jsonserialize.html">MongoDB\BSON\DBPointer::jsonSerialize</a> — Returns a representation that can be converted to JSON</li><li><a href="mongodb-bson-dbpointer.tostring.html">MongoDB\BSON\DBPointer::__toString</a> — Returns an empty string</li></ul>
+</div>
+</div></div></body></html>

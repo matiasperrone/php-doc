@@ -1,0 +1,80 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>String Operators</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.operators.html">Operators</a></li>
+        <li>String Operators</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.operators.string" class="sect1">
+ <h2 class="title">String Operators</h2>
+ 
+ <p class="simpara">
+  There are two <span class="type"><a href="language.types.string.html" class="type string">string</a></span> operators. The first is the
+  concatenation operator (&#039;.&#039;), which returns the concatenation of its
+  right and left arguments. The second is the concatenating assignment
+  operator (&#039;<code class="literal">.=</code>&#039;), which appends the argument on the right side to
+  the argument on the left side. Please read <a href="language.operators.assignment.html" class="link">Assignment
+  Operators</a> for more information.
+ </p>
+
+ <p class="para">
+  <div class="example" id="example-179">
+   <p><strong>Example #1 String Concatenating</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$a </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello "</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$b </span><span style="color: #007700">= </span><span style="color: #0000BB">$a </span><span style="color: #007700">. </span><span style="color: #DD0000">"World!"</span><span style="color: #007700">; </span><span style="color: #FF8000">// now $b contains "Hello World!"
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);
+
+</span><span style="color: #0000BB">$a </span><span style="color: #007700">= </span><span style="color: #DD0000">"Hello "</span><span style="color: #007700">;
+</span><span style="color: #0000BB">$a </span><span style="color: #007700">.= </span><span style="color: #DD0000">"World!"</span><span style="color: #007700">;     </span><span style="color: #FF8000">// now $a contains "Hello World!"
+</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+ </p>
+
+ <div class="sect2">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li><a href="language.types.string.html" class="link">String type</a></li>
+    <li><a href="ref.strings.html" class="link">String functions</a></li>
+   </ul>
+  </p>
+ </div>
+</div></div></div></body></html>

@@ -1,0 +1,134 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Return all values that are enums with their enum value instead of the raw integer</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="ref.snmp.html">SNMP Functions</a></li>
+        <li>Return all values that are enums with their enum value instead of the raw integer</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="function.snmp-set-enum-print" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">snmp_set_enum_print</h1>
+  <p class="verinfo">(PHP 4 &gt;= 4.3.0, PHP 5, PHP 7, PHP 8)</p><p class="refpurpose"><span class="refname">snmp_set_enum_print</span> &mdash; <span class="dc-title">
+   Return all values that are enums with their enum value instead of the raw integer
+  </span></p>
+
+ </div>
+ <div class="refsect1 description" id="refsect1-function.snmp-set-enum-print-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">function</span> <span class="methodname"><strong>snmp_set_enum_print</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span> <code class="parameter">$enable</code></span>): <span class="type"><a href="language.types.singleton.html" class="type true">true</a></span></div>
+
+  <p class="simpara">
+   This function toggles if snmpwalk/snmpget etc. should automatically lookup enum values
+   in the MIB and return them together with their human readable string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.snmp-set-enum-print-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">enable</code></dt>
+    <dd>
+     <p class="simpara">
+      As the value is interpreted as boolean by the Net-SNMP library, it can only be &quot;0&quot; or &quot;1&quot;.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.snmp-set-enum-print-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   Always returns <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.snmp-set-enum-print-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+ <td>8.2.0</td>
+ <td>
+  The return type is <strong><code><a href="reserved.constants.html#constant.true">true</a></code></strong> now; previously, it was <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span>.
+ </td>
+</tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.snmp-set-enum-print-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4851">
+   <p><strong>Example #1 Using <span class="function"><strong>snmp_set_enum_print()</strong></span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+ snmp_set_enum_print</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);
+ echo </span><span style="color: #0000BB">snmpget</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'public'</span><span style="color: #007700">, </span><span style="color: #DD0000">'IF-MIB::ifOperStatus.3'</span><span style="color: #007700">) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+ </span><span style="color: #0000BB">snmp_set_enum_print</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);
+ echo </span><span style="color: #0000BB">snmpget</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">, </span><span style="color: #DD0000">'public'</span><span style="color: #007700">, </span><span style="color: #DD0000">'IF-MIB::ifOperStatus.3'</span><span style="color: #007700">) . </span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+  </div>
+  <p class="simpara">
+   The above  would return
+<div class="examplescode"><pre class="examplescode">INTEGER: up(1)
+ INTEGER: 1</pre>
+</div>
+  </p>
+ </div>
+
+
+</div></div></div></body></html>

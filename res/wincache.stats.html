@@ -1,0 +1,106 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>WinCache Statistics Script</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="wincache.setup.html">Installing/Configuring</a></li>
+        <li>WinCache Statistics Script</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="wincache.stats" class="section">
+  <h2 class="title">WinCache Statistics Script</h2>
+  <p class="para">
+   The installation package for WinCache includes a PHP script,
+   <var class="filename">wincache.php</var>, that can be used to obtain cache information
+   and statistics.
+  </p>
+  <p class="para">
+   If the WinCache extension was installed via the Microsoft Web Platform Installer,
+   then this script is located in
+   <var class="filename">%SystemDrive%\Program Files\IIS\Windows Cache for PHP\</var>.
+   On a 64-bit version of the Windows Server operating system, the script is located in
+   <var class="filename">%SystemDrive%\Program Files (x86)\IIS\Windows Cache for PHP</var>.
+   If the extension was installed manually, then the <var class="filename">wincache.php</var>
+   will be located in the same folder from which the content of the installation package was extracted.
+  </p>
+  <p class="para">
+   To use <var class="filename">wincache.php</var>, copy it into a root folder of a Web site or
+   into any subfolder. To protect the script, open it in any text editor and replace the values for
+   <em>USERNAME</em> and <em>PASSWORD</em> constants.
+   If any other IIS authentication is enabled on the server, then
+   follow the instructions in the comments:
+   <div class="example" id="example-748">
+    <p><strong>Example #1 Authentication configuration for <var class="filename">wincache.php</var></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+</span><span style="color: #FF8000">/**
+ * ======================== CONFIGURATION SETTINGS ==============================
+ * If you do not want to use authentication for this page, set USE_AUTHENTICATION to 0.
+ * If you use authentication then replace the default password.
+ */
+</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'USE_AUTHENTICATION'</span><span style="color: #007700">, </span><span style="color: #0000BB">1</span><span style="color: #007700">);
+</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'USERNAME'</span><span style="color: #007700">, </span><span style="color: #DD0000">'wincache'</span><span style="color: #007700">);
+</span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'PASSWORD'</span><span style="color: #007700">, </span><span style="color: #DD0000">'wincache'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/**
+ * The Basic PHP authentication will work only when IIS is configured to support
+ * Anonymous Authentication' and nothing else. If IIS is configured to support/use
+ * any other kind of authentication like Basic/Negotiate/Digest etc, this will not work.
+ * In that case use the array below to define the names of users in your
+ * domain/network/workgroup which you want to grant access to.
+ */
+</span><span style="color: #0000BB">$user_allowed </span><span style="color: #007700">= array(</span><span style="color: #DD0000">'DOMAIN\user1'</span><span style="color: #007700">, </span><span style="color: #DD0000">'DOMAIN\user2'</span><span style="color: #007700">, </span><span style="color: #DD0000">'DOMAIN\user3'</span><span style="color: #007700">);
+
+</span><span style="color: #FF8000">/**
+ * If the array contains string 'all', then all the users authenticated by IIS
+ * will have access to the page. Uncomment the below line and comment above line
+ * to grant access to all users who gets authenticated by IIS.
+ */
+/* $user_allowed = array('all'); */
+
+/** ===================== END OF CONFIGURATION SETTINGS ========================== */
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+    </div>
+
+   </div>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="simpara">
+     Always protect the <var class="filename">wincache.php</var> script by using either
+     the built-in authentication or the server&#039;s authentication mechanism.
+     Leaving this script unprotected may compromise the security of your
+     web application and web server.
+    </p>
+   </p></blockquote>
+  </p>
+ </div></div></div></body></html>

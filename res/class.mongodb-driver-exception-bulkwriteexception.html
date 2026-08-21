@@ -1,0 +1,209 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>The MongoDB\Driver\Exception\BulkWriteException class</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="mongodb.exceptions.html">MongoDB\Driver\Exception</a></li>
+        <li>The MongoDB\Driver\Exception\BulkWriteException class</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="class.mongodb-driver-exception-bulkwriteexception" class="reference">
+
+ <h1 class="title">The MongoDB\Driver\Exception\BulkWriteException class</h1>
+ 
+
+ <div class="partintro"><p class="verinfo">(mongodb &gt;= 1.0.0)</p>
+
+
+  <div class="section" id="mongodb-driver-exception-bulkwriteexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="simpara">
+    Thrown when a bulk write operation fails.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-bulkwriteexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <span class="ooclass"><strong class="classname"></strong></span>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">class</span> <strong class="classname">MongoDB\Driver\Exception\BulkWriteException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+       <a href="class.mongodb-driver-exception-serverexception.html" class="classname">MongoDB\Driver\Exception\ServerException</a>
+     </span>
+
+     <span class="oointerface"><span class="modifier">implements</span> 
+       <a href="class.mongodb-driver-exception-exception.html" class="interfacename">MongoDB\Driver\Exception\Exception</a></span> {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type"><a href="class.mongodb-driver-writeresult.html" class="type MongoDB\Driver\WriteResult">MongoDB\Driver\WriteResult</a></span>
+      <var class="varname"><a href="class.mongodb-driver-exception-bulkwriteexception.html#mongodb-driver-exception-bulkwriteexception.props.writeresult">$<var class="varname">writeResult</var></a></var>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    
+    <div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="language.types.array.html" class="type array">array</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.mongodb-driver-exception-runtimeexception.html#mongodb-driver-exception-runtimeexception.props.errorlabels">$<var class="varname">errorLabels</var></a></var>;</div>
+
+    
+    <div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.message">$<var class="varname">message</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.string">$<var class="varname">string</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.code">$<var class="varname">code</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.string.html" class="type string">string</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.file">$<var class="varname">file</var></a></var><span class="initializer"> = &quot;&quot;</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">protected</span>
+     <span class="type"><a href="language.types.integer.html" class="type int">int</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.line">$<var class="varname">line</var></a></var>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type"><a href="language.types.array.html" class="type array">array</a></span>
+      <var class="varname"><a href="class.exception.html#exception.props.trace">$<var class="varname">trace</var></a></var><span class="initializer"> = []</span>;</div>
+<div class="fieldsynopsis"><span class="modifier">private</span>
+     <span class="type">?</span><span class="type"><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span><span class="type"></span></span>
+      <var class="varname"><a href="class.exception.html#exception.props.previous">$<var class="varname">previous</var></a></var><span class="initializer"> = null</span>;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-driver-bulkwriteexception.getwriteresult.html" class="methodname">getWriteResult</a></span>(): <span class="type"><a href="class.mongodb-driver-writeresult.html" class="type MongoDB\Driver\WriteResult">MongoDB\Driver\WriteResult</a></span></div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    
+    <div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="mongodb-driver-runtimeexception.haserrorlabel.html" class="methodname">MongoDB\Driver\Exception\RuntimeException::hasErrorLabel</a></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$errorLabel</code></span>): <span class="type"><a href="language.types.boolean.html" class="type bool">bool</a></span></div>
+
+    
+    <div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.getmessage.html" class="methodname">Exception::getMessage</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.getprevious.html" class="methodname">Exception::getPrevious</a></span>(): <span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.throwable.html" class="type Throwable">Throwable</a></span></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.getcode.html" class="methodname">Exception::getCode</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.getfile.html" class="methodname">Exception::getFile</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.getline.html" class="methodname">Exception::getLine</a></span>(): <span class="type"><a href="language.types.integer.html" class="type int">int</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.gettrace.html" class="methodname">Exception::getTrace</a></span>(): <span class="type"><a href="language.types.array.html" class="type array">array</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.gettraceasstring.html" class="methodname">Exception::getTraceAsString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.tostring.html" class="methodname">Exception::__toString</a></span>(): <span class="type"><a href="language.types.string.html" class="type string">string</a></span></div>
+<div class="methodsynopsis dc-description"><span class="modifier">private</span> <span class="modifier">function</span> <span class="methodname"><a href="exception.clone.html" class="methodname">Exception::__clone</a></span>(): <span class="type"><a href="language.types.void.html" class="type void">void</a></span></div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+  <div class="section" id="mongodb-driver-exception-bulkwriteexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+    
+     <dt id="mongodb-driver-exception-bulkwriteexception.props.writeresult"><var class="varname">writeResult</var></dt>
+     <dd>
+      <p class="simpara">
+       The <span class="classname"><a href="class.mongodb-driver-writeresult.html" class="classname">MongoDB\Driver\WriteResult</a></span> associated with
+       the failed write operation.
+      </p>
+     </dd>
+    
+   </dl>
+  </div>
+  
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>PECL mongodb 2.3.0</td>
+       <td>
+        The <var class="varname">writeResult</var> property is now
+        <span class="modifier">public</span> <span class="modifier">readonly</span>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>PECL mongodb 2.0.0</td>
+       <td>
+        <span class="simpara">
+         This class now extends
+         <span class="classname"><a href="class.mongodb-driver-exception-serverexception.html" class="classname">MongoDB\Driver\Exception\ServerException</a></span>
+         instead of
+         <span class="classname"><a href="class.mongodb-driver-exception-writeexception.html" class="classname">MongoDB\Driver\Exception\WriteException</a></span>.
+        </span>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+<h2>Table of Contents</h2><ul class="chunklist chunklist_reference"><li><a href="mongodb-driver-bulkwriteexception.getwriteresult.html">MongoDB\Driver\Exception\BulkWriteException::getWriteResult</a> — Returns the WriteResult for the failed write operation</li></ul>
+</div>
+</div></div></body></html>

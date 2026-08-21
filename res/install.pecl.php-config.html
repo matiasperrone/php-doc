@@ -1,0 +1,174 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>php-config</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="install.pecl.html">Installation of PECL extensions</a></li>
+        <li>php-config</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="install.pecl.php-config" class="sect1">
+  <h2 class="title">
+   <strong class="command">php-config</strong>
+  </h2>
+  <div class="warning"><strong class="warning">Warning</strong>
+ <p class="simpara">
+  PECL is deprecated.
+  PHP Installer for Extensions (<abbr>PIE</abbr>) replaces PECL and is recommended to install extensions.
+  Find out more at <a href="https://github.com/php/pie" class="link external" title="Link : https://github.com/php/pie">&raquo;&nbsp;https://github.com/php/pie</a>
+ </p>
+</div>
+  <p class="para">
+   <strong class="command">php-config</strong>
+   is a simple shell script for obtaining information about the installed PHP
+   configuration.
+  </p>
+  
+  <p class="para">
+   When the extensions are being compiled, if multiple PHP versions are
+   installed, the installation for which to build can be specified by using the
+   <strong class="option configure">--with-php-config</strong>
+   option during configuration, setting the path of the respective
+   <strong class="command">php-config</strong>
+   script.
+  </p>
+  
+  <p class="para">
+   The list of command line options provided by the
+   <strong class="command">php-config</strong>
+   script can be queried anytime by running
+   <strong class="command">php-config</strong>
+   with the <strong class="option unknown">-h</strong> switch:
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Usage: /usr/local/bin/php-config [OPTION]
+Options:
+  --prefix            [...]
+  --includes          [...]
+  --ldflags           [...]
+  --libs              [...]
+  --extension-dir     [...]
+  --include-dir       [...]
+  --php-binary        [...]
+  --php-sapis         [...]
+  --configure-options [...]
+  --version           [...]
+  --vernum            [...]
+</pre></div>
+   </div>
+  </p>
+  
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Command line options</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Option</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>--prefix</td>
+       <td>Directory prefix where PHP is installed, e.g. /usr/local</td>
+      </tr>
+
+      <tr>
+       <td>--includes</td>
+       <td>
+        List of <code class="literal">-I</code> options with all include files
+       </td>
+      </tr>
+
+      <tr>
+       <td>--ldflags</td>
+       <td>
+        <code class="literal">LD</code>
+        flags which PHP was compiled with
+       </td>
+      </tr>
+
+      <tr>
+       <td>--libs</td>
+       <td>Extra libraries which PHP was compiled with</td>
+      </tr>
+
+      <tr>
+       <td>--extension-dir</td>
+       <td>Directory where extensions are searched by default</td>
+      </tr>
+
+      <tr>
+       <td>--include-dir</td>
+       <td>
+        Directory prefix where header files are installed by default
+       </td>
+      </tr>
+
+      <tr>
+       <td>--php-binary</td>
+       <td>Full path to php CLI or CGI binary</td>
+      </tr>
+
+      <tr>
+       <td>--php-sapis</td>
+       <td>Show all SAPI modules available</td>
+      </tr>
+
+      <tr>
+       <td>--configure-options</td>
+       <td>
+        Configure options to recreate configuration of current PHP installation
+       </td>
+      </tr>
+
+      <tr>
+       <td>--version</td>
+       <td>PHP version</td>
+      </tr>
+
+      <tr>
+       <td>--vernum</td>
+       <td>PHP version as integer</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div></div></div></body></html>

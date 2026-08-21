@@ -1,0 +1,70 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Predefined Variables</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="language.variables.html">Variables</a></li>
+        <li>Predefined Variables</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="language.variables.predefined" class="sect1">
+   <h2 class="title">Predefined Variables</h2>
+   
+   <p class="para">
+    PHP provides a number of
+    <a href="reserved.variables.html" class="link">predefined variables</a>.
+    PHP also provides an additional set of predefined arrays
+    containing variables from the web server (if applicable), the
+    environment, and user input. These arrays are automatically available in
+    every scope. For this reason, they are often known as
+    &quot;superglobals&quot;. (There is no mechanism in PHP for
+    user-defined superglobals.) Refer to the
+    <a href="language.variables.superglobals.html" class="link">list of superglobals</a>
+    for details.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <strong>Variable variables</strong><br />
+    <p class="para">
+     Superglobals cannot be used as 
+     <a href="language.variables.variable.html" class="link">variable variables</a>
+     inside functions or class methods.
+    </p>
+   </p></blockquote>
+
+   <p class="para">
+    If certain variables in <a href="ini.core.html#ini.variables-order" class="link">variables_order</a> are not set, their
+    appropriate PHP predefined arrays are also left empty.
+   </p>
+  </div></div></div></body></html>

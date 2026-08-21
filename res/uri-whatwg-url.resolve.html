@@ -1,0 +1,133 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Resolve a URL with the current object as the base URL</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.uri-whatwg-url.html">Uri\WhatWg\Url</a></li>
+        <li>Resolve a URL with the current object as the base URL</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="uri-whatwg-url.resolve" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Uri\WhatWg\Url::resolve</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.5.0)</p><p class="refpurpose"><span class="refname">Uri\WhatWg\Url::resolve</span> &mdash; <span class="dc-title">Resolve a URL with the current object as the base URL</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-uri-whatwg-url.resolve-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Uri\WhatWg\Url::resolve</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><a href="language.types.array.html" class="type array">array</a></span> <code class="parameter reference">&$softErrors</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>): <span class="type">static</span></div>
+
+  <p class="simpara">
+   Resolves a valid URL string - which may potentially be a relative-URL string - with the current object as the base URL.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-uri-whatwg-url.resolve-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">uri</code></dt>
+    <dd>
+     <p class="simpara">
+      A valid URL string (e.g. <code class="literal">/foo</code> or (e.g. <code class="literal">https://example.com/foo</code>) to apply on
+      the current object.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">softErrors</code></dt>
+    <dd>
+     <p class="simpara">
+      An <span class="type"><a href="language.types.array.html" class="type array">array</a></span> to pass a list of <span class="classname"><a href="class.uri-whatwg-urlvalidationerror.html" class="classname">Uri\WhatWg\UrlValidationError</a></span>
+      instances by reference to provide extended information about the soft errors triggered during reference resolution.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-uri-whatwg-url.resolve-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="simpara">
+   A new <span class="classname"><a href="class.uri-whatwg-url.html" class="classname">Uri\WhatWg\Url</a></span> instance.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-uri-whatwg-url.resolve-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  
+  <p class="simpara">
+   If the resulting URL is invalid, a <span class="exceptionname"><a href="class.uri-whatwg-invalidurlexception.html" class="exceptionname">Uri\WhatWg\InvalidUrlException</a></span> is thrown.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-uri-whatwg-url.resolve-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="uri-whatwg-url.resolve.example.basic">
+   <p><strong>Example #1 <span class="methodname"><strong>Uri\WhatWg\Url::resolve()</strong></span> basic example</strong></p>
+   <div class="example-contents">
+<div class="annotation-interactive phpcode"><pre><code style="color: #000000"><span style="color: #0000BB">&lt;?php
+$url </span><span style="color: #007700">= new </span><span style="color: #0000BB">\Uri\WhatWg\Url</span><span style="color: #007700">(</span><span style="color: #DD0000">"https://example.com"</span><span style="color: #007700">);
+</span><span style="color: #0000BB">$url </span><span style="color: #007700">= </span><span style="color: #0000BB">$url</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">resolve</span><span style="color: #007700">(</span><span style="color: #DD0000">"/foo"</span><span style="color: #007700">);
+
+echo </span><span style="color: #0000BB">$url</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toAsciiString</span><span style="color: #007700">();
+</span><span style="color: #0000BB">?&gt;</span></code></pre></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="annotation-interactive examplescode"><pre class="examplescode">https://example.com/foo</pre>
+</div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-uri-whatwg-url.resolve-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="uri-whatwg-url.construct.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::__construct()</a> - Construct the Url object</span></li>
+   <li><span class="methodname"><a href="uri-whatwg-url.parse.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::parse()</a> - Parse a URL</span></li>
+   <li><span class="methodname"><a href="uri-rfc3986-uri.resolve.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::resolve()</a> - Resolve a URI with the current object as the base URL</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>

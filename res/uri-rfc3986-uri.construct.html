@@ -1,0 +1,104 @@
+    <!DOCTYPE HTML>
+    <html>
+     <head>
+      <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+      <style>
+        .navbar__local {
+          flex-grow: 1;
+          display: grid;
+          grid-auto-flow: column;
+          grid-auto-columns: 1fr min-content 1fr;
+          margin: 0;
+          height: 100%;
+          
+          .navbar__item {
+            align-content: center;
+          }
+          .navbar__link {
+            display: inline;
+          }
+          .search {
+            text-align: center;
+          }
+          .next {
+            text-align: right;
+          }
+        }
+      </style>
+      <title>Construct the Uri object</title>
+      <link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-base.css" />
+<link media="all" rel="stylesheet" type="text/css" href="styles/03e73060321a0a848018724a6c83de7f-theme-medium.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link media="all" rel="stylesheet" type="text/css" href="style.css"/>
+     </head>
+     <body class="docs" class="docs">    <div id="breadcrumbs" class="clearfix">
+      <ul class="breadcrumbs-container">
+        <li><a href="index.html">PHP Manual</a></li>
+        <li><a href="class.uri-rfc3986-uri.html">Uri\Rfc3986\Uri</a></li>
+        <li>Construct the Uri object</li>
+      </ul>
+    </div>    <div id="layout">
+      <div id="layout-content"><div id="uri-rfc3986-uri.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Uri\Rfc3986\Uri::__construct</h1>
+  <p class="verinfo">(PHP 8 &gt;= 8.5.0)</p><p class="refpurpose"><span class="refname">Uri\Rfc3986\Uri::__construct</span> &mdash; <span class="dc-title">Construct the Uri object</span></p>
+
+ </div>
+
+ <div class="refsect1 description" id="refsect1-uri-rfc3986-uri.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">function</span> <span class="methodname"><strong>Uri\Rfc3986\Uri::__construct</strong></span>(<span class="methodparam"><span class="type"><a href="language.types.string.html" class="type string">string</a></span> <code class="parameter">$uri</code></span>, <span class="methodparam"><span class="type"><span class="type"><a href="language.types.null.html" class="type null">?</a></span><span class="type"><a href="class.uri-rfc3986-uri.html" class="type Uri\Rfc3986\Uri">Uri\Rfc3986\Uri</a></span></span> <code class="parameter">$baseUrl</code><span class="initializer"> = <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong></span></span>)</div>
+
+  <p class="simpara">
+   Constructs the <span class="classname"><a href="class.uri-rfc3986-uri.html" class="classname">Uri\Rfc3986\Uri</a></span> object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-uri-rfc3986-uri.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+   
+    <dt><code class="parameter">uri</code></dt>
+    <dd>
+     <p class="simpara">
+      URI to parse.
+     </p>
+    </dd>
+   
+   
+    <dt><code class="parameter">baseUrl</code></dt>
+    <dd>
+     <p class="simpara">
+      When a <span class="type"><a href="language.types.string.html" class="type string">string</a></span> is passed, <code class="parameter">uri</code> is applied on
+      <code class="parameter">baseUrl</code>, if <code class="parameter">uri</code> is a relative reference.
+      If either <strong><code><a href="reserved.constants.html#constant.null">null</a></code></strong> is passed, or <code class="parameter">uri</code> is a not a relative reference, then
+      <code class="parameter">baseUrl</code> doesn&#039;t have any effect.
+     </p>
+    </dd>
+   
+  </dl>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-uri-rfc3986-uri.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  
+  <p class="simpara">
+   If the resulting URI is invalid, a <span class="exceptionname"><a href="class.uri-invaliduriexception.html" class="exceptionname">Uri\InvalidUriException</a></span> is thrown.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-uri-rfc3986-uri.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li><span class="methodname"><a href="uri-rfc3986-uri.parse.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::parse()</a> - Parse a URI</span></li>
+   <li><span class="methodname"><a href="uri-rfc3986-uri.resolve.html" class="methodname" rel="rdfs-seeAlso">Uri\Rfc3986\Uri::resolve()</a> - Resolve a URI with the current object as the base URL</span></li>
+   <li><span class="methodname"><a href="uri-whatwg-url.construct.html" class="methodname" rel="rdfs-seeAlso">Uri\WhatWg\Url::__construct()</a> - Construct the Url object</span></li>
+  </ul>
+ </div>
+
+</div></div></div></body></html>
